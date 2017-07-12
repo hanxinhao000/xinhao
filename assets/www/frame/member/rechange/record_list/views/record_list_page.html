@@ -1,0 +1,18 @@
+<!-- 我的充值记录列表 -->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     right="充值"
+     right-click-fun="recordClick()"
+     title="我的充值">
+</div>
+<ion-view view-title="我的充值">
+    <ion-content>
+        <div item="false" style="padding:0px;margin:0px;" aslist rcode="recordlist"
+             temp-url="frame/member/rechange/record_list/views/record_item.html" params="{{recordParams}}">
+        </div>
+        <div footerpadding></div>
+    </ion-content>
+</ion-view>

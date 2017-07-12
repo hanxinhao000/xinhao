@@ -1,0 +1,59 @@
+<!--<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="我的收款账户">
+</div>-->
+<style>
+    .select_account{
+        font-size: 15px;
+        color:#666666;
+    }
+     .select_account option{
+        font-size: 15px;
+        color:#666666;
+    }
+    
+</style>
+<ion-view >
+    
+    <ion-nav-buttons side="left">
+        <div ng-click="back()"  class="public_comment_header_bar_padding_left">
+            <i class="icon head_left_back"></i>
+        </div>
+    </ion-nav-buttons>
+
+    <ion-nav-title>
+        <div class="fs_4">
+            我的收款账户
+        </div>
+    </ion-nav-title>
+    
+    <ion-content >
+        <div class="list">
+            <label class="item item-input item-select h-46">
+                <div class="input-label-input fs-15 cl-21">账号类型:</div>
+                <select  class="fs-15 cl-21 select_account"  ng-model="pageData.account_type" ng-options="item.value as item.name for item in pageData.accountTypeData" required>
+                    <option class="fs-15 cl-21" value="">请选择</option>
+                </select>
+            </label>
+            <label class="item item-input" style="margin-top: 7px;">
+                <span class="input-label fs-15 cl-21" >姓名:</span>
+                <input  style="font-size:15px;" type="text" ng-model="pageData.bank_holder" placeholder="请输入姓名（必填）">
+            </label>
+            <label class="item item-input " style="margin-top: 7px;">
+                <span class="input-label fs-15 cl-21" >账号:</span>
+                <input  style="font-size:15px;" ng-disabled="pageData.isWeixin" type="text" ng-model="pageData.bank_code" placeholder="请输入账号（必填）">
+            </label>
+<!--            <label class="item item-input" style="margin-top: 7px;" ng-if="pageData.account_type==1||!pageData.account_type">
+                <span class="input-label" >开户行:</span>
+                <input type="text" ng-model="pageData.bank_name" placeholder="请输入开户行（必填）">
+            </label>-->
+        </div>
+        <div class="row">
+            <div class="col">
+                <button class="button editpwd_mauto button-block button-balanced" style="background: rgb(0,218,216);width: 90%;font-size: 17px;" ng-click="save()">保存</button>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

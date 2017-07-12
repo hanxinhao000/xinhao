@@ -1,0 +1,38 @@
+<style>
+</style>
+
+
+<!--许愿界面-->
+<!--<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     title="{{pData.title}}" >
+</div>-->
+<ion-view ">
+    <ion-nav-buttons side="left">
+        <div class="public_comment_header_bar_padding_left" ng-click="back()">
+            <i class="icon head_left_back"></i>
+        </div>
+    </ion-nav-buttons>
+    <ion-nav-title>
+        <div class="fs_4">{{pData.title}}</div>
+    </ion-nav-title>
+    
+    <ion-content style="background-color:#ffffff;">
+        <div class="list" style="padding-top:20px;">
+            <label class="item item-input" style="border-color: #fff;background-color: #fff;">
+               <textarea ng-model="pData.content" style="background-color: rgb(246,246,246);resize:none; font-size:15px;color:#888888;" rows="15" keyboard-attach placeholder="请在此输入内容(必填)"></textarea>
+            </label>
+      </div>
+    </ion-content>
+</ion-view>
+<div class="bar bar-footer" style="display: inline;height: 50px;background-color: rgb(236,239,239);background-position:bottom; padding-bottom:60px;">
+    <div class="row">
+         <button style="background:rgb(0,218,216);font-size:17px;" ng-click="send()" class="button button-full button-positive">
+            放飞我的星愿
+        </button>
+    </div>
+</div>
+

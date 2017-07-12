@@ -1,0 +1,25 @@
+<!--店铺分类列表-->
+<a class="item item-thumbnail-left item-icon-right" style="padding-left: 75px;">
+    <img style="max-width: 53px; max-height: 53px;top:19px;left:10px;border-radius: 5px;"  ng-src="{{value.WXHEADIMG| hostFilter}}" ng-click="personDynamic(value.MEMBER_ID)">
+    <div ng-click="to_store_details(value.ID)">
+        <img class="icon" ng-src="app_plugins/uoou/dynamic/img/member_43.png" style="width:15px;height:15px;margin-top: 39px;" />
+        <p></p>
+        <div class="row" style="padding: 0px;margin: 0px;">
+            <div class="col fs-14" style="padding: 0px;margin: 0px;">{{value.STORE_NAME}}
+            </div>
+            <div class="col" style="padding: 0px;margin: 0px;text-align: right;">
+                关注量：{{value.FOLLOW_NUM}}
+            </div>
+        </div>
+        <div class="row" style="padding: 0px;margin: 0px;">
+            <div class="col" style="padding: 0px;margin: 0px;">评论量：{{value.EVALUATE_NUM}}
+            </div>
+            <div class="col" style="padding: 0px;margin: 0px;text-align: right;">访问量：{{value.VISITOR_NUM}}</div>
+        </div>
+        <div class="row" style="padding: 0px;margin: 0px;">
+            <div class="col" style="padding: 0px;margin: 0px;">商业信誉：{{value.REPUTATION}}
+            </div>
+            <div class="col" style="padding: 0px;margin: 0px;text-align: right;">距离：{{value.DISTANCE}}米</div>
+        </div>
+    </div>
+</a>

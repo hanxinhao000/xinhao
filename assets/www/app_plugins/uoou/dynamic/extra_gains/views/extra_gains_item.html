@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--
+需求列表
+-->
+<a class="item item-thumbnail-left item-icon-right" style=" height: 75px; padding:6px 0px 0px 75px;" >
+    <img style="max-width: 50px;border-radius: 5px; max-height: 50px;top:10px;left:10px;"  ng-src="{{value.WXHEADIMG| hostFilter}}" ng-click="personDynamic(value.MEMBER_ID)">
+    <div ng-click="demandClick('{{value.ID}}','{{value.DEMAND_STATUS}}')">
+        <div class="row " style="padding-top: 0px;" >
+            需求标题：<span class="fs-12 text-overflow-elipsis" ng-bind="value.TITLE"></span>
+        </div>
+        
+        <div class="row " style="padding-top: 0px;" ng-if="value.SHOW==3">
+                   <span class="fs-12 text-overflow-elipsis" ng-if="value.DEMAND_STATUS == 0" >状态：草稿</span>
+                   <span class="fs-12 text-overflow-elipsis" ng-if="value.DEMAND_STATUS == 1" >状态：待审核</span>
+                   <span class="fs-12 text-overflow-elipsis" ng-if="value.DEMAND_STATUS == 2" >状态：待接单</span>
+                   <span class="fs-12 text-overflow-elipsis" ng-if="value.DEMAND_STATUS == 3" >状态：审核拒绝</span>
+                   <span class="fs-12 text-overflow-elipsis" ng-if="value.DEMAND_STATUS == 4" >状态：已接单</span>
+                   <span class="fs-12 text-overflow-elipsis" ng-if="value.DEMAND_STATUS == 5" >状态：已完成</span>
+                   <span class="fs-12 text-overflow-elipsis" ng-if="value.DEMAND_STATUS == 6" >状态：退款完成</span>
+                   <span class="fs-12 text-overflow-elipsis" ng-if="value.DEMAND_STATUS == 7" >状态：申请退款中</span>
+        </div>
+        <div class="row text-overflow-elipsis"  ng-if="value.SHOW==1">
+            <span class="text-overflow-elipsis">
+                <span class="fs-12 text-overflow-elipsis" ng-bind="value.PLACE"></span>，
+                <span class="fs-12 text-overflow-elipsis" ng-bind="value.DISTANCE"></span>米以内
+            </span>
+        </div>
+         <div class="row text-overflow-elipsis"  ng-if="value.SHOW==2">
+            <span class="text-overflow-elipsis">
+                <span class="fs-12 text-overflow-elipsis" ng-bind="value.PLACE"></span>，
+                <span class="fs-12 text-overflow-elipsis" ng-bind="value.DISTANCE"></span>米以内
+            </span>
+        </div>
+        <div class="row ">
+            <div class="col-50">
+                <span class="fs-12 text-overflow-elipsis" ng-bind="value.RELEASE_TIME"></span>
+            </div>
+            <div class="col-50" style="padding-left: 10px;">
+                <span class="fs-12">佣金：<span class="fs-12 text-overflow-elipsis" ng-bind="value.REMUNERATION | ptoy"></span>元</span>
+            </div>
+
+        </div>
+        <img class="icon" ng-src="app_plugins/uoou/dynamic/img/member_43.png" style="width:15px;height:15px;margin-top: 30px;"/>
+    </div>
+</a>

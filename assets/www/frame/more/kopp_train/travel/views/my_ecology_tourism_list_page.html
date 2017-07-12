@@ -1,0 +1,27 @@
+<a class="item item-box" ng-click="travelDetails(value.ID)">
+      <h3 style="color:#010101;" ng-bind="value.PC_TITLE"></h3>
+      <!-- <p style="font-size:12px;white-space:normal;max-height:37px;overflow:hidden;" ng-bind="value.ABSTRACT"></p> -->
+      <table class="full-table fs-12 mt-12">
+      	<tr class="full-w">
+      		<td class="cl-02"> 
+      			<span>{{value.ZONENAME}}</span>
+      		</td>
+      		<td class="cl-02" style="text-align:right;">
+      			<span>{{value.RELTIME}}</span>
+      		</td>
+      	</tr>
+      </table>
+      <table class="full-table fs-12 mt-12">
+      	<tr class="full-w row p-0">
+      		<td class="col col-33 cl-03 p-0">
+      			<span>{{value.COUNT}}人</span>
+      		</td>
+      		<td class="col col-33 cl-02 p-0" style="text-align:center;">
+      			<span>共{{value.SUMCOST|ptoy}}元</span>
+      		</td>
+      		<td class="col col-33 cl-02 p-0" style="text-align:right;">
+      			<span>团费{{value.COST|ptoy}}元</span>
+      		</td>
+      	</tr>
+      </table>
+</a>

@@ -1,0 +1,21 @@
+<div class="list">
+  <a class="item" style="padding:5px;">
+    <div class="row">
+      <span>支付编号:</span>
+      <span ng-bind="value.SHOWID"></span>
+    </div>
+    <div class="row">
+      <span>支付单号:</span><span ng-bind="value.ALIPAYORDERCODE"></span>
+    </div>
+    <div class="row">
+      <div class="col-33">
+        <span>支付金额:</span><span ng-bind="value.PAYMONEY"></span>
+      </div>
+      <div class="col-67" style="text-align: right">
+        <span>充值时间:</span><span ng-bind="value.PAYDATETIME"></span>
+      </div>
+    </div>
+
+
+  </a>
+</div>

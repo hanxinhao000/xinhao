@@ -1,0 +1,91 @@
+<style type="text/css">
+    .school_situation_selected{
+        font-family: Microsoft YaHei;
+        font-size: 18px;
+        color: #2ad4d4;
+        border-bottom:2px solid #2ad4d4;
+    }
+    
+    .class_exper_rq{
+        font-family: Microsoft YaHei;
+        font-size: 18px;
+        color: #a0a0a0;
+        margin-right: auto;
+        margin-left: 8px;
+        margin-top: 3px;
+       
+    }
+    .member_role_btn{
+        border-radius: 50%;
+        border: 1px solid #ff6600;
+        color: #ff6600;
+        background-color: #FFFFFF;
+        width: 30px;
+        height: 27px;
+        padding-bottom: 0px 2px 0px -9px;
+    }
+    .addTitle{
+        font-size: 25px;
+        padding-right: 5px;
+    }
+    .item-content{
+        height: 100%;
+    }
+</style>
+<!--
+<div class="bar bar-heade bar-light"
+     nav-bar
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     right-click-fun="addFriend()"
+     right="{{pData.rightDiv}}"
+     title="联系人">
+</div>-->
+
+<ion-view>
+    
+    
+    
+    
+	<ion-nav-title>
+            <div class="fs_4">联系人</div>
+        </ion-nav-title>
+    
+	<ion-nav-buttons side="right">
+            <div ng-click="addFriend()" ng-bind-html="pData.rightDiv" style="padding: 5px 3px;"  ></div>
+        </ion-nav-buttons>    
+    
+    
+    
+    
+    <ion-content>
+        <div class="fs-18 row myorder_padding" style="text-align:center;height: 54px; padding:15px 15px 10px 15px;background-color: #F5F5F5;">
+            <div class="col myorder_padding" style="height: 35px;line-height: 30px;" ng-repeat="item in pData.comdSelectCards">
+                <div class=""  style="padding-bottom: 8px;width: 71px;text-align: center;margin: auto;" 
+                      ng-click="selectCards('{{$index}}')" ng-class="[item.CSS]" 
+                      ng-bind="item.title">
+                </div>
+            </div>
+        </div>
+        <!-- 好友 -->
+        <div item="false" ng-if="pData.type == '0'" style="padding:0px;margin:0px;" aslist 
+             rcode="uu.contacts.frinedslist" temp-url="app_plugins/uoou/contacts/views/good_friends_page.html"  
+             list-events="pData.list_events" params="{{pData.param}}" repeatdata="pData.repeatdata">
+        </div>
+        <!--群组-->
+        <div ng-if="pData.type == '1'" style="padding:0px;margin:0px;" item="false" aslist 
+             rcode="uu.contacts.grouplist" temp-url="app_plugins/uoou/contacts/views/group_page.html" 
+             list-events="pData.list_events" params="{{pData.groupParam}}" ></div>
+        <!-- 关心好友 -->
+        <div item="false" ng-if="pData.type == '2'" style="padding:0px;margin:0px;" aslist 
+             rcode="uu.contacts.frinedslist" temp-url="app_plugins/uoou/contacts/views/like_friends_page.html"  
+             list-events="pData.list_events" params="{{pData.likeFriend}}" repeatdata="pData.likerepeatdata">
+        </div>
+        <!-- 新朋友 -->
+        <div item="false" ng-if="pData.type == '3'" style="padding:0px;margin:0px;" aslist 
+             rcode="uu.contacts.frinedslist" temp-url="app_plugins/uoou/contacts/views/new_friends_page.html"  
+             list-events="pData.list_events" params="{{pData.newFriend}}" repeatdata="pData.newrepeatdata">
+        </div>
+        <div footerpadding></div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,60 @@
+<!-- 我的投诉详情 -->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="我的投诉">
+</div>
+<ion-view view-title="我的投诉">
+    <ion-content>
+        <div class="bg-2 fs-12 cl-02">
+            <div class="row pt-10 pl-10 pr-10">
+                <div class="col col-20">订单编号:</div>
+                <div class="col" ng-bind="pData.complaintData.ORDERCODE"></div>
+            </div>
+            <div class="diveline bg-1"></div>
+            <div class="row">
+                <div class="col col-25">商品名称:</div>
+                <div class="col">
+                    <span ng-bind="pData.complaintData.SPECNAME"></span>
+                </div>
+            </div>
+            <div class="diveline bg-1"></div>
+            <div class="row">
+                <div class="col col-20">责任人:</div>
+                <div class="col col-70">
+                    <span ng-bind="pData.complaintData.MEMBERNAME"></span>
+                </div>
+            </div>
+            <div class="diveline bg-1"></div>
+            <div class="row">
+                <div class="col col-30">退款金额(元):</div>
+                <div class="col col-70">
+                    <span ng-bind="pData.complaintData.APPLYREFUNDMENOY|number:2"></span>
+                </div>
+            </div>
+            <div class="diveline bg-1"></div>
+            <div class="row">
+                <div class="col col-30">罚款金额(元):</div>
+                <div class="col col-70">
+                    <span ng-bind="pData.complaintData.PRD_FINE|number:2"></span>
+                </div>
+            </div>
+            <div class="diveline bg-1"></div>
+            <div class="row">
+                <div class="col" >
+                    <span>投诉内容:</span>
+                    <div ng-bind-html="pData.complaintData.COMPLAINT_CONTENT | imgFmt"></div>
+                    <div class="bg-2 am-content pb-20" ng-repeat="item in pData.complaintData.COMPLAINT_ATTACH track by $index">
+                        <img ng-src="{{item|hostFilter}}" style="width:100%;height:100%;">
+                    </div>
+                </div>
+            </div>
+            <div class="diveline bg-1">
+                
+            </div>
+        </div>
+        <br><br><br><br>
+
+    </ion-content>
+</ion-view>

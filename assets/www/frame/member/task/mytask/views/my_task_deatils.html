@@ -1,0 +1,109 @@
+<!-- 任务详情 -->
+<!--<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     title="任务详情">
+</div>-->
+<style>
+    .task-item{
+        border:1px solid #232323;
+        border-radius: 8px;
+    }
+    .task-slibe{
+        display:inline-block;
+        width:30px;
+        height:100%;
+        text-align: center;
+        vertical-align:top;
+        padding-top:10%;
+        padding-left:10px;
+    }
+    .t-status{
+        vertical-align: middle;
+        text-align: center;
+    }
+    .task-body{
+        display:inline-block;
+        padding:12px;
+        max-width: 78%;
+    }
+    .task-header{
+        padding:1px;
+        font-size:16px;
+        font-weight:700;
+    }
+    .t-reward{}
+    .reward-list{
+        list-style: none;
+        -webkit-padding-start: 0px;
+        -webkit-margin-before: 1px;
+        -webkit-margin-after: 1px;
+    }
+    .reward{
+        padding:2px 3px 2px 3px;
+    }
+    .t-flag{
+        width:15px;
+        margin-bottom:-3px;
+        margin-right:7px;
+    }
+    .t-value{
+        color: green;
+    }
+    .t-finished{
+        font-size:15px;
+        color:#1ACC20;;
+        font-weight:700;
+    }
+    .t-unfinished{
+        font-size:15px;
+        color:#F5A615;
+        font-weight:700;
+    }
+    .item-divider{
+        background-color:white;
+    }
+
+</style>
+<ion-view view-title="任务详情">
+    
+    <ion-nav-buttons side="left">
+        <div  ng-click="back()"  class="public_comment_header_bar_padding_left">
+            <i class="icon head_left_back"></i>
+        </div>
+    </ion-nav-buttons>
+
+    <ion-nav-title>
+        <div class="bar_title fs_4">
+            任务详情
+        </div>
+    </ion-nav-title>
+    
+    <ion-content >
+<!--        <div class="card">
+            <div class="item item-divider">
+              <span class="fs-16" ng-bind="taskDetail.taskName"></span>
+            </div>
+            <div class="item item-text-wrap" ng-bind-html="taskDetail.taskDesc">
+            </div>
+            <div class="item item-text-wrap">
+                <span>1,使用邀请码注册帐号</span><br />
+                <span>2,完善个人信息</span>
+            </div>
+            <div class="item item-text-wrap">
+                <span>当前任务进度:</span><br />
+                <span>1,使用邀请码注册帐号:<i ng-bind="taskDetail.taskShowTarget.IS_INVCODE" ></i></span>
+                <br />
+                <span>2,完善个人信息:</span>
+                <span ng-bind="taskDetail.taskShowTarget.COMPLATE_INFO"></span>
+            </div>
+        </div>-->
+        <div ng-bind-html="pData.taskDetail|imgFmt"></div>
+        
+        
+      
+        <div footerpadding></div>
+    </ion-content>
+</ion-view>

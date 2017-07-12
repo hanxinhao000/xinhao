@@ -1,0 +1,48 @@
+<!-- 优惠组合 -->
+<div class="bar bar-heade bar-light"
+    nav-bar
+    left-css="head_left_back"
+    title-css="header_title fs_4"
+    right-css="triph_topLine_quer"
+    right-click-fun="toSearch()"
+    title="优惠组合">
+</div>
+<ion-content delegate-handle="mainScroll">
+	<!-- 顶部 -->
+<!--	<div class="row bg-2" style="width: 100%;padding: 0px;display: -webkit-flex;">
+            <div class="col-33" style="border-right: 1px solid rgba(0, 0, 0, 0.5);-webkit-box-flex: 1;">
+                
+            </div>
+            <div class="col-33" style="border-right: 1px solid rgba(0, 0, 0, 0.5);-webkit-box-flex: 1;">
+                
+            </div>
+            <div class="col-33" style="-webkit-box-flex: 1;">
+                
+            </div>
+	</div>-->
+        <div class="row list-row" style="margin-bottom: 5px;padding: 0px;">
+            <div class="col list-col" style="padding-top:4px;">
+                <ctl-select-directive style-type="2" ng-model="pageData.quercx" click-select="selectClick1" 
+                                                      defaut-lable="智能排序" select-data="{{pageData.pxData}}">
+                                                    </ctl-select-directive>
+            </div>
+            <div class="col list-col" style="padding-top:4px;">
+                <div class="col" style="padding: 0px;">
+                    <ctl-select-directive style-type="2" click-select="selectClick2" 
+                                              defaut-lable="主题" select-data="{{pageData.ztData}}">
+                                            </ctl-select-directive>
+                </div>
+            </div>
+            <div class="col list-col" style="border:0px;padding-top:4px;">
+                <div class="col" style="padding: 0px;">
+                    <ctl-select-directive style-type="2" click-select="selectClick3" 
+                                                  defaut-lable="组合" select-data="{{pageData.zhData}}">
+                                                </ctl-select-directive>
+                </div>
+            </div>
+        </div>
+        <div style="padding:0px;margin:0px;" item="false" aslist rcode="triph.app_plugins.discountGroup.discountGroupListSql" temp-url="app_plugins/discount_group/views/discount_group_item.html" list-events="pageData.list_events" params="{{pageData.params}}" repeatdata="pageData.repeatdata"></div>
+        <div footerpadding></div>
+</ion-content>
+
+<div suspend-box></div>

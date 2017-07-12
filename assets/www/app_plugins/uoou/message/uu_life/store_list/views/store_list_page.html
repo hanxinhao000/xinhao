@@ -1,0 +1,42 @@
+
+<style>
+    .btn-push{
+        background-color: rgb(42,212,212);
+        height: 35px;
+        color: white;
+        border-radius: 3px;
+        border:0px;
+    }
+</style>
+
+<!--<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="生活">
+</div>-->
+<ion-view>
+    
+     <ion-nav-buttons side="left">
+        <div ng-click="back()"  class="public_comment_header_bar_padding_left">
+            <i class="icon head_left_back"></i>
+        </div>
+    </ion-nav-buttons>
+
+    <ion-nav-title>
+        <div class="bar_title fs_4">
+            生活
+        </div>
+    </ion-nav-title>
+    
+    <ion-content delegate-handle="mainScroll">
+        <!--会员商铺列表-->
+        <div class="list" ng-click="store_details()">
+            <div class="list" item="false" aslist rcode="uoou.getstore.bymemberid" 
+                 temp-url="app_plugins/uoou/message/uu_life/store_list/views/store_list_item.html" 
+                 list-events="pData.list_events" params="{{pData.params}}">
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>

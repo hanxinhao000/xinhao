@@ -1,0 +1,38 @@
+<style>
+    i   {
+        color: #FFF;
+    }
+</style>
+<!--<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     title="投诉及意见反馈">
+</div>-->
+<!-- 会员中心/我的-->
+<ion-view>
+    
+    <ion-nav-buttons side="left">
+        <div  ng-click="back()"  class="public_comment_header_bar_padding_left">
+            <i class="icon head_left_back"></i>
+        </div>
+    </ion-nav-buttons>
+
+    <ion-nav-title>
+        <div class="fs_4">
+            投诉及意见反馈
+        </div>
+    </ion-nav-title>
+    
+    <ion-content>
+        <textarea placeholder="请输入您所需要投诉的内容或本软件需要改进的地方" style="min-height: 180px;width: 100%;font-size: 15px;" ng-model="pData.content"></textarea>
+        <div footerpadding></div>
+    </ion-content>
+<!--    <div class="bar bar-footer bar-balanced" style="height: 35px;background-color: rgb(42,212,212);background-image: linear-gradient(180deg, rgb(42,212,212), rgb(42,212,212) 0%, transparent 0%);">
+      <div class="title" style="line-height: 37px;font-size:17px;" ng-click="submit()">提交</div>
+    </div>-->
+    <ion-footer-bar style="color: #fff;{{pData.footerHeight}};background-color: rgb(42,212,212);background-image: linear-gradient(180deg, rgb(42,212,212), rgb(42,212,212) 0%, transparent 0%);">
+        <div class="title" style="line-height: 37px;font-size:17px;" ng-click="submit()">提交</div>
+    </ion-footer-bar>
+</ion-view>

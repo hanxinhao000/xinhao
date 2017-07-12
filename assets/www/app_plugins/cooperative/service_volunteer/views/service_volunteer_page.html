@@ -1,0 +1,18 @@
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     title="城乡服务志愿者">
+ </div>
+<ion-view view-title="城乡服务志愿者">
+  <ion-content >
+        <div class="row dc_list_grade fs-14 bg-2">
+         <div class="col col-30"><span>科普志愿者</span></div>
+         <div class="col col-30"><span>服务人数</span></div>
+         <div class="col col-30"><span>累计消费金额</span></div>
+        </div>
+        <div class="diveline-2"></div>
+		<div style="padding:0px;margin:0px;" item="false" aslist rcode="serviceVolunteer" temp-url="app_plugins/cooperative/service_volunteer/views/service_volunteer_list_page.html" list-events="pageData.list_events" params="{{pageData.params}}"></div>
+  </ion-content>
+</ion-view>

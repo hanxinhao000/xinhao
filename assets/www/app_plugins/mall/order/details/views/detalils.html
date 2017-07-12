@@ -1,0 +1,114 @@
+<!--订单详情-->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     title="订单详情">
+</div>
+
+<ion-view view-title="订单详情">
+  <ion-content >
+  <div class="bg-2 fs-12 cl-02">
+    <div class="row pt-10 pl-10 pr-10">
+        <div class="col col-20">订单编号:</div>
+        <div class="col" ng-bind="pData.orderInfo.ORDERCODE"></div>
+      </div>
+      <div class="diveline bg-1"></div>
+     <div class="row pt-10 pl-10 pr-10">
+        <div class="col col-20">订单状态:</div>
+        <div class="col" ng-bind="pData.orderInfo.ORDERSTATE|enum:pData.OrderStateEnum"></div>
+      </div>
+      <div class="diveline bg-1"></div>
+      <div class="row">
+        <div class="col col-20">订单金额(元):</div>
+        <div class="col ">
+          <span ng-bind="pData.ordertotalprice"></span>
+          <span ng-if="pData.postage"> ，其中运费 <i ng-bind="pData.postage"></i>。</span>
+        </div>
+      </div>
+      <div class="diveline bg-1"></div>
+      <div class="row">
+        <div class="col col-20">购买数量:</div>
+        <div class="col col-70">
+          <span ng-bind="pData.SALENUMBER"></span>
+        </div>
+      </div>
+      <div class="diveline bg-1"></div>
+      <div class="row">
+        <div class="col col-20">送货方式:</div>
+        <div class="col col-70">
+          <span ng-bind="pData.orderInfo.SHIPPING_METHOD|enum:pData.OrderShippingMethodEnum"></span>
+        </div>
+      </div>
+      <div class="diveline bg-1"></div>
+      <div class="row">
+        <div class="col" >
+          <span>收货人:</span>
+          <span style="padding:5px;" ng-bind="pData.CONTACT"></span>,
+          <span><a href="tel:{{pData.CONTACTPHONE}}" ng-bind="pData.CONTACTPHONE"></a> </span><br>
+          收货地址:<span ng-bind="pData.ADDRESS" ></span><br>
+        </div>
+      </div>
+      <div class="diveline bg-1"></div>
+      <div class="row" ng-click="toComditDeatil()">
+        <div class="col col-20">
+          <img style="width:64px;height:64px" ng-src="{{pData.orderInfo.SPECIMAGES|hostFilter}}" >
+        </div>
+        <div class="col col-70">
+          <label ng-bind="pData.orderInfo.SPECNAME"></label><br>
+          <label>
+            <font color="red">￥{{pData.SALEPRICE|number}}</font>
+          </label>
+        </div>
+        <div class="col CM pr-10" style="text-align:right;line-height: 60px;">
+            <span class="ion-ios-arrow-right fs-14"></span>
+        </div>
+      </div>
+
+      <!--送货方式-->
+      <div class="diveline bg-1"></div>
+      <div ng-if="pData.orderInfo.SHIPPING_METHOD==2">
+        <div class="row" ng-click="sellOut()">
+          <div class="col col-67">
+            <span>订单交易:</span><br>
+            <span>当前价格(元):</span><span ng-bind="pData.orderInfo.NOWSPECPRICE|number:2"></span><br>
+            <span>总价(元):</span><span ng-bind="pData.orderInfo.NOWOUTTOTALPRICE|number:2"></span><br>
+            <span>交易手续费(元):</span><span ng-bind="pData.orderInfo.NOWOUTTOTALPRICE*0.03|number:2"></span>
+          </div>
+          <div style="margin-bottom:auto;margin-top: auto;" class="col col-33 talign-r pr-10">
+            <span class="ion-ios-arrow-right fs-14"></span>
+          </div>
+        </div>
+      </div>
+      <div class="diveline bg-1"></div>
+      
+      <!--质量安全追溯体系 start-->
+      <div class="row" ng-if="pData.tabnumber==4">
+        <div class="col col-67">
+          <span>质量安全追溯体系</span>
+        </div>
+        <div class="col col-33 pr-10" ng-click="goToComplain()" style="text-align:right;">
+          <a href="JavaScript:void(0);">我要投诉</a>
+        </div>
+      </div>
+      <div class="diveline bg-1"></div>
+      <!--质量安全追溯体系 end-->
+
+      <!--operation start-->
+      <!-- pData.tabnumber:0//1:待配送;2:待收货;4:待评价; -->
+      <div class="row CM" style="padding:0px;">
+        <div class="col col-50" style="padding:0px;">
+            
+        </div>
+        <div class="col col-50" style="padding:0px;">
+            <a ng-if="pData.tabnumber==1" style="line-height:42px;" class="button icon-left ion-android-cancel button-clear cl-05" ng-click="orderCancel()">取消</a>
+            <a ng-if="pData.tabnumber==2" style="line-height:42px;" class="button icon-left ion-ios-checkmark button-clear cl-05" ng-click="orderConfirmRecv()">确认收货</a>
+            <a ng-if="pData.tabnumber==4" style="line-height:42px;" class="button icon-left ion-chatbox-working button-clear cl-05" ng-click="evaluate()">评价</a>
+        </div>
+      </div><!--operation end-->
+
+  </div>
+      <div footerpadding></div>
+  </ion-content>
+</ion-view>

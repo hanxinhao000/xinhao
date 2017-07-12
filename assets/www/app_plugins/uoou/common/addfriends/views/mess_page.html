@@ -1,0 +1,59 @@
+<style>
+    .lis_emjoi{
+        float:left;
+        margin:4px 6px;
+        list-style:none;
+        display:block; 
+        white-space: nowrap;
+    }
+    .mess_footer{
+        padding: 0px;
+        padding-left: 5px;
+        height: auto;
+        background: rgb(216, 216, 216);
+        border-radius: 2%;
+        padding: 3px;
+    }
+    
+</style>
+
+
+<!--添加好友-->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="XX聊天">
+</div>
+
+<ion-view view-title="XX聊天">
+  <ion-content>
+      
+      
+       <!-- Swiper -->
+    <div class="swiper-container" style="height: 130px;background-color: #FFF;">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">Slide 1</div>
+            <div class="swiper-slide">Slide 2</div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+       
+     
+      
+        <button class="button button-positive" ng-click="renderEmoji()">表情</button>
+<!--          <div ng-bind-html="pData.emojihtml"></div>-->
+          
+
+  </ion-content>
+
+<!--    <ion-footer-bar keyboardshow class="bar item-input-inset">
+        <input type="text" placeholder="" style="width:70%;margin-left: 5px;border: 1px solid #f5f5f5;">
+        <i class="ion-plus-circled" data-pack="default" data-tags="add, include, new, invite, +" style="font-size:30px;color: rgb(42,212,212);margin-left: 8px;" ng-click="clickImg()"></i>
+        <button class="button button-calm" style="margin-left: 5px;top:0px;background-color: rgb(42,212,212);">发送</button>
+        表情显示区
+        <br/>
+    <div ng-bind-html="pData.emojihtml"></div>
+    </ion-footer-bar>-->
+        
+</ion-view>

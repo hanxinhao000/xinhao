@@ -1,0 +1,78 @@
+<!--私人订制广告div-->
+<div class="swiper-container customized_swiper" style="height:163px;" id="customized_swiper">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide" ng-repeat="item in pageData.customizedData">
+            <img ng-click="toPage('{{item.URL}}')" ng-src="{{item.LISTIMGAGE|hostFilter }}" style="width:100%;">
+        </div>
+    </div>
+    <div class="swiper-pagination customized-pagination" id="customized-pagination"></div>
+</div> <!--私人订制广告div   end-->
+<div class="list">
+    <label class="item item-input address_padding_all">
+        <span class="input-label-input fs-13" style="width:25%;">出游人数:</span>
+        <input class="fs-12" style="color:#333333;width:25%;font-family: -webkit-body;" type="number" string-to-number ng-model="pageData.startPeopleNum" placeholder="最小出游人数" required/>
+        <input class="fs-12" style="color:#333333;width:25%;font-family: -webkit-body;" type="number" string-to-number ng-model="pageData.endPeopleNum" placeholder="最大出游人数" required/>
+    </label>
+
+    <label class="item item-input h-46" style="padding-left:27.3px;">
+        <span class="input-label-input fs-13" style="width:25%;">出游天数:</span>
+        <input class="fs-12" style="color:#333333;width:25%;font-family: -webkit-body;" type="number" string-to-number ng-model="pageData.startDayNum" placeholder="最小出游天数" required/>
+        <input class="fs-12" style="color:#333333;width:25%;font-family: -webkit-body;" type="number" string-to-number ng-model="pageData.endDayNum" placeholder="最大出游天数" required/>
+    </label>
+
+    <div class="item item-input">
+        <div class="row">
+            <div class="col">
+                <span class="input-label-input fs-13" >酒店类型:</span>
+            </div>
+            <div class="col col-75" style="padding: 0px;">
+                <ion-checkbox ng-model="item.CHECKED" ng-repeat="item in pageData.hotelTypeData" ng-value="item.VALUE" style="border: 0px;">
+                    {{ item.NAME }}
+                </ion-checkbox>
+            </div>
+        </div>
+    </div>
+
+    <div class="item item-input">
+        <div class="row">
+            <div class="col">
+                <span class="input-label-input fs-13" >交通工具:</span>
+            </div>
+            <div class="col col-75" style="padding: 0px;">
+                <ion-checkbox ng-model="item.CHECKED" ng-repeat="item in pageData.vehicleData" style="border: 0px;">
+                    {{ item.NAME }}
+                </ion-checkbox>
+            </div>
+        </div>
+    </div>
+
+    <label class="item item-input address_padding_all">
+        <span class="input-label-input fs-13" style="width:25%;">联系人:</span>
+        <input class="fs-12" style="color:#333333;width:75%;font-family: -webkit-body;" type="text" ng-model="pageData.recvName" placeholder="联系人" required/>
+    </label>
+
+    <label class="item item-input address_padding_all">
+        <span class="input-label-input fs-13" style="width:25%;">联系电话:</span>
+        <input class="fs-12" style="color:#333333;width:75%;font-family: -webkit-body;" type="number" string-to-number ng-model="pageData.recvPhone" placeholder="联系电话" required/>
+    </label>
+
+</div>
+
+<div class="row bg-2" style="margin-top: 6px;width:100%;margin: auto;">
+    <div class="col" style="text-align: center;">
+        <b style="width:100%;">期望去景区</b>
+    </div>
+</div>
+<ion-scroll class="bg-2" direction="x" style="padding-bottom: 60px;" >
+    <div class="row" ng-style="pageData.scorllwidht">
+        <div class="col" ng-repeat="item in pageData.nearStoreData" style="text-align: center;">
+            <ion-checkbox ng-model="item.CHECKED" style="padding-left: 22px;margin-left: 68%;border: 0px;right:6px;position: relative;margin-bottom: -29px;background-color: rgba(0, 0, 0, 0);">
+            </ion-checkbox>
+            <img style="width: 120px;height: 106px;" ng-src="{{item.LIST_IMAGE|hostFilter:'ImageJSON'}}"/>
+            <div style="text-align: center">
+                <span class="fs-13" ng-bind="item.STORE_NAME"></span>
+            </div>
+        </div>
+    </div>
+</ion-scroll>
+

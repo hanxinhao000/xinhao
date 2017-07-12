@@ -1,0 +1,9 @@
+<a class="item item-avatar">
+    <img src="{{value.WXHEADIMG|hostFilter}}" style="border-radius:5px;" ng-click="to_dynamic('{{value.MEMBER_ID}}')">
+    <div ng-click="to_store_details(value.ID)" style="overflow: hidden;text-overflow: ellipsis;">
+        <span class="fs-14" style="padding-top: 5px;display: inherit;">{{value.STORE_NAME}}</span>
+        <span class="fs-12" >{{value.STORE_INTR}}</span>
+        <img class="icon" ng-src="app_plugins/uoou/dynamic/img/member_43.png" style="width:15px;height:15px;top: 27px;position: absolute;right: 10px;" src="app_plugins/uoou/dynamic/img/member_43.png">
+    </div>
+
+</a>

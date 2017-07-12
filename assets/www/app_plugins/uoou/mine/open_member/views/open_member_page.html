@@ -1,0 +1,106 @@
+<!--开通会员-->
+<style>
+    .toggle.toggle-assertive input:checked + .track {
+        border-color: #2ad4d4;
+        background-color: #2ad4d4;
+    }
+    .open_mem_price{
+        font-size:14px;
+        color:#333333;
+    }
+    .open_mem_title{
+        font-size:14px;
+        color:#333333;
+    }
+    .open_mem_content{
+        font-size:12px;
+        color:#666666;
+        padding:5px;
+    }
+    
+</style>
+<!--<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="开通会员">
+</div>-->
+<ion-view>
+    
+    <ion-nav-buttons side="left">
+        <div ng-click="back()"  class="public_comment_header_bar_padding_left">
+            <i class="icon head_left_back"></i>
+        </div>
+    </ion-nav-buttons>
+
+    <ion-nav-title>
+        <div class="fs_4">
+            开通会员
+        </div>
+    </ion-nav-title>
+    
+    <ion-content>
+        <div class="item" style="margin-bottom: 5px;">
+            <div class="row">
+                <div class="col">
+                    <span class="open_mem_title">您当前为：
+                        <span  ng-if="pData.memberType === '0'">普通用户</span>
+                        <span  ng-if="pData.memberType === '1'">普通会员</span>
+                        <span  ng-if="pData.memberType === '2'">中级会员</span>
+                        <span  ng-if="pData.memberType === '3'">超级会员</span>
+                        <span  ng-if="pData.memberType === '4'">皇冠会员</span>
+                    </span><br/>
+                    <span class="open_mem_title" ng-if="pData.memberExpireTime">会员到期日期:
+                        <span class="open_mem_content" ng-bind="pData.member_ExpireTime"></span>
+                    </span>
+                </div>
+            </div>
+
+        </div>
+        <div class="item" ng-repeat="item in pData.memberTypeData" ng-show="item.SHOW">
+            <div class="row">
+                <div style="width:50%;">
+                    <span class="open_mem_title" ng-bind="item.NAME"></span>
+                </div>
+                <div style="width:50%;text-align: right;" class="open_mem_price" >
+                    <span style="color: red;" ng-bind="item.MONTH_COST | ptoy"></span>元/月
+                </div>
+            </div>
+            <div class="row" style="padding-top:7px;">
+                <div style="width:85%;" class="open_mem_content">
+                    <span >会员权益说明：
+                        <span style="white-space: initial;" class="fs-13" ng-bind="item.GRADE_INTERESTS"></span>
+                    </span>
+                </div>
+                <div style="width:15%;">
+                    <label class="toggle toggle-assertive" style="border: 0px;">
+                        <input name="cost" type="radio" ng-model="pData.choice" ng-value="item.ID"/>
+                        <div class="track" >
+                            <div class="handle"></div>
+                        </div>
+                    </label>
+                </div>
+            </div>
+            
+            <!--<ion-checkbox style="border: 0px;position: absolute;top: 38%;height:30px;right:10px;padding-left: 30px;" ></ion-checkbox>-->
+        </div>
+
+        <div class="item" style="margin-top: 5px;"><!--COST_DISCOUNT-->
+            <select style="width:100%;height: 38px;background-color: #FFFFFF;border-radius: 5px;border: 1px solid #ddd;" ng-model="pData.cost" ng-options="item.ID as item.TITLE for item in pData.memberMoneyCostData">
+            </select>
+        </div>
+
+        <div footerpadding></div>
+    </ion-content>
+</ion-view>
+
+<div class="bar bar-footer" style="display: inline;height: 60px;background-color: rgb(236,239,239);background-position:bottom;padding: 0px;">
+
+    <div class="row" style="padding:0px;margin:0px;">
+        <div class="col" style="width: 335;height:48; padding:0px 6px 0px 6px;">
+            <button class="button button-block button-light" style="background-color: #2ad4d4;font-family: 微软雅黑;font-size: 18px;color: #ffffff;"  ng-click="payment()" ng-disabled="pData.next_step">
+                <span>确认支付（<span>{{pData.paymentMoney | ptoy}}元</span>）</span>
+            </button>
+        </div>
+    </div>
+</div>

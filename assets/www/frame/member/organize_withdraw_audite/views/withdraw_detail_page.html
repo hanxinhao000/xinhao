@@ -1,0 +1,51 @@
+<!-- 提现详情 -->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     title="组织提现审核">
+</div>
+<ion-view>
+    <ion-content>
+        <label class="item item-input h-46">
+            <span class="input-label">提现机构：</span>
+            <span  ng-bind="pageData.wd_data.USERNAME" required></span>
+        </label>
+        <label class="item item-input h-46">
+            <span class="input-label">提现账号：</span>
+            <span  ng-bind="pageData.wd_data.SA_NAME" required></span>
+        </label>
+        <label class="item item-input h-46">
+            <span class="input-label">提现金额:：</span>
+            <span  ng-bind="pageData.wd_data.CASH_WITHDRAWAL | ptoy" required></span>
+        </label>
+        <label class="item item-input h-46">
+            <span class="input-label">手续费：</span>
+            <span  ng-bind="pageData.wd_data.COUNTER_FEE | ptoy" required></span>
+        </label>
+        <label class="item item-input h-46">
+            <span class="input-label">申请时间：</span>
+            <span  ng-bind="pageData.wd_data.MENTIONTIME" required></span>
+        </label>
+        <label class="item item-input h-46">
+            <span class="input-label">提现原因：</span>
+            <span  ng-bind="pageData.wd_data.REMARKS" required></span>
+        </label>
+        <div ng-if="pageData.audit_role == '1'" class="address_padding_all fs-11 address_textarea" style="background-color: #ffffff;">
+            <textarea ng-model="pageData.audit_opinion" style="width:100%;min-height: 100px;resize: none;padding-right:24px;padding-top:13px;font-family: -webkit-body;" placeholder="请填写审核意见，不少于5个字" required/> </textarea>
+        </div>
+        <div ng-if="pageData.audit_role == '2'" class="item item-input h-46" style="background-color: #ffffff;">
+            <span class="input-label">副主任审核意见：</span>
+            <label ng-bind="pageData.wd_data.AUDIT_OPINION"  readonly/> </label>
+        </div>
+        <div ng-if="pageData.audit_role == '2'"class="address_padding_all fs-11 address_textarea" style="background-color: #ffffff;">
+            <textarea ng-model="pageData.main_audit_opinion" style="width:100%;min-height: 100px;resize: none;padding-right:24px;padding-top:13px;font-family: -webkit-body;" placeholder="请填写审核意见，不少于5个字" required/> </textarea>
+        </div>
+        <div footerpadding></div>
+    </ion-content>
+    <div class="bar bar-footer ios-margin-button">
+        <button class="button button_with  myinfoborder-radius h-43 " style="font-size:14px;" ng-click="passWidthdrawAudit()">通过</button>
+        <button  class="button button_with  myinfoborder-radius h-43 " style="font-size:14px;" ng-click="rejectWidthdrawAudit()">驳回</button>
+    </div>
+</ion-view>

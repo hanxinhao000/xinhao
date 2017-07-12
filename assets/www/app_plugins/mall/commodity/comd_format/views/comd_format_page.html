@@ -1,0 +1,17 @@
+<!--商品规格-->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     title="{{pData.title}}">
+</div>
+<ion-view view-title="{{pData.title}}">
+    <ion-content>
+        <div class="list ">
+            <div ng-repeat="item in pData.formatData">
+                {{item.NAME}}
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

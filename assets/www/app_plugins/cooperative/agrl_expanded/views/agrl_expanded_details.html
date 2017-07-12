@@ -1,0 +1,41 @@
+<!-- 科协农技下乡科普专栏 -->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="科协农技下乡科普专栏">
+</div>
+<ion-view view-title="科协农技下乡科普专栏">
+  <ion-content>
+    <div class="split-line"></div>
+		<div class="bg-2 am-content pt-13 pb-13">
+      		<div><h3 class="cl-03 content-title" style="margin-bottom:0px;">{{pageData.agrlData.TITLE}}</h3></div>
+    	</div>
+    <div class="bg-2 am-content pt-10 pb-10">
+      <table class="full-table fs-10 ">
+        <tr class="full-w">
+          <td class="cl-02">
+            <span>分类:{{pageData.agrlData.ATCTITLE}}</span>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="bg-2 am-content pt-10 pb-10">
+      <table class="full-table fs-10 ">
+        <tr class="full-w">
+          <td class="cl-02">
+            <span>发布时间:</span>
+            <span ng-bind="pageData.agrlData.RELEASETIME"></span>
+          </td>
+          <td class="cl-03" style="text-align:right;">
+      		<span>发布人:{{pageData.agrlData.USERNAME}}</span>
+      	  </td>
+        </tr>
+      </table>
+    </div>
+    <div class="bg-2 am-content pb-20">
+      <div ng-bind-html="pageData.agrlData.CONTENT|imgFmt"></div>
+    </div>
+    <div footerpadding></div>
+  </ion-content>
+</ion-view>

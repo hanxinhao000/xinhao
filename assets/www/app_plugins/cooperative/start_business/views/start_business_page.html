@@ -1,0 +1,41 @@
+<!--大众创业-->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     right="我的创业"
+     right-click-fun="myStart()"
+     title="{{pageData.title}}">
+
+</div>
+<ion-view view-title="{{pageData.title}}">
+  <ion-content >
+    <div class="row" style="background: #FFFFFF;">
+      <div class="col col-33">
+        <select class="item myinfoborder-radius item-input" style="width:100%;" ng-model="pageData.recvProvince" ng-options="province.PROID as province.PRONAME for province in cascadePCZ.provinces"  required>
+          <option value="">-请选择省-</option>
+        </select>
+      </div>
+      <div class="col col-33">
+        <select class="item myinfoborder-radius item-input" style="width:100%;" ng-model="pageData.recvCity" ng-options="city.CITYID as city.CITYNAME for city in cascadePCZ.cities"  required>
+          <option value="">-请选择市-</option>
+        </select>
+      </div>
+      <div class="col col-33">
+        <select class="item myinfoborder-radius item-input" style="width:100%;" ng-model="pageData.recvArea" ng-options="zone.ZONEID as zone.ZONENAME for zone in cascadePCZ.zones"  required>
+          <option value="">-请选择区-</option>
+        </select>
+      </div>
+    </div>
+    <div class="row" style="background: #FFFFFF;">
+      <div class="col">
+        <button ng-click="query()" class="button button_with ng-binding myinfoborder-radius h-43 agriculture_project_title">查询</button>
+      </div>
+    </div>
+    <div  style="padding:0px;margin:0px;">
+        <div ng-include="'app_plugins/cooperative/start_business/views/start_business_list.html'"></div>
+    </div>
+    <div footerpadding></div>  
+  </ion-content>
+</ion-view>

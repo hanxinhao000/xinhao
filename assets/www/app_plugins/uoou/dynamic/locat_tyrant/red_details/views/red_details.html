@@ -1,0 +1,37 @@
+<!--红包详情-->
+<style>
+</style>
+<div  class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+    
+     title="{{pData.title}}" >
+</div>
+<ion-view >
+    <ion-content >
+        <div class="item item-avatar" style="padding:5px 5px 5px 20px; font-size: 13px;">
+            <div>
+                <span>摘要:<span ng-bind="pData.detailsData.ABSTRACT"></span></span>
+            </div>
+            <div>
+                <span>份数：<span ng-bind="pData.detailsData.RP_NUMBER"></span></span>
+            </div>
+            <div>
+                <span>单个金额（元）：<span ng-bind="pData.detailsData.RE_MONEY|ptoy"></span></span>
+            </div>
+            <div>
+                <span>总金额（元）：<span ng-bind="pData.detailsData.TOTAL_MONEY|ptoy"></span></span>
+            </div>
+            <div>
+                <span>抽中率（%）：<span ng-bind="pData.detailsData.WIN_ODDS"></span></span>
+            </div>
+        </div>
+        
+          <div class="list" item="false" aslist
+                 rcode="uoou.locattyrant.reddetailslist"
+                 temp-url="app_plugins/uoou/dynamic/locat_tyrant/red_details/views/red_details_page.html" 
+                 list-events="pData.listEvents"
+                 params="{{pData.params}}">
+            </div>
+    </ion-content>
+</ion-view>

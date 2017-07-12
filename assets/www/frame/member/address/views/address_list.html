@@ -1,0 +1,33 @@
+<!-- <ion-item class="item-remove-animate item-icon-left" ng-click="editAddres('{{value.ID}}')">
+		<div class="icon ion-ios-location-outline"></div>
+		收货人:<span ng-bind="value.RECV_NAME"></span><span style="float:right;padding-right:10px;" ng-bind="value.RECV_PHONE"></span>
+		<br>
+		<span>收获地址:</span><span style="white-space: normal;" ng-bind="value.DETAILEDADDRESS"></span><br>
+    <ion-option-button class="button-assertive" ng-click="deleteAdders('{{value.ID}}')">
+      删除
+    </ion-option-button>
+</ion-item>
+ -->
+<ion-item class="item item-box item-remove-animate item-icon-left" ng-click="editAddres('{{value.ID}}')">
+	<div class="icon ion-ios-location-outline"></div>
+      <table class="full-table mt-12">
+            <tr class="full-w">
+                <td class="cl-02 fs-14" style="color:#010101;">
+                    <span>联系人:<span ng-bind="value.RECV_NAME"></span></span>
+                </td>
+                <td class="cl-02 fs-12" style="text-align:right;">
+                    <span style="margin-right: 10px;">联系电话:<span ng-bind="value.RECV_PHONE"></span></span>
+                </td>
+            </tr>
+      </table>
+      <table class="full-table fs-12 mt-12 mb-12">
+            <tr class="full-w">
+                <td class="cl-02">
+                    <span>详细地址:</span><span style="white-space: normal;" ng-bind="value.DETAILEDADDRESS"></span>
+                </td>
+            </tr>
+      </table>
+    <ion-option-button class="button-assertive" ng-click="deleteAdders('{{value.ID}}')">
+      删除
+    </ion-option-button>
+</ion-item>

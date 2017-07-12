@@ -1,0 +1,26 @@
+<a class="item item-box">
+      <h3 style="color:#010101;">
+      {{value.MEMBERNAME}} 购买了{{value.COMMODITYNAME}}。
+      </h3>
+      <p style="font-size:12px;white-space:normal;max-height:37px;overflow:hidden;" ng-bind="value.ABSTRACT"></p>
+      <table class="full-table fs-12 mt-12">
+      	<tr class="full-w">
+      		<td class="cl-02">
+      			<span>规格</span>
+                        <span ng-bind="value.SPECNAME"></span>
+      		</td>
+      		<td class="cl-02">
+      			<span>数量</span>
+                        <span ng-bind="value.SALENUMBER"></span>
+      		</td>
+      	</tr>
+      </table>
+      <table class="full-table fs-12 mt-12">
+      	<tr class="full-w">
+      		<td>
+      			<span class="cl-03">付款时间</span>
+                        <span class="cl-02" ng-bind="value.PAYMENTDATE"></span>
+      		</td>
+      	</tr>
+      </table>
+</a>

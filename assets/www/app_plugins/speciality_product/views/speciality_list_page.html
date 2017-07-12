@@ -1,0 +1,21 @@
+<div class="bar bar-heade bar-light"
+    nav-bar
+    left-css="head_left_back"
+    title-css="header_title fs_4"
+    right-css="triph_topLine_quer"
+    right-click-fun="toSearch()"
+    title="{{pageData.title}}">
+</div>
+<ion-content delegate-handle="mainScroll">
+	<div class="swiper-container detailsImage_swiper" id="detailsImage_swiper" style="height:110px;">
+	    <div class="swiper-wrapper">
+	        <div class="swiper-slide" ng-repeat="item in pageData.imageData">
+	            <img ng-src="{{item|hostFilter }}" style="width:100%;">
+	        </div>
+	    </div>
+	    <div class="swiper-pagination" id="swiper-pagination"></div>
+	</div>
+        <div style="padding:0px;margin:0px;" item="false" aslist rcode="triph.app_plugins.specialityProduct.specialityListSql" temp-url="app_plugins/speciality_product/views/speciality_list_item_page.html" list-events="pageData.list_events" params="{{pageData.params}}" repeatdata="pageData.repeatdata"></div>
+        <div footerpadding></div>
+</ion-content>
+<div suspend-box></div>

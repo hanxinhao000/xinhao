@@ -1,0 +1,19 @@
+<!-- 我的优惠券 -->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     title="积分商城">
+</div>
+<ion-view view-title="积分商城">
+  <ion-content>
+    <ion-item class="item item-text-wrap">
+      <span>当前拥有积分</span><em style="font-size: 20px;color: red;" ng-bind="pageData.score"></em>
+    </ion-item>
+    <div item="false" aslist rcode="tiket" class="list_padding"
+         temp-url="app_plugins/mall/integral_mall/coupon_list/views/coupon_list_item.html" params="{{pageData.mallCouponListParams}}"
+         list-events="pageData.listEvents">
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,18 @@
+
+<!--货架显示文字点击时间html模版-->
+<!-- activeState: 0 未开始;1 开始; 2 已经结束; -->
+<!--未开始-->
+<div>
+	<div class="mall_storage_txt_start" ng-if="activeState==0">
+	    <span class="mall_storage_txt_title ng-binding" ng-bind="title"></span>
+	    <span class="subdued ng-binding" ng-bind="timedata"></span>
+	</div>
+	<div class="mall_storage_txt_start" ng-if="activeState==1">
+	    <span class="mall_storage_txt_title ng-binding" ng-bind="title"></span>
+	    <span class="subdued ng-binding" ng-bind="timedata"></span>
+	</div>
+	<div class="mall_storage_txt_start" ng-if="activeState==2">
+	    <span class="mall_storage_txt_title ng-binding" ng-bind="title"></span>
+	    <span class="subdued ng-binding" ng-bind="timedata"></span>
+	</div>
+</div>

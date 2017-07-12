@@ -1,0 +1,39 @@
+<!-- 大学生承诺许愿平台 -->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="大学生承诺许愿平台">
+</div> 
+<ion-view view-title="大学生承诺许愿平台">
+  <ion-content>
+          <label style="padding-left: 1px;" ng-if="pageData.DetailedImages">
+            <img ng-src="{{pageData.DetailedImages|hostFilter }}" style="width:100%;">
+          </label>
+          <div class="am-content pt-10 pb-10 fs-14">
+      		  <div><h3 class="cl-03 content-title" style="margin-bottom:0px;">社员:{{pageData.membername}}</h3></div>
+    	  </div>
+    	  <div class="diveline-2"></div>
+		    <div class="am-content fs-12 pt-10 pb-10">
+		      <div ng-bind-html="pageData.detailed|imgFmt"></div>
+		  </div>
+		  <label class="item item-input h-46" style="padding: 6px 0 5px 10px;">
+            <span class="input-label-input">共接受资助:</span>
+            <span class="fs-12" ng-bind="pageData.totalAidTimes"></span>次
+          </label>
+          <label class="item item-input h-46" style="padding: 6px 0 5px 10px;">
+            <span class="input-label-input">应资助:</span>
+            <span class="fs-12" ng-bind="pageData.sholdAidTimes"></span>次
+          </label>
+          <label class="item item-input h-46" style="padding: 6px 0 5px 10px;" ng-click="mySupport(pageData.id)">
+            <span class="input-label-input">已资助:</span>
+            <span class="fs-12" ng-bind="pageData.alreadyAidTimes"></span>人
+          </label>
+          <div class="row" style="height:100px;line-height:100px;">
+            <div class="col">&nbsp;<a href="javaScript:void(0);" style="display:none;">&nbsp;</a></div>
+          </div>
+          <div class="row">
+            <div class="col">&nbsp;<a href="javaScript:void(0);" style="display:none;">&nbsp;</a></div>
+          </div>
+  </ion-content>
+</ion-view>

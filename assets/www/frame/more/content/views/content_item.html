@@ -1,0 +1,27 @@
+<!-- <ion-item style="padding:16px 10px 16px 96px;margin-top:7px;"class="item-thumbnail-left" ng-click="ContentDetails(value.ID)">
+    <img style="top:16px;" ng-src="{{value.LISTIMGAGE|hostFilter}}">
+    <div style="white-space: normal;font-size:14px;color:#010101;" ng-bind-html="value.TITLE"></div>
+    <div style="white-space: normal;font-size:12px;height:43px;overflow-y:hidden;
+" ng-bind="value.ABSTRACT"></div>
+    <div class="row" style="padding:6px 0px 0px 0px;">
+		<div class="col col-50" style="padding:0px;color:#16A252;font-size:12px;">浏览次数:{{value.COUNT}}次</div>
+        <div class="col col-50" style="padding:0px;text-align: right;font-size:12px;">{{value.DATE}}</div>
+    </div>
+</ion-item>  	
+ -->
+
+ <a class="item item-box item-thumbnail-left" ng-click="ContentDetails(value.ID)">
+ 	<img ng-src="{{value.LISTIMGAGE|hostFilter}}" >
+	<h3 style="color:#010101;" ng-bind="value.TITLE"></h3>
+	<p style="font-size:12px;line-height: 15px;white-space:normal;max-height:28px;overflow:hidden;" ng-bind="value.ABSTRACT"></p> 
+	<table class="full-table fs-12 mt-12">
+		<tr class="full-w">
+			<td class="cl-03">
+				<span>浏览次数:{{value.COUNT}}次</span>
+			</td>
+			<td class="cl-02" style="text-align:right;">
+				<span>发布时间:{{value.DATE}}</span>
+			</td>
+		</tr>
+	</table>
+</a>

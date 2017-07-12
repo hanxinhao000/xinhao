@@ -1,0 +1,21 @@
+<ion-item class="item-remove-animate item-icon-left row-wrap" style="height: 60px;padding: 0px 0px 0px 46px;">
+    <!--<img class="icon" src="app_plugins/uoou/contacts/img/group.png" style="max-width:45px;max-height:45px;border-radius: 0;top: 5px;height: 45px;line-height: 45px; ">-->
+    <img ng-if="value.WXHEADIMG == ''" class="icon" src="app_plugins/uoou/contacts/img/default_head.png" style="max-width:45px;max-height:45px;border-radius: 0;top: 5px;height: 45px;line-height: 45px;border-radius: 5px; " ng-click="personDynamic('{{value.MEMBER_ID}}')">
+    <img ng-if="value.WXHEADIMG" class="icon" ng-src="{{value.WXHEADIMG|hostFilter}}" style="max-width:45px;max-height:45px;border-radius: 0;top: 5px;height: 45px;width: 45px;line-height: 45px;border-radius: 5px; " ng-click="personDynamic('{{value.MEMBER_ID}}')">
+    <div class="row" style="padding: 0px;" ng-click="to_store_details('{{value.ID}}')">
+        <div style="width: 75%;">
+            <div class="row " style="padding: 0px;padding-top: 6px">
+                <div class="col" style="padding: 0px;">
+                    <span class="fs-14 text-overflow-elipsis" style="padding-left: 23px;" ng-bind="value.STORE_NAME"></span>
+                </div>
+            </div>
+            <div class="row" style="padding: 0px;padding-top: 8px;">
+                <span class="fs-13" style="padding-left: 23px;">商业信誉:</span>
+                <span class="fs-13" ng-bind="value.REPUTATION"></span>
+            </div>
+        </div>
+        <div style="width: 25%;padding-top: 10px;">
+            <img class="icon" ng-src="app_plugins/uoou/dynamic/img/member_43.png" style="width:15px;height:15px;top: 21px;position: absolute;right: 10px;left:95%;" src="app_plugins/uoou/dynamic/img/member_43.png">
+        </div>
+    </div>
+</ion-item>

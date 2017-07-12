@@ -1,0 +1,99 @@
+.myorder_border_color{
+  border-left: 1px solid #F3F3F3;
+  border-right: 1px solid #F3F3F3;
+}
+.myorder_padding{
+  padding: 0px;
+}
+.myorderbar_div_border{
+  /*border-bottom: 1px solid #E1E1E1;*/
+  background-color: #FFF;
+}
+.myorder_bar_height{
+  height: 47px;
+}
+.myorderbar_div_text_color{
+  color: #5F646E;
+}
+.myorder_select_div{
+  border-bottom:4px solid rgb(0,160,73);
+  color: rgb(0,160,73);
+}
+.myorder_bar_display_none{
+  display: none;
+}
+/*.myorder_bar_display_block{*/
+  /*display: block;*/
+/*}*/
+.myorder_bar_font{
+  text-align: right;
+  font-size: 30px;
+  padding: 0px;
+  line-height: 1;
+  position: relative;
+}
+.bardiv_padding{
+  padding: 0px;
+}
+.div_img_backcolor{
+  background-color: #F5F5F5;
+}
+.img_width{
+  width: 100%;
+}
+.myorder_div_margin_auto{
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+#abstr p{
+  white-space: normal;
+}
+.order_right_img{
+  max-height:96px;
+  max-width:96px;
+  width:96px;
+  height:96px;
+}
+
+.order_btn{
+  max-height:21px;
+  border-radius:3px;
+  font-size:10px;
+  min-height:19px;
+  line-height:20px;
+  margin-top:6px;
+  margin-bottom:0px;
+  border:1px solid #e3e3e3;
+  padding-top:0px;
+}
+.del_btn{
+  color: #333333;
+  background-color:#FFF;
+  padding-bottom: 1px;
+  padding-top:0px;
+}
+/**去支付**/
+.pay_btn{
+  border:0px solid #FF9600;
+  color: #FFF;
+  background-color:#FF9600;
+}
+.pay_btn .activated{
+  background-color:#FF9600;
+}
+.return_meony_btn{
+   border:0px solid #FF0000;
+  color: #FFF;
+  background-color:#FF0000;
+}
+.confirm_rec_btn{
+  border:0px solid #00C800;
+  color: #FFF;
+  background-color:#00C800;
+}
+.evaluate_btn{
+  border:1px solid #ff9500;
+  color: #ff9500;
+  background-color:#FFF;
+}

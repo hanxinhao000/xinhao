@@ -1,0 +1,187 @@
+<style type="text/css">
+    /*套餐亮点样式*/
+    .package{
+        width: 20%;
+        background-color: #0094ff;
+        border: 1px solid #ddd;
+        color: #ffffff;
+        height: 33px;
+        margin: 0px;
+        padding: 0px;
+    }
+    /*预定须知*/
+    .reserve_notice{
+        width: 20%;
+        border: 1px solid #ddd;
+        color: #666666;
+        height: 33px;
+        background-color: #ffffff;
+        margin: 0px;
+        padding: 0px;
+    }
+
+</style>
+<div class="bar bar-heade" style="background: transparent;height: 52px;color: #FFFFFF;">
+    <div class="row" style="width:100%;padding:0px;padding-top:5px;padding-left:10px;">
+        <div style="width:16%;text-align:left;" ng-click="goBack()">
+            <img src="img/techan/techan_01.png" style="width: 20px;height: auto;">
+        </div>
+        <div class="cl-10"style="width:68%;">
+        </div>
+        <div style="width:8%;text-align:center;" ng-click="addCollection()">
+            <img src="img/techan/techan_06.png" style="width: 20px;height: auto;">
+        </div>
+        <div style="width:8%;text-align:center;" ng-click="share()">
+            <img src="img/techan/techan_07.png" style="width: 20px;height: auto;">
+        </div>
+    </div>
+</div>
+<div suspend-box></div>
+<ion-content style="padding:0px;" delegate-handle="mainScroll" style="padding-bottom:60px;">
+    <div class="row" style="height: 239px;padding: 0px;" ng-click="imagePicker()">
+        <div class="col" style="padding:0px;height: 239px;">
+            <img ng-src="{{pageData.mainimage| hostFilter:'ImageJSON'}}" style="width: 100%;height: 100%;" />
+        </div>
+    </div>
+    <div style="text-align: right;height:34px;margin-top: -34px;" ng-click="imagePicker()">
+        <img src="img/atlas.png" style="width:34px;height: 34px;margin-right: 23px;margin-top: -12px;"/>
+        <div style="position: relative;margin-top: -23px;margin-right: 34px;">
+            <span class="fs-12" style="color: #ffffff;"><span  ng-bind="pageData.comImageNum"></span></span>
+        </div>
+    </div>
+    <div class="row bg-2" style="padding: 12px 0 15px 14px;">
+        <span class="pl-7 fs-13 cl-12 microsoft_yahei" ng-bind="pageData.mallInfo.NAME"></span>
+    </div>
+    <div class="row bg-2" style="padding:0 0 14px 14px;">
+        <div class="row fs-12 cl-18" style="width:50%;padding: 0px;">
+            <div class="col" style="padding: 0px;" ng-if="pageData.mallInfo.ISPOSTAGE=='1'">
+                <img src="img/grouptour/grouptour_06.png" style="width:17px;height:16px;vertical-align: sub;"/>
+                <span>铁定成团</span>
+            </div>
+            <div class="col" style="padding: 0px;">
+                <img src="img/grouptour/grouptour_03.png" style="width:17px;height:16px;vertical-align: sub;"/>
+                <span ng-bind="pageData.mallInfo.EVERY_SUNDAY"></span>
+            </div>
+        </div>
+        <div style="width:50%;padding-left: 0px;">
+            <div class="row" style="padding:0px;">
+                <div class="col col-50" style="padding:0px;text-align:left;">
+                    <s>原价:￥<span class="fs-13"  ng-bind="pageData.mallInfo.PRICE|number:2"></span></s>
+                </div>
+                <div class="col fs-13 cl-10 cl-20" style="padding:0px;text-align:left;" ng-if="pageData.mallInfo.DISCOUNT==0||pageData.mallInfo.DISCOUNT==1">
+                    ￥<span ng-bind="pageData.mallInfo.PRICE|number:2"></span>
+                </div>
+                <div class="col fs-13 cl-10 cl-20" style="padding:0px;text-align:left;" ng-if="pageData.mallInfo.DISCOUNT<1&&pageData.mallInfo.DISCOUNT>0">
+                    ￥<span ng-bind="pageData.mallInfo.PRICE*pageData.mallInfo.DISCOUNT|number:2"></span>
+                </div>
+                <div class="col fs-13 cl-10 cl-20" style="padding:0px;text-align:left;" ng-if="pageData.mallInfo.DISCOUNT>1">
+                    ￥<span ng-bind="pageData.mallInfo.PRICE-pageData.mallInfo.DISCOUNT|number:2"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a class="item item-avatar" style="height: 39px;min-height: 39px;padding-top:8px;padding-left: 47px;" ng-click="comment(pageData.mallInfo)" >
+            <img src="img/scenicspot/scenicspot_21.png" style="width:20px;height:20px;top: 7px;left: 13px;">
+            <div class="row " style="padding: 0px;">
+                <div class="fs-13 cl-19" as-start model="s" value="{{pageData.mallInfo.PJPXDF|number:0}}"></div>
+                <div style="margin-top: 2px;padding-left: 9px;" class="fs-13">{{pageData.mallInfo.PJPXDF|number:0}}分</div>
+            </div>
+            <span style="font-size:13px;color:#666666;right: 31px;position: absolute;top:0;top: 0;margin-top: 8px;">{{pageData.mallInfo.QJZS|number:0}}条评价</span>
+            <img class="icon item-image-right" src="img/member/member_43.png" style="margin-top: 11px;"/>
+    </a>
+    <div class="list" style="margin-top: 6px;">
+        <div class="item item-avatar" style="height: 39px;min-height: 39px;padding-top:8px;padding-left: 47px;">
+            <img src="img/scenicspot/scenicspot_27.png" style="width:20px;height:20px;top: 7px;left: 13px;">
+            <span style="font-size:13px;color:#333333;">
+                呼旅·点评
+            </span>
+        </div>
+        <div class="row bg-2" style="border-bottom: 1px solid #ddd;padding-top:8px;padding-left: 16px;padding-right: 16px;min-height: 100px;">
+            <div ng-bind-html="pageData.mallInfo.TRIPH_COMMENT|imgFmt" style="white-space: initial;"></div>
+        </div>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    <div class="split-line-4"></div>
+    <div class="row bg-2" style="padding: 12px 0px 12px 18px;" ng-if="pageData.mallInfo.ADVANCE_DAYS">
+        <span class="pl-7 fs-13 cl-11 microsoft_yahei" style="color: #FF0000">即日起，至少提前{{pageData.mallInfo.ADVANCE_DAYS}}天预订</span>
+    </div>
+    <div class="bg-2" style="padding-bottom: 12px;" ng-if="pageData.dateData" carendar-bar  options-params ="{{pageData.dateData}}" result-start-date="reStartDate"  result-end-date="reEndDate" result-fun="dataResult"></div>
+    <div class="split-line-4"></div>
+    <div class="row" style="padding:0px;margin-top: 6px;">
+        <div class="row {{pageData.linefeaturesClass}}" ng-click="lineFeatures()">
+            <div class="fs-13" style="margin: auto;width: 100%;text-align: center;line-height: 2.5;">线路特色</div>
+        </div>
+        <div class="row {{pageData.travelIntrClass}}" ng-click="travelIntr()" style="margin: 0px;padding: 0px;">
+            <div class="fs-13" style="margin: auto;width: 100%;text-align: center;line-height: 2.5;">行程介绍</div>
+        </div>
+        <div class="row {{pageData.costdesClass}}" ng-click="costdes()" style="margin: 0px;padding: 0px;">
+            <div class="fs-13" style="margin: auto;width: 100%;text-align: center;line-height: 2.5;">费用说明</div>
+        </div>
+        <div class="row {{pageData.orderIntrClass}}" ng-click="orderIntr()" style="margin: 0px;padding: 0px;">
+            <div class="fs-13" style="margin: auto;width: 100%;text-align: center;line-height: 2.5;">预订须知</div>
+        </div>
+        <div class="row {{pageData.travelagencyClass}}" ng-click="travelagency()" style="margin: 0px;padding: 0px;">
+            <div class="fs-13" style="margin: auto;width: 100%;text-align: center;line-height: 2.5;">旅行社</div>
+        </div>
+    </div>
+    <!-- 线路特色 -->
+    <div id="lineFeatures">
+        <div  class="row bg-7" style="padding: 14px 0px 12px 18px;">
+            <span class="pl-7 fs-14 cl-17 microsoft_yahei">线路特色</span>
+        </div>
+        <div class="bg-7" style="padding: 0 18px 12px 18px;">
+            <span ng-bind-html="pageData.mallInfo.LINEFEATURES|imgFmt"></span>
+        </div>
+    </div>
+    <!-- 行程介绍 -->
+    <div id="travelIntr" class="row bg-7" style="padding: 14px 0px 12px 18px;">
+        <span class="pl-7 fs-14 cl-17 microsoft_yahei">行程介绍</span>
+    </div>
+    <div class="bg-7" style="padding: 0 18px 12px 18px;">
+        <span ng-bind-html="pageData.mallInfo.TRAVELINTR|imgFmt"></span>
+    </div>
+    <!-- 费用说明 -->
+    <div id="costdes" class="row bg-7" style="padding: 14px 0px 12px 18px;">
+        <span class="pl-7 fs-14 cl-17 microsoft_yahei">费用说明</span>
+    </div>
+    <div class="bg-7" style="padding: 0 18px 12px 18px;">
+        <span ng-bind-html="pageData.mallInfo.COSTDES|imgFmt"></span>
+    </div>
+    <!-- 预定须知 -->
+    <div id="orderIntr" class="row bg-7" style="padding: 12px 0px 12px 18px;">
+        <span class="pl-7 fs-14 cl-17 microsoft_yahei">预订须知</span>
+    </div>
+    <div class="bg-7" style="padding: 0 18px 12px 18px;">
+        <span ng-bind-html="pageData.mallInfo.YUDING|imgFmt"></span>
+    </div>
+    <!-- 旅行社 -->
+    <div id="travelagency" class="row bg-7" style="padding: 12px 0px 12px 18px;">
+        <span class="pl-7 fs-14 cl-17 microsoft_yahei">旅行社</span>
+    </div>
+    <div class="bg-7" style="padding: 0 18px 12px 18px;margin-bottom: 48px;">
+        <span ng-bind-html="pageData.mallInfo.TRAVELAGENCY|imgFmt"></span>
+    </div>
+    <div footerpadding></div>
+</ion-content>
+<div class="bar bar-footer h-48" style="padding:0px;">
+    <div class="row CM" style="padding:0;border:1px solid #ddd;">
+        <a class="pt-16 col" style="width:50%;background-color: #0094ff;" href="tel:{{pageData.TEL}}">
+            <img src="img/grouptour/grouptour_07.png" style="width: 13px;height: 13px;"/>
+            <span class="fs-16 cl-10">
+                咨询客服
+            </span>
+        </a>
+        <div class="pt-16 col" style="width:50%;background-color: #ff9600" ng-click="buyNow('{{pData.comdData.ID}}')">
+            <span class="fs-16 cl-10">
+                在线预订
+            </span>
+        </div>
+    </div>
+</div>
+

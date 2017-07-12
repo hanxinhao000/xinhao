@@ -1,0 +1,62 @@
+<style>
+    .qr_codec{
+        text-align: center;
+        padding-top: 60px;
+    }
+    .describe_top{
+        padding-top: 20px;
+    }
+    
+</style>
+
+
+<!--我的二维码-->
+<!--<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="我的二维码">
+</div>-->
+
+<ion-view view-title="我的二维码">
+    
+   <ion-nav-buttons side="left">
+        <div  ng-click="back()"  class="public_comment_header_bar_padding_left">
+            <i class="icon head_left_back"></i>
+        </div>
+    </ion-nav-buttons>
+    
+	<ion-nav-title>
+          <div class="fs_4">
+               我的二维码
+           </div>
+       </ion-nav-title>
+	
+    
+    
+  <ion-content>
+      <div class="qr_codec">
+          <img style="width: 50%;" src="{{pData.qrcodeurl|hostFilter}}">
+      </div>
+      
+      <div class="CM describe_top">
+          <p>扫一扫上面的二维图案，加我好友</p>
+      </div>
+      
+      <div class="list card">
+
+          <a href="#" class="item item-icon-left" ng-click="saveLocalQrcode()">
+          <i style="color:#000;" class="icon ion-android-archive"></i>
+          保存至本地
+        </a>
+
+          <a href="#" class="item item-icon-left" ng-click="share()">
+          <i style="color:#000;" class="icon ion-android-share-alt"></i>
+          分享
+        </a>
+
+      </div>
+      
+      
+  </ion-content>
+</ion-view>

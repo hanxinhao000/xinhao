@@ -1,0 +1,42 @@
+<!--<div class="item item-thumbnail-left item-icon-right" style=" height: 75px; padding-left: 75px;padding-right: 0px;" ng-click="personDynamic('{{value.ID}}')">
+    <img style="max-width: 50px; max-height: 50px;top:10px;left:10px;border-radius:5px;"  ng-src="{{value.WXHEADIMG| hostFilter}}">
+    <div class="row " style="padding-top: 0px;">
+        <span class="side_title fs-14 text-overflow-elipsis" ng-bind="value.MEMBERNAME"></span>
+    </div>
+    <div class="row " style="margin-top: -30px;">
+        <div class="col col-50"></div>
+        <div class="col">
+            <span class="side_content fs-12"><span class="text-overflow-elipsis" ng-bind="value.DISTANCE"></span>米以内</span>
+        </div>
+        </div>
+    <div class="row " style="margin-top: -17px;margin-left: 16px;">
+        <div class="col col-50"></div>
+        <div class="col">
+        <img ng-if="value.STROE_ID != ''" src="app_plugins/uoou/contacts/img/3.7_2.png" style="width: 28px;height: 28px;"ng-click="to_shopdetails(value.STROE_ID)" />
+        
+        </div>
+    </div>
+     
+    
+    
+              ng-click="store_details(value.FRIEND_ID)"
+    
+    <img class="icon" ng-src="app_plugins/uoou/dynamic/img/member_43.png" style="width:15px;height:15px;margin-top: 30px;"/>
+</div>-->
+
+
+<div class="row" style="background-color: #FFF;border-bottom: 1px solid #ddd; padding: 0 0 0 5px;">
+    <div class="col col-20" ng-click="personDynamic('{{value.ID}}')">
+        <img style="vertical-align: bottom;max-width: 50px; max-height: 50px;top:10px;left:10px;border-radius:5px;min-width: 50px;min-height: 50px;"  ng-src="{{value.WXHEADIMG| hostFilter}}">
+    </div>
+    <div class="col col-50" style="margin-bottom: auto;margin-top: auto;" ng-click="personDynamic('{{value.ID}}')">
+        <span class="side_title fs-15 text-overflow-elipsis" ng-bind="value.MEMBERNAME"></span>
+        <span class="side_title fs-12 text-overflow-elipsis" style="display: block;color: #a5a5a5; margin-top:3px" ng-bind="value.MOTTO"></span>
+    </div>
+  <div class="col col-33" style="text-align:right; padding-right: 21px;">
+      <div class="side_content fs-12"><span class="text-overflow-elipsis" ng-bind="value.DISTANCE"></span>米以内</div>
+      <div><img ng-if="value.STROE_ID != ''" src="app_plugins/uoou/contacts/img/3.7_2.png" style="width: 28px;height: 28px;"ng-click="to_shopdetails('{{value.STROE_ID}}')" />
+        </div>
+  </div>
+<!--  <div class="col icon-right ion-chevron-right" ng-click="personDynamic('{{value.ID}}')" style="margin-bottom: auto;margin-top: auto;text-align: center;"></div>-->
+</div>

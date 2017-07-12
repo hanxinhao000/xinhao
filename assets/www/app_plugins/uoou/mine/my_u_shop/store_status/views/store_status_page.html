@@ -1,0 +1,39 @@
+
+<!--我的店铺-->
+
+<!--<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="我的店铺">
+</div>-->
+<ion-view>
+    
+    <ion-nav-buttons side="left">
+        <div ng-click="back()"  class="public_comment_header_bar_padding_left">
+            <i class="icon head_left_back"></i>
+        </div>
+    </ion-nav-buttons>
+
+    <ion-nav-title>
+        <div class="bar_title fs_4">
+            我的店铺
+        </div>
+    </ion-nav-title>
+    
+    <ion-content style="background-color: #FFFFFF;">
+        <div class="row" style="font-size:15px;">
+            店铺状态：
+        </div>
+        <div class="row" style="font-size:15px;">
+            <span ng-if="!pData.storeStatus">
+                您还未开通店铺，点击<a ng-click="openStore()">申请开通店铺</a>开通。。。
+            </span>
+            <span ng-if="pData.storeStatus == '1'">
+                您的店铺正在申请中，请等待审核。。。
+            </span>
+            <span ng-if="pData.storeStatus == '3'">
+                您的店铺申请已被拒绝，请<a ng-click="apply()">点击</a>重新填写资料。。。
+            </span>
+        </div>
+</ion-view>

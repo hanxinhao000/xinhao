@@ -1,0 +1,9 @@
+
+  <div class="item item-avatar" style="padding-left:13px;">
+
+    <p style="font-size: 13px;">编号: {{value.ID}} </p>
+    <p style="font-size: 13px;">类型: {{value.TRADE_TYPE=='1'?'支出':'收入'}}<span style="float: right;" class="{{value.TRADE_TYPE=='1'?'cl-06':'cl-07'}}">{{value.TRADE_TYPE=='1'?'-':'+'}}{{value.TRADE_TOTAL_MONEY |ptoy}}</span></p>
+    <p style="font-size: 13px;">交易时间: {{value.TRADE_TIMES}}</p>
+    <p style="font-size: 13px;"> 说明: {{value.RMARKS}}</p>
+  </div>
+

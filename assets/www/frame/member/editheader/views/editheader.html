@@ -1,0 +1,40 @@
+<!--我的头像-->
+<ion-view id="">
+<!--    <div  class="bar bar-heade" style="padding-bottom: 0px;background:transparent;height: 52px;color: #FFFFFF;">
+        <div class="row" style="width:100%;padding:0px;padding-top:5px;padding-left:10px;">
+            <div style="width:100%;text-align:left;" ng-click="back()">
+                <img src="img/techan/techan_01.png" style="width: 20px;height: auto;">
+            </div>
+        </div>
+    </div>-->
+    <ion-nav-buttons side="left">
+        <div  class="bar bar-heade bar-dark" style="padding-bottom: 0px;background-color: #000000;height: 52px;">
+            <div class="row" style="width:100%;padding:0px;padding-top:5px;padding-left:10px;">
+                <div style="width:100%;text-align:left;" ng-click="back()">
+                    <img src="img/techan/techan_01.png" style="width: 20px;height:auto;margin-top: 7px;">
+                </div>
+            </div>
+        </div>
+    </ion-nav-buttons>
+    <ion-content style="background-color:#000000;">
+        <div class="headimg_imgtest headdiv_padding_top">
+            <figure class="headimg_center" style="text-align: center;">
+                <div style="text-align: center;">
+                    <img ng-if="pData.headerStatus === 'mobile'" ng-src="{{pData.inputData[0].data}}" add-resource type="01" out-data="pData.inputData" />
+                    <img ng-if="pData.headerStatus === 'pc'"  ng-src="{{HeadImgUrl|hostFilter}}" ngf-accept="'image/*'"  ngf-select="upload($file)"/>
+                </div>
+            </figure>
+        </div>
+        
+    </ion-content>
+</ion-view>
+<div class="bar bar-footer clear_confirm_bar ios-margin-button"  style="background-color:#000000;border:0px;background-image:none; margin-bottom: 8px;">
+    <div class="row">
+        <div class="col">
+            <button ng-click="UpdateUserHead()" class="button button-light button-block myinfoborder-radius h-43" style="margin-left: 1px;font-size: 14px;">保存</button>
+            <!--                <button class="button ng-binding header_updatebutton_mauto header_update_button button-block button-balanced" ng-click="UpdateUserHead()"  style="width: 90%">
+                                保存
+                            </button>-->
+        </div>
+    </div>
+</div>

@@ -1,0 +1,96 @@
+<div nav-bar class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs-14"
+     right-css="header_title fs-14"
+     right-click-fun="rightOne()"
+     right="<span class='ion-navicon fs-30'></span>"
+     title="商品列表">
+ </div>
+
+<ion-view  >
+  <ion-content>
+  	<!-- <div class="pt-10"></div> -->
+    <div class="tools bg-2 pt-5 pb-5 row fs-14" style="margin-top:4px;">
+      <div class="col">
+      <!--   <a class="button ion-navicon" ng-click="goToMallClass()"></a> -->
+      </div>
+      <div class="col-67">
+        <label class="item item-input item-select" style="border: 0px;">
+           <div class="input-label-nw">选择排序</div>
+          <select style="direction:ltr;padding:0px 2px 0px 10px;right:auto;left:0px;" class="item item-input drop_down_title" ng-model="pData.sortParams" page-size="10" ng-options="item.value as item.name for item in pData.sortParamsList">
+            <option value="{{item.value}}" >{{item.name}}</option>
+          </select>
+        </label>
+      </div>
+      <div class="col-25 " style="text-align:right;">
+        <a class="button" ng-click="openModal()">过滤</a>
+      </div>
+    </div>
+  
+    <!--商品列表-->
+    <div aswfall item-css="col-50 waterfall" rcode="{{pData.rcode}}" 
+         temp-url="app_plugins/mall/commodity/comd_list/views/commodity_list_item.html" 
+         list-events="pData.listEvents" 
+         params="{{pData.params}}" page-size="10" ></div>
+
+  </ion-content>
+</ion-view>
+<!--过滤侧边栏model start-->
+<script id="commodity_filter.html" type="text/ng-template">
+  <ion-modal-view>
+      <ion-content class="pt-10 bg-2">
+      <div class="filter_content pr-5 pl-5">
+        <!--搜索功能-->
+        <div class="list">
+          <div search-word="pData.searchWord" amsearch search-css="mall_search" target="commodity.searchList"></div>
+          <label class="item item-input no-boder">
+              <span class="input-label-input-nw">请选择下面价格区域</span>
+          </label>
+          <ion-list class="no-boder">
+              <div ng-repeat="item in filterData.comdPriceRange track by $index">
+                <ion-radio ng-model="filterData.comdPrice" ng-value="'{{item.value}}'">{{item.name}}</ion-radio>
+              </div>
+          </ion-list>
+          <table>
+            <tr>
+              <td>
+                <input style="border: solid 1px #CCCCCC;" type="number" ng-model="filterData.minPrice" class="f_price">
+              </td>
+              <td style="vertical-align: middle;" class="fs-12">至</td>
+              <td>
+                <input style="border: solid 1px #CCCCCC;" type="number" ng-model="filterData.maxPrice" class="f_price">
+              </td>
+            </tr>
+          </table>
+        </div>
+          <div class="row myinfo_padding">
+            <div class="col">
+              <select class="item myinfoborder-radius item-input" style="width:100%;" ng-model="pData.recvProvince" ng-options="province.PRONAME for province in cascadePCZ.provinces"  required>
+          <option value="">-请选择省-</option>
+          </select>
+            </div>
+          </div>
+          <div class="row myinfo_padding">
+            <div class="col">
+              <select class="item myinfoborder-radius item-input" style="width:100%;" ng-model="pData.recvCity" ng-options="city.CITYNAME for city in cascadePCZ.cities"  required>
+                <option value="">-请选择市-</option>
+          </select>
+            </div>
+          </div>
+          <div class="row myinfo_padding">
+            <div class="col">
+              <select class="item myinfoborder-radius item-input" style="width:100%;" ng-model="pData.recvArea" ng-options="zone.ZONENAME for zone in cascadePCZ.zones"  required>
+                <option value="">-请选择区-</option>
+          </select>
+            </div>
+          </div>
+        
+
+        <button ng-click="confirmFilter()" class="button button-outline button-block button-balanced">确定</button>
+      </div>
+      <div class="h-40">&nbsp;</div>
+    </ion-content>
+  </ion-modal-view>
+</script>
+<!--过滤侧边栏model end-->

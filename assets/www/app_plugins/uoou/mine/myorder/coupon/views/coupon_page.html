@@ -1,0 +1,60 @@
+<style>
+        .btn-push{
+        background-color: rgb(42,212,212);
+        height: 35px;
+        color: white;
+        border-radius: 3px;
+
+        border:0px;
+    }
+</style>
+
+
+<!--优惠券选择-->
+<!--<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="选择优惠券">
+</div>-->
+
+<ion-view>
+    
+    <ion-nav-buttons side="left">
+        <div  ng-click="back()"  class="public_comment_header_bar_padding_left">
+            <i class="icon head_left_back"></i>
+        </div>
+    </ion-nav-buttons>
+    <ion-nav-title>
+        <div class="fs_4">
+            选择优惠券
+        </div>
+    </ion-nav-title>
+    
+  <ion-content>
+      <ion-list>
+          <ion-checkbox ng-repeat="item in pData.devList" ng-click="choice_coupon('{{item.ID}}')" ng-model="item.CHECKED" ng-checked="item.CHECKED">{{ item.TEXT}}</ion-checkbox>
+    </ion-list>
+  </ion-content>
+</ion-view>
+<!--<div>
+<div class="bar bar-footer" style="bottom: 41px;height: 20px;">
+        <h3 class="title" style="line-height: 20px;text-align: left;">订单金额:{{pData.ordermoney}}元</h3>
+    </div> 
+    <div class="bar bar-footer bar-balanced" style="height: 40px; background-image: linear-gradient(rgb(40, 165, 76), rgb(42, 212, 212) 50%, transparent 50%); background-color: rgb(42, 212, 212);">
+         <div class="title" style="line-height: 40px;" ng-click="next()">下一步</div>
+    </div>
+</div>-->
+
+<div class="bar bar-footer" style="display: inline;height: 50px;background-color: rgb(236,239,239);background-position:bottom;" >
+    
+    <div class="row" style="padding: 0px;">
+        <div class="col-50" style="padding-top: 3px;text-align: center;margin: auto;">
+        <span>订单金额:{{pData.ordermoney}}元</span>
+        </div>
+        <div class="col-50" style="padding-top: 3px;text-align: center;width:80%;margin: auto;" >
+            <div ng-click="next()" class="btn-push" style="height: 34px;margin: auto;text-align: center;
+                 font-size: 15px;padding: 7px;">下一步</div>
+        </div>
+    </div>   
+</div>

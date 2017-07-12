@@ -1,0 +1,18 @@
+<!--订单配送接单 生产社员-->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="fs_12"
+     right="<i style='font-size:12px;'>我的接单</i>"
+     right-click-fun="rightOne()"
+     title="配送接单">
+
+</div>
+<ion-view view-title="配送接单">
+  <ion-content >
+	<div class="pt-10"></div>
+	<div aslist style="padding:10px 0px 0px 0px;margin:0px;" item="false"  rcode="{{pData.resourceCode}}" params="{{pData.resPrams}}" list-events="pData.listEvents" temp-url="app_plugins/mall/order/order_dist/views/order_dist_wait_recv_item.html"></div>
+
+  </ion-content>
+</ion-view>

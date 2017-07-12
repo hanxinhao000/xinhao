@@ -1,0 +1,13 @@
+<div class="list">
+    <div style="padding-bottom:1px;">    
+            <div class="item item-avatar"  style="border: none;padding-top: 24px; padding-left:80px;">
+                <img ng-src="{{value.WXHEADIMG|hostFilter}}" ng-click="dynamic(value.MEMBER_ID)" style="width: 53px; height: 53px;max-width: 53px;max-height: 53px;border-radius: 5px;"/>
+                <span class="fs-15" style="border: none;">
+                    <span>昵称：<span ng-bind="value.MEMBERNAME"></span></span>
+                </span>
+                <div class="fs-13" style="padding:0px">
+                    <span><span ng-bind="value.CREATETIME"></span></span>
+                </div>
+            </div>
+        </div>
+</div>

@@ -1,0 +1,38 @@
+<!--动态列表-->
+<!--<div class="list row" style="padding:3px 0px;">
+
+    <div class="item  col-20" style="border: none;min-height: 67px;text-align: center;padding:10px;">
+        <span  style="font-size: 16px;border: none;display:block;">{{value.CREATETIME_YEAR}}</span>
+        <span  style="font-size: 16px;border: none;display:block;">{{value.CREATETIME_DATES}}</span>
+    </div>
+    <div class="item item-body col" style="border: none; padding: 13px 0px 0px 0px;">
+        <p style="font-size: 14px;border: none;margin: 0px; margin:0px 9px 0px 0px;color: #666666;  ">{{value.CONTENT}}</p>
+        <div class="row row-wrap"  style="padding:10px 0px;">
+            <div class="col col-33"  ng-repeat="item in value.CONTENT_IMGS" style="margin:0px 0px 10px 0px; padding: 2px;">
+                <img class="full-image"   ng-src="{{item.path|hostFilter:'ImageJSON'}}" img-zoom 
+                     style=" margin:0px 0px 0px 0px;width: 100%;height: 100%;">
+            </div>
+        </div>
+    </div>
+</div>-->
+
+<div class="list row" style="padding:3px 0px;">
+
+    <div class="item  col-20" style="border: none;min-height: 67px;text-align: center;padding:10px;">
+        <span  style="font-size: 16px;border: none;display:block;">{{value.CREATETIME_YEAR}}</span>
+        <span  style="font-size: 16px;border: none;display:block;">{{value.CREATETIME_DATES}}</span>
+    </div>
+    <div class="item item-body col col-70" style="border: none; padding: 13px 0px 0px 0px;">
+        <p style="font-size: 14px;border: none;margin: 0px; margin:0px 9px 0px 0px;color: #666666;  ">{{value.CONTENT}}</p>
+        <div class="row row-wrap"  style="padding:10px 0px;">
+            <div class="col col-33"  ng-repeat="item in value.CONTENT_IMGS" style="margin:0px 0px 10px 0px; padding: 2px;">
+                <img class="full-image"   ng-src="{{item.path|hostFilter:'ImageJSON'}}" img-zoom 
+                     style=" margin:0px 0px 0px 0px;width: 100%;height: 100%;">
+            </div>
+        </div>
+        
+    </div>
+    <div class="item col  col-10" style="border: 0px;text-align: center;padding-top: 13px;" ng-if="!messageShow" ng-click="delete_dynamic(value.ID,$index)">
+      <i class="icon ion-ios-trash-outline" style="font-size: 19px;color:#000;"></i>
+    </div>
+</div>

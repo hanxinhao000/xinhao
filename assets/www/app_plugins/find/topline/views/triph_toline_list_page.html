@@ -1,0 +1,17 @@
+<a class="item item-thumbnail-right list-style" ng-click="toDetails(value.ID)">
+ 	<img ng-src="{{value.LISTIMGAGE|hostFilter}}" style="top: 10px;right: 19px;max-width: 92px;max-height:70px; width: 100%;height: 100%;">
+	<p style="font-size:13px;white-space:normal;max-height:39px;height: 36px;overflow:hidden;margin-bottom:10px;microsoft_yahei" ng-bind="value.TITLE"></p> 
+	<table class="full-table fs-11">
+		<tr class="full-w">
+			<td class="cl-11 microsoft_yahei">
+				<span>作者{{value.AUTHOR}}</span>
+			</td>
+			<td class="cl-11 microsoft_yahei" style="text-align:right;">
+				<img src="img/find_04.png" style="width:14px;height: auto;vertical-align: middle;">
+				<span class="fs-11" ng-bind="value.COUNT"></span>
+				<img src="img/find_05.png" style="width:14px;height: auto;vertical-align: middle;">
+				<span class="fs-11" ng-bind="value.LIKE_NUMBER"></span>
+			</td>
+		</tr>
+	</table>
+</a>

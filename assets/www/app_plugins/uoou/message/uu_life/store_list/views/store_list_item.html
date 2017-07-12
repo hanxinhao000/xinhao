@@ -1,0 +1,15 @@
+<a class="item item-thumbnail-left item-icon-right" style=" height: 75px; padding:6px 0px 0px 65px;" ng-click="store_details('{{value.ID}}')">
+    <img style="max-width: 50px; max-height: 50px;top:10px;left:10px; border-radius: 5px;"  ng-src="{{value.WXHEADIMG| hostFilter}}">
+    <div class="row " style="padding-top: 0px;">
+        <div class="col fs-14 " style="padding-top: 8px; font-weight: bold;" > 
+    {{value.STORE_NAME}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col text-overflow-elipsis" style="padding-right: 25px;padding-top: 0px;">
+            <span class="fs-12" ng-bind="value.STORE_INTR"></span>
+        </div>  
+    </div>
+    <img class="icon" ng-src="app_plugins/uoou/dynamic/img/member_43.png" style="width:15px;height:15px;margin-top: 30px;"ng-click="personDynamic()"/>
+    
+</a>

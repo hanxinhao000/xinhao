@@ -1,0 +1,41 @@
+<div ng-click="goComdDeatils('{{value.ID}}')" class="comd_list_item_content" >
+  <div class="comd_list_item item item-body CM" >
+    <img ion-image-scale style="height:auto;overflow:hidden;" class="full-image" ng-src="{{value.LISTIMAGE|hostFilter}}" alt="{{value.NAME}}">
+  </div>
+   <a class="assertive" href="#" style="font-size:12px;">
+   <table class="full-table fs-12" style="height:25%;">
+    <tr>
+      <td colspan="2" >
+        <div class="pt-6 CM comd_list_item_text" style="color:black;max-height:50px;height:50px;overflow:hidden;text-overflow:ellipsis;text-align:left;" ng-bind="value.NAME" ></div>
+      </td>
+    </tr>
+   	<tr class="fs-12" class="CM">
+   		<td colspan="2" class="pr-5" style="text-align:left;">
+        <div class="CM comd_list_item_text">
+          <table class="full-table pr-5 pl-6" >
+            <colgroup style="width:50%;"></colgroup>
+            <colgroup style="width:50%;"></colgroup>
+              <tr>
+                <td class="talign-l">
+                   <span class="subdued" style="color:#FC2A29;">￥<i ng-bind="value.PRICE|number:2"></i></span>
+                </td>
+                <td class="talign-r" style="color:#8c8c8c;">
+                  已售<span class="subdued" ng-bind="value.SALENUMBER"></span>件
+                </td>
+              </tr>
+            </table>
+        </div>
+    	</td>
+   	</tr>
+   </table>
+  </a>
+</div>
+
+<div class="row" style="max-width:148px;margin-top:0px;margin-bottom:0px; padding-top:0px;padding-bottom:0px;">
+  <div class="col col-50" style="text-align:left; margin-top:0px;margin-bottom:0px; padding:0px;">
+   
+  </div>
+  <div class="col col-50" style="text-align:right;padding-right:10px;color:#8c8c8c;margin-top:0px;margin-bottom:0px; padding:0px;">
+    
+  </div>
+</div>

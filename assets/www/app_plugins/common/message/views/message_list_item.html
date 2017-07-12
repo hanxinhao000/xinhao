@@ -1,0 +1,15 @@
+<div class="list" ng-if="value.MENU_CODE=='notice'">
+    <a class="item item-avatar ng-binding" ng-click="toPages('{{value.MENU_CODE}}','{{value.URL}}','{{value.ID}}')">
+      <img src="img/message_alt_01.png">
+      <h2 style="padding-top: 3px;" >{{value.TITLE}}<span style="float:right;" class="fs-12" ng-bind="value.DATATIME"></span></h2>
+      <span class="fs-12" ng-bind="value.CONTENT"></span>
+    </a>
+</div>
+<div class="list" ng-if="value.MENU_CODE=='groom'|| value.MENU_CODE=='coupon'">
+    <a class="item item-avatar ng-binding" ng-click="toPages('{{value.MENU_CODE}}','{{value.URL}}','{{value.ID}}')">
+      <img ng-if="value.MENU_CODE=='groom'" ng-src="img/message_alt_02.png">
+      <img ng-if="value.MENU_CODE=='coupon'" ng-src="img/message_alt_03.png">
+      <h2 style="padding-top: 3px;" >{{value.TITLE}}<span style="float:right;" class="fs-12" ng-bind="value.DATATIME"></span></h2>
+       <span class="fs-12" ng-bind="value.CONTENT"></span>
+    </a>
+</div>

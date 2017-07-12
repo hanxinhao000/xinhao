@@ -1,0 +1,40 @@
+<ion-item class="item-remove-animate item-icon-left" style="height: 59px;" >
+    
+
+    <img ng-if="value.WXHEADIMG == ''" class="icon" 
+         src="app_plugins/uoou/contacts/img/default_head.png" style="max-width:36px;max-height:36px;border-radius: 3px;top: 9px;height: 45px;width: 45px;line-height: 45px;position: absolute;" ng-click="personDynamic(value.FRIEND_ID)">
+    <img ng-if="value.WXHEADIMG" class="icon" 
+         ng-src="{{value.WXHEADIMG|hostFilter}}" style="max-width:36px;max-height:36px;border-radius: 3px;top: 11px;height: 45px;line-height: 45px;width: 45px;" ng-click="personDynamic(value.FRIEND_ID)">
+    <div class="row" style="padding: 0px;height: 48px;">
+        <div class="col"  ng-click="scanMessage('{{value.FRIEND_ID}}')">
+            <div class="row " style="padding: 8px 0px 0px 0px;">
+                <div class="col col-80" style="padding: 0px 0px 0px 0px;">
+                    <span class="fs-14 text-overflow-elipsis" style="font-family: Microsoft YaHei;padding-left:0px ;color:#333333;" ng-bind="value.MEMBERNAME"></span>&nbsp;
+                    <div ng-if="value.MEMBER_TYPE == '1'" class="member_role_btn" style="display: -webkit-inline-box;">
+                        <span style="margin-right: auto;display: -webkit-box;margin-left: 8px;margin-top: 3px;">普</span>
+                    </div>
+                    <div ng-if="value.MEMBER_TYPE == '2'" class="member_role_btn" style="display: -webkit-inline-box;">
+                        <span style="margin-right: auto;display: -webkit-box;margin-left: 8px;margin-top: 3px;">中</span>
+                    </div>
+                    <div ng-if="value.MEMBER_TYPE == '3'" class="member_role_btn" style="display: -webkit-inline-box;">
+                        <span style="margin-right: auto;display: -webkit-box;margin-left: 8px;margin-top: 3px;">超</span>
+                    </div>
+                    <div ng-if="value.MEMBER_TYPE == '4'" class="member_role_btn" style="display: -webkit-inline-box;">
+                        <span style="margin-right: auto;display: -webkit-box;margin-left: 8px;margin-top: 3px;">皇</span>
+                    </div>
+                    <span class="fs-12" ng-if="value.REMARK_NAME" style="font-family: Microsoft YaHei;color:#a0a0a0;">（{{value.REMARK_NAME}}）</span>
+                </div>
+<!--                <div class="col col-25" style="padding: 0px 5px 0px 0px;text-align: right;">
+                    <img ng-if="value.DIANZHU" src="app_plugins/uoou/contacts/img/3.7_2.png" style="width: 28px;height: 28px;"/>
+                </div>-->
+            </div>
+            
+        </div>
+        <div class="col col-20" style="padding:12px;text-align: right;">
+                    <img ng-if="value.DIANZHU" src="app_plugins/uoou/contacts/img/3.7_2.png" style="width: 28px;height: 28px;" ng-click="store_details(value.FRIEND_ID)"/>
+                </div>
+    </div>
+    <ion-option-button class="button-assertive" ng-click="deleteFriend('{{value.ID}}','{{value.FRIEND_ID}}')">
+        删除
+    </ion-option-button>
+</ion-item>

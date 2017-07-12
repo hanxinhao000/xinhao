@@ -1,0 +1,63 @@
+<!-- 充值支付清单 -->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     title="{{pageData.title}}">
+</div>
+<ion-view view-title="{{pageData.title}}" >
+  <ion-content>
+    <ion-list class="disable-user-behavior">
+      <div class="list">
+        <ion-item type="item-text-wrap" class="item" style="padding:0px;">
+          <!--<label class="item item-input">-->
+            <!--<span class="input-label">余额</span>-->
+            <!--<label ng-bind="pageData.balance|ptoy"></label>元</label>-->
+          <!--</label>-->
+          <label class="item item-input item-select">
+            <div class="input-label">
+              源账户:
+            </div>
+            <select disabled ng-model="pageData.outAccountId" >
+              <option ng-repeat="item in pageData.accountInfo" ng-if="pageData.outAccountId == item.SA_CODE"  ng-selected="pageData.outAccountId == item.SA_CODE" value="{{item.SA_CODE}}">{{item.SA_NAME}}</option>
+            </select>
+          </label>
+          <label class="item item-input item-select">
+            <div class="input-label">
+              目标账户:
+            </div>
+            <select  ng-model="pageData.inAccountId" ng-options="item.SA_CODE as item.SA_NAME for item in pageData.inAccountIdArr">
+              <option value="">--请选择--</option>
+              <!--<option ng-repeat="item in pageData.inAccountIdArr" ng-if="pageData.outAccountId !=item.ID" value="{{item.ID}}">{{item.SA_NAME}}</option>-->
+            </select>
+          </label>
+
+          <label  class="item item-input" style="padding:6px 10px 5px 16px;">
+            <span class="input-label">转账金额:</span>
+            <input type="number" string-to-number maxlength="6" ng-model="pageData.paymoney" class="ng-pristine ng-untouched ng-valid">
+          </label>
+
+          <label  class="item item-input" style="padding:6px 10px 5px 16px;">
+            <span class="input-label">转账时间:</span>
+            <span ng-bind="pageData.virementDate">
+            </span>
+          </label>
+        </ion-item>
+        <div>
+      </div>
+    </div>
+    </ion-list>
+    <div class="row">
+      <div class="col">
+        <button   ng-click="payClick()"
+                 class="button button_with  myinfoborder-radius h-43 agriculture_project_title"
+                 >
+          确认
+        </button>
+
+      </div>
+    </div>
+  </ion-content>
+
+</ion-view>

@@ -1,0 +1,89 @@
+<!--订单卖出-->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     title="订单卖出">
+</div>
+<ion-view view-title="订单卖出">
+  <ion-content >
+	 <!--送货方式-->
+      <div class="diveline bg-1"></div>
+      	<div class="row pt-10">
+      		 <span class="cl-03 fs-16">订单交易:</span>
+      	</div>
+      	<div class="bg-2">
+      		<div class="row">
+      			<div class="col col-25">
+      				<span>商品名称</span>
+      			</div>
+      			<div class="col">
+      				<span ng-bind="pData.orderInfo.COMMODITYNAME"></span>
+      			</div>
+      		</div>
+      		<div class="diveline bg-1"></div>
+      		<div class="row">
+      			<div class="col col-25">
+      				<span>商品规格</span>
+      			</div>
+      			<div class="col">
+      				<span ng-bind="pData.orderInfo.SPECNAME"></span>
+      			</div>
+      		</div>
+      		<div class="diveline bg-1"></div> 
+      		<div class="row">
+      			<div class="col col-25">
+      				<span>购买价格</span>
+      			</div>
+      			<div class="col cl-06">
+      				<span ng-bind="pData.orderInfo.SALEPRICE|number:2"></span>
+      			</div>
+      		</div>
+      		<div class="diveline bg-1"></div>
+      		<div class="row">
+      			<div class="col col-25">
+      				<span>购买数量</span>
+      			</div>
+      			<div class="col cl-06">
+      				<span ng-bind="pData.orderInfo.SALENUMBER"></span>
+      			</div>
+      		</div>
+      		<div class="diveline bg-1"></div>
+      		<div class="row">
+	      		<div class="col col-25">
+	      			  <span>当前价格(元):</span>
+	      		</div>
+	      		<div class="col cl-06">
+	      			 <span ng-bind="pData.orderInfo.NOWSPECPRICE|number:2"></span>
+	      		</div>
+	      	</div>
+	      	<div class="diveline bg-1"></div>
+	      	<div class="row">
+	      		<div class="col col-33">
+	      			 <span>当前卖出总价(元):</span><br>
+	      			 <span class="fs-12">含手续费</span>
+	      		</div>
+	      		<div class="col cl-06">
+	      			<span ng-bind="pData.orderInfo.NOWOUTTOTALPRICE|number:2"></span>
+	      		</div>
+	      	</div>
+	      	<div class="diveline bg-1"></div>
+	      	<div class="row">
+	      		<div class="col col-25">
+	      			<span>交易手续费(元):</span>
+	      		</div>
+	      		<div class="col cl-07">
+	      			<span ng-bind="pData.orderInfo.NOWOUTTOTALPRICE*0.03|number:2"></span>
+	      		</div>
+	      	</div>
+	      	<div class="diveline bg-1"></div>
+	      	<div class="row">
+	      		<div class="col">
+	            	<a class="bar button button-balanced" href="javaScript:void(0);" ng-click="sellOut()">卖出</a>
+	      		</div>
+	      	</div>
+	      	<div class="diveline bg-1"></div>
+      	</div>
+  </ion-content>
+</ion-view>

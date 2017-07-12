@@ -1,0 +1,94 @@
+@font-face {font-family: "icomoon";
+  src: url('../fonts/membercenter/iconfont.eot?t=1459158345'); /* IE9*/
+  src: url('../fonts/membercenter/iconfont.eot?t=1459158345#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('../fonts/membercenter/iconfont.woff?t=1459158345') format('woff'), /* chrome, firefox */
+  url('../fonts/membercenter/iconfont.ttf?t=1459158345') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('../fonts/membercenter/iconfont.svg?t=1459158345#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+@font-face {font-family: "icomoon";
+  src: url('../fonts/membercenter/iconfont_fx.eot?t=1459167828'); /* IE9*/
+  src: url('../fonts/membercenter/iconfont_fx.eot?t=1459167828#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('../fonts/membercenter/iconfont_fx.woff?t=1459167828') format('woff'), /* chrome, firefox */
+  url('../fonts/membercenter/iconfont_fx.ttf?t=1459167828') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('../fonts/membercenter/iconfont_fx.svg?t=1459167828#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family:"icomoon" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-you:before { content: "\e63c"; }
+.icon-fenxiao:before { content: "\e636"; }
+
+
+
+.imgtest{margin:10px 5px;}
+.list_ul figcaption p{
+  font-size:12px;
+  color:#aaa;
+}
+.imgtest figure div{
+    display: inline-block;
+    margin: 0px auto;
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.imgtest figures div{
+    display: inline-block;
+    margin: 0px auto;
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+}
+.imgtest img{width:100%;
+  min-height:100%; text-align:center;height: 100%;}
+
+.img_center{
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+}
+.account_div_padding_top{
+  /*padding-top: 3%;*/
+}
+.member_list_border{
+  background: #ffffff;
+  text-align: left;
+  color: #333333;
+  font-family: 微软雅黑;
+  font-size: 16px;
+  /*border-radius: 10px;*/
+  font-weight: normal;
+  text-shadow: 0px 0px 0px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.member_display{
+  display: inline;
+}
+.member_margiin_top{
+  margin-top: 2%;
+}
+.div_row_padding{
+  padding: 16px;
+}
+.member_icon_fontsize{
+  font-size: 30px;
+}
+.member_icon_color{
+  color: #0c60ee;
+}
+.member_info_margin_left{
+  margin-left: 5%;
+}
+.list_padding{
+    padding-left: 60px;
+}

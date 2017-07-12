@@ -1,0 +1,15 @@
+<a class="item item-box" ng-click="agroProjDetails(value.ID)">
+      <h3 style="color:#010101;" ng-bind="value.P_NAME"></h3>
+      <p style="font-size:12px;white-space:normal;max-height:37px;overflow:hidden;">每股{{value.STOCK_PRICE|ptoy}}元，最少投入{{value.MIN_BUY_NUMBER}}股</p>
+      <table class="full-table fs-12 mt-12">
+      	<tr class="full-w">
+      		<td class="cl-02"> 
+      			<span>退股期限{{value.WITHDRAWAL_LIMIT}}天</span>
+      		</td>
+      		<td class="cl-02" style="text-align:right;">
+      			<!-- <span>提前退股违约金{{value.PENALTY_RATIO}}%</span> -->
+                        <span>发布时间:{{value.PUBLISHTIME}}</span>
+      		</td>
+      	</tr>
+      </table>
+</a>

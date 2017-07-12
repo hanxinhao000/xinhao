@@ -1,0 +1,208 @@
+/**
+ * Created by Administrator on 2016/3/28.
+ * 支付清单
+ */
+angular.module('mallMobileApp.controllers')
+  .controller('PaymentManagerCtrl',['$scope','$rootScope','$ionicHistory','$ionicNavBarDelegate','ACCESS_LEVELS','Authen','actionManagerService','ajaxManager','toolsService','$state','$stateParams','appConfig',
+    function($scope,$rootScope,$ionicHistory,$ionicNavBarDelegate,ACCESS_LEVELS,Authen,actionManagerService,ajaxManager,toolsService,$state,$stateParams,appConfig){
+
+      $scope.pageData = {
+        id:$stateParams.RECORDID,
+        orgid:appConfig.appOrg,
+        servehost:appConfig.baseUrl+'/',
+        memberid:Authen.getUserId(),
+        accountId:$stateParams.accountId,
+        blance:'',//现金余额
+        paymoney:0,//支付金额
+        paysource:'',
+        paymode:'',
+        paycode:'',
+        paycontent:'',
+        alipayUrl:appConfig.alipayUrl,
+        alipayEmail:appConfig.alipayEmail,
+        baseUrl:appConfig.baseUrl,
+        zfbInfo:'',
+        wxInfo:'',
+        bankInfo:'',
+        zfbFlag:true,
+        wxFlag:true,
+        bankFlag:true,
+        bindingZfbInfo:new Array(),
+        bindingWxInfo:new Array(),
+        bindbingBankInfo:new Array(),
+        catchSelect:'',
+        payShow:true,
+        catchShow:true
+      }
+
+      //余额
+      $scope.memberBlance = function(){
+        //var params = {memberid:$scope.pageData.memberid};
+        //var rData = actionManagerService.excuteResource('balance',params,'','');
+        //ajaxManager.ajaxToJson(rData,function(data){
+        //  $scope.pageData.blance = data.DATA[0].CASH;
+        //})
+        var params = {member_id:$scope.pageData.memberid,sa_code:'CASH_ACCOUNT'};
+        var rData = actionManagerService.excuteResource('GetAccountInfo',params,'','');
+        ajaxManager.ajaxToJson(rData,function(data){
+          $scope.pageData.blance = data.DATA[0].BALANCE;
+          if(toolsService.isEmpty($scope.pageData.accountId)){
+            $scope.pageData.accountId=data.DATA[0].ID;
+          }
+        })
+      }
+      $scope.memberBlance();
+
+      //支付清单
+      $scope.recordBlance = function(){
+        var params = {paymentid:$scope.pageData.id};
+        var rData = actionManagerService.excuteResource('payment',params,'','');
+        ajaxManager.ajaxToJson(rData,function(data){
+          $scope.pageData.paymoney = parseFloat(data.DATA[0].PAYMONEY).toFixed(2);
+          if(data.DATA[0].PAYSOURCE=='0'){
+            $scope.pageData.paysource = '充值支付';
+          }else{
+            $scope.pageData.paysource = '商品支付';
+          }
+          $scope.pageData.paycode = data.DATA[0].PAYCODE;
+          $scope.pageData.paycontent = data.DATA[0].PAYCONTENT;
+          $scope.pageData.paymode = data.DATA[0].PAYCODE.split("@",'1')[0];
+        })
+      }
+      $scope.recordBlance();
+
+
+
+      //现金支付
+      $scope.CashPayment = function(){
+        if(new Number($scope.pageData.paymoney*100)>new Number($scope.pageData.blance)){
+          toolsService.showMessage("余额不足，请选择其它支付方式进行支付!",1);
+        }else{
+          var rData = actionManagerService.cashPayment($scope.pageData.id,$scope.pageData.memberid,new Number($scope.pageData.paymoney)*100,$scope.pageData.accountId);
+          ajaxManager.ajaxToJson(rData,function(data){
+            toolsService.showMessage("支付成功!");
+            $state.go("member.myorder",{},{location:"replace"});
+          });
+        }
+      }
+      //其他支付方式
+      $scope.paymentSetup = function(){
+        var param = {orgid:$scope.pageData.orgid};
+        var rData = actionManagerService.excuteResource('paymentsetup',param,'','');
+        ajaxManager.ajaxToJson(rData,function(data){
+          $scope.paymentsetup = data;
+          console.error(data.DATA);
+        });
+      }
+      $scope.paymentSetup();
+
+      //支付宝支付跳转页面
+      $scope.Alipayment = function()
+      {
+        var payUrl = $scope.pageData.baseUrl + $scope.pageData.alipayUrl + "?"
+          + "WIDout_trade_no=" + $scope.pageData.paycode
+          + "&WIDsubject=" + $scope.pageData.paycontent
+          + "&WIDtotal_fee=" + $scope.pageData.paymoney
+          + "&WIDseller_email="+$scope.pageData.alipayEmail
+          + "&WIDshow_url=test"
+          +"&WIDbody="+$scope.pageData.paycontent;
+        window.open(payUrl,'支付宝支付');
+      }
+
+      //$scope.withdrawClick = function(){
+      //  if(!toolsService.isEmpty($scope.pageData.zfbInfo)){
+      //      $scope.Alipayment();
+      //  }
+      //if(!toolsService.isEmpty($scope.pageData.wxInfo)){
+      //  //$scope.Alipayment();
+      //  toolsService.tips('暂无第三方支付','');
+      //}
+      //if(!toolsService.isEmpty($scope.pageData.bankInfo)){
+      //  //$scope.Alipayment();
+      //  toolsService.tips('暂无第三方支付','');
+      //}
+      //if(!toolsService.isEmpty($scope.pageData.catchSelect)){
+      //    $scope.CashPayment();
+      //}
+
+      //}
+
+      ////查询绑定情况
+      //$scope.bindingInfo = function(){
+      //  var param = {memberid:$scope.pageData.memberid,type:'1,2,3'};
+      //  var rData = actionManagerService.excuteResource('transactionaccount',param,'none','none');
+      //  ajaxManager.ajaxToJson(rData,function(data){
+      //    if(!toolsService.isEmpty(data.DATA)){
+      //      for(var i=0;i<data.DATA.length;i++){
+      //        if(data.DATA[i].ID_TYPE=='1'){
+      //          $scope.pageData.bindingZfbInfo.push(data.DATA[i]);
+      //        }
+      //        if(data.DATA[i].ID_TYPE=='2'){
+      //          $scope.pageData.bindingWxInfo.push(data.DATA[i]);
+      //        }
+      //        if(data.DATA[i].ID_TYPE=='3'){
+      //          $scope.pageData.bindbingBankInfo.push(data.DATA[i]);
+      //        }
+      //      }
+      //    }
+      //  })
+      //}
+
+      ///**
+      // * select onchange事件
+      // */
+      //$scope.catchClick = function(){
+      //  if(!toolsService.isEmpty($scope.pageData.catchSelect)){
+      //    $scope.pageData.payShow = false;
+      //  }else{
+      //    $scope.pageData.payShow = true;
+      //  }
+      //}
+      //
+      //$scope.zfbChange = function(){
+      //  if(!toolsService.isEmpty($scope.pageData.zfbInfo)){
+      //    $scope.pageData.zfbFlag = true;
+      //    $scope.pageData.wxFlag = false;
+      //    $scope.pageData.bankFlag = false;
+      //    $scope.pageData.catchShow = false;
+      //  }else{
+      //    $scope.pageData.zfbFlag = true;
+      //    $scope.pageData.wxFlag = true;
+      //    $scope.pageData.bankFlag = true;
+      //    $scope.pageData.catchShow = true;
+      //  }
+      //}
+      //
+      //$scope.wxChange = function(){
+      //  if(!toolsService.isEmpty($scope.pageData.wxInfo)){
+      //    $scope.pageData.zfbFlag = false;
+      //    $scope.pageData.wxFlag = true;
+      //    $scope.pageData.bankFlag = false;
+      //    $scope.pageData.catchShow = false;
+      //  }else{
+      //    $scope.pageData.zfbFlag = true;
+      //    $scope.pageData.wxFlag = true;
+      //    $scope.pageData.bankFlag = true;
+      //    $scope.pageData.catchShow = true;
+      //  }
+      //}
+      //
+      //$scope.bankChange = function(){
+      //  if(!toolsService.isEmpty($scope.pageData.bankInfo)){
+      //    $scope.pageData.zfbFlag = false;
+      //    $scope.pageData.wxFlag = false;
+      //    $scope.pageData.bankFlag = true;
+      //    $scope.pageData.catchShow = false;
+      //  }else{
+      //    $scope.pageData.zfbFlag = true;
+      //    $scope.pageData.wxFlag = true;
+      //    $scope.pageData.bankFlag = true;
+      //    $scope.pageData.catchShow = true;
+      //  }
+      //}/**select onchange事件end*/
+
+      //$scope.bindingInfo();
+
+
+    }]);
+

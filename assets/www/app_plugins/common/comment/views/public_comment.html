@@ -1,0 +1,53 @@
+<!--商品评论-->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     title="{{pageData.title}}">
+</div>
+<div  class="bar bar-subheader myorderbar_div_border" style="padding: 0px;">
+  <div class="row cm" style="width:100%;padding-right:0px;padding-left:0px;padding-bottom: 1px; height: 45px;
+">
+    <div class="col" ng-class="pageData.allTab" ng-click="selecttab('allTab','')">
+      <span>全部（<span ng-bind="pageData.allTotle"></span>）</span>
+    </div>
+    <div class="col " ng-class="pageData.photoTab" ng-click="selecttab('photoTab','')">
+      <span>晒图（<span ng-bind="pageData.photoTotle"></span>）</span>
+    </div>
+    <div class="col" ng-class="pageData.badTab" ng-click="selecttab('badTab','')">
+      <span>差评（<span ng-bind="pageData.badTotle"></span>）</span>
+    </div>
+    <div class="col " ng-class="pageData.greetTab" ng-click="selecttab('greetTab','')">
+      <span>好评（<span ng-bind="pageData.greetTotle"></span>）</span>
+    </div>
+  </div>
+ 
+</div>
+
+<ion-view >
+  <ion-content style="padding-top: 90px;background: #FAFAFA;">
+    <div class="item" style="padding:5px 13px;
+">
+  <div ng-if="!pageData.classShow" class="row cl-19" style="">
+  		<div class="public_comment_count_css" >总体评价</div>
+        <div style="text-align:center;" class="col-20" as-start model="s" value="{{pageData.count|number:0}}"></div>
+        <div class="col-50" >{{pageData.count}}分</div>
+  </div>
+
+  <div ng-if="pageData.classShow" class="row" style="">
+  	<!-- <select ng-model="pageData.clase" ng-change="changeAction()">
+  		<option ng-repeat="item in pageData.classfaction" value="item.value"></option>
+  	</select> -->
+    <select class="item item-input drop_down_title" ng-change="changeAction()" style="height: 40px;" ng-model="pageData.clase" >
+        <option selected="$index=='0'"  ng-repeat="item in pageData.classfaction" value="{{item.value}}" >{{item.name}}</option>
+  </select>
+  </div>
+
+  </div>
+  </div>
+    <div aslist style="padding:10px 0px 0px 0px;margin:0px;" item="false"  rcode="{{pageData.paramsCode}}" params="{{pageData.listParams}}" list-events="pageData.listEvents" temp-url="app_plugins/common/comment/views/public_comment_list.html">
+    </div>
+
+  </ion-content>
+</ion-view>

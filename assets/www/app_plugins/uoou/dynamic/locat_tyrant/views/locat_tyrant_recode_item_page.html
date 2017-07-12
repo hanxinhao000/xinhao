@@ -1,0 +1,30 @@
+<!--<div class="list">
+    <div class="item" style="min-height: 100px;padding-left: 10px;padding-top: 17px;" ng-click="to_red_details(value.ID)">
+      <p>红包总金额:&nbsp;{{value.TOTAL_MONEY|ptoy}}元&nbsp;&nbsp;&nbsp;&nbsp;红包金额:{{value.RE_MONEY|ptoy}}</p>
+      <p>剩余红包数量&nbsp;{{value.SURPLUS_NUM}}&nbsp;&nbsp;&nbsp;&nbsp;抽中率:{{value.WIN_ODDS}}</p>
+      <div class="row" style="padding:3px;">
+          <div class="col-50" ng-bind="value.ABSTRACT"></div>
+      </div>
+      <p>发送时间:{{value.CREATETIME}}</p>
+    </div>
+</div>-->
+<div class="list">
+    <div class="item fs-12" 
+         style="min-height: 100px;padding-left: 10px;padding-top: 5px; padding-bottom:5px;" 
+         ng-click="to_red_details(value.ID)">
+      <div class="row">
+          <div class="col-50" style="font-size: 12px;">红包总额：{{value.TOTAL_MONEY|ptoy}}元</div>
+          <div class="col-50" style="font-size: 12px;">红包金额：{{value.RE_MONEY|ptoy}}元</div>          
+      </div>
+      <div class="row" style="padding-top: 0px;">
+          <div class="col-50" style="font-size: 12px;">剩余红包数量：{{value.SURPLUS_NUM}}</div>
+          <div class="col-50" style="font-size: 12px;">抽中率：{{value.WIN_ODDS}}%</div>          
+      </div>
+     <div class="row" style="padding-top:0px;">
+          <div class="col-100" style="font-size: 12px;">发送时间：{{value.CREATETIME}}</div>
+      </div>
+      <div class="row" style="padding-top: 3px;">
+          <div class="col-100 text-overflow-elipsis" style="font-size: 12px;" ng-bind="value.ABSTRACT"></div>
+      </div>
+    </div>
+</div>

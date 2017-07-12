@@ -1,0 +1,23 @@
+<div class="item popup-item">
+    <img class="popup-icon" src="img/scenicspot/ticket_03.png" ng-click="closePopup()"/>
+</div>
+<div class="list">
+    <div class="item popup-item-border">
+        <span class="fs-15" style="font-size:13px;color:#333333;">
+            可提供的服务
+        </span>
+    </div>
+        <div class="row row-wrap" style="border-bottom:1px solid #ddd;width: 100%;border:0px;">
+            <div class="col-20" ng-repeat="item in pageData.facilityDetails" style="text-align: center;display: inline-block;">
+                <img class="item-col-img" src="img/hotel/hotel_{{item}}.png" class="img-responsive">
+            </div>
+        </div>
+    <div class="item popup-item-border" style="border:0px;height: 39px;min-height: 39px;padding-top:8px;">
+        <span style="font-size:13px;color:#333333;">
+            酒店介绍
+        </span>
+    </div>
+    <div class="row" style="border:0px;padding-top:8px;padding-right: 16px;padding-left: 24px;max-height: 180px;">
+        <div ng-bind-html="pageData.scenicSpotIntrData[0].CONTENT"></div>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+<style>
+</style>
+
+
+<!--看星愿界面-->
+<!--<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     title="{{pData.title}}" >
+</div>-->
+<ion-view ">
+    <ion-nav-buttons side="left">
+        <div class="public_comment_header_bar_padding_left" ng-click="back()">
+            <i class="icon head_left_back"></i>
+        </div>
+    </ion-nav-buttons>
+    <ion-nav-title>
+        <div class="fs_4">{{pData.title}}</div>
+    </ion-nav-title>
+    
+    <ion-content >
+        <div class="list" ng-if="pData.dataInvil">
+            <a style="min-height: 100px;" class="item item-thumbnail-left" href="#">
+              <img src="{{pData.headimg|hostFilter}}">
+              <h2 style="padding-top: 20px;" ng-bind="pData.name"></h2>
+            </a>
+            <div class="row" style=" height: 300px;background: #FFFFFF;padding: 10px;">
+                <div  class="col">{{pData.content}}</div>
+            </div>
+      </div>
+        <div class="row" ng-if="!pData.dataInvil">
+            <div class="col" style="text-align:center;">暂无流星雨</div>
+        </div>
+    </ion-content>
+</ion-view>
+<div class="bar bar-footer" ng-if="pData.dataInvil" style="background: none;padding: 0px 20px 20px 20px;height: 65px;">
+    <button style="background:rgb(0,218,216)" ng-click="send('0')" class="button button-full button-positive">
+        传送星愿
+    </button>
+    <button style="background:rgb(0,218,216);margin-left:3px;" ng-click="send('1')" class="button button-full button-positive">
+        帮助实现星星
+    </button>
+</div>

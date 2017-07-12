@@ -1,0 +1,31 @@
+<!-- 投资三农列表 -->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="理性扶持投资农业">
+</div>
+<ion-view>
+    <ion-content>
+        <form ng-submit="query()">
+            <div class="row bg-2 h-46" style="width:100%;padding:0;margin: 0px;background: transparent;display: -webkit-flex;">
+                <div class="col" style="text-align: -webkit-center;-webkit-box-flex: 1;padding: 0px;">
+                    <div class='item item-input' style="width:100%;color: #ffffff;opacity: 0.5;padding: 0px;height:46px;">
+                        <i class='icon ion-search placeholder-icon' style="font-size:25px;margin-left: 10px;line-height: 1.5;" ng-click="query()"></i>
+                        <input type='search' ng-model="pageData.projectName" style="text-align: center;font-size: 15px;padding-top: 0px;height: 46px;" placeholder="请输入项目名称">
+                    </div>
+                </div>
+            </div>
+        </form>
+<!--        <label class="item item-input h-46">
+            <input type="text" ng-model="pageData.projectName" placeholder="请输入项目名称">
+        </label>
+        <div class="row" style="background: #FFFFFF;">
+            <div class="col">
+                <button ng-click="query()" class="button button_with  myinfoborder-radius h-43 agriculture_project_title">查询</button>
+            </div>
+        </div>-->
+        <div style="padding:0px;margin:0px;" item="false" aslist rcode="agriculture_project" temp-url="app_plugins/cooperative/agriculture_project/views/agro_proj_list.html" list-events="pageData.list_events" params="{{pageData.params}}"></div>
+        <div footerpadding></div>
+    </ion-content>
+</ion-view>

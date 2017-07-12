@@ -1,0 +1,7 @@
+<div class="list">
+    <a class="item item-avatar" ng-click="toPage('{{value.ID}}')">
+      <img style="border-radius: 5px;" src="{{value.WXHEADIMG|hostFilter}}">
+      <h2>{{value.MEMBERNAME}}</h2>
+      <p ng-bind="value.CONTENT|limitTo:20"></p>
+    </a>
+</div>

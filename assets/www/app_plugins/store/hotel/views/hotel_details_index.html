@@ -1,0 +1,241 @@
+<div class="bar bar-heade" style="padding-bottom: 0px;background:transparent;height: 52px;color: #FFFFFF;">
+    <div class="row" style="width:100%;padding:0px;padding-top:5px;padding-left:10px;">
+        <div style="width:16%;text-align:left;" ng-click="back()">
+            <img src="img/techan/techan_01.png" style="width: 20px;height: auto;">
+        </div>
+        <div class="cl-10"style="width:68%;text-align: center;">
+            <span class="fs-16" ng-bind="pageData.title"></span>
+        </div>
+        <div style="width:8%;text-align:center;" ng-click="collectionHotel()">
+            <img src="img/techan/techan_06.png" style="width: 20px;height: auto;">
+        </div>
+        <div style="width:8%;text-align:center;" ng-click="share()">
+            <img src="img/techan/techan_07.png" style="width: 20px;height: auto;">
+        </div>
+    </div>
+</div>
+<ion-content  delegate-handle="mainScroll" style="padding:0px;">
+    <div class="row" style="height: 239px;padding: 0px;" ng-click="imagePicker()">
+        <div class="col" style="padding:0px;height: 239px;">
+            <img ng-src="{{pageData.mainimage | hostFilter:'ImageJSON'}}" style="width: 100%;height: 100%;" />
+        </div>
+        
+    </div>
+    <!-- 图集 -->
+    <div style="text-align: right;height:34px;margin-top: -34px;" ng-click="imagePicker()">
+        <img src="img/atlas.png" style="width:34px;height: 34px;margin-right: 23px;margin-top: -12px;"/>
+        <div style="position: relative;margin-top: -23px;margin-right: 34px;">
+            <span class="fs-12" style="color: #ffffff;"><span  ng-bind="pageData.storeImageNum"></span></span>
+        </div>
+    </div>
+    <div class="list">
+        <!-- 地点 -->
+        <a class="item item-avatar item-icon-right" style="height: 39px;min-height: 39px;padding-top:8px;padding-left: 47px;" ng-click="map()">
+            <img src="img/scenicspot/scenicspot_18.png" style="width:20px;height:20px;top: 7px;left: 13px;">
+            <span ng-bind="pageData.adderssDetlies" style="font-size:13px;color:#333333;"></span>
+            <img class="icon" src="img/member/member_43.png" style="width:15px;height:15px;margin-top: 11px;"/>
+        </a>
+        <!-- 评价 -->
+        <a class="item item-avatar" style="height: 39px;min-height: 39px;padding-top:8px;padding-left: 47px;" ng-click="comment()" >
+            <img src="img/scenicspot/scenicspot_21.png" style="width:20px;height:20px;top: 7px;left: 13px;">
+            <div class="row " style="padding: 0px;">
+                <div class="fs-13 cl-19" as-start model="s" value="{{pageData.avgscore | number:0}}"></div>
+                <div style="margin-top: 2px;padding-left: 9px;" class="fs-13">{{pageData.avgscore}}分</div>
+            </div>
+            <span style="font-size:13px;color:#666666;right: 31px;position: absolute;top:0;top: 0;margin-top: 8px;">{{pageData.commentNum}}条评价</span>
+            <img class="icon item-image-right" src="img/member/member_43.png" style="margin-top: 11px;"/>
+        </a>
+    </div>
+    <!--  呼旅·点评 -->
+    <div class="list" style="margin-top: 6px;">
+        <div class="item item-avatar" style="height: 39px;min-height: 39px;padding-top:8px;padding-left: 47px;">
+            <img src="img/scenicspot/scenicspot_27.png" style="width:20px;height:20px;top: 7px;left: 13px;">
+            <span style="font-size:13px;color:#333333;">
+                呼旅·点评
+            </span>
+        </div>
+        <div class="row bg-2" style="border-bottom: 1px solid #ddd;padding-top:8px;padding-left: 16px;padding-right: 16px;min-height: 100px;">
+            <div ng-bind-html="pageData.comment|imgFmt"></div>
+        </div>
+    </div>
+
+    <!-- 标签 -->
+    <a class="item item-icon-right" style="height:43px;padding: 0px;margin-top: 6px;" ng-click="showHotelDetailsPopup()">
+            <div class="row" style="width: 60%;">
+                <div class="col" style="padding:0px;height:100%;margin-left: 10px;text-align: center;" ng-repeat="item in pageData.facilityData track by $index">
+                    <img class="item-col-img" src="img/hotel/hotel_{{item}}.png">
+                </div>
+            </div>
+        <span class="item-text-right">
+            详情
+        </span>
+        <img class="icon" src="img/member/member_43.png" style="width:15px;height:15px;margin-top: 11px;"/>
+    </a>
+
+
+    <div class="row" style="padding:0px;">
+        <div class="row {{pageData.ticketInfoClass}}" style="width: 66%;" ng-click="getTicketInfo()">
+            <div class="fs-13" style="margin: auto;width: 100%;text-align: center;line-height: 2.5;">房型介绍（{{pageData.commodityNum}}）<span class="fs-12" style="margin-left: 6px;">预订之后100%有房</span></div>
+        </div>
+        <div class="row {{pageData.nearRecClass}}" ng-click="getnearRec()" style="margin: 0px;padding:0px;width: 34%;">
+            <div class="fs-13" style="margin: auto;width: 100%;text-align: center;line-height: 2.5;">周边推荐</div>
+        </div>
+    </div>
+    <!-- 房型介绍 -->
+    <div id="homeType" class="item" ng-repeat="item in pageData.commodityData" style="height: 62px;padding: 0px;" >
+        <div class="row" style="padding-top: 0px;">
+            <div class="col col-75 text-overflow-elipsis" style="text-align: left;">
+                <span class="fs-13" ng-bind="item.NAME"></span>
+            </div>
+            <div class="col" style="text-align: right;" ng-if="item.DISCOUNT == 0|| item.DISCOUNT==1">
+                <span class="fs-14" style="color:#FF0000">￥
+                    <span ng-bind="item.PRICE|number:2"></span>
+                </span>
+            </div>
+            <div class="col" style="text-align: right;" ng-if="item.DISCOUNT < 1 && item.DISCOUNT >0">
+                <span class="fs-14" style="color:#FF0000">￥
+                    <span ng-bind="item.PRICE*item.DISCOUNT|number:2"></span>
+                </span>
+            </div>
+            <div class="col" style="text-align: right;" ng-if="item.DISCOUNT>1">
+                <span class="fs-14" style="color:#FF0000">￥
+                    <span ng-bind="item.PRICE - item.DISCOUNT | number:2"></span>
+                </span>
+            </div>
+        </div>
+        <div class="row" >
+            <div class="col col-75" style="padding:0px;text-align: left;">
+                <div class="row" style="padding: 0px;">
+                    <div class="col col-75" style="padding:0px;">
+                        <div class="btn list-btn fs-12" ng-if="item.BREAKFAST == '1'" style="margin-right: 6px;">
+                            含早餐
+                        </div>
+                        <div class="btn list-btn fs-12"  ng-if="item.CANCEL == '1'">
+                            不可取消
+                        </div>
+                    </div>
+                    <div class="col" style="padding:0px;">
+                        <span class="fs-13">
+                            已售<span ng-bind="item.SALENUMBER"></span>
+                        </span>
+                    </div>  
+                </div>
+            </div>
+            <div class="col" style="text-align: right;padding:0px;" ng-click="showModal(item.ID)">
+                <div class="car_label_btn" style="right: 5px;position: absolute;">在线预订</div>
+            </div>
+
+        </div>  
+    </div>
+    <div id="nearRec" class="row bg-7" style="padding: 14px 0px 12px 0px;">
+        <span class="pl-7 fs-14 cl-17 microsoft_yahei">周边推荐</span>
+    </div>
+    <!-- 周边推荐 -->
+    <div recommend-list option-params="{{latLng}}"></div>
+    
+    <div footerpadding></div>
+</ion-content>
+<!-- 回到顶部，联系客服 -->
+<div class="avd_banner disable-user-behavior" id="avd_top_div" suspend-box="">
+    <a href="tel:18011111111" class="avd_banner_a_01"></a><a ng-click="scrollTop()" class="avd_banner_a_02"></a>
+</div>
+<!--本页弹出内容 start-->
+<script id="commonModalTemplate.html" type="text/ng-template">
+    <ion-modal-view style="background-color: rgba(255,255,255,0.0);border-top: 1px solid #ddd;padding-bottom: 60px;">
+        <div class="modal">
+            <div class="bar bar-heade" style="padding:0px;border:0px;">
+                <!-- 标题 -->
+                <div class="item item-icon-right fs-13" style="width:102%;height: 100%;padding-top:9px;" >
+                        <span ng-bind="pageData.ticketData.NAME" style="font-size:13px;color:#333333;"></span>
+                        <img class="icon" src="img/scenicspot/ticket_03.png" style="width:15px;height:15px;margin-top: 11px;border-radius: 50%;" ng-click="closeModal()"/>
+                </div>
+            </div>
+            <ion-content>
+                <div class="list">
+                    
+                    <!-- 主图 -->
+                    <div class="item" style="padding: 0px;height:184px;">
+                        <img style="width: 100%;height: 100%;" ng-src="{{pageData.ticketData.MAINIMAGES| hostFilter:'ImageJSON'}}" style="width: 100%;height: 100%;" />
+                    </div>
+
+
+                    <!-- 入户保障 -->
+                    <div class="item item-avatar" style="height: 39px;min-height: 39px;padding-top:9px;padding-left: 15px;" ng-if="pageData.ticketData.CANCEL =='1' || pageData.ticketData.IN_ENSURE=='1'">
+                        <div class="row" style="width:100%;padding: 0px;">
+                            <div style="width:30%;padding: 0px; margin-right: 25px;height:30px"
+                            ng-if="pageData.ticketData.IN_ENSURE=='1'">
+                                <img src="img/hotel/hotel_03.png" style="width:19px;height: 18px;border-radius: 0px;vertical-align: top;"/>
+                                <span class="fs-14" style="padding-left: 11px;">入户保障</span>
+                            </div>
+                            <div style="width:70%;padding:0px;vertical-align: middle;"
+                            ng-if="pageData.ticketData.CANCEL == '1'">
+                                <img src="img/hotel/hotel_05.png" style="width:19px;height: 18px;border-radius: 0px;vertical-align: top;"/>
+                                <span class="fs-14" style="padding-left: 11px;">
+                                    不可取消
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 时间控件 -->
+                    <div class="bg-2" ng-if="pageData.dateData" carendar-bar  options-params ="{{pageData.dateData}}" result-start-date="reStartDate"  result-end-date="reEndDate" result-fun="dataResult"></div>
+                    <!-- 摘要 -->
+                    <div class="row bg-2" style="margin-top:6px;padding-top:8px;padding-left: 16px;padding-right: 16px;white-space: inherit;">
+                        <div ng-bind-html="pageData.ticketData.ABSTRACT|imgFmt" style="min-height: 100px;">
+                        
+                        </div>
+                    </div>
+
+                    <!-- 详细信息 -->
+                    <div class="row bg-2" style="margin-top:6px;padding-top:8px;padding-left: 16px;padding-right: 16px;white-space: inherit;">
+                        <div ng-bind-html="pageData.ticketData.DETILIMAGES|imgFmt" style="min-height: 100px;">
+                        
+                        </div>
+                    </div>
+                </div>
+                <div footerpadding></div>
+            </ion-content>
+
+            <div class="bar bar-footer h-48" style="padding:0px;">
+                <div class="row CM" style="padding:0;width:100%;">
+                    <div class="pt-10"style="width:36%;border-right: 1px solid #ddd;">
+                        <div style="padding: 0px;padding-left:10px;" ng-if="pageData.ticketData.DISCOUNT==0||pageData.ticketData.DISCOUNT==1">
+                            单价
+                            <span class="fs-16 cl-10" style="color:#FF0000;">
+                                ￥<span ng-bind="pageData.price|number:2">
+                                </span>
+                            </span>
+                        </div>
+                        <div style="padding: 0px;padding-left:10px;" ng-if="pageData.ticketData.DISCOUNT >0 && pageData.ticketData.DISCOUNT<1">
+                            单价
+                            <span class="fs-16 cl-10" style="color:#FF0000;">
+                                ￥<span ng-bind="pageData.price*pageData.ticketData.DISCOUNT|number:2">
+                                </span>
+                            </span>
+                        </div>
+                        <div style="padding: 0px;padding-left:10px;" ng-if="pageData.ticketData.DISCOUNT>1">
+                            单价
+                            <span class="fs-16 cl-10" style="color:#FF0000;">
+                                ￥<span ng-bind="pageData.price-pageData.ticketData.DISCOUNT|number:2">
+                                </span>
+                            </span>
+                        </div>
+                        <div style="padding:0px 0px 0px 10px;">
+                            <span class="fs-12 " style="color:#666666">
+                                原价<span  ng-bind="(pageData.price*1).toFixed(2)">
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="pt-16" style="width:14%;text-align: center;" ng-click="collectionRoom(pageData.ticketData.ID)">
+                        <img src="img/techan/techan_11.png" style="width:16px;" />
+                    </div>
+                    <div class="pt-16" style="width:50%;background-color: #FF9E00;" ng-click="formatBuyNow()">
+                        <span class="fs-16 cl-10">
+                            在线预订
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+  </ion-modal-view>
+</script><!--本页弹出内容 end-->

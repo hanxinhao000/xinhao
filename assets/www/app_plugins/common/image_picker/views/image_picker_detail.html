@@ -1,0 +1,101 @@
+
+<style>
+	@media screen and (max-width:320px)
+	{ 
+		.swiperCtrsHeight{height:370px;}
+                .swiperCtrsLineHeight{line-height:350px;}
+
+	}
+	
+	@media screen and (min-width:321px) and (max-width:360px)
+	{ 
+		.swiperCtrsHeight{height:427px;}
+                .swiperCtrsLineHeight{line-height:400px;}
+
+	} 
+	
+	@media screen and (min-width:361px) and (max-width:375px)
+	{ 
+		.swiperCtrsHeight{height:427px;}
+                .swiperCtrsLineHeight{line-height:400px;}
+
+	}
+	
+	@media screen and (min-width:411px)
+	{ 
+		.swiperCtrsHeight{height:490px;}
+                .swiperCtrsLineHeight{line-height:470px;}
+
+	}
+</style>
+
+<!-- imagepicker -->
+<!--<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     title="{{pageData.title}}">
+</div>-->
+<div class="bar bar-subheader  " style=" height: 60px;background: none;" ng-if="pageData.showClassFlag">
+    
+    <div class="row " style="padding:0 0 0 18px;margin: 0px;">
+        <ion-scroll delegate-handle="small" style="height: auto;width: 100%;opacity: 0.5;" direction="x">
+            <div class="row myorder_padding" style="width:{{pageData.class_width}}px;padding:7px 0 1px 0;height: 50px;">
+                <div style="width: 90px" ng-repeat="t in pageData.classfactions">
+                    <button style="width: 85px;opacity: 1;" class="destination_button month_button ng-binding button tab-item button-outline button-stable"  ng-class="pageData.alltab" ng-click="selectClick('{{t}})',$index,$event)">
+                        {{t}}
+                    </button>
+                </div>
+            </div>
+        </ion-scroll>
+    </div>
+</div>
+<ion-view>
+    
+    <ion-nav-buttons side="left">
+        <div ng-click="back()"  class="public_comment_header_bar_padding_left">
+            <i class="icon head_left_back"></i>
+        </div>
+    </ion-nav-buttons>
+
+    <ion-nav-title>
+        <div class="fs_4">
+            {{pageData.title}}
+        </div>
+    </ion-nav-title>
+
+    
+    <ion-content style="padding-top:0px;height: 100%;">
+        <!-- style="background-size: cover;
+        background-position: center;background-image:url('{{item.path|hostFilter}}');" -->
+        <div class="swiper-container gallery-top swiperCtrsHeight swiperCtrsLineHeight" id="gallery-top" style="width: 100%;padding-top: 45px;
+             ">
+            <div class="swiper-wrapper" >
+                <div class="swiper-slide" ng-repeat="item in pageData.pageUrlData"  >
+                    <img ng-src="{{item.path|hostFilter}}" style="vertical-align: middle;"/>
+                    
+                </div>
+            </div>
+            <!-- Add Arrows -->
+            <div class="swiper-button-next swiper-button-white"></div>
+            <div class="swiper-button-prev swiper-button-white"></div>
+        </div>
+
+        <div class="row col" style="text-align: center;">
+                       {{pageData.pageIndex}}/{{pageData.pageUrlData.length}}</div>
+        <div class="swiper-container gallery-thumbs " id="gallery-thumbs" style="height: 15%;
+             box-sizing: border-box;
+             padding: 10px 0;" >
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" ng-repeat="item in pageData.pageUrlData" 
+                     style="background-size: cover;background-position: center;
+                     width: 25%;height: 100%;background-image:url('{{item.path|hostFilter}}');" />
+
+                </div>
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>
+

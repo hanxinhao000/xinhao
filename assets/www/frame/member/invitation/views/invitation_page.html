@@ -1,0 +1,68 @@
+<!--邀请社员 界面-->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     title="邀请社员">
+</div>
+<ion-view view-title="邀请社员">
+  <ion-content>
+		<div class="pr-10 pl-10 pt-15">
+			<div class="split-line-1">&nbsp;</div>
+			<div class="cm fs-14 cl-03">
+				请将您的邀请码分享给朋友
+			</div>
+			<div ng-repeat="item in pData.invCodeShowSet" ng-if="item.items.length>0">
+				<div class="split-line-4">&nbsp;</div>
+				<div class="row {{item.CSS}}" style="height:39px;">
+					<div class="col-50" style="padding-top:5px;padding-left:5px;">
+						<span ng-bind="item.TITLE" class="invet_item_title"></span>
+					</div>
+				</div>
+				<!--邀请码 start-->
+				<div class="bg-2" ng-repeat="citem in item.items" >
+					<div  class="pr-10">
+						<div class="full-w CM bg-2">
+						  <div class="diveline bg-6" style="width:100%;"></div>
+						</div>
+						<div class="row" ng-if="citem.STATE==0">
+							<div class="col col-50 cl-08" ng-bind="citem.INVITATIONCODE"></div>
+							<div class="col talign-r" >
+								<img ng-if="pData.qqshow=='1'" ng-click="shareQQ('{{item.TITLE}}','{{citem.INVITATIONCODE}}')" class="invit_item_share_icon" src="img/qq_icon.png" alt="分享到QQ">
+								<img ng-if="pData.weixinshow=='1'" ng-click="shareWeiXin('{{item.TITLE}}','{{citem.INVITATIONCODE}}')" class="invit_item_share_icon" src="img/weixin_icon.png" alt="分享到微信">
+							</div>
+						</div>
+						<div class="row" ng-if="citem.STATE==1">
+							<div class="col col-50 cl-05 fs-12" ng-bind="citem.MEMBERNAME"></div>
+							<div class="col talign-r" ng-if="citem.STATE==1">
+								<a href="javaScript:void(0);" class="pr-10 pl-10 ion-trash-b cl-05 fs-20" ng-click="pData.deleteInveMember('{{citem.ID}}')"></a>
+							</div>
+						</div>
+					</div>
+				</div><!--邀请码 end-->
+			</div>
+		</div>
+		
+		<div class="diveline-2"></div>
+		<div class="pr-10 pl-10 pt-15">
+			<div class="row bg-2" ng-if="pData.memberType!=3">
+				<div class="col col-77">
+			        <input type="text" ng-model="pData.inputInvCode" placeholder="请输入生产者邀请码">
+				</div>
+				<div class="col-33 pr-10 pt-5" style="text-align:right;">
+					<a ng-click="applyProduction()" class="button-small button button-balanced">申请</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-50">&nbsp;</div>
+		</div>
+		<div class="row">
+			<div class="col-50">&nbsp;</div>
+		</div>
+
+  </ion-content>
+</ion-view>
+

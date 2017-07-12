@@ -1,0 +1,23 @@
+<a class="item item-thumbnail-left" style=" height: 115px; padding-left: 115px;padding-right: 20px;" ng-click="carRental(value.ID)">
+    <img style="max-width: 96px; max-height: 96px;top:10px;left:10px;"  ng-src="{{value.LIST_IMAGE| hostFilter:'ImageJSON'}}">
+    <div class="row " style="padding: 0px;">
+    	<span class="fs-13 text-overflow-elipsis" ng-bind="value.STORE_NAME"></span>
+    </div>
+    <div class="row" style="padding: 10px 0 0 0;">
+    	<p style="font-size:12px;line-height: 16px;white-space:normal;max-height:34px;overflow:hidden;" ng-bind="value.ADDRESSDETIL"></p> 
+<!--         <div class="col text-overflow-elipsis" style="text-align: left;padding-left: 0px;">
+            <span class="fs-12 " ng-bind="value.ADDRESSDETIL"></span>
+        </div> -->
+    </div>
+    <div class="row" style="padding: 7px 0 0 0;">
+    	<div class="col" style="padding-left: 0px;" ng-if="value.ZCZWS_ID">
+			<div class="car_list-btn-new"><span class="fs-12" ng-bind="value.ZWNAME"></span></div>
+    	</div>
+        <div class="col" style="padding-left:0px;padding-right:0px;" ng-if="value.ZCCX_ID">
+            <div class="car_list-btn-new"><span class="fs-12" ng-bind="value.CXNAME"></span></div>
+        </div>
+    	<div class="col" style="text-align:right;padding-left: 0px;">
+    		<span class="fs-13" style="color: #FF0000">￥<span ng-bind="value.PJJG|number:0"></span>起</span>
+    	</div>
+    </div>
+</a>

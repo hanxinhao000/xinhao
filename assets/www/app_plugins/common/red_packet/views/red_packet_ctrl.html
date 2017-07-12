@@ -1,0 +1,81 @@
+
+<!-- 发红包 -->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     title="{{pageData.title}}">
+</div>
+<ion-view view-title="{{pageData.title}}" >
+  <ion-content>
+    <ion-list class="disable-user-behavior">
+      <div class="list">
+        <ion-item type="item-text-wrap" class="item" style="padding:0px;">
+          <label class="item item-input item-select">
+            <div class="input-label">
+              账户:
+            </div>
+            <select  ng-if="pageData.outSelectStatus" ng-model="pageData.outAccountId" ng-options="item.SA_CODE as item.SA_NAME for item in pageData.inAccountIdArr">
+              <option value="">请选择</option>
+              <!--<option ng-repeat="item in pageData.accountInfo" ng-if="pageData.outAccountId == item.SA_CODE" value="{{item.SA_CODE}}">{{item.SA_NAME}}</option>-->
+            </select>
+            <select disabled ng-if="!pageData.outSelectStatus" ng-model="pageData.outAccountId" ng-options="item.SA_CODE as item.SA_NAME for item in pageData.accountInfo">
+              <!--<option ng-repeat="item in pageData.accountInfo" ng-if="pageData.outAccountId == item.SA_CODE" value="{{item.SA_CODE}}">{{item.SA_NAME}}</option>-->
+            </select>
+            </label>
+            <label  class="item item-input" style="padding:6px 10px 5px 16px;">
+              <span class="input-label">收红包人账号:</span>
+              <input placeholder="请输入帐号（必填）" type="text"  maxlength="15" ng-model="pageData.inMemberid" class="ng-pristine ng-untouched ng-valid">
+            </label>
+
+
+            <ion-list>
+                <ion-radio ng-repeat="item in pageData.red_packet_info" style="height:62px;line-height:62px;" ng-click="selectClick('{{item.MONEY}}','{{item.ID}}','{{item.NAME}}')">
+                    <img ng-src="{{item.ENCLOSURE |hostFilter}}" style="width: 40px;vertical-align: middle;height: auto;margin-left:10px;min-height:40px;">
+                    <span>{{item.MONEY | ptoy}}元{{item.BNAME}}红包</span>
+                </ion-radio>
+                <ion-radio  style="height:62px;line-height:62px;" ng-click="selectClick('{{item.MONEY}}','{{item.ID}}','{{item.NAME}}')">&nbsp;&nbsp;自定义红包</ion-radio>
+            </ion-list>
+
+            <label ng-show="pageData.selftShow" class="item item-input" style="padding:6px 10px 5px 16px;">
+              <span class="input-label" style="width: 10%;">金额(元):</span>
+              <input type="number"  maxlength="6" ng-model="pageData.paymoney" class="ng-pristine ng-untouched ng-valid">
+
+            </label>
+            
+            <label class="item item-input item-select" ng-show="pageData.selftShow">
+              <div class="input-label">
+                红包类型:
+              </div>
+
+              <select  ng-model="pageData.select_type" ng-options="item.ID as item.BNAME for item in pageData.red_packet_class">
+                <option value="">请选择</option>
+                <!--<option ng-repeat="item in pageData.accountInfo" ng-if="pageData.outAccountId == item.SA_CODE" value="{{item.SA_CODE}}">{{item.SA_NAME}}</option>-->
+              </select>
+            </label>
+            
+            <div class="item item-divider">
+                  留言
+            </div>
+            <label class="item item-input">
+              <textarea ng-model="pageData.remakers" placeholder="恭喜发财,大吉大利"></textarea>
+            </label>
+        </ion-item>
+        <div>
+        </div>
+      </div>
+    </ion-list>
+    <div class="row">
+      <div class="col">
+        <button   ng-click="send()"
+                  class="button button_with  myinfoborder-radius h-43 agriculture_project_title"
+        >
+          塞进红包
+        </button>
+
+      </div>
+    </div>
+  </ion-content>
+
+</ion-view>

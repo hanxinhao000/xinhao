@@ -1,0 +1,106 @@
+<!-- 提现详情 -->
+<!--<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     title="{{pageData.title}}">
+</div>-->
+<style>
+    .input-label{
+        display: table;
+        padding: 7px 10px 7px 0px;
+        max-width: 200px;
+        width: 20%;
+        color: #666666;
+        font-size: 15px;
+    }
+    textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"] {
+        display: block;
+        padding-top: 2px;
+        padding-left: 0;
+        height: 34px;
+        color: #888888;
+        vertical-align: middle;
+        font-size: 16px;
+        line-height: 16px;
+    }
+    .item-select select{
+        font-size:15px;
+    }
+    .item{
+        font-size:15px;
+    }
+</style>
+<ion-view>
+    
+    <ion-nav-buttons side="left">
+        <div  ng-click="back()"  class="public_comment_header_bar_padding_left">
+            <i class="icon head_left_back"></i>
+        </div>
+    </ion-nav-buttons>
+
+    <ion-nav-title>
+        <div class="fs_4">
+            {{pageData.title}}
+        </div>
+    </ion-nav-title>
+    
+  <ion-content>
+    <ion-list class="disable-user-behavior">
+      <div class="list">
+        <ion-item type="item-text-wrap" class="item" style="padding:0px;">
+          <label class="item item-input item-select">
+            <div class="input-label">
+              提现账户
+            </div>
+            <select disabled ng-model="pageData.outAccountId" ng-options="m.SA_CODE as m.SA_NAME for m in pageData.accountInfo">
+              <option value="">--请选择--</option>
+            </select>
+          </label>
+          <label class="item item-input">
+            <span class="input-label">余额</span>
+            <label ng-bind="pageData.balance|ptoy"></label>元
+          </label>
+          <label  class="item item-input" style="padding:6px 10px 5px 16px;">
+            <span class="input-label">提现金额</span>
+            <input type="number" string-to-number  maxlength="6" placeholder="请输入金额" ng-model="pageData.paymoney" class="ng-pristine ng-untouched ng-valid">元
+          </label>
+          <label  class="item item-input item-select" >
+            <div class="input-label">
+              选择提现账号{{pageData.bankInfo.length>0?'':'(暂无绑定提现账号请先绑提现账号)'}}
+            </div>
+            <select ng-show="pageData.bankInfo.length>0" ng-model="pageData.inAccountId" ng-options="m.ID as m.BANK_CODE+m.BANK_NAME for m in pageData.bankInfo">
+              <option value="">--请选择--</option>
+              <!--<option ng-repeat="item in pageData.bankInfo" value="{{item.ID}}">{{item.BANK_CODE}}&nbsp;&nbsp;{{item.BANK_NAME}}</option>-->
+            </select>
+          </label>
+          <label ng-if="pageData.free!=''" class="item item-input">
+            <span class="input-label">手续费比例</span>
+            <label ng-bind="pageData.free*100|number:2"></label>%
+          </label>
+          <label class="item item-input" style="height:110px;">
+            <textarea style="resize:none;height:100px;padding:4px;" placeholder="请输入提现原因" ng-model="pageData.detail"></textarea>
+          </label>
+
+        </ion-item>
+        <div>
+        </div>
+      </div>
+    </ion-list>
+    <div class="row">
+      <div class="col">
+<!--        <button ng-disabled="pageData.bankInfo.length>0?false:true"  ng-click="withdrawClick()"
+                  class="button button_with  ng-binding myinfoborder-radius h-43 agriculture_project_title"
+        >
+          确认提现
+        </button>-->
+          
+        <button ng-disabled="pageData.bankInfo.length>0?false:true" class="button editpwd_mauto button-block button-balanced" style="background: rgb(0,218,216);width: 90%;font-size:17px;" 
+                ng-click="withdrawClick()">确认提现</button>  
+
+      </div>
+    </div>
+  </ion-content>
+
+</ion-view>

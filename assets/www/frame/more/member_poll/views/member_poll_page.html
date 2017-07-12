@@ -1,0 +1,36 @@
+<!-- 社员代表大会 -->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="社员代表大会">
+</div>
+<ion-view view-title="社员代表大会">
+    <ion-content>
+        <div class="row item h-46" style="color: #FFFFFF;">
+            <div class="col col-20">
+                <span class="input-label">发布时间:</span>
+            </div>
+            <div class="col col-33" style="background: #FFFFFF;">
+                <input type="date" ng-model="pageData.startDate" style="padding-top:0px;background: #FFFFFF;display: grid;display: flex;display:inline-flex;display:inline-gird;width:100%;">
+            </div>
+            <div class="col">
+                <span class="input-label">至</span>
+            </div>
+            <div class="col col-33" style="background: #FFFFFF;">
+                <input type="date" ng-model="pageData.endDate" style="padding-top:0px;background: #FFFFFF;display: grid;display: flex;display:inline-flex;display:inline-gird;width:100%;">
+            </div>
+        </div>
+        <div class="diveline-2"></div>
+        <label class="item item-input h-46">
+            <input type="text" ng-model="pageData.pcTitle" placeholder="请输入标题">
+        </label>
+        <div class="row" style="background: #FFFFFF;">
+            <div class="col">
+                <button ng-click="query()" class="button button_with ng-binding  myinfoborder-radius h-43 agriculture_project_title">查询</button>
+            </div>
+        </div>
+        <div style="padding:10px 0px 0px 0px;margin:0px;" item="false" aslist rcode="memberPoll" temp-url="frame/more/member_poll/views/member_poll_list_page.html" list-events="pageData.listEvents" params="{{pageData.params}}"></div>
+        <div footerpadding></div>
+    </ion-content> 
+</ion-view>

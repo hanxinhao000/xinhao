@@ -1,0 +1,69 @@
+<!--商品评论-->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     title="我的订单">
+</div>
+
+<!-- style="border-bottom:1px solid #C7EED6;" -->
+<div  class="bar bar-subheader myorderbar_div_border" style="padding-right:0px;padding-left:0px;">
+  <div class="row cm" style="width:100%;padding-right:0px;padding-left:0px;">
+    <div class="col" ng-class="pData.alltab" ng-click="selecttab('alltab')">
+      <span>全部</span>
+    </div>
+    <div class="col " ng-class="pData.distributiontab" ng-click="selecttab('distributiontab')">
+      <span>待配送</span>
+    </div>
+    <div class="col" ng-class="pData.goodsreceipttab" ng-click="selecttab('goodsreceipttab')">
+      <span>待收货</span>
+    </div>
+    <div ng-if="false" class="col " ng-class="pData.servicetab" ng-click="selecttab('servicetab')">
+      <span>待服务</span>
+    </div>
+    <div class="col " ng-class="pData.commenttab" ng-click="selecttab('commenttab')">
+      <span>待评价</span>
+    </div>
+    <div ng-if="false" class="col" ng-class="pData.chaseratingstab" ng-click="selecttab('chaseratingstab')">
+      <span>待追评</span>
+    </div>
+  </div>
+ <!--  <h2 class="title myorderbar_div_text_color" style="height: 50px; font-size: 12px;">
+    <ion-scroll delegate-handle="small" style="height: auto;width: 100%" direction="xy" on-scroll="myswiper()" >
+      <div class="row myorder_padding" style="width: 140%">
+        <div class="col myorder_padding" ng-class="pData.alltab" ng-click="selecttab('alltab')">全部</div>
+        <div class="col myorder_padding" ng-class="pData.distributiontab" ng-click="selecttab('distributiontab')">待配送</div>
+        <div class="col myorder_padding" ng-class="pData.goodsreceipttab" ng-click="selecttab('goodsreceipttab')">待收货</div>
+        <div ng-if="false" class="col myorder_padding" ng-class="pData.servicetab" ng-click="selecttab('servicetab')">待服务</div>
+        <div class="col myorder_padding" ng-class="pData.commenttab" ng-click="selecttab('commenttab')">待评价</div>
+        <div ng-if="false" class="col myorder_padding" ng-class="pData.chaseratingstab" ng-click="selecttab('chaseratingstab')">待追评</div>
+      </div>
+    </ion-scroll>
+  </h2> -->
+  <!--<div class="ion-ios-arrow-right" ng-class="pData.barclass" style="text-align: right;font-size: 30px;"></div>-->
+  <!-- <div class="row bardiv_padding" ng-class="pData.barclass">
+    <div class="col col-90 bardiv_padding"></div>
+    <div class="col ion-ios-arrow-right myorder_bar_font"></div>
+  </div> -->
+</div>
+
+
+
+<ion-view view-title="我的订单">
+  <ion-content style="padding-top: 23%;background: #FAFAFA;">
+<!--     <style>
+      .item{
+        border: 0px;
+        padding: 0px;
+        /*margin-top: 3.5%;*/
+        border-bottom: 1px solid #DFDFDF;
+        border-top: 1px solid #DFDFDF;
+      }
+    </style> -->
+    <div style="padding:7px;"></div>
+    <div aslist style="padding:10px 0px 0px 0px;margin:0px;" item="false"  rcode="{{pData.myorderSQL}}" params="{{pData.myorderSQLcondition}}" list-events="pData.listEvents" temp-url="app_plugins/mall/order/views/myorder_list.html">
+    </div>
+    <div footerpadding></div>
+  </ion-content>
+</ion-view>

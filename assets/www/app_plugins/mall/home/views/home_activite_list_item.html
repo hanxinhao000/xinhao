@@ -1,0 +1,8 @@
+<!--商城专柜 模板-->
+<div ng-click="toClassDeatils('$index','{{value.COMMODITYCLASSID}}','{{value.STARTDATE}}','{{value.ENDDATE}}','{{value.ACTIVITIESTYPE}}','{{value.TITLE}}')" class="mall_home_mallActive_main" >
+  <div class="item mall_storage_back" >
+    <div ng-bind-html="value.CONTENT|imgFmt" class="active_item_img"></div>
+  </div>
+  <div mall-active-data mall-title="{{value.TITLE}}" start-time="{{value.STARTDATE}}" end-time="{{value.ENDDATE}}"  mall-type="{{value.ACTIVITIESTYPE }}" ></div>
+
+</div>

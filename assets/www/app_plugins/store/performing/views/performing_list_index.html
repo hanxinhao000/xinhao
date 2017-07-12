@@ -1,0 +1,23 @@
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="triph_topLine_quer"
+     right-click-fun="toSearch()"
+     title="{{pageData.title}}">
+</div>
+<ion-view>
+	<ion-content delegate-handle="mainScroll">
+		<!-- 列表 -->
+		<div class="list" item="false" aslist 
+			rcode="triph.commity.getStoreInfo" 
+			temp-url="app_plugins/store/performing/views/performing_item.html" list-events="pageData.List_Events" 
+			params="{{pageData.SqlParams}}">
+		</div>
+        <div footerpadding></div>
+	</ion-content>
+    <div class="avd_banner disable-user-behavior" id="avd_top_div" suspend-box="">
+        <a href="tel:18011111111" class="avd_banner_a_01"></a><a ng-click="scrollTop()" class="avd_banner_a_02">
+        </a>
+    </div>
+</ion-view>

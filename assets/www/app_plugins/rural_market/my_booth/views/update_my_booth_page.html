@@ -1,0 +1,96 @@
+<!-- 农村大市场 -->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="农村大市场">
+</div> 
+<ion-view view-title="农村大市场">
+    <ion-content>
+        <ion-list class="disable-user-behavior">
+            <div class="list">
+                <ion-item type="item-text-wrap" class="item" style="padding:0px;">
+                    <label class="item item-input item-select h-46">
+                        <div class="input-label-input">所属分类:</div>
+                        <select ng-model="pageData.class_id"  ng-options="item.ID as item.NAME for item in pageData.favoritesdata">
+                            <option value="">请选择</option>
+                        </select>
+                    </label>
+
+                    <label class="item item-input h-46">
+                        <span class="input-label-input">标题:</span>
+                        <input type="text" ng-model="pageData.title">
+                    </label>
+
+
+                    <label class="item item-input h-46">
+                        <span class="input-label-input">内容:</span>
+                    </label>
+                    <textarea class="textarea" ng-model="pageData.content" rows=10></textarea>
+
+                    <label class="item item-input h-46">
+                        <span class="input-label-input">价格(元):</span>
+                        <input type="number" ng-model="pageData.price">
+                    </label>
+                    <label class="item item-input h-46">
+                        <span class="input-label-input" style="max-width: 100%;white-space: normal;">上架商品收取<span ng-bind="pageData.vvalue"></span>元，系统从您的现金账户自动转至您的自救金账户</span>
+                    </label>
+
+                    <label class="item item-input item-select h-46">
+                        <div class="input-label-input">省:</div>
+                        <select ng-model="pageData.recvProvince" ng-options="province.PRONAME for province in cascadePCZ.provinces" required>
+                            <option value="">请选择</option>
+                        </select>
+                    </label>
+
+                    <label class="item item-input item-select h-46">
+                        <div class="input-label-input">市:</div>
+                        <select ng-model="pageData.recvCity" ng-options="city.CITYNAME for city in cascadePCZ.cities" required>
+                            <option value="">请选择</option>
+                        </select>
+                    </label>
+                    <label class="item item-input item-select h-46">
+                        <div class="input-label-input">区/县:</div>
+                        <select ng-model="pageData.recvArea" ng-options="zone.ZONENAME for zone in cascadePCZ.zones" required>
+                            <option value="">请选择</option>
+                        </select>
+                    </label>
+
+                    <label class="item item-input h-46">
+                        <span class="input-label-input">状态:</span>
+                        <span class="fs-12" ng-bind="pageData.statusEnum[pageData.status]"></span>
+                    </label>
+
+                    <div ng-if="pageData.status > 2">
+                        <label class="item item-input h-46" >
+                            <span class="input-label-input">审核说明:</span>
+                        </label>
+                        <textarea class="textarea" ng-bind="pageData.reviewRemarks" rows=6></textarea>
+                    </div>
+                    <div class="item item-body" ng-repeat="item in pageData.inputData track by $index">
+                        <div class="row">
+                            <img ng-if="!item.data" id="img_{{$index}}" class="col col-80" style="width:100%;height:100%;overflow:hidden;"  ng-src="{{item|hostFilter}}" >
+                            <img ng-if="item.data" id="img_{{$index}}" class="col col-80" style="width:100%;height:100%;overflow:hidden;"  ng-src="{{item.data}}" >
+                            <div class="col col-20" ng-click="delete(item)" >删除</div>
+                        </div>
+                    </div>
+                    <a  class="item " add-resource type="01" out-data="pageData.inputData" href="#">
+                        <img  style="vertical-align: middle;width: 15px;padding-bottom: 3px;" src="img/add_file_2_03.png">
+                        <span>添加照片</span>
+                    </a>
+                </ion-item>
+                <!--                <br><br><br><br>
+                                <img src="" style="height:0;width:0;">-->
+                <div footerpadding></div>
+            </div>
+        </ion-list>
+    </ion-content>
+    <div class="bar bar-footer ios-margin-button" ng-if="pageData.status != 6">
+        <button class="button button_with  myinfoborder-radius h-43 agriculture_project_title" ng-click="grounding()" ng-if="pageData.status == 1 || pageData.status == 4 || pageData.status == 7">上架
+        </button >
+        <button class="button button_with  myinfoborder-radius h-43 agriculture_project_title" ng-click="undercarriage()" ng-if="pageData.status > 1 && pageData.status < 4">下架
+        </button >
+        <button class="button button_with  myinfoborder-radius h-43 agriculture_project_title" ng-click="refund()" ng-if="pageData.status == 5">退款
+        </button>
+    </div>
+</ion-view>

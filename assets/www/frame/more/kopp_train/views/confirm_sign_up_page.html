@@ -1,0 +1,44 @@
+<!-- 现代理性农业科普培训详情 -->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="现代理性农业科普培训">
+</div>
+<ion-view view-title="现代理性农业科普培训">
+    <ion-content>
+        <ion-list class="disable-user-behavior">
+            <div class="list">
+                <ion-item type="item-text-wrap" class="item" style="padding:0px;">
+                    <label class="item item-input">
+                        <div style="padding:8px 10px 7px 0px;">
+                            <h3 class="cl-03 content-title" style="margin-bottom:0px;">{{pageData.pcTitle}}</h3></div>
+                    </label>
+                    <label class="item item-input">
+                        <span class="input-label-nw">开始时间：</span>
+                        <label ng-bind="pageData.reltime"></label>
+                    </label>
+                    <label  class="item item-input" style="padding:6px 10px 5px 16px;">
+                        <span class="input-label-nw">报名人数(人)：</span>
+                        <!-- <input type="number" ng-model="pageData.peopleNumber" class="ng-pristine ng-untouched ng-valid"> -->
+                        <label ng-bind="pageData.peopleNumber"></label>人
+                    </label>
+                    <label class="item item-input">
+                        <span class="input-label">费用(人/元)：</span>
+                        <label ng-bind="pageData.cost | ptoy"></label>元
+                    </label>
+                    <label class="item item-input">
+                        <span class="input-label">总费用(元)：</span>
+                        <label ng-bind="pageData.cost | ptoy"></label>元
+                    </label>
+                </ion-item>
+            </div>
+        </ion-list>
+        <div footerpadding></div>
+    </ion-content>
+    <div class="bar bar-footer ios-margin-button">
+        <tr>
+        <button ng-click="confirmSignUp()" class="button button_with  myinfoborder-radius h-43" style="margin-left: 1px;font-size: 14px;">确认报名</button>
+        </tr>
+    </div>
+</ion-view>

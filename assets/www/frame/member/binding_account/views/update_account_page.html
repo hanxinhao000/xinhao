@@ -1,0 +1,67 @@
+
+<!-- 我的地址列表 -->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     title="绑定交易账号">
+</div>
+<ion-view view-title="绑定交易账号">
+    <ion-content>
+        <!-- 支付宝 -->
+        <div class="item" ng-if="pageData.type == 'alipay'">
+            <div class="col">
+                <label class="item myinfoborder-radius item-input">
+                    <input type="text" placeholder="请输入支付宝账号"  ng-model="pageData.account" class="ng-pristine ng-untouched ng-valid">
+                </label>
+            </div>
+            <div class="col">
+                <label class="item myinfoborder-radius item-input">
+                    <input type="password" placeholder="请输入支付密码"  ng-model="pageData.paypassword" class="ng-pristine ng-untouched ng-valid">
+                </label>
+            </div>
+            <div class="row">
+                <button  class="button editpwd_mauto ng-binding editpwd_button button-block button-positive" ng-click="SaveClick()" >确认</button>
+            </div>
+        </div>
+        <!-- 微信 -->
+        <div class="item" ng-if="pageData.type == 'wechat'">
+            <div class="col">
+                <label class="item myinfoborder-radius item-input">
+                    <input type="text" placeholder="请输入微信账号"  ng-model="pageData.account" class="ng-pristine ng-untouched ng-valid">
+                </label>
+            </div>
+            <div class="col">
+                <label class="item myinfoborder-radius item-input">
+                    <input type="password" placeholder="请输入支付密码"  ng-model="pageData.paypassword" class="ng-pristine ng-untouched ng-valid">
+                </label>
+            </div>
+            <div class="row">
+                <button  class="button editpwd_mauto ng-binding editpwd_button button-block button-positive" ng-click="SaveClick()" >确认</button>
+            </div>
+        </div>
+        <!--银行卡-->
+        <div class="item" ng-if="pageData.type == 'bankcard'">
+            <div class="col">
+                <label class="item myinfoborder-radius item-input">
+                    <input type="text" placeholder="请输入卡号"  ng-model="pageData.account" class="ng-pristine ng-untouched ng-valid">
+                </label>
+            </div>
+            <div class="col">
+                <label class="item myinfoborder-radius item-input">
+                    <input type="text" placeholder="请输入银行预留手机号"  ng-model="pageData.phone" class="ng-pristine ng-untouched ng-valid">
+                </label>
+            </div>
+            <div class="col">
+                <label class="item myinfoborder-radius item-input">
+                    <input type="password" placeholder="请输入支付密码"  ng-model="pageData.paypassword" class="ng-pristine ng-untouched ng-valid">
+                </label>
+            </div>
+            <div class="row">
+                <button  class="button ng-binding editpwd_mauto editpwd_button button-block button-positive" ng-click="SaveClick()" >确认</button>
+            </div>
+        </div>
+        <div footerpadding></div>
+    </ion-content>
+</ion-view>

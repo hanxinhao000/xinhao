@@ -1,0 +1,77 @@
+<div class="card" >
+	<div class="row" ng-click="orderDetails(value.ID)">
+	<input type="hidden" value="{{value.ID}}">
+		<div class="col-33 CM" style="padding-right:2px;">
+			<img ng-src="{{value.MAINIMAGES|hostFilter}}" class="order_right_img" >
+		</div>
+		<div class="col cl" style="padding-left:0px;">
+			<!-- <p ng-bind="value.ORDERCODE"></p> -->
+			<p class="fs-14" ng-bind="value.NAME"></p>
+			<p class="fs-12" ng-bind="value.SPECNAME"></p>
+		</div>
+		<div class="col-25" style="padding-top:7px;padding-right:0px;">
+			<p class="cr">￥<i ng-bind="value.SALEPRICE|number:2"></i></p>
+			<p class="cr">x&nbsp;<i ng-bind="value.SALENUMBER"></i></p>
+		</div>
+	</div>
+	<div class="row" style="border-bottom:1px solid #e3e3e3;border-top:1px solid #e3e3e3;padding-bottom:30px;height:22px;">
+		<div class="col cr">
+			共<i ng-bind="value.SALENUMBER"></i>件产品
+				<span style="padding-left:6px;">合计:￥
+				<i ng-bind="value.TOTALPRICE|number:2"></i>
+				</span>
+		</div>
+	</div>
+		<!--景区订单提交界面  MALL_CLASS=='1'-->
+		<!--酒店订单提交界面 MALL_CLASS=='2'-->
+		<!--餐饮订单提交界面 MALL_CLASS=='3'-->
+		<!--演艺订单提交界面 MALL_CLASS=='4'-->
+		<!--特产类商品提交界面 MALL_CLASS=='5'-->
+		<!--租车订单提交界面 MALL_CLASS=='6'-->
+		<!--优惠组合订单提交界面 MALL_CLASS=='7'-->
+		<!--跟团游订单提交界面 MALL_CLASS=='8' -->
+	<div  class="row" style="padding-bottom:0px;" 
+		ng-if="value.MALL_CLASS=='5'">
+		<!--特产类商品订单-->
+		<div class="col cr">
+			<button ng-click="deleteOrder('{{value.ID}}','{{value.MALL_CLASS}}',{{value.ORDERSTATE}})" ng-if="value.ORDERSTATE==9||value.ORDERSTATE==8||value.ORDERSTATE==2" class="button order_btn del_btn">删除</button>
+			<button ng-click="toPayment('{{value.ID}}')" ng-if="value.ORDERSTATE==2" class="button order_btn pay_btn">去支付</button>
+			<button ng-click="toUse('{{value.ID}}')" ng-if="value.ORDERSTATE==3" class="button order_btn del_btn">未使用</button>
+			<button ng-click="toUse('{{value.ID}}')" ng-if="value.ORDERSTATE==320" class="button order_btn del_btn">未使用</button>
+			<button ng-click="applyReturOrderPrice('{{value.ID}}')" ng-if="value.ORDERSTATE==4" class="button order_btn return_meony_btn">申请退款</button>
+			<button ng-click="toApplyReturnMeony('{{value.ID}}','{{value.TOTALPRICE}}')" ng-if="value.ORDERSTATE==5||value.ORDERSTATE==8" class="button order_btn return_meony_btn">申请退货</button>
+			<button ng-if="value.ORDERSTATE==11" class="button order_btn del_btn">申请退款中</button>
+			<button  ng-if="value.ORDERSTATE==12" class="button order_btn del_btn">退款成功</button>
+			<button ng-click="confrimRecv('{{value.ID}}')" ng-if="value.ORDERSTATE==5" class="button order_btn confirm_rec_btn">确认收货</button>
+			<button ng-click="myorderEvaluate('{{value.ID}}','{{value.ORDERSTATE}}')" ng-if="value.ORDERSTATE==8||value.ORDERSTATE==82" class="button order_btn evaluate_btn">评价</button>
+		</div>
+	</div>
+	<div  class="row" style="padding-bottom:0px;" 
+		ng-if="value.MALL_CLASS=='1'||value.MALL_CLASS=='3'||value.MALL_CLASS=='4'||value.MALL_CLASS=='7'||value.MALL_CLASS=='8'">
+		<!--智游宝类订单-->
+		<div class="col cr">
+			<button ng-click="deleteOrder('{{value.ID}}','{{value.MALL_CLASS}}',{{value.ORDERSTATE}})" ng-if="value.ORDERSTATE==9||value.ORDERSTATE==8||value.ORDERSTATE==2" class="button order_btn del_btn">删除</button>
+			<button ng-click="toPayment('{{value.ID}}')" ng-if="value.ORDERSTATE==2" class="button order_btn pay_btn">去支付</button>
+			<button ng-click="toUse('{{value.ID}}')" ng-if="value.ORDERSTATE==3" class="button order_btn del_btn">未使用</button>
+			<button ng-click="toUse('{{value.ID}}')" ng-if="value.ORDERSTATE==320" class="button order_btn del_btn">未使用</button>
+			<button  ng-if="value.ORDERSTATE==11" class="button order_btn del_btn">申请退款中</button>
+			<button ng-if="value.ORDERSTATE==12" class="button order_btn del_btn">退款成功</button>
+			<button ng-click="applyReturOrderPrice('{{value.ID}}')" ng-if="value.ORDERSTATE==320" class="button order_btn return_meony_btn">申请退款</button>
+			<button ng-click="confrimRecv('{{value.ID}}')" ng-if="value.ORDERSTATE==5" class="button order_btn confirm_rec_btn">确认收货</button>
+			<button ng-click="myorderEvaluate('{{value.ID}}','{{value.ORDERSTATE}}')" ng-if="value.ORDERSTATE==8||value.ORDERSTATE==82" class="button order_btn evaluate_btn">评价</button>
+		</div>
+	</div>
+	<div  class="row" style="padding-bottom:0px;" ng-if="value.MALL_CLASS=='2'||value.MALL_CLASS=='6'">
+		<!--酒店租车类订单-->
+		<div class="col cr">
+			<button ng-click="deleteOrder('{{value.ID}}','{{value.MALL_CLASS}}',{{value.ORDERSTATE}})" ng-if="value.ORDERSTATE==9||value.ORDERSTATE==8||value.ORDERSTATE==2" class="button order_btn del_btn">删除</button>
+			<button ng-click="toPayment('{{value.ID}}')" ng-if="value.ORDERSTATE==2" class="button order_btn pay_btn">去支付</button>
+			<button ng-click="toUse('{{value.ID}}')" ng-if="value.ORDERSTATE==3" class="button order_btn del_btn">订单处理中</button>
+			<button ng-click="toUse('{{value.ID}}')" ng-if="value.ORDERSTATE==320" class="button order_btn del_btn">未使用</button>
+			<button ng-click="applyReturOrderPrice('{{value.ID}}')" ng-if="value.ORDERSTATE==320" class="button order_btn return_meony_btn">申请退款</button>
+			<button  ng-if="value.ORDERSTATE==11" class="button order_btn del_btn">申请退款中</button>
+			<button ng-if="value.ORDERSTATE==12" class="button order_btn del_btn">退款成功</button>
+			<button ng-click="myorderEvaluate('{{value.ID}}','{{value.ORDERSTATE}}')" ng-if="value.ORDERSTATE==8||value.ORDERSTATE==82" class="button order_btn evaluate_btn">评价</button>
+		</div>
+	</div>
+</div>

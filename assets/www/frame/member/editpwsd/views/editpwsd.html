@@ -1,0 +1,72 @@
+<!--<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     title="修改密码">
+</div>-->
+<style>
+    .input-label {
+        display: table;
+        padding: 7px 10px 7px 0px;
+        max-width: 200px;
+        width: 20%;
+        color: #666666;
+        font-size: 15px;
+    }
+    textarea, input[type="text"], input[type="password"], input[type="datetime"], 
+    input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"],
+    input[type="week"], input[type="number"], input[type="email"], input[type="url"], 
+    input[type="search"], input[type="tel"], input[type="color"] {
+        display: block;
+        padding-top: 2px;
+        padding-left: 0;
+        height: 34px;
+        color: #888888;
+        vertical-align: middle;
+        font-size: 15px;
+        line-height: 16px;
+    }
+</style>
+<!--修改密码-->
+<ion-view>
+    
+    <ion-nav-buttons side="left">
+        <div  ng-click="back()"  class="public_comment_header_bar_padding_left">
+            <i class="icon head_left_back"></i>
+        </div>
+    </ion-nav-buttons>
+
+    <ion-nav-title>
+        <div class="fs_4">
+            修改密码
+        </div>
+    </ion-nav-title>
+    
+  <ion-content>
+    <div class="list">
+      <label class="item item-input" style="margin-top: 7px;">
+        <span class="input-label" >旧密码:</span>
+        <input type="password" ng-model="pData.User_usedPass" placeholder="请输入旧密码" keyboard-attach>
+      </label>
+      <label class="item item-input" style="margin-top: 7px;">
+        <span class="input-label" >新密码:</span>
+        <input type="password" ng-model="pData.User_NewPass" placeholder="请输入新密码" keyboard-attach>
+      </label>
+      <label class="item item-input" style="margin-top: 7px;">
+        <span class="input-label" >验证新密码:</span>
+        <input type="password" ng-model="pData.User_RepeatPass" placeholder="请重复新密码" keyboard-attach>
+      </label>
+    </div>
+
+      <div class="row">
+        <div class="col">
+          <button  style="background: rgb(0,218,216);border-color: rgb(0,218,216);color:#ffffff;font-size: 17px;"
+              class="button button_with ng-binding myinfoborder-radius h-43 agriculture_project_title button-calm" ng-click="UpdatePwd()">
+            保存
+          </button>
+
+        </div>
+      </div>
+  </ion-content>
+</ion-view>

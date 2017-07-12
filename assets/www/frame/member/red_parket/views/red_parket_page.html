@@ -1,0 +1,38 @@
+<!-- 红包列表 -->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     right="发红包"
+     right-click-fun="sendParket()"
+     title="{{pageData.title}}">
+</div>
+<ion-view view-title="{{pageData.title}}" >
+  <ion-content>
+
+    <div class="tabs-striped tabs-top tabs-background-light tabs-color-balanced">
+      <div class="tabs" style="width:100%;position:static;">
+        <a style="{{item.style}}" ng-click="selectCards('{{$index}}')" ng-class="[item.CSS,'tab-item']" ng-repeat="item in pageData.comdSelectCards" ng-bind="item.title">
+        </a>
+      </div>
+    </div>
+
+    <div class="list">
+
+      <div class="item " style="text-align: center;">
+        <p ng-if="pageData.type=='0'">已收红包总数:{{pageData.money_count}},总金额{{pageData.packet_number|ptoy}}元</p>
+        <p ng-if="pageData.type=='1'">已发红包总数:{{pageData.money_count}},总金额{{pageData.packet_number|ptoy}}元</p>
+      </div>
+
+    </div>
+
+    <div item="false" ng-if="pageData.type=='0'" style="padding:0px;margin:0px;" aslist rcode="get_red_packet_bymemberid_info"
+         list-events="pageData.listEvents" temp-url="frame/member/red_parket/views/red_parket_off_item.html" params="{{pageData.params}}" >
+    </div>
+    <div item="false" ng-if="pageData.type=='1'"  style="padding:0px;margin:0px;" aslist rcode="get_red_packet_byaccount_info"
+         list-events="pageData.listEvents" temp-url="frame/member/red_parket/views/red_parket_item.html" params="{{pageData.params}}" >
+    </div>
+      <div footerpadding></div>
+  </ion-content>
+</ion-view>

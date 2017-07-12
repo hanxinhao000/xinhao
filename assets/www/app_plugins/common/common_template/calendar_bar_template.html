@@ -1,0 +1,63 @@
+<!-- 日历bar模板 -->
+<!-- {{optionsParams}} goData()-->
+
+<div class="row"  style="padding:0 20px 0 10px;">
+	<div ng-if = "startDateFlag" ng-repeat="item in selectDateTab | limitTo:3" class="col col-25 {{seletClickCss =='0'&& $index==0?'calendar_bar_selected_off':datecss}}"  style="" ng-click="selectClick('{{item}}',$event)">{{item.date |dateFormatToMonth }}<br>{{item.price!=""?'￥':''}}{{item.price}}
+  </div>
+	<div ng-if = "startDateFlag" class="col col-25 " style="line-height: 30px;" ng-click="toOtherDate()">其他日期
+		<i class="icon ion-chevron-right icon-accessory more_button" style="padding:2px;line-height:20px;  padding: 5px 0px;"></i>
+	</div>
+
+	<div ng-if="!startDateFlag"  class="col col-75 " style="margin-right: 2px;line-height:40px; text-align:center;padding:2px;">
+        {{startPageDate.date | dateFormatToMonthYear:"go"}},{{endPageDate.date | dateFormatToMonthYear:"stop"}}
+	</div>
+
+  <div ng-if="!startDateFlag" class="col col-25 " style="line-height: 30px;" ng-click="toOtherDate()">
+    {{liveData==0?'其他日期':'共'+liveData+'天'}}
+  	<i class="icon ion-chevron-right icon-accessory more_button" style="padding:2px;line-height:20px;  padding: 5px 0px;"></i>
+  </div>
+</div>
+
+
+<!--本页弹出内容 start-->
+<!-- <script id="commonModalTemplate.html" type="text/ng-template">
+    <ion-modal-view style="background-color: rgba(255,255,255,0.0);">
+      <div class="modal">
+        <ion-content style="padding-top:15px;margin-bottom: 80px;">
+        <div class="row">
+			  <div ng-repeat="week in weekday"  style="text-align:center;" class="col">{{week}}</div>
+  		</div>
+      
+  	
+      <br>
+      <div class="row col " style="text-align:center;">{{countPagYears}}</div>
+      <br>
+      <div class="row" style="line-height: 15px;" ng-repeat="row in contenDatas">
+          <div ng-repeat = "link in row track by $index" class="col datepicker_col_align {{link.type==2&&link.isAccess?'':'datepicker_col_align_notselect'}}"  ng-click="selectDateClick('{{link}}',$event)" >
+            {{link.day==0?'':link.day}}<br>{{link.price!=""?'￥'+link.price:''}}
+          </div>
+      </div>
+
+
+      <br>
+      <div class="row col " style="text-align:center;">{{nextPagYears}}</div>
+      
+      <br>
+      <div class="row" style="line-height: 15px;" ng-repeat="row in nextDatas">
+          <div ng-repeat = "link in row track by $index" class="col datepicker_col_align {{link.type==2&&link.isAccess?'':'datepicker_col_align_notselect'}}"  ng-click="selectDateClick('{{link}}',$event)" >
+            {{link.day==0?'':link.day}}<br>{{link.price!=""?'￥'+link.price:''}}
+          <div>
+      </div>
+
+    
+    </div>
+      </ion-content >
+          <div class="bar bar-footer row" style="background: #F5F5F5;position: fixed;padding: 0 20%;height: 30px;bottom: 50px;
+    background-size: 0px;">
+              <button ng-click="closeModal()" class="col button button-assertive">
+                  确定
+              </button>
+          </div>
+        </div>
+  </ion-modal-view>
+</script> --><!--本页弹出内容 end-->

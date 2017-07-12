@@ -1,0 +1,38 @@
+<style>
+  .item-complex .item-content, .item-radio .item-content{
+    padding: 5px 0px 0px 0px;
+  }
+</style>
+<ion-item  class="item-thumbnail-right item-icon-left  item-icon-right item-remove-animate ng-binding item-complex">
+  <div class="item-checkbox">
+    <label class="checkbox" style="width: 0px">
+      <input type="checkbox"  name="shopmoney" value="{{value.SALEPRICE}}" ng-click="ShopMoney()">
+    </label>
+  </div>
+  <div class="row" >
+    <table class="full-table">
+      <tr>
+        <td style="width:96px;height:96px;overflow:hidden;" ng-click="ShopDetails(value.COMMODITYID)">
+          <img style="width:96px;height:96px" ng-src="{{value.MAINIMAGES | hostFilter}}">
+        </td>
+        <td style="vertical-align: middle;" class="pl-5">
+         <p class="fs-13" ng-bind="value.NAME" style="white-space:normal;color:#333333;"></p>
+         <span class="cl-12 fs-12" ng-bind="value.SPECNAME"></span>
+         <div class="row">
+           <div class="col-50">
+             <span style="color: red">￥<span ng-bind="value.SALEPRICE"></span></span>
+           </div>
+           <div class="col-50 cr pr-10">
+             x <span name="salenumber" ng-bind="value.SALENUMBER" ></span>
+           </div>
+         </div>
+         <div style="display:none" name="orderid" ng-bind="value.ID"></div>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <ion-option-button class="button-assertive" style="color:#FFFFFF;background:#666666;" ng-click="DeleteShopOrder(value.ID)">
+    删除
+  </ion-option-button>
+</ion-item>

@@ -1,0 +1,19 @@
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     title="分销中心">
+ </div>
+<ion-view view-title="分销中心">
+  <ion-content >
+  <div class="dc_details_title">您的邀请码<em style="font-size: 20px;color: red">{{pageData.invitationcode}}</em></div>
+        <div class="row dc_list_grade">
+         <div class="col col-30"><span>层级</span></div>
+         <div class="col col-30"><span>人数</span></div>
+         <div class="col col-30"><span>累计消费金额</span></div>
+        </div>
+        <hr/>
+		<div style="padding:0px;margin:0px;" item="false" aslist rcode="distributionCenter" temp-url="frame/member/task/distribution/views/distribution_list.html" list-events="pageData.list_events" params="{{pageData.params}}"></div>
+  </ion-content>
+</ion-view>

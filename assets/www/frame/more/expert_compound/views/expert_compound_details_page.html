@@ -1,0 +1,63 @@
+<!-- 科普引智专家大院详情 -->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="科普引智专家大院">
+</div>
+<ion-view view-title="科普引智专家大院">
+  <ion-content>
+    <div class="split-line"></div>
+		<div class="bg-2 am-content pt-13 pb-13">
+      <div><h3 class="cl-03 content-title" style="margin-bottom:0px;">{{pageData.title}}</h3></div>
+    </div>
+    <div class="diveline"></div>
+    <div class="bg-2 am-content pt-10 pb-10">
+      <table class="full-table fs-10 ">
+        <tr class="full-w">
+          <td class="cl-02">
+            <span>发布时间:{{pageData.pubtime}}</span>
+          </td>
+          <td class="cl-03" style="text-align:right;">
+            <span>发布人:{{pageData.membername}}</span>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="diveline"></div>
+    <div class="bg-2 am-content pb-20">
+      <div ng-bind-html="pageData.content|imgFmt"></div>
+    </div>
+    <div footerpadding></div>
+  </ion-content>
+  <div class="bar bar-footer-flower">
+    <div class="row col-60" style="padding:0px;margin:0px;    line-height: 36px;">
+      <div style="padding:0 7px;    line-height: 46px;" ng-click="flower(pageData.id)">
+        <img style="width: 17px;height: auto;" src="img/neirong-1.png">
+      </div>
+      <div style="padding-right:30px;">
+         <span>{{pageData.flowerNumber}}</span>
+      </div>
+      <div style="padding:0 7px;    line-height: 46px;" ng-click="likes(pageData.id)">
+        <img style="width: 17px;height: auto;" src="img/neirong-2.png">
+      </div>
+      <div style="padding-right:30px;">
+         <span>{{pageData.LikesNumber}}</span>
+      </div>
+      <div style="padding:0 7px;   line-height: 46px;" ng-click="comment(pageData.id)">
+        <img style="width: 17px;height: auto;" src="img/neirong-3.png">
+      </div>
+      <div style="padding-right:30px;">
+         <span>{{pageData.count}}</span>
+      </div>
+    </div>
+    <div class="row" style="padding:0px;margin:0px;  width:40%;  line-height: 36px;" ng-click="thankSharing(pageData.id)">
+      <div style="padding:0 7px;width: 60%;text-align: right;line-height: 46px;">
+        <img style="width: 17px;height: auto;" src="img/neirong-4.png">
+      </div>
+      <div>
+         <span>感谢分享</span>
+      </div>
+    </div>
+  </div>
+</ion-view>

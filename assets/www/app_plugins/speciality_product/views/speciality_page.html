@@ -1,0 +1,22 @@
+<!--特产首页-->
+<div class="bar bar-heade" style="background: transparent;height: 52px;padding:0px;">
+    <div class="row" style="width:100%;padding:0px;padding-top:5px;padding-left:10px;">
+        <div style="width:16%;text-align:left;" ng-click="goBack()">
+            <img src="img/techan/techan_01.png" style="width: 20px;height: auto;">
+        </div>
+        <div class="cl-10 fs-16"style="width:68%;text-align: -webkit-center;">
+            <div>特产</div>
+        </div>
+        <div style="width:8%;text-align:center;" ng-click="toSearch()">
+            <img src="img/techan/techan_02.png" style="width: 20px;height: auto;">
+        </div>
+        <div style="width:8%;text-align:center;" ng-click="message()">
+            <img src="img/techan/techan_03.png" style="width: 20px;height: auto;">
+        </div>
+    </div>
+</div>
+<ion-content class="bg-7" style="padding-top: 0px;" delegate-handle="mainScroll">
+    <div ng-include="'app_plugins/speciality_product/views/speciality_index.html'"></div>
+</ion-content>
+    
+<div suspend-box></div>

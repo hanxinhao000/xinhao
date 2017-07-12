@@ -1,0 +1,46 @@
+<!--待接单订单列表-->
+<div class="item-box  bg-2">
+  <a style="border-bottom:0px;" class="item item-thumbnail-left" ng-click="orderDetails(value.ID)">
+  <img ng-src="{{value.SPECIMAGES|hostFilter}}" class="rd-6" >
+  <h3 style="color:#010101;" ng-bind="value.COMMODITYNAME"></h3>
+<h4 class="fs-12 cl-02">订单编号:<i ng-bind="value.ORDERCODE"></i>  </h4>
+  <table class="full-table fs-12 cl-02 pt-5">
+    <colgroup style="width:60%;"></colgroup>
+    <colgroup style="width:40%;"></colgroup>
+    <tr class="full-w">
+      <td colspan="2">
+        <span>订单状态:</span>
+        <span ng-bind="value.ORDERSTATE|enum:OrderStateEnum"></span>
+      </td>
+    </tr>
+    <tr class="full-w">
+      <td>
+         <span>数量:</span><i ng-bind="value.SALENUMBER"></i>
+      </td>
+      <td class="pr-10" style="text-align:right;">
+          总价<span class="cl-03">￥<i  ng-bind="value.TOTALPRICE|number:2"></i></span>
+      </td>
+    </tr>
+    <tr class="full-w">
+      <td colspan="2">
+        <span >送货方式:</span>
+        <span ng-bind="value.SHIPPING_METHOD|enum:OrderShippingMethodEnum"></span>
+      </td>
+    </tr>
+  </table>
+</a>
+	
+<div class="full-w CM bg-2">
+  <div class="diveline bg-6" style="width:90%;margin: 0px 15px 0px 16px;"></div>
+</div>
+<div class="fs-12 row" style="margin:-10px;">
+    <div class="col cm">
+     <a style="line-height:42px;" class="button icon-left ion-ios-checkmark button-clear cl-05" ng-click="recvOrder('{{value.ID}}')">接单</a>
+    </div>
+    <div class="col cm">
+       <a style="line-height:42px;" class="button icon-left ion-android-cancel button-clear cl-05" ng-click="refuseOrder('{{value.ID}}')">拒绝接单</a>
+    </div>
+</div>
+<div class="full-w CM bg-2" style="border-bottom:1px solid #ddd;"></div>
+
+</div>

@@ -1,0 +1,28 @@
+<!--红包记录-->
+<style>
+</style>
+<!--<div  class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     title="{{pData.title}}" >
+</div>-->
+<ion-view >
+    <ion-nav-buttons side="left">
+        <div class="public_comment_header_bar_padding_left" ng-click="back()">
+            <i class="icon head_left_back"></i>
+        </div>
+    </ion-nav-buttons>
+    <ion-nav-title>
+        <div class="fs_4">{{pData.title}}</div>
+    </ion-nav-title>
+    
+    <ion-content >
+        
+        <div style="padding:0px 0 10px 0 ;margin:0px;" item="false" 
+             aslist rcode="uoou.daynamic.redpacket.getRedPackedInfo" temp-url="app_plugins/uoou/dynamic/locat_tyrant/views/locat_tyrant_recode_item_page.html" 
+             list-events="pData.listEvents" params="{{pData.params}}"></div>
+        <div footerpadding></div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,74 @@
+<div class="div_background div_border">
+  <div class="row head_padding_bottom">
+    <div class="col col-10" style="max-width: 100%">
+
+      <div class="ordercomment_imgtest">
+        <figure class="ordercommentimg_center">
+          <div>
+
+            <img ng-src="{{value.WXHEADIMG=='' ? 'img/default_head.png':value.WXHEADIMG| hostFilter}}" />
+          </div>
+        </figure>
+      </div>
+    </div>
+    <div class="col col-73 headtext_line-height" ng-show="{{value.ISANONYMOUS==''}}">{{value.MEMBERNAME}}</div>
+     <div class="col col-73 headtext_line-height" ng-show="{{value.ISANONYMOUS=='1'}}">1匿名用户</div>
+    <div class="col comment_right headtext_line-height head_datetext_color">{{value.EVALDATETIME1}}</div>
+  </div>
+
+  <div class="row div_border-top">
+    <div class="col">
+      <div ng-switch="{{value.STARVALUE}}">
+        <div ng-switch-when="1" class="displaystars">
+          <i class="ion-star star_color"></i>
+        </div>
+        <div ng-switch-when="2" class="displaystars">
+          <i class="ion-star star_color"></i>
+          <i class="ion-star star_color"></i>
+        </div>
+        <div ng-switch-when="3" class="displaystars">
+          <i class="ion-star star_color"></i>
+          <i class="ion-star star_color"></i>
+          <i class="ion-star star_color"></i>
+        </div>
+        <div ng-switch-when="4" class="displaystars">
+          <i class="ion-star star_color"></i>
+          <i class="ion-star star_color"></i>
+          <i class="ion-star star_color"></i>
+          <i class="ion-star star_color"></i>
+        </div>
+        <div ng-switch-when="5" class="displaystars">
+          <i class="ion-star star_color"></i>
+          <i class="ion-star star_color"></i>
+          <i class="ion-star star_color"></i>
+          <i class="ion-star star_color"></i>
+          <i class="ion-star star_color"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col" style="white-space: initial;">
+     asdasasd11 {{value.CONTENT1}}
+    </div>
+  </div>
+
+  <div class="row div_bottom_top">
+    <div class="col date_text_color" >
+      购买时间:<span>{{value.PAYMENTDATE}}</span>
+    </div>
+  </div>
+
+  <div class="row div_zuiping_padding_top" ng-show="{{value.CONTENT2!=''}}">
+    <div class="col">
+      <span class="span_zhuiping_div_color">追评:</span>{{value.CONTENT2}}
+    </div>
+  </div>
+
+  <div class="row" ng-show="{{value.CONTENT2!=''}}">
+    <div class="col comment_right head_datetext_color">
+      {{value.EVALDATETIME2}}
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,90 @@
+<!--个人动态-->
+
+<!--<div class="bar bar-heade bar-light"
+     nav-bar
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     left-css="head_left_back"
+     title="{{pData.title}}"
+     right="{{pData.rightDiv}}"
+     right-click-fun="send()">
+</div>-->
+<ion-view>
+    <ion-nav-buttons side="left">
+        <div class="public_comment_header_bar_padding_left" ng-click="back()">
+            <i class="icon head_left_back"></i>
+        </div>
+    </ion-nav-buttons>
+    <ion-nav-title>
+        <div class="fs_4">{{pData.title}}</div>
+    </ion-nav-title>
+    <ion-nav-buttons side="right">
+        <div class="fs_4" ng-click="send()">
+           
+        </div>
+    </ion-nav-buttons>
+
+    
+    <ion-content >
+        <div ng-if="pData.pageShow">
+            <div class="list">
+
+                <div class="item item-thumbnail-left" href="#">
+                    <img ng-if="pData.memberInfo.WXHEADIMG != null" ng-src="{{pData.memberInfo.WXHEADIMG| hostFilter}}" style="margin-top: 6px;margin-left: 10px;width: 55px;height: 55px;">
+                    <img ng-if="pData.memberInfo.WXHEADIMG == null" src="img/default_head.png"  stlye="margin-top: 6px;width: 55px;height: 55px;margin-left: 10px;">
+                    <div class="row">
+                        <div class="col-66" style="width: 90%;display: inline-block;vertical-align: top;">           
+                            <div class="fs-16" style="text-align:  middle; line-height:20px;">
+                                <span style=" line-height:  20px;white-space: initial" >{{pData.memberInfo.MEMBERNAME}}
+                                    &nbsp;&nbsp;
+                                </span>
+                                
+                                <span ng-if="pData.remarkName != ''" style="  line-height: 20px ; white-space: initial">
+                                    ({{pData.remarkName}})&nbsp;&nbsp;
+                                </span>
+                                    
+                                <span ng-if="pData.messageShow" ng-click="editRemakerName()" style="height: 20px;  line-height: 20px;width: 14px;">
+                                    <img  src="app_plugins/uoou/dynamic/friend_dynamic/img/3.9_5.png" style="width: 14px;height: 14px; line-height: 20px;">
+                                </span>
+                            </div>
+                            <span>账号:&nbsp;{{pData.memberInfo.ACCOUNT_MEMBER}}</span>
+                            <div ng-bind="pData.memebr_vip==''?'&nbsp;':pData.memebr_vip"></div>
+                        </div>
+                        <div class="col-33" style="text-align: right;">
+                            <img ng-if="pData.showStore" src="app_plugins/uoou/contacts/img/3.7_2.png" style="width: 25px;margin-top: 8px;"> 
+                            <div >
+
+                                <a ng-click="toBrowserPag()">访问量({{pData.memberInfo.BROWSE_NUM==''?'0':pData.memberInfo.BROWSE_NUM}})</a>
+                                <!--                            <a ng-if="pData.messageShow" ng-click="editRemakerName()">备注</a>-->
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!--谢超，2017年1月12日10:29:25再次修改显示顺序-->
+                <div class="row" style="background:#FFFFFF;    margin-bottom: 3px;">
+                    <div class="col" style="text-align:center;" ng-click="toUserInfo()">查看资料</div>                   
+                    <div class="col" style="text-align:center;" ng-if="pData.followMyShow" ng-click="followMy()" ng-bind="pData.followMyShowMsg"></div>                   
+                    <div class="col" style="text-align:center;" ng-if="pData.showStore" ng-click="toStore()">进入店铺</div>
+                    <div class="col" style="text-align:center;" ng-if="pData.messageShow" ng-click="toMessage()">发消息</div>
+                    <div class="col" style="text-align:center;" ng-if="pData.addFriendShow" ng-click="addFriendfun()">加好友</div>
+                </div>
+            </div>
+
+            <div item="false"  style="margin:0px;" aslist rcode="uoou.dynamic.my_dynamic"
+                 list-events="pData.listEvents" repeatdata = "pData.repeatdata" beforeProcess temp-url="app_plugins/uoou/dynamic/friend_dynamic/views/my_dynamic_item.html" params="{{pData.params}}" >
+            </div>
+        </div>
+        <div ng-if="!pData.pageShow">
+            <div class="row" style="    padding: 20%;">
+                <div class="col" style="text-align: center;" >
+                    <span >&nbsp;&nbsp;&nbsp;&nbsp;对不起,您还不是会员无法查看他人的个人动态,开通会员后将享受更多权限!</span>
+                    <button ng-click="toOpenMember()" class="button button-assertive">
+                        开通会员
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div footerpadding></div>
+    </ion-content>
+</ion-view>

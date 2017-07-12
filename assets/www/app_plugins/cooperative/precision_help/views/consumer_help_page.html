@@ -1,0 +1,20 @@
+<!-- 产业扶贫手拉手社会精准帮扶 -->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="产业扶贫手拉手社会精准帮扶">
+</div> 
+<ion-view view-title="产业扶贫手拉手社会精准帮扶">
+    <ion-content>
+        <div class="bg-2 fs-14 talign-c pt-20 pb-20">
+            要么伸手帮农民，要么花钱养医生
+        </div>
+        <div ng-repeat="item in pageData.role">
+            <a class="item  item-icon-right ng-binding" ng-click="Jump('{{item.ID}}')">
+                <span class="fs-12" ng-bind="item.ROLE_DESC"></span>
+                <i class="icon ion-chevron-right icon-accessory"></i>
+            </a>
+        </div>          
+    </ion-content>
+</ion-view>

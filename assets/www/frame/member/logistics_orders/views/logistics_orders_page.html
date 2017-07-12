@@ -1,0 +1,39 @@
+<!-- 物流接单 -->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="物流接单"
+     right-css="header_title fs_4"
+     right="我的接单"
+     right-click-fun="myOrders()">
+</div>
+<ion-view view-title="物流接单">
+    <ion-content>
+        <div style="margin-bottom:0px;">
+            <ion-item type="item-text-wrap" class="item" style="padding:0px;">
+                <label  class="item item-input" style="padding:6px 10px 5px 16px;">
+                    <span class="input-label">出发地:</span>
+                    <input type="text" ng-model="pageData.departurePlace" class="ng-pristine ng-untouched ng-valid">
+                </label> 
+
+                <label  class="item item-input" style="padding:6px 10px 5px 16px;">
+                    <span class="input-label">目的地:</span>
+                    <input type="text" ng-model="pageData.destination" class="ng-pristine ng-untouched ng-valid">
+                </label>
+            </ion-item>
+            <div>
+            </div>
+        </div>
+        <label  class="item item-input" style="padding:6px 10px 5px 16px;">
+            <div class="row">
+                <div class="col">
+                    <button ng-click="query()" class="button button_with  myinfoborder-radius h-43 agriculture_project_title">查询</button>
+                </div>
+            </div>
+        </label>
+
+        <div style="padding:0px;margin:0px;" item="false" aslist rcode="logistics_orders" temp-url="frame/member/logistics_orders/views/logistics_orders_list_page.html" list-events="pageData.list_events" params="{{pageData.params}}"></div>
+        <div footerpadding></div>
+    </ion-content>
+</ion-view>

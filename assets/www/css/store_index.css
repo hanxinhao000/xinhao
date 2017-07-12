@@ -1,0 +1,124 @@
+.list-row{
+	padding-top:5px;
+	padding-left:5px;
+	height: 34px;
+	background-color: #ffffff;
+}
+.list-select{
+	width: 75px;
+	background-color: #ffffff;
+	border:0px;
+	font-size:13px;
+}
+.list-col{
+	border-top:0px;
+	border-bottom:0px;
+	border-left: 0px;
+	border-right:1px solid rgba(0, 0, 0, 0.5);;
+	text-align:center;
+}
+.list-btn{
+	min-width: 67px;
+	height: 22px;
+	border:1px solid #E2943B;
+	background-color: #ffffff;
+	text-align: center;
+	color:#E2943B;
+	overflow:hidden;
+    float: left;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+.text-overflow-elipsis{
+	overflow:hidden;
+	text-overflow:ellipsis;
+	-o-text-overflow:ellipsis;
+	white-space:nowrap;
+	width:100%;
+}
+.item-resolution-choice{
+	width: 33.5%;
+	background-color: #0094ff;
+	border:1px solid #ddd;
+	color:#ffffff;
+	height: 33px;
+	margin: 0px;
+	padding:0px;
+}
+.item-resolution-not-choice{
+	width:33.5%;
+	border:1px solid #ddd;
+	color:#666666;
+	height: 33px;
+	background-color:#ffffff;
+	margin: 0px;
+	padding:0px;
+}
+.item-image-right{
+    position: absolute;
+    right: 11px;
+    top: 0;
+    width:15px;
+    height:15px;
+
+}
+.item-label-btn-blue{
+	min-width: 48px;
+    height: 21px;
+    border: 1px solid #1E90FF;
+    background-color: #ffffff;
+    text-align: center;
+    color: #1E90FF;
+    font-size: 12px;
+    border-radius: 3px;
+    overflow:hidden;
+    float: left;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+.item-label-btn-rg{
+	min-width: 57px;
+    height: 21px;
+    border: 1px solid #F19700;
+    background-color: #ffffff;
+    text-align: center;
+    color: #F19700;
+    font-size: 12px;
+    border-radius: 3px;
+    overflow:hidden;
+    float: left;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+.item-col-img{
+    width:33px;
+    height:33px;
+}
+.item-col{
+    width:10%;
+}
+.item-text-right{
+    top: 9px;
+    font-size:13px;
+    color:#666666;
+    right: 25px;
+    position: absolute;
+}
+.popup-item-border{
+    border-right:0px;
+    border-left:0px;
+}
+.popup-icon{
+    width:15px;
+    height:15px;
+    border-radius: 50%;
+    right:0px;
+    position: absolute;
+    top: 0px;
+}
+.popup-item{
+    margin-top: -32px;
+    position: absolute;
+    right: 14px;
+    border: 0px;
+}

@@ -1,0 +1,43 @@
+<style>
+
+</style>
+
+
+<!--订单评论-->
+<!--<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="订单评论">
+</div>-->
+
+<ion-view>
+    
+    <ion-nav-buttons side="left">
+        <div ng-click="back()"  class="public_comment_header_bar_padding_left">
+            <i class="icon head_left_back"></i>
+        </div>
+    </ion-nav-buttons>
+
+    <ion-nav-title>
+        <div class="fs_4">
+            订单评论
+        </div>
+    </ion-nav-title>
+    
+    <ion-content>
+
+        <div class="row">
+            <div class="col" style='line-height: 2.3;'>评星</div>
+            <div class="col col-80">
+                <div as-start value="{{pData.star_level}}" model="{{pData.star_state}}" ng-disabled="pData.inputstatus" as-model="pData.star_level" style="font-size:25px;color:#FF6100;"></div>
+            </div>
+        </div>
+        <div>
+            <textarea placeholder="请输入评价内容" ng-model="pData.content" ng-disabled="pData.textinput" style='width: 100%;height: 160px;'></textarea>
+        </div>
+    </ion-content>
+</ion-view>
+<div ng-if='!pData.textinput' class="bar bar-footer bar-balanced" ng-click="submit()" style='height:40px;background-image: linear-gradient(180deg, #28a54c, #2ad4d4 50%, transparent 50%);background-color: #2ad4d4;'>
+    <div class="title" style='line-height: 39px;'>提交</div>
+</div>

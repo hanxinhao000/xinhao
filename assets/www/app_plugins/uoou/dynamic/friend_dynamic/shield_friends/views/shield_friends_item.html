@@ -1,0 +1,32 @@
+
+<!--屏蔽好友详情-->
+
+<div class="item item-thumbnail-left item-icon-right" style=" height: 75px; padding:6px 0px 0px 65px;">
+    <img style="max-width: 50px; max-height: 50px;top:10px;left:10px;border-radius: 5px;"  ng-src="{{value.WXHEADIMG| hostFilter}}" ng-click="headClick()">
+    <div class="row">
+
+        <div class="col" style="padding: 0px;">
+            <div style="padding-top: 1px;">
+                昵称：{{value.MEMBERNAME}}
+            </div>
+
+            <div style="padding-top: 4px">
+                <p ng-if="value.AUDIT_ROLE === '0'">普通用户</p>
+                <p ng-if="value.AUDIT_ROLE === '1'">普通会员</p>
+                <p ng-if="value.AUDIT_ROLE === '2'">中级会员</p>
+                <p ng-if="value.AUDIT_ROLE === '3'">超级会员</p>
+                <p ng-if="value.AUDIT_ROLE === '4'">皇冠会员</p>
+            </div>
+        </div>
+        <div class="col col-25" >
+            <label class="toggle toggle-calm" style="top:10px;right:0px;" >
+                <input type="checkbox" checked=""  ng-model="value.SHIELD_STATUS" ng-click="updateShield('{{value.ID}}',$index)">
+                
+                <div class="track">
+                    <div class="handle">
+                    </div>
+                </div>
+            </label>
+        </div>
+    </div>
+</div>

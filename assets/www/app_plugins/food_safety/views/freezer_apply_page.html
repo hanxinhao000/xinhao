@@ -1,0 +1,72 @@
+<!-- 社区冷柜安装申请 -->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="村头/社区冷柜安装申请">
+</div> 
+<ion-view view-title="村头/社区冷柜安装申请">
+    <ion-content>
+        <ion-list class="disable-user-behavior">
+            <div class="list">
+                <ion-item type="item-text-wrap" class="item" style="padding:0px;">
+                    <label class="item item-input item-select h-46">
+                        <div class="input-label-input">省:</div>
+                        <select ng-model="pageData.recvProvince" ng-options="province.PRONAME for province in cascadePCZ.provinces" required>
+                            <option value="">请选择</option>
+                        </select>
+                    </label>
+
+                    <label class="item item-input item-select h-46">
+                        <select ng-model="pageData.recvCity" ng-options="city.CITYNAME for city in cascadePCZ.cities" required>
+                        <div class="input-label-input">市:</div>
+                            <option value="">请选择</option>
+                        </select>
+                    </label>
+                    <label class="item item-input item-select h-46">
+                        <div class="input-label-input">区/县:</div>
+                        <select ng-model="pageData.recvArea" ng-options="zone.ZONENAME for zone in cascadePCZ.zones" required>
+                            <option value="">请选择</option>
+                        </select>
+                    </label>
+
+                    <label class="item item-input h-46">
+                        <span class="input-label">地址:</span>
+                        <input type="text" placeholder="请输入地址（必填）" ng-model="pageData.address">
+                    </label>
+
+                    <label class="item item-input h-46">
+                        <span class="input-label">社区名称:</span>
+                        <input type="text" placeholder="请输入社区名称（必填）" ng-model="pageData.community">
+                    </label>
+
+                    <label class="item item-input h-46">
+                        <span class="input-label">联系人:</span>
+                        <input type="text" placeholder="请输入联系人（必填）" ng-model="pageData.contacts">
+                    </label>
+
+                    <label class="item item-input h-46">
+                        <span class="input-label">联系电话:</span>
+                        <input type="number" placeholder="请输入联系电话（必填）" ng-model="pageData.contactPhone">
+                    </label>
+
+                    <!--           	<label class="item item-input h-46" ng-if="AddIndex==1">
+                                        <span class="input-label-input">状态:</span>
+                                            <span class="fs-12" ng-bind="pageData.statusEnum[pageData.status]"></span>
+                                    </label>
+                    
+                                    <div ng-if="pageData.status!=''">
+                                            <label class="item item-input h-46" >
+                                            <span class="input-label-input">审核说明:</span>
+                                            </label>
+                                    <textarea class="textarea" ng-bind="pageData.remarks" rows=6></textarea>
+                                </div> -->
+                </ion-item>
+            </div>
+        </ion-list>
+        <div footerpadding></div>
+    </ion-content>
+    <div class="bar bar-footer ios-margin-button" ng-if="pageData.status == ''">
+        <button ng-click="submitApply()" class="button button_with  myinfoborder-radius h-43" style="margin-left: 1px;font-size: 14px;">提交申请</button>
+    </div>
+</ion-view>

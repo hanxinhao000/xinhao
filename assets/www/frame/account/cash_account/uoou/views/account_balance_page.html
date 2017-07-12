@@ -1,0 +1,93 @@
+<!--现金账户 CASH_ACCOUNT   CashAccountCtrl-->
+
+<style>
+    .uoou_account_balance_select_css
+    {
+            color: #595959;
+            text-align: center;
+            border-bottom: #ef7c7c solid 2px;
+    }
+</style>
+<!--<div nav-bar class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs-14"
+     right-css="header_title fs-14"
+     right="绑定账户"
+     right-click-fun="addBackCard()"
+     title="{{pageData.pageTitle}}">
+</div>-->
+
+<ion-view>
+    
+    <ion-nav-buttons side="left">
+        <div  ng-click="back()"  class="public_comment_header_bar_padding_left">
+            <i class="icon head_left_back"></i>
+        </div>
+    </ion-nav-buttons>
+
+    <ion-nav-title>
+        <div class="bar_title fs_4">
+            {{pageData.pageTitle}}
+        </div>
+    </ion-nav-title>
+
+    <ion-nav-buttons side="right">
+        <div style="fs_4" class="bar_title_title-right fs_4"  ng-click="addBackCard()">
+            <span style="margin-top:10px;margin-right: 10px;">绑定账户</span>
+        </div>
+    </ion-nav-buttons>
+    
+    <ion-content>
+        <div class="pt-10"></div>
+        <div class="list">
+            <div class="item item-avatar" style="min-height: 48px;padding-left: 11%;">
+                <img style="top:12px;border-radius: 0;width: 5%;height: auto;" src="img/cash_03.png">
+                <span>余额</span><span style="float:right;" >{{pageData.balance|ptoy}}元</span>
+            </div>
+            <div class="pt-10"></div>
+            <div class="item item-avatar "
+                 style="padding: 5px 0px;
+                 min-height: 0px;text-align: center;">
+                <div class="row">
+                    <div ng-click="toPayPage()" class="col" style="border-right: #000000 solid 1px;">
+                        <img class="account_bar_div_img_01"  src="img/user-5.png" style="width:22px;">
+                        <span style="vertical-align: middle;">充值</span>
+                    </div>
+                    <div ng-click="toWithPage()"  class="col">
+                        <img  class="account_bar_div_img_02" src="img/cash_18.png" style="width:22px;">
+                        <span style="vertical-align: middle;">提现</span>
+                    </div>
+                </div>
+            </div>
+            <div class="pt-10"></div>
+            <div class="item "  style="padding:0px;">
+                <div class="row" style="padding:0px;">
+                    <div class="col {{pageData.selectCss_0}}" style="color:#595959;text-align: center;padding: 10px;" ng-click="selectRecord('0')">
+                        交易记录
+                    </div>
+                    <div class="col {{pageData.selectCss_1}}" style="color:#595959;text-align: center;padding: 10px;" ng-click="selectRecord('1')">
+                        提现记录
+                    </div>
+                </div>
+            </div>
+
+            
+            <div ng-if="pageData.pageState=='0'" style="padding:0px;margin:0px;" 
+                  item="false" 
+                  aslist 
+                  rcode="transaction_record_info" 
+                  temp-url="app_plugins/common/record/views/transaction_record_index.html" 
+                  list-events="pageData.list_events" params="{{pageData.params}}">
+            </div>
+            
+            <div ng-if="pageData.pageState=='1'" class="list">
+                <!-- 提现 -->
+                <div item="false"  style="padding:0px;margin:0px;" aslist rcode="get_withdrawals_info" temp-url="frame/member/withdraw/views/withdraw_item.html" params="{{pageData.params}}">
+                </div>
+            </div>
+            
+            <div footerpadding></div>
+        </div>
+    </ion-content>
+</ion-view>

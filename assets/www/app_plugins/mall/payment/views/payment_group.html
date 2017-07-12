@@ -1,0 +1,80 @@
+<!--优惠组合订单提交界面-->
+
+<!--产品主信息 start-->
+<div ng-repeat="citem in pData.shopInfo">
+
+<div class="bg-2">
+	<div class="row list pt-10 pr-10 pl-10">
+		<div class="col cl-12 fs-13">
+			<!-- <div ng-repeat="item in citem.groupInfo">
+				<span class="fs-14 cl-11" ng-bind="item.STORE_NAME"></span>
+				<span class="fs-12 cl-12" ng-bind="item.name"></span>
+			</div> -->
+			<span class="cl-0 fs-13" ng-bind="citem.name"></span>
+		</div>
+		<div class="col" style="padding:10px 0px 0px 0px;">
+			<span class="fs-13" ng-if="citem.cancel==1" style="padding-top:7px;">
+				<i class="icon ion-ios-close-outline"></i>预订成功后，不可取消
+			</span>
+		</div>
+	</div>
+	<div class="row list item pr-10 pl-10 ">
+	<div class="col cl-12 fs-13">
+		<span >出发日期:</span>
+	</div>
+	<div class="col cl-11 cr">
+		<span class="cl-0 fs-13" >
+			<i ng-bind="citem.dates|dateFormat:'yyyy-MM-dd'"></i>
+		</span>
+	</div>
+</div>
+	<div class="row cl-12">
+		<div class="col CM fs-13">
+			<div ng-click="switchShowOrderMsg()">
+				<span style="display:block">预订须知</span>
+				<span class="fs-16 cl-0">&nbsp;&nbsp;
+					<i ng-if="!pData.showOrderMsg" class="cl-0 icon ion-ios-arrow-down"></i>
+					<i ng-if="pData.showOrderMsg" class="cl-0 icon ion-ios-arrow-up"></i>
+				&nbsp;&nbsp;</span>
+			</div>
+		</div>
+	</div>
+	<div class="row" ng-show="pData.showOrderMsg">
+		<div class="col" ng-if="pData.orderMsg">
+			<div ng-bind-html="pData.orderMsg|imgFmt"></div>
+		</div>
+	</div>
+</div>
+
+<!--商品主要信息 end-->
+<div class="split-line-2"></div>
+
+<div class="list bg-2" >
+	<div class="row pl-10" style="padding-top:0px;padding-bottom:0px;">
+		<div class="col-33 vmiddle">
+			<span>单价</span>
+		</div>
+		<div class="col cr">
+			<div class="red_price fs-16"><!--没有折扣样式-->
+				￥<span ng-bind="citem.fPrice|number:2"></span>
+			</div>
+		</div>
+	</div>
+	<div class="row pl-10">
+		<div class="col-33 vmiddle">
+			<span>联系人:</span>
+		</div>
+		<div class="col cr">
+			<input  style="margin-left:auto;"  type="text" ng-model="orderData.contact" placeholder="请输入联系人">
+		</div>
+	</div>
+	<div class="row pl-10">
+		<div class="col-33 vmiddle">
+			<span>联系电话:</span>
+		</div>
+		<div class="col cr">
+			<input  style="margin-left:auto;"    type="number" minlength="11" maxlength="11"  ng-model="orderData.contactPhone" placeholder="请输入联系电话">
+		</div>
+	</div>
+</div>
+</div>

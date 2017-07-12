@@ -1,0 +1,57 @@
+<!-- 农村大市场 -->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="农村大市场">
+</div>
+<ion-view>
+    <ion-content>
+        <div class="row" style="background: #FFFFFF;">
+            <div class="col col-33">
+                <select class="item myinfoborder-radius item-input" style="width:100%;" ng-model="pageData.recvProvince" ng-options="province.PRONAME for province in cascadePCZ.provinces"  required>
+                    <option value="">-请选择省-</option>
+                </select>
+            </div>
+            <div class="col col-33">
+                <select class="item myinfoborder-radius item-input" style="width:100%;" ng-model="pageData.recvCity" ng-options="city.CITYNAME for city in cascadePCZ.cities"  required>
+                    <option value=""></option>
+                </select>
+            </div>
+            <div class="col col-33">
+                <select class="item myinfoborder-radius item-input" style="width:100%;" ng-model="pageData.recvArea" ng-options="zone.ZONENAME for zone in cascadePCZ.zones"  required>
+                    <option value=""></option>
+                </select>
+            </div>
+        </div>
+        <!-- <div class="diveline-2"></div> -->
+        <label class="item item-input item-select">
+            <div class="input-label-input">选择分类:</div>
+            <select ng-model="pageData.classId"  ng-options="m.ID as m.NAME for m in pageData.typedata">
+                <option value="">全部</option>
+            </select>
+        </label>
+        <!-- <div class="diveline-2"></div> -->
+        <label class="item item-input h-46">
+            <span class="input-label-input">名称:</span>
+            <input type="text" ng-model="pageData.title">
+        </label>
+        <div class="row" style="background: #FFFFFF;">
+            <div class="col">
+                <button ng-click="query()" class="button button_with  myinfoborder-radius h-43 agriculture_project_title">查询</button>
+            </div>
+        </div>
+        <div style="padding:10px 0px 0px 0px;margin:0px;" item="false" aslist rcode="lxny.rural_market.ruralMarket" temp-url="app_plugins/rural_market/views/rural_market_list_page.html" list-events="pageData.listEvents" params="{{pageData.params}}"></div>
+        <div footerpadding></div>
+    </ion-content>
+    <div class="bar bar-footer ios-margin-button">
+        <div class="col" style="width: 40%;">
+            <button class="button button_with  myinfoborder-radius h-43 agriculture_project_title" ng-click="myBooth()">我的摊位
+            </button >
+        </div>
+        <div class="col" style="width: 40%;">
+            <button class="button button_with  myinfoborder-radius h-43 agriculture_project_title" ng-click="myCustomized()">我的定制
+            </button>
+        </div>
+    </div>
+</ion-view>

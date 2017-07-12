@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<!--
+聊天
+-->
+<style>
+    .btn-push{
+        background-color: rgb(42,212,212);
+        height: 35px;
+        width: 100%;
+        color: white;
+        border-radius: 3px;
+        border:0px;
+    }
+    .send {
+        position:relative;
+        width:auto;
+        max-width: 80%;
+        min-height:40px;
+        background:rgb(42,212,212);
+        border-radius:3px; /* 圆角 */
+        color: #ffffff;
+        font-size: 15px;
+        padding: 6px 10px;
+        border:0px;
+        text-align: left;
+    }
+
+    .send .arrow {
+        position:absolute;
+        top:12px;
+        right:-14px; /* 圆角的位置需要细心调试哦 */
+        width:0;
+        height:0;
+        font-size:0;
+        border:solid 8px;
+        border-color:transparent transparent transparent rgb(42,212,212);
+    }
+
+    .send_1 {
+        position:relative;
+        width:auto;
+        max-width: 80%;
+        min-height:40px;
+        background:#FFFFFF;
+        border-radius:3px; /* 圆角 */
+        color:#333333;
+        font-size: 15px;
+        padding: 6px 10px;
+        border:0px;
+        text-align: left;
+    }
+
+    .send_1 .arrow_1 {
+        position:absolute;
+        top:12px;
+        left:-14px; /* 圆角的位置需要细心调试哦 */
+        width:0;
+        height:0;
+        font-size:0;
+        border:solid 8px;
+        border-color:transparent #FFFFFF transparent transparent ;
+    }
+</style>
+<!--<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="{{pData.friendName}}">
+</div>-->
+
+<ion-view class="message-detail-content" style="height:auto;">
+    
+    <ion-nav-buttons side="left">
+        <div class="public_comment_header_bar_padding_left" ng-click="back()">
+            <i class="icon head_left_back"></i>
+        </div>
+    </ion-nav-buttons>
+    <ion-nav-title>
+        <div class="fs_4">{{pData.friendName}}</div>
+    </ion-nav-title>
+    
+    <ion-content keyboard-attach style="background-color:#ecefef;padding-top:0px;" delegate-handle="mainScroll">
+        <!-- 聊天记录 -->
+        <div ng-repeat="item in pData.friendMessage.message track by $index" >
+
+            <!--好友发送的内容-->
+            <div class="row"  ng-if="item.memberid == pData.friendId" style="padding-left: 0px;margin-bottom: 10px;">
+                <!--好友头像-->
+                <div style="text-align: center; padding-left: 0px;width:15%;">
+                    <img ng-src="{{pData.friendHead|hostFilter}}" style="width:40px;height: 40px;border-radius: 5px;">
+                </div>
+
+                <div style="text-align: left;width:85%;padding-left: 10px;">
+                    <!--没有图片只有内容-->
+                    <button class="send_1" ng-if="item.content && !item.imgcontent">
+                        <span ng-bind-html="item.content"></span>
+                        <div class="arrow_1"></div>
+                    </button>
+                    <!--没有内容只有图片-->
+                    <button class="send_1" ng-if="item.imgcontent && !item.content" >
+                        <img  ng-src="{{img.path| hostFilter}}" style="width:100%;height: auto;" ng-repeat="img in item.imgcontent"/>
+                        <div class="arrow_1"></div>
+                    </button>
+                    
+                    <!--有图片有内容-->
+                    <button class="send_1" ng-if="item.content && item.imgcontent">
+                        <span ng-bind-html="item.content"></span>
+                        <div class="arrow_1"></div>
+                    </button>
+                    <!--有内容有图片-->
+                    <button class="send_1" ng-if="item.imgcontent && item.content" >
+                        <img  ng-src="{{img.path| hostFilter}}" style="width:100%;height: auto;" ng-repeat="img in item.imgcontent"/>
+                        <div class="arrow_1"></div>
+                    </button>
+                    
+                </div>
+
+            </div>
+
+            <!--我的发送的内容-->
+            <div class="row" ng-if="item.memberid == pData.memberId" style="padding-right:0px;">
+                <div style="text-align: right;padding-right: 10px;width:85%;">
+                    <!--没有图片只有内容-->
+                    <button class="send" ng-if="item.content && !item.imgcontent">
+                        <span ng-bind-html="item.content"></span>
+                        <div class="arrow"></div>
+                    </button>
+                    <!--没有内容只有图片-->
+                    <button class="send" ng-if="item.imgcontent && !item.content" >
+                        <img  ng-src="{{img.path| hostFilter}}" style="width:100%;height: auto;" ng-repeat="img in item.imgcontent"/>
+                        <div class="arrow"></div>
+                    </button>
+                    <button class="send" ng-if="item.content && item.imgcontent">
+                        <span ng-bind-html="item.content"></span>
+                        <div class="arrow"></div>
+                    </button>
+                    <!--没有内容只有图片-->
+                    <button class="send" ng-if="item.imgcontent && item.content" >
+                        <img  ng-src="{{img.path| hostFilter}}" style="width:100%;height: auto;" ng-repeat="img in item.imgcontent"/>
+                        <!--<div class="arrow"></div>-->
+                    </button>
+                </div>
+                <!--我的头像-->
+                <div style="text-align: center;padding-right: 0px;width:15%;">
+                    <img ng-src="{{pData.memberHead|hostFilter}}" style="width:40px;height: 40px;border-radius: 5px;"/>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+    </ion-content>
+    <ion-footer-bar keyboard-attach style="display: inline;{{pData.footerHeight}};background-color: rgb(236,239,239);background-position:bottom;height: auto;">
+    <div class="row" style="padding: 0px;height: auto;">
+        <div  class="col-10" style="padding: 5px;width:30px;margin: auto;margin-bottom: 0px;text-align: center;  ">
+            <i class="ion-plus-circled" data-pack="default" 
+               data-tags="add, include, new, invite, +" style="font-size:30px;color: rgb(42,212,212);bottom: 3px;left: 2%;" ng-click="clickImg()">
+            </i>
+        </div>
+        <div class="col"  style="padding: 0px;width:70%;height: auto;" >
+            <!--<input ng-disabled="pData.showType" ng-model="pData.pushContent" style="border:0px;height: 35px;background-color: white;border-radius: 5px;width: 100%;"/>-->
+            
+            
+            <div id="area2" ng-focus="select_content_focus()"  contenteditable="true" class='area fs-15' style="height: auto;min-height: 37px;border-radius: 5px;border: 1px solid #ddd;width: 100%;overflow: hidden;-webkit-user-select: text;padding: 1px 5px; margin:3px 2px; background-color: #ffffff;color: #333333;"></div>
+        </div>
+        <div  class="col-10" style="padding: 0px;width:20px;margin: auto;margin-bottom: 0px;text-align: center;">
+<!--            <div  class=" emoji-container " style="text-align: center;"  ng-show="!pData.showType">
+                <i class="ion-android-happy emoji-tbtn" data-pack="default" 
+               data-tags="add, include, new, invite, +" style="font-size:35px;color: rgb(42,212,212);"></i>
+            </div>
+            <div ng-show="pData.showType">
+                <i class="ion-android-happy" data-pack="default" 
+               data-tags="add, include, new, invite, +" style="font-size:35px;color: rgb(42,212,212);"></i>
+            </div>   -->
+            
+        <!--<div class="buttons" style="height: 0px;margin-top: -19px;margin-left: -4px;">-->
+        <button class="button button-icon icon ion-happy-outline" id="emoji_btn_1" style="color:rgb(42,212,212);padding: 0px;bottom: 2px;"></button>
+        <!--</div>-->
+
+        </div>
+        <div  class="col-20" style="padding: 0px;width:50px;margin: auto;margin-bottom: 0px;text-align: center;">
+            <div ng-click="pushMessage()" class="btn-push" style="width:62px;height: 34px;margin: auto;text-align: center;
+                 font-size: 15px;padding: 7px;position: fixed;bottom: 5px;">发送</div>
+        </div>
+    </div>
+
+    <!--选择图片-->
+    <div ng-if="pData.showType" album  max="4" table="CHATIMG" pvalue="FRIENDCHATIMG" field="{{pData.memberId}}"
+         out-data="pData.imgPath" style="background-color: rgb(236,239,239);margin-top: 7px;padding:0px 0px 0px 1px;"></div>
+
+</ion-footer-bar>
+    
+</ion-view>
+

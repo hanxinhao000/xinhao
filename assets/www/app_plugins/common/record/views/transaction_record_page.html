@@ -1,0 +1,64 @@
+<!-- 通用交易记录 -->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     title="{{pageData.title}}">
+</div>
+<ion-view view-title="{{pageData.title}}" >
+  <ion-content>
+    <div class="list">
+      <label class="item item-input item-select" style="width:50%;display: inline-block;">
+        <div class="input-label">
+          日期
+        </div>
+        <select  ng-model="pageData.select_date" ng-options="m.value as m.name for m in pageData.select_date_arr" ng-change="dateSeletChange()" style="max-width: initial;">
+          <option value="">请选择</option>
+        </select>
+      </label>
+      <label class="item item-input item-select" style="width:50%;display: inline-block;">
+        <div class="input-label">
+          类型
+        </div>
+        <select ng-model="pageData.pay_type" ng-options="m.value as m.name for m in pageData.pay_type_arr">
+          <option value="">请选择</option>
+        </select>
+      </label>
+      <div class="row item" style="color: #FFFFFF;">
+        <div class="col col-20">
+          <span class="input-label">交易时间:</span>
+        </div>
+        <div class="col col-33" style="background: #FFFFFF;">
+          <input type="date" ng-model="pageData.start_date" style="padding-top:0px;background: #FFFFFF;display: grid;display: flex;display:inline-flex;display:inline-gird;width:100%;">
+        </div>
+        <div class="col">
+          <span class="input-label">至</span>
+        </div>
+        <div class="col col-33" style="background: #FFFFFF;">
+          <input type="date" ng-model="pageData.end_date" style="padding-top:0px;background: #FFFFFF;display: grid;display: flex;display:inline-flex;display:inline-gird;width:100%;">
+        </div>
+      </div>
+      <!--<label class="item item-input" >-->
+        <!--<span style="width:10%;" class="input-label">交易时间:</span>-->
+        <!--<input style="padding-top:0px;" ng-model="pageData.start_date" type="date">-->
+        <!--至-->
+        <!--<input style="padding-top:0px;" ng-model="pageData.end_date" type="date">-->
+      <!--</label>-->
+      <div class="pt—10"></div>
+      <div class="row">
+        <div class="col">
+          <button   ng-click="query()"
+                    class="button button_with ng-binding myinfoborder-radius h-43 agriculture_project_title"
+                    >
+              查询
+          </button>
+
+        </div>
+      </div>
+      <div style="padding:0px 0 10px 0 ;margin:0px;" item="false" aslist rcode="transaction_record_info" temp-url="app_plugins/common/record/views/transaction_record_index.html" list-events="pageData.list_events" params="{{pageData.params}}"></div>
+    </div>
+      <div footerpadding></div>
+  </ion-content>
+
+</ion-view>

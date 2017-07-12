@@ -1,0 +1,46 @@
+<!--uoou 身边的好友-->
+<!--<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="身边">
+</div>-->
+<style>
+    .side_title{
+        color:#333333;
+    }
+    .side_content{
+        color:#666666;
+    }
+    
+    
+</style>
+<ion-view>
+    <ion-nav-buttons side="left">
+        <div class="public_comment_header_bar_padding_left" ng-click="back()">
+            <i class="icon head_left_back"></i>
+        </div>
+    </ion-nav-buttons>
+    <ion-nav-title>
+        <div class="fs_4">身边</div>
+    </ion-nav-title>
+    
+    
+    <ion-content style="background-color: rgb(236,239,239);" delegate-handle="mainScroll">
+        <!--用户信息-->
+        
+         <div class="list" item="false" aslist 
+                rcode="uoou.side.getMemberByGps" 
+                temp-url="app_plugins/uoou/dynamic/side/views/side_item_page.html" list-events="pData.list_events" 
+                params="{{pData.params}}"
+                page-size="50">
+        </div>
+        
+<!--        <div class="list" item="false" aslist 
+                rcode="uoou.side.getMemberByGps" 
+                temp-url="app_plugins/uoou/dynamic/side/views/side_item_page.html" list-events="pData.list_events" 
+                params="{{pData.params}}">
+        </div>-->
+        <div footerpadding></div>
+    </ion-content>
+</ion-view>

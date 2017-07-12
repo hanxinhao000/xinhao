@@ -1,0 +1,99 @@
+
+<style>
+	
+	.anchor {
+		border: 2px dashed DarkOrchid;
+		padding: 10px 10px 200px 10px;
+	  }
+
+	  .fixed-header {
+		background-color: rgba(0, 0, 0, 0.2);
+		height: 50px;
+
+		top: 0; left: 0; right: 0;
+	  }
+
+	  .fixed-header > a {
+		display: inline-block;
+		margin: 5px 15px;
+	  }
+	
+</style>
+
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="Test">
+</div>
+
+<ion-view view-title="{{chat.name}}">
+  <ion-content class="padding" delegate-handle="mainScroll">
+    <img ng-src="{{chat.face}}">
+    <p>{{chat.lastText}}</p>
+
+	<div class="bg-2 row" style="width: 100px;" ng-click="buttonClick()">
+		<div class="col-90" style="text-align:center;font-family: 微软雅黑;font-size: 14px;" >智能排序</div>
+		<div class="col-10"><img ng-src="{{chat.face}}" style="width:10px;"></div>
+	</div>
+	我是底部<a href="tel:12443">dddddd</a>
+	
+	<div class="row" style="100%">
+		<div class="col col-33">
+			<div ctl-select-directive style-type="2" click-select="selectClick1" 
+								  defaut-lable="智能排序" select-data="{{ListData}}"></div>
+		</div>
+		<div class="col col-33">
+			<div ctl-select-directive style-type="1" click-select="selectClick2" 
+								  defaut-lable="景区地区" select-data="{{ListData}}"></div>
+		</div>
+		<div class="col col-33">
+			<div ctl-select-directive style-type="2" click-select="selectClick3" 
+								  defaut-lable="我要玩" select-data="{{ListData}}"></div>
+		</div>
+	</div>
+	<ion-spinner icon="android"></ion-spinner>
+        <ion-spinner icon="ios"></ion-spinner>
+        <ion-spinner icon="ios-small"></ion-spinner>
+        <ion-spinner icon="bubbles" class="spinner-balanced"></ion-spinner>
+        <ion-spinner icon="circles" class="spinner-energized"></ion-spinner>
+        <ion-spinner icon="crescent" class="spinner-royal"></ion-spinner>
+        <ion-spinner icon="dots" class="spinner-dark"></ion-spinner>
+        <ion-spinner icon="lines" class="spinner-calm"></ion-spinner>
+        <ion-spinner icon="ripple" class="spinner-assertive"></ion-spinner>
+        <ion-spinner icon="spiral"></ion-spinner>
+	测试锚点
+	<div class="fixed-header">
+		<a href="" ng-click="gotoAnchor(x)" ng-repeat="x in [1,2,3,4,5]">
+		  Go to anchor {{x}}
+		</a>
+	</div>
+	<div id="anchor{{x}}" class="anchor" ng-repeat="x in [1,2,3,4,5]">
+		Anchor {{x}} of 5
+	</div>
+    <button ng-click="push()">发送</button>
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+  </ion-content>
+</ion-view>
+
+<script id="my-modal.html" type="text/ng-template">
+  <ion-modal-view>
+	 <div class='bg-2' style="width: 100%" ng-repeat='items in ListData'>
+		<div style='width:100%;font-family: 微软雅黑;font-size: 14px;' class="row">&nbsp;{{items.name}}</div>
+		<div style='flex-wrap:wrap;width:100%;' class="row">
+			<div style="width:33%;" ng-repeat='item in items.data'>
+				<div style="margin : 5px;border: 1px solid #000;text-align: center;border-radius:5px;" 
+					 ng-click="ItemClick('{{item.lable}}','{{item.value}}')">{{item.lable}}</div>
+			</div>
+		</div>
+	</div>
+	<div style="width: 100%" ng-repeat='items in ListData'>
+		<div style='width:100%;font-family: 微软雅黑;font-size: 14px;' class="row bg-2">&nbsp;{{items.name}}</div>
+		<div style="width:100%;" ng-repeat='item in items.data'>
+			<div style="line-height : 20px;text-align: center;margin-top: 2px;font-family: 微软雅黑;font-size: 14px;" class="bg-2"
+				 ng-click="ItemClick('{{item.lable}}','{{item.value}}')">{{item.lable}}</div>
+		</div>
+
+	</div>
+  </ion-modal-view>
+</script>

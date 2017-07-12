@@ -1,0 +1,43 @@
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     title="设置">
+</div>
+<ion-view >
+  <ion-content class="bg-7">
+    <div class="list" style="margin-top:6px;">
+      <a class="item item-avatar item-icon-right" 
+         style="height: 39px;min-height: 39px;padding-top:8px;padding-left: 47px;" 
+         ng-repeat="item in pageData.accountdata" ng-click="showUpdateAccountPopup()">
+        <img ng-src="{{item.LEFTICON}}" style="width:24px;height:24px;top: 7px;left: 13px;border-radius: 0px;">
+        <span style="font-size:11px;color:#666666;" ng-bind="pageData.User_account" ></span>
+        <span style="font-size:11px;color:{{item.RIGHTTITLECOLOR}};right: 34px;position: absolute;" ng-bind="item.RIGHTTITLE"></span>
+        <img class="icon" ng-src="img/member/member_43.png" style="width:15px;height:15px;margin-top: 11px;"/>
+      </a>
+    </div>
+    <div class="list" style="margin-top:6px;">
+      <div class="item" style="height: 39px;min-height: 39px;padding-top:8px;">
+        <span style="font-size:11px;color:#666666;">账户安全等级</b>    
+        <span style="font-size:11px;color:#ff0000;" ng-bind="pageData.AccountSecurityGrade"></span>   
+        <span style="font-size:11px;color:#666666;right: 16px;position: absolute;">请设置下列项目保护账号</span>    
+      </div>
+      <a class="item item-avatar item-icon-right" 
+         style="height: 39px;min-height: 39px;padding-top:8px;padding-left: 47px;" 
+         ng-repeat="list in pageData.listdata" ng-click="{{list.FUNCTION}}">
+        <img ng-src="{{list.LEFTICON}}" style="width:24px;height:24px;top: 7px;left: 13px;border-radius: 0px;">
+        <span style="font-size:11px;color:#666666;" ng-bind="list.TITLE"></span>
+        <span style="font-size:11px;color:#666666;" ng-bind="list.BOUNDPHONE" ng-if="list.BOUNDPHONE"></span>
+        <span style="font-size:11px;color:#666666;" ng-bind="list.SecurityGrade" ng-if="list.SecurityGrade"></span>
+        <span style="font-size:11px;color:{{list.RIGHTTITLECOLOR}};right: 34px;position: absolute;" ng-bind="list.RIGHTTITLE"></span>
+        <img class="icon" ng-src="img/member/member_43.png" style="width:15px;height:15px;margin-top: 11px;"/>
+      </a>
+    </div>
+  <div style="text-align: center;position: absolute;bottom: 3%;left: 3%;right: 3%;">
+    <button class="button" style="width: 91%;height: 48px;border-radius: 5px;background-color: #ff0000;border: 0px;" ng-click="loginOut()">
+      <span style="color:#ffffff;font-size: 16px;">退出账号</span>
+    </button>
+  </div>
+  </ion-content>
+</ion-view>

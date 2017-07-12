@@ -1,0 +1,41 @@
+.headimg_center{
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+}
+
+.headimg_imgtest{margin:10px 5px;
+  overflow:hidden;}
+.list_ul figcaption p{
+  font-size:12px;
+  color:#aaa;
+}
+.headimg_imgtest figure div{
+  display:inline-block;
+  margin:5px auto;
+  width:200px;
+  height:200px;
+  border-radius:100px;
+  border:2px solid #fff;
+  overflow:hidden;
+  -webkit-box-shadow:0 0 3px #ccc;
+  box-shadow:0 0 3px #ccc;
+}
+.headimg_imgtest img{width:100%;
+  min-height:100%; text-align:center;}
+
+.headdiv_padding_top
+{
+  padding-top: 15%;
+}
+.header_updatebutton_mauto{
+  margin-right: auto;
+  margin-left: auto;
+}
+.header_update_button{
+  /*border-top-left-radius: 20px;*/
+  /*border-top-right-radius: 20px;*/
+  /*border-bottom-left-radius: 20px;*/
+  /*border-bottom-right-radius: 20px;*/
+  border-radius: 30px;
+}

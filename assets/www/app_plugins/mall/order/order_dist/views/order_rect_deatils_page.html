@@ -1,0 +1,79 @@
+<!--配送接单详情--> 
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     title="{{pData.title}}">
+</div>
+
+<ion-view view-title="配送接单详情">
+  <ion-content >
+  <div class="bg-2 fs-12 cl-02">
+    <div class="row pt-10 pl-10 pr-10">
+        <div class="col col-20">订单编号:</div>
+        <div class="col" ng-bind="pData.orderInfo.ORDERCODE"></div>
+      </div>
+      <div class="diveline bg-1"></div>
+     <div class="row pt-10 pl-10 pr-10">
+        <div class="col col-20">订单状态:</div>
+        <div class="col" ng-bind="pData.orderInfo.ORDERSTATE|enum:pData.orderStateEnum"></div>
+      </div>
+      <div class="diveline bg-1"></div>
+      <div class="row">
+        <div class="col col-25">订单总金额(元):</div>
+        <div class="col cl-03">
+          <span ng-bind="pData.orderInfo.TOTALPRICE"></span>
+          <span ng-if="pData.postage"> ，其中运费 <i ng-bind="pData.orderInfo.POSTAGE"></i>。</span>
+        </div>
+      </div>
+      <div class="diveline bg-1"></div>
+      <div class="row">
+        <div class="col col-20">购买数量:</div>
+        <div class="col col-70 cl-03">
+          <span ng-bind="pData.orderInfo.SALENUMBER"></span>
+        </div>
+      </div>
+      <div class="diveline bg-1"></div>
+      <div class="row">
+        <div class="col col-20">送货方式:</div>
+        <div class="col col-70">
+          <span ng-bind="pData.orderInfo.SHIPPING_METHOD|enum:pData.OrderShippingMethodEnum"></span>
+        </div>
+      </div>
+      <div class="row" ng-if="pData.orderInfo.COMPLETEDATE">
+        <div class="col col-20">成交时间:</div>
+        <div class="col col-70">
+          <span ng-bind="pData.orderInfo.COMPLETEDATE"></span>
+        </div>
+      </div>
+      <div class="diveline bg-1"></div>
+      <div class="row">
+        <div class="col" >
+          <span>收货人:</span>
+          <span style="padding:5px;" ng-bind="pData.orderInfo.CONTACT"></span>,
+          <span><a href="tel:{{pData.orderInfo.CONTACTPHONE}}" ng-bind="pData.orderInfo.CONTACTPHONE"></a> </span><br>
+          收货地址:<span ng-bind="pData.orderInfo.ADDRESS" ></span><br>
+        </div>
+      </div>
+      <div class="diveline bg-1"></div>
+      <div class="row">
+        <div class="col col-20">
+          <img style="width:64px;height:64px" ng-src="{{pData.orderInfo.SPECIMAGES|hostFilter}}" >
+        </div>
+        <div class="col col-70">
+          <label ng-bind="pData.orderInfo.SPECNAME"></label><br>
+          <label>
+            <font color="red">￥{{pData.orderInfo.SALEPRICE|number}}</font>
+          </label>
+        </div>
+        <div class="col CM pr-10" style="text-align:right;line-height: 60px;"></div>
+      </div>
+      <div class="diveline bg-1"></div>
+  </div>
+  <br><br><br><br>
+  </ion-content>
+  <div class="bar bar-footer" ng-show="pData.showOperation">
+      <button class="button button-full button-balanced" ng-click="confirmRecvOrder()">确定接单</button>
+  </div>
+</ion-view>

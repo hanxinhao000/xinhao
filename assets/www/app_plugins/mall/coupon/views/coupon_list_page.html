@@ -1,0 +1,42 @@
+<!-- 我的优惠券 -->
+<!--<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     title="代金券">
+</div>-->
+<ion-view> 
+    <ion-nav-buttons side="left">
+        <div ng-click="back()"  class="public_comment_header_bar_padding_left">
+            <i class="icon head_left_back"></i>
+        </div>
+    </ion-nav-buttons>
+
+    <ion-nav-title>
+        <div class="fs_4">
+            代金券
+        </div>
+    </ion-nav-title>
+  
+<ion-content class="bg-7">
+    <div class="row myorder_padding" style="text-align: center;padding:15px 0 17px 0;">
+        <div class="col myorder_padding" style="height: 24px;">
+            <button class="destination_button not_used_coupon"style="{{item.style}}" ng-click="selectCards('{{$index}}')" ng-class="[item.CSS,'tab-item']" ng-repeat="item in pageData.comdSelectCards" ng-bind="item.title">
+            </button>
+        </div>
+    </div>
+    <div item="false" style="padding:0px;margin:0px;" aslist rcode="triph.frame.mem.coupon.selcouponSql" temp-url="app_plugins/mall/coupon/views/coupon_item.html" params="{{pageData.params}}" no-show-more="false">
+    </div>
+
+<!--       <div item="false" style="padding:0px;margin:0px;" aslist rcode="outofdatecoupon"
+           temp-url="app_plugins/mall/coupon/views/coupon_item.html" params="{{outOfDateParams}}" ng-show="outofDateShow"
+      >
+      </div>
+      <div item="false" style="padding:0px;margin:0px;" aslist rcode="coupon"
+           temp-url="app_plugins/mall/coupon/views/coupon_item.html" params="{{usedCouponParams}}" ng-show="usedCouponShow"
+      >
+
+      </div> -->
+</ion-content>
+</ion-view>

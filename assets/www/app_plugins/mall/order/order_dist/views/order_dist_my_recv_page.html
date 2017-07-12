@@ -1,0 +1,25 @@
+<!--我的接单页面-->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     title="我的接单">
+</div>
+<ion-view view-title="我的接单">
+	<ion-content>
+		<div class="pt-10"></div>
+		<div class="split-line-1">&nbsp;</div>
+		<div class="tabs-striped tabs-top tabs-background-light tabs-color-balanced">
+		    <div class="tabs" style="width:100%;position:static;">
+		    	<a style="{{item.style}}" ng-click="selectCards('{{$index}}')" ng-class="[item.CSS,'tab-item']" ng-repeat="item in pData.comdSelectCards" ng-bind="item.title">
+		    	</a>
+		    </div>
+		</div>
+		<div class="split-line-1">&nbsp;</div>
+		<div class="pt-10"></div>
+		<!--数据列表 start-->
+		<div aslist style="padding:10px 0px 0px 0px;margin:0px;" item="false"  rcode="{{pData.myRecvOrders}}" params="{{pData.resParams}}" list-events="pData.listEvents" temp-url="app_plugins/mall/order/order_dist/views/order_dist_my_recv_item.html"></div><!--数据列表 end-->
+
+	</ion-content>
+</ion-view>

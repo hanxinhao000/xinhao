@@ -1,0 +1,114 @@
+<style>
+    .btn-push{
+        background-color: rgb(42,212,212);
+        height: 35px;
+        color: white;
+        border-radius: 3px;
+
+        border:0px;
+    }
+</style>
+
+<!--<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="店铺推广">
+</div>-->
+<ion-view>
+    <ion-nav-buttons side="left">
+        <div  ng-click="back()"  class="public_comment_header_bar_padding_left">
+            <i class="icon head_left_back"></i>
+        </div>
+    </ion-nav-buttons>
+
+    <ion-nav-title>
+        <div class="fs_4">
+            店铺推广
+        </div>
+    </ion-nav-title>
+    
+    <ion-content delegate-handle="mainScroll">
+        <!-- 顶部 -->
+        <div class="row list-row" style="margin-bottom: 5px;padding: 0px;">
+            <div class="col list-col" style="padding-top:4px;">
+                <ctl-select-directive style-type="2" ng-model="pData.querfw" click-select="selectClick1" 
+                                      defaut-lable="选择推广范围" select-data="{{pData.fwData}}">
+                </ctl-select-directive>
+            </div>
+        </div>
+        <div class="row" style="background: #FFFFFF;">
+            <div class="col" ng-if='pData.querfw == 2 || pData.querfw == 3 || pData.querfw == 4'>
+                <select class="item myinfoborder-radius item-input" style="width:100%;" ng-model="pData.recvProvince" 
+                        ng-options="province.PROID as province.PRONAME for province in cascadePCZ.provinces"  required>
+                    <option value="">-请选择省-</option>
+                </select>
+            </div>
+            <div class="col" ng-if='pData.querfw == 3 || pData.querfw == 4'>
+                <select class="item myinfoborder-radius item-input" style="width:100%;" ng-model="pData.recvCity" 
+                        ng-options="city.CITYID as city.CITYNAME for city in cascadePCZ.cities"  required>
+                    <option value="">-请选择市-</option>
+                </select>
+            </div>
+            <div class="col" ng-if='pData.querfw == 4'>
+                <select class="item myinfoborder-radius item-input" style="width:100%;" ng-model="pData.recvArea" 
+                        ng-options="zone.ZONEID as zone.ZONENAME for zone in cascadePCZ.zones"  required>
+                    <option value="">-请选择区-</option>
+                </select>
+            </div>
+        </div>
+        <div class="list bg-2" ng-if="pData.coupList.length > 0" style="margin-top:-5px;">
+            <!--优惠券 start-->
+            <div style="background-color:#efefef;">
+                <ion-list >
+                    <div class="list row item" style="padding:3px" ng-click="changeCurrentCoup('-1')">
+                        <div class="col-10 l-height-25 talign-c pt-5">
+                            <i class="{{pData.coupNone.CSS}} c-positive fs-26"></i>
+                        </div>
+                        <div class="col-90 pt-10">
+                            <p class="pl-10" href="javascript:void(0);" style="font-size:12px;">不使用</p>
+                        </div>
+                    </div>
+
+                    <div class="list item"  ng-repeat="item in pData.coupList" ng-click="changeCurrentCoup('{{$index}}')" style="padding:7px 0px 7px 0px;">	
+                        <div class=" row">
+                            <div class="col-10 vmiddle" style="text-align: center;">
+                                <i class="{{item.CSS}} c-positive fs-26 "></i>
+                            </div>
+                            <div class="col-90 vmiddle">
+                                <span class="pl-10" style="font-size:12px;">代金劵<font ng-bind="item.CASH"></font>元</span>
+                            </div>
+                        </div>
+<!--                            <div class="col vmiddle cr">
+                                过期日期:<span ng-bind="item.EXPIRED|dateFormat:'yyyy - MM - dd'" class="pl-10"></span>
+                            </div>-->
+
+                        </div>
+                    </div>
+                
+            </div>
+
+        <div footerpadding></div>
+    </ion-content>
+</ion-view>    
+<!--    <div class="bar bar-footer" style="display: inline;height: 80px;text-align: center;background-color: rgb(236,239,239);">
+        <div class="row">
+            <span>共计：</span><span ng-bind='pData.paymentTotal|number:2'></span>元
+        </div>
+        <div class="row">
+        <button ng-click="payment()" class="button button_with  myinfoborder-radius h-43" style="font-size:14px;    background-color: #2ad4d4;border: 0px;color: #fff;width: 80%;">确定支付</button>
+        </div>
+    </div>-->
+
+<div class="bar bar-footer " style="display: inline;height: 50px;background-color: rgb(236,239,239);background-position:bottom;" >
+    
+    <div class="row" style="padding:5px;">
+        <div class="col-50" style="padding-top: 3px;text-align: center;margin: auto;">
+        <span>共计：</span><span ng-bind='pData.paymentTotal|number:2'></span>元
+        </div>
+        <div class="col-50" style="padding-top: 3px;text-align: center;width:80%;margin: auto;" >
+            <div ng-click="payment()" class="btn-push" style="height: 34px;margin: auto;text-align: center;
+                 font-size: 15px;padding: 7px;">确定支付</div>
+        </div>
+    </div>   
+</div>

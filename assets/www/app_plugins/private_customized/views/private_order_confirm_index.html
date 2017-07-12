@@ -1,0 +1,95 @@
+<!--私人订制-->
+<div class="bar bar-heade" style="background: transparent;height: 52px;padding:0px;">
+    <div class="row" style="width:100%;padding:0px;padding-top:27px;padding-left:10px;">
+        <div style="width:16%;text-align:left;" ng-click="goBack()">
+            <img src="img/techan/techan_01.png" style="width: 20px;height: auto;">
+        </div>
+        <div class="cl-10 fs-16"style="width:68%;text-align: -webkit-center;">
+            <div>私人订制</div>
+        </div>
+        <div style="width:16%;text-align:center;" ng-click="message()">
+            <img src="img/techan/techan_03.png" style="width: 20px;height: auto;">
+        </div>
+    </div>
+</div>
+
+<ion-content class="bg-7" style="padding-top: 0px;" delegate-handle="mainScroll">
+    <!--私人订制广告div-->
+    <div class="swiper-container" style="height:163px;"id="customized_swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" ng-repeat="item in pageData.customizedData">
+                <img ng-click="toPage('{{item.URL}}')" ng-src="{{item.LISTIMGAGE|hostFilter }}" style="width:100%;">
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div> <!--私人订制广告div   end-->
+    <div class="list">
+        <label class="item item-input" style="padding-left:27.3px;">
+            <span class="input-label-input fs-13" style="width:25%;">出游人数:</span>
+            <span ng-bind="pageData.privateData.TRIPS_MIX_NUMBER">人</span>&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;
+            <span ng-bind="pageData.privateData.TRIPS_MAX_NUMBER"></span>人
+        </label>
+
+        <label class="item item-input" style="padding-left:27.3px;">
+            <span class="input-label-input fs-13" style="width:25%;">出游天数:</span>
+            <span ng-bind="pageData.privateData.TRIPS_MIX_DAYS">天</span>&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;
+            <span ng-bind="pageData.privateData.TRIPS_MAX_DAYS"></span>天
+        </label>
+
+        <div class="item item-input">
+            <div class="row">
+                <div class="col">
+                    <span class="input-label-input fs-13" >酒店类型:</span>
+                </div>
+                <div class="col col-75">
+                    <span class="input-label-input fs-12" ng-bind="pageData.privateData.HOTEL_TYPE"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="item item-input">
+            <div class="row">
+                <div class="col">
+                    <span class="input-label-input fs-13" >交通工具:</span>
+                </div>
+                <div class="col col-75">
+                    <span class="input-label-input fs-12" ng-bind="pageData.privateData.VEHICLE"></span>
+                </div>
+            </div>
+        </div>
+
+        <label class="item item-input" style="padding-left:27.3px;">
+            <span style="width:25%;">联系人:</span>
+            <span class="input-label-input fs-12" ng-bind="pageData.privateData.MEMBER_NAME"></span>
+        </label>
+
+        <label class="item item-input" style="padding-left:27.3px;">
+            <span class="input-label-input fs-13" style="width:25%;">联系电话:</span>
+            <span class="input-label-input fs-12" ng-bind="pageData.privateData.PHONE"></span>
+        </label>
+    </div>
+
+    <ion-scroll class="bg-2" direction="x">
+        <div class="row" ng-style="pageData.scorllwidht">
+            <div class="col" ng-repeat="item in pageData.scenicSpotData" style="text-align: left;">
+                <img style="width: 120px;height: 106px;" ng-src="{{item.LIST_IMAGE|hostFilter:'ImageJSON'}}"/>
+                <br>
+                <div style="text-align: center">
+                    <span class="fs-13" ng-bind="item.STORE_NAME"></span>
+                </div>
+            </div>
+        </div>
+    </ion-scroll>
+    <div class="item" style="margin-bottom: 60px;text-align: center">
+
+        <span class="fs-15" style="color: #ff9700">{{pageData.varData.VVALUE}}</span>
+    </div>
+</ion-content>
+
+<div class="bar bar-footer" style="text-align:center;background:#0094ff;" ng-click="confirm()">
+    <div style="margin: auto;color:#ffffff;font-size: 17px;width:100%;line-height: 2.5;">确定</div>
+</div>
+
+
+
+

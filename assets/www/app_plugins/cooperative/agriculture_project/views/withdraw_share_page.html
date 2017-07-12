@@ -1,0 +1,55 @@
+<!-- 退股 -->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="退股">
+</div>
+<ion-view>
+    <ion-content>
+        <ion-list class="disable-user-behavior">
+            <div class="list">
+                <ion-item type="item-text-wrap" class="item" style="padding:0px;">
+                    <label  class="item item-input" style="padding:6px 10px 5px 16px;">
+                        <span class="input-label">投资项目:</span>
+                        <span ng-bind="pageData.pName">
+                        </span>
+                    </label>
+
+                    <label  class="item item-input" style="padding:6px 10px 5px 16px;">
+                        <span class="input-label">股金:</span>
+                        <span ng-bind="pageData.sumPrice | ptoy">
+                        </span>
+                    </label>
+
+                    <label  class="item item-input" style="padding:6px 10px 5px 16px;">
+                        <span class="input-label">到期日期:</span>
+                        <span ng-bind="pageData.expireTime">
+                        </span>
+                    </label>
+
+                    <label  class="item item-input" style="padding:6px 10px 5px 16px;" ng-if="pageData.difference == 'true'">
+                        <span class="input-label">退股期限已到</span>
+                        </span>
+                    </label>
+                    <label  class="item item-input" style="padding:6px 10px 5px 16px;" ng-if="pageData.difference == 'false'">
+                        <span class="input-label">退股期限未到</span>
+                        </span>
+                    </label>
+                    <label  class="item item-input" style="padding:6px 10px 5px 16px;" >
+                        <span class="input-label">说明:<br>项目未到期,退股将收取协议规定的退股违约金比例{{pageData.penaltyRatio}}%</span>
+                        </span>
+                    </label>
+                </ion-item>
+                <div>
+                </div>
+            </div>
+        </ion-list>
+
+        <div class="row">
+            <div class="col">
+                <button  ng-click="confirmWithdrawals()" class="button button_with ng-binding myinfoborder-radius h-43 agriculture_project_title">确认退股</button>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

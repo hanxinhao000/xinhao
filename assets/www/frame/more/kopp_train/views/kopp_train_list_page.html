@@ -1,0 +1,33 @@
+<!-- <div style="border-bottom: 1px solid #E5E5E5;padding-top:7px" ng-click="logisticsOrdersDetails('{{value.ID}}')">
+<div class="row fs-14" style="padding:6px 10px 5px 16px;">
+  <div class="col" style="color:#010101;">文章标题{{value.PC_TITLE}}</div>
+</div>
+<div class="row fs-12" style="padding:0px 10px 5px 16px;color: #595959;">
+  <div class="col" ng-bind="value.ABSTRACT"></div>
+</div>
+<div class="row fs-12" style="padding:0px 10px 5px 16px;color: #595959;">
+  <div class="col col-50">费用：{{value.COST|ptoy}}元</div>
+  <div class="col col-50">可读次数：{{value.COUNT}}</div>
+</div>
+</div> -->
+<a class="item item-box" ng-click="toRead(value.ID,value.COST,value.COUNT,value.MONEY)">
+    <h3 style="color:#010101;" ng-bind="value.PC_TITLE"></h3>
+    <p style="font-size:12px;white-space:normal;max-height:37px;overflow:hidden;" ng-bind="value.ABSTRACT"></p>
+    <table class="full-table fs-12 mt-12">
+  	    <tr class="full-w">
+      		<td>
+      			<span class="cl-03 ">费用:{{value.COST|ptoy}}元</span>
+      		</td>
+      		<td class="cl-02" style="text-align:right;">
+      			<span>可读次数:{{value.COUNT}}</span>
+      		</td>
+      	</tr>
+    </table>
+    <table class="full-table fs-12 mt-12">
+        <tr class="full-w">
+          <td>
+            <span class="cl-02">发布时间:{{value.RELEASETIME}}</span>
+          </td>
+        </tr>
+    </table>
+</a>

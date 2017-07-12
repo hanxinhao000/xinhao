@@ -1,0 +1,33 @@
+<ion-item class="item-icon-left row-wrap" style="height: 59px;padding:0px 0px 0px 46px;" >
+    <img ng-if="value.WXHEADIMG == ''" class="icon" src="app_plugins/uoou/contacts/img/default_head.png" style="max-width:36px;max-height:36px;border-radius: 3px;top: 9px;height: 45px;line-height: 45px; "ng-click="personDynamic(value.FRIEND_ID)">
+    <img ng-if="value.WXHEADIMG" class="icon" ng-src="{{value.WXHEADIMG|hostFilter}}" style="max-width:36px;max-height:36px;border-radius: 3px;top: 9px;height: 45px;line-height: 45px; "ng-click="personDynamic(value.FRIEND_ID)">
+    <div class="row" style="padding: 0px;height: 60px;">
+        <div style="width: 75%;">
+            <div class="row " style="padding: 0px;padding-top: 4px">
+                <div class="col" style="padding: 0px;">
+                    <span class="fs-14 text-overflow-elipsis" style="font-family: Microsoft YaHei; padding-left: 23px;" ng-bind="value.MEMBERNAME"></span>
+                   <div ng-if="value.MEMBER_TYPE == '1'" class="member_role_btn" style="display: -webkit-inline-box;">
+                        <span style="margin-right: auto;display: -webkit-box;margin-left: 8px;margin-top: 3px;">普</span>
+                    </div>
+                    <div ng-if="value.MEMBER_TYPE == '2'" class="member_role_btn" style="display: -webkit-inline-box;">
+                        <span style="margin-right: auto;display: -webkit-box;margin-left: 8px;margin-top: 3px;">中</span>
+                    </div>
+                    <div ng-if="value.MEMBER_TYPE == '3'" class="member_role_btn" style="display: -webkit-inline-box;">
+                        <span style="margin-right: auto;display: -webkit-box;margin-left: 8px;margin-top: 3px;">超</span>
+                    </div>
+                    <div ng-if="value.MEMBER_TYPE == '4'" class="member_role_btn" style="display: -webkit-inline-box;">
+                        <span style="margin-right: auto;display: -webkit-box;margin-left: 8px;margin-top: 3px;">皇</span>
+                    </div>
+                    <span ng-if="value.DIANZHU"></span>
+                </div>
+            </div>
+            <div class="row" style="padding: 0px;padding-top: 6px;">
+                <span class="fs-12" style="padding-left: 23px;font-family: Microsoft YaHei;color:#a0a0a0;" ng-if="!value.REMARK">他很懒，什么也没留下！</span>
+                <span class="fs-12" style="padding-left: 23px;font-family: Microsoft YaHei;color:#a0a0a0;" ng-if="value.REMARK" ng-bind="value.REMARK"></span>
+            </div>
+        </div>
+        <div style="width: 25%;height: 60px;line-height: 60px;text-align: right;padding-right: 20px;" ng-click="agreeFriend('{{value.ID}}','{{value.FRIEND_ID}}')">
+            <u class="fs-14 text-overflow-elipsis" style="color: rgb(0, 213, 189);">同意</u>
+        </div>
+    </div>
+</ion-item>

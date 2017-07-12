@@ -1,0 +1,34 @@
+<!-- 公益市场，选择区域 -->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     title="{{pageData.title}}">
+</div>
+<style type="text/css">
+    .pr_item{
+        width:22%;
+        margin-left:3px;
+        margin-right:3px;
+        display:inline;
+    }
+</style>
+<ion-view view-title="{{pageData.title}}" >
+    <ion-content>
+        <div class="bg-2">
+            <!--广告-->
+            <div banner-active params="{{pageData.banner_menu_code}}"></div>
+            <!-- <div style="height:23px;" >&nbsp;</div> -->
+        </div>
+        <div style="padding:0px 0px 0px 0px;margin:0px;flex-wrap:wrap;display:-webkit-flex;width:100%;"  
+             aswfall item-css="col-25 waterfall" 
+             rcode="getAllProvince" 
+             temp-url="app_plugins/public_market/views/select_market_area_province_item.html" 
+             list-events="pageData.listEvents" no-show-more="false" page-size="40" ></div>
+<!--        <div class="row" style="height:100px;line-height:100px;">
+            <div class="col">&nbsp;<a href="javaScript:void(0);" style="display:none;">&nbsp;</a></div>
+        </div>-->
+        <div footerpadding></div>
+    </ion-content>
+</ion-view>

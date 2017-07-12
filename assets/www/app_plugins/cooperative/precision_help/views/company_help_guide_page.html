@@ -1,0 +1,24 @@
+<!-- 单位帮扶 -->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="产业扶贫手拉手社会精准帮扶">
+</div> 
+<ion-view view-title="产业扶贫手拉手社会精准帮扶">
+    <ion-content>
+        <div class="bg-2 fs-14 talign-c pt-20 pb-20 l-height-30">
+            一个单位帮扶一个自然村农厂<br>
+            一个企业帮扶一个农民合作社<br>
+            城乡互助与农民结成利益共同体<br>
+            从源头解决农产品质量安全问题<br>
+            共建共享社会主义农产品公益市场
+        </div>
+        <div ng-repeat="item in pageData.role">
+            <a class="item  item-icon-right ng-binding" ng-click="Jump('{{item.ID}}')">
+                <span class="fs-12" ng-bind="item.ROLE_DESC"></span>
+                <i class="icon ion-chevron-right icon-accessory"></i>
+            </a>
+        </div>          
+    </ion-content>
+</ion-view>

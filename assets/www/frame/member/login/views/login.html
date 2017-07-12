@@ -1,0 +1,74 @@
+<!-- 会员登录-->
+<!--<div class="bar bar-heade bar-light"
+     nav-bar
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     title="登录">
+</div>-->
+
+<ion-view>
+    
+    <ion-nav-title>
+        <div class="bar_title fs_4">
+            登录
+        </div>
+    </ion-nav-title>
+    
+  <ion-content >
+    <div style="padding-top: 9px; " >
+        <!--icon-locked-->
+        <div class="row"  style="padding:10px;font-family: 微软雅黑;font-size: 16px;">
+          <div class="col" style="padding:0px;">
+            <label class="item  item-input" style="border:0px;border-radius: 5px;">
+              <i class="ion-android-phone-portrait fs-20"  style="margin-right: 12px;color: #bababa;"></i>
+              <span class="input-label" style="width:15%;padding: 10px 10px 7px 0px;font-size: 16px;color: #bababa;">用户名:</span>
+              <input type="tel" ng-model="pData.useraccount" placeholder="" />
+            </label>
+          </div>
+        </div>
+        <div class="row" style="padding: 10px;font-family: 微软雅黑;">
+          <div class="col"  style="padding:0px;">
+            <label class="item  item-input"style="border:0px;border-radius: 5px;">
+              <i class="ion-ios-unlocked-outline fs-20"  style="margin-right: 12px;color: #bababa;"></i>
+              <span class="input-label" style="width:15%;padding: 10px 10px 4px 0px;font-size: 16px;color: #bababa;">密码:</span>
+              <input type="password" ng-model="pData.userpassword" placeholder="">
+            </label>
+          </div>
+        </div>
+
+        <div class="row" style="margin-top: 29px;padding: 10px 10px 4px 18px;font-size: 16px;color: #bababa;">
+            <div class="col" ng-click="rememberpassword()">
+                <span style="width:18%;padding: 10px 10px 4px 0px;font-size: 16px;color: #bababa;" ng-class="pData.icon">&nbsp;记住账号</span></div>
+            <div class="col"></div>
+        </div>
+
+        <div class="row" style="padding:6px 6px 0px 6px;margin:0px;">
+            <div class="col" style="width: 335;height:48; padding:0px 6px 0px 6px;">
+                <button class="button button-block button-light" style="background-color: #2ad4d4;font-family: 微软雅黑;font-size: 18px;color: #ffffff;"  ng-click="login()">
+                    登录
+                </button>
+            </div>
+         
+        </div>
+        
+        <div class="rol" style="padding:0px 6px 6px 6px; margin:0px; margin-top:-6px; ">
+            <div class="col" style="width: 335;height: 48; padding:0px 6px 0px 6px;">
+                <button class="button button-block button-light"  style="background-color: #ffffff;font-family: 微软雅黑;font-size: 18px;color: #888888;" ng-click="register()">
+                    注册
+                </button>
+             </div>
+          </div>
+        
+        <div style="font-family:微软雅黑; font-size: 15px;color: #888888; margin-top: 10%; text-align: center;">
+          <a  style="font-family: 微软雅黑; font-size: 46;color: #888888;" ng-click="findpassword()">忘记密码?请求找回</a>
+        </div>
+        
+        <!-- 客服：电话-->
+         <div style="font-family:微软雅黑; font-size: 15px;color: #888888; margin-top: 2%; text-align: center;">
+            <span style="font-family: 微软雅黑; font-size: 46;color: #888888;" > 客服电话：{{pData.customer_service}}</span>
+        </div>
+       
+    </div>
+
+  </ion-content>
+</ion-view>

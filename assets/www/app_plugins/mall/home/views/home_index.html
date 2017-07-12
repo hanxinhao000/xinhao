@@ -1,0 +1,53 @@
+<!--首页广告div-->
+<!-- Slider main container -->
+<div class="swiper-container home_swipersss" id="home_swipersss">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+        <!-- Slides -->
+        <div class="swiper-slide" ng-repeat="item in pageData.bannerData">
+            <img ng-click="toPage('{{item.URL}}')" ng-src="{{item.LISTIMGAGE|hostFilter }}" style="width:100%;">
+        </div>
+    </div>
+    <!-- If we need pagination -->
+    <div class="swiper-pagination home_swiper_pagination" id="home_swiper_pagination"></div>
+    <!-- If we need scrollbar -->
+</div> <!--首页广告div   end-->
+<!--&lt;!&ndash;首页搜索框div&ndash;&gt;-->
+<!--<div style="margin: 10px 5px 10px 5px;"  amsearch search-css="mall_search" go-back="mall.home"  target="commodity.searchList" key="cname"></div>-->
+<!--&lt;!&ndash;首页搜索框div  end &ndash;&gt;-->
+<div class="mall_home_public_mall" ng-click="toPublicWelfare()">
+  <img src="img/right_gysc.png" class="mall_home_public_mall_img" >
+</div>
+
+<div class="mall_home_public_mall" ng-click="inputProductUrl()">
+  <img src="img/right_grp.png" class="mall_home_public_mall_img" >
+</div>
+<!--图标-->
+<div class="row row-wrap" style="background:#FFFFFF;">
+  <div class="col col-25" ng-repeat="item in pageData.icon" style="text-align: center;">
+    <img ng-src="{{item.img}}" ng-click="Jump('{{item.url}}','{{item.param}}')" style="width: 80%;height:auto;" class='img-responsive' />
+    <span style="display:block;width:100%;text-align: center;font-size:12px;color:#5959559;">{{item.title}}</span>
+  </div>
+</div>
+
+
+<!--首页活动分类div end-->
+<!--<aslist style="padding: 0px;margin: 0px;" item="false" no-show-more="false"  item-css="col-50 waterfall" rcode="mallActivity" temp-url="app_plugins/mall/home/views/home_activite_list_item.html" list-events="pData.listEvents" params="{{pageData.normalMallActive}}" data="pageData.normalData"></aslist>
+
+<aslist style="padding: 0px;margin: 0px;" item="false" no-show-more="false"  item-css="col-50 waterfall" rcode="mallActivity" temp-url="app_plugins/mall/home/views/home_activite_list_item.html" list-events="pData.listEvents" params="{{pageData.limitMallActive}}" repeatdata="pageData.limitData"></aslist>-->
+
+
+
+<!--首页商品活动列表div-->
+
+<!--<div ng-repeat="item in pageData.mallActives.listMall">
+  <div ng-if="item.ITEM_DATA.length>0" style="margin-top:7px;width:100%;height:37px;line-height:37px;text-align:center;background:#FFFFFF;">
+    <img  ng-src="img/home2_40.png" style="width:8%;height:auto;vertical-align: middle;">&nbsp;
+    <span style="height:100%;vertical-align: middle;color:#11c6dc;font-size:14px;" ng-bind="item.MALL_TITLE"></span>
+  </div>
+  <div  repeatdata="item.ITEM_DATA" style="padding: 0px;margin: 0px;" aswfall no-show-more="false" item-css="col-50 waterfall" rcode="mallActivityCommodity" temp-url="app_plugins/mall/commodity/comd_list/views/commodity_list_item.html" list-events="pData.listEvents" params="{{item}}"></div>
+</div>-->
+
+<div mall-shelves-directive  page-type="1" style="height: 100%;"></div>
+<div footerpadding></div>
+<!--首页活动div  end-->

@@ -1,0 +1,96 @@
+<!--大众创业-->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     title="{{pageData.title}}">
+
+
+</div>
+<ion-view view-title="{{pageData.title}}">
+  <ion-content >
+    <div class="list">
+      <label class="item item-input">
+        <span class="input-label">申请金额</span>
+
+          <span  ng-bind="pageData.pay_money|ptoy"></span>元
+
+      </label>
+      <label class="item item-input">
+        <span class="input-label">授信保证金:</span>
+        <span  ng-bind="pageData.credit_money|ptoy"></span>元
+      </label>
+      <label class="item item-input">
+        <span class="input-label">姓名:</span>
+        <!--<span  ng-bind="pageData.name=='null'?'':pageData.name"></span>-->
+        <input type="text" ng-model="pageData.name" placeholder= "请输入真实姓名（必填）">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">身份证号:</span>
+        <input type="text" ng-model="pageData.idnumber" ng-minlength="16" ng-maxlength="18" placeholder= "请输入真实身份证号（必填）">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">年龄:</span>
+        <input type="number" string-to-number ng-minlength="1" ng-maxlength="3" placeholder= "请输入真实年龄（必填）" ng-model="pageData.age">
+      </label>
+
+      <label class="item item-input item-select">
+        <div class="input-label">
+          文化程度:
+        </div>
+        <select ng-model="pageData.degree_of_education">
+          <option value="">-请选择-</option>
+          <option ng-repeat="x in pageData.degree_of_education_info">{{x}}</option>
+        </select>
+      </label>
+      <label class="item item-input">
+        <span class="input-label">家庭地址:</span>
+        <input type="text" ng-model="pageData.address" placeholder= "请输入真实家庭地址（必填）">
+      </label>
+      <label class="item item-input item-select">
+        <div class="input-label">
+          还款约定(月):
+        </div>
+        <select ng-model="pageData.loan_business_term">
+          <option value="">-请选择-</option>
+          <option ng-repeat="x in pageData.loan_business_term_info">{{x}}</option>
+        </select>
+      </label>
+
+
+    </div>
+    <div class="row" style="padding:0px;">
+      <!--<div class="col-50" style="padding:0px;margin: 0px;">-->
+      <!--我同意<<理性农业社员守则>>-->
+      <!--</div>-->
+      <div class="col" style="margin:0px;text-align: center;">
+        <label class="toggle toggle-assertive" style="top: 8px;">
+          <input ng-model="pageData.agree_type" type="checkbox">
+          <div class="track">
+            <div class="handle"></div>
+          </div>
+        </label>
+        <a tips-modal menucode="groupLoanProtocol" title="我同意大众创业借款协议" ></a>
+        <!-- 我同意 <a>&lt;&lt;大众创业借款协议&gt;&gt;</a> -->
+        <!--我同意理性农业社员守则-->
+
+      </div>
+    </div>
+<!-- 
+    <div class="bar bar-footer h_69">
+
+      <button  ng-click="subClick()"
+               class="button ng-binding col myinfoborder-radius h-43 agriculture_project_title"
+      >
+        下一步
+      </button>
+
+
+    </div> -->
+<div footerpadding></div>  
+  </ion-content>
+    <div class="bar bar-footer">
+      <button ng-click="subClick()" class="button button_with  myinfoborder-radius h-43" style="font-size:14px;">下一步</button>
+  </div>
+</ion-view>

@@ -1,0 +1,25 @@
+<!-- 单位帮扶 -->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="产业扶贫手拉手社会精准帮扶">
+</div>
+<ion-view>
+    <ion-content>
+        <div style="padding:0px;margin:0px;" item="false" aslist rcode="companyHelp" temp-url="app_plugins/cooperative/precision_help/views/company_help_list_page.html" list-events="pageData.list_events" params="{memberid:{{pageData.memberid}}}"></div>
+    <div footerpadding></div>
+    </ion-content>
+    <div class="row bar bar-footer ios-margin-button" style="padding:6px;margin:0px;">
+        <div class="col" style="width: 40%;">
+            <button class="button button_with ng-binding myinfoborder-radius h-43 agriculture_project_title" ng-click="helpFarm()">
+                帮扶合作社/自然村农厂
+            </button>
+        </div>
+        <div class="col" style="width: 40%;">
+            <button class="button button_with ng-binding myinfoborder-radius h-43 agriculture_project_title" ng-click="studenSupport()">
+                资助大学生
+            </button>
+        </div>
+    </div>
+</ion-view>

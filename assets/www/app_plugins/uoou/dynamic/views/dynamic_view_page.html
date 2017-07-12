@@ -1,0 +1,91 @@
+<!--动态详情界面-->
+<!--<div class="bar bar-heade bar-light"
+     nav-bar
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     title="{{pData.title}}">
+</div>-->
+<ion-view>
+    
+    <ion-nav-title>
+        <div class="fs_4">{{pData.title}}</div>
+    </ion-nav-title>
+
+    <ion-content>      
+<!--        <div class="row" style="padding-top: 20px;">
+            <div class="col-50" style="text-align: center;line-height: 60px;height: 60px;vertical-align: middle;" ng-click="toPage('7')">
+                <img style="width: 60px;vertical-align: middle;" src="img/home2_18.png" >好友圈
+            </div>
+            <div class="col-50" style="text-align: center;line-height: 60px;height: 60px;vertical-align: middle;" ng-click="toPage('8')">
+                <img style="width: 60px;vertical-align: middle;" src="img/home2_17.png" >
+                身边
+            </div>
+        </div>-->
+        <div class="list" >
+            <a class="item item-icon-right fs-14" style="padding:8px;color: #333333;"  ng-click="toPage('7')">
+                <img style="width: 35px;margin-right: 5px; vertical-align: middle;" src="app_plugins/uoou/dynamic/friend_dynamic/img/3.8_1.png">
+                好友圈
+                <img class="icon" style="width:15px;height:15px;margin-top:18px;right: 10px;position: absolute;" 
+                     src="app_plugins/uoou/dynamic/img/member_43.png">
+            </a>
+            <a class="item item-icon-right fs-14" style="padding:8px;color: #333333;"  ng-click="toPage('8')">
+                <img style="width: 35px;margin-right: 5px; vertical-align: middle;" src="app_plugins/uoou/dynamic/friend_dynamic/img/3.8_2.png">
+                身边
+                <img class="icon" style="width:15px;height:15px;margin-top:18px;right: 10px;position: absolute;" 
+                     src="app_plugins/uoou/dynamic/img/member_43.png">
+            </a>
+        </div>
+        
+        <div class="list" style="padding-top: 5px;">
+            
+            <a ng-if="pData.platformStr" class="item item-icon-right fs-14" style="padding:8px;" ng-click="toPage('1')">
+                <img style="width: 35px; margin-right: 5px;vertical-align: middle;" src="app_plugins/uoou/dynamic/friend_dynamic/img/3.8_3.png">
+                红包社区
+                <img class="icon" style="width:15px;height:15px;margin-top:18px;right: 10px;position: absolute;" 
+                     src="app_plugins/uoou/dynamic/img/member_43.png">
+            </a>
+            <a class="item item-icon-right fs-14" style="padding:8px;margin-top: 5px;color: #333333;" href="javascript:void(0)" ng-click="qrcode()">
+                <img style="width: 35px;margin-right: 5px; vertical-align: middle;" src="app_plugins/uoou/dynamic/friend_dynamic/img/3.8_4.png">
+                扫一扫
+                <img class="icon" style="width:15px;height:15px;margin-top:18px;right: 10px;position: absolute;" 
+                     src="app_plugins/uoou/dynamic/img/member_43.png">
+            </a>
+            
+<!--            <a class="item item-icon-right fs-14" style="padding:8px;color: #333333;"  ng-click="toPage('3')">
+                <img style="width: 35px; margin-right: 5px;vertical-align: middle;" src="app_plugins/uoou/dynamic/friend_dynamic/img/3.8_5.png">
+                流星雨
+                <img class="icon" style="width:15px;height:15px;margin-top:18px;right: 10px;position: absolute;" 
+                     src="app_plugins/uoou/dynamic/img/member_43.png">
+            </a>-->
+            
+            <a class="item item-icon-right fs-14" style="padding:8px;margin-top: 5px;color: #333333;"  ng-click="toPage('4')">
+                <img style="width: 35px; margin-right: 5px;vertical-align: middle;" src="app_plugins/uoou/dynamic/friend_dynamic/img/3.8_6.png">
+                生活
+                <img class="icon" style="width:15px;height:15px;margin-top:18px;right: 10px;position: absolute;" 
+                     src="app_plugins/uoou/dynamic/img/member_43.png">
+            </a>
+            <a class="item item-icon-right fs-14" style="padding:8px;color: #333333;"  ng-click="toPage('5')"> 
+                <img style="width: 35px; margin-right: 5px;vertical-align: middle;" src="app_plugins/uoou/dynamic/friend_dynamic/img/3.8_7.png">
+                外快专区
+                <img class="icon" style="width:15px;height:15px;margin-top:18px;right: 10px;position: absolute;" 
+                     src="app_plugins/uoou/dynamic/img/member_43.png">
+            </a>
+            <a class="item item-icon-right fs-14" style="padding:8px;margin-top: 5px;color: #333333;" ng-click="toPage('6')">
+                <img style="width: 35px; margin-right: 5px;vertical-align: middle;" src="app_plugins/uoou/dynamic/friend_dynamic/img/3.8_9.png">
+                店铺最新活动
+                <img class="icon" style="width:15px;height:15px;margin-top:18px;right: 10px;position: absolute;" 
+                     src="app_plugins/uoou/dynamic/img/member_43.png">
+            </a>
+<!--
+            <a class="item item-icon-right  fs-14" style="padding:8px;color: #333333;" ng-click="toPage('9')">
+                <img style="width: 35px; margin-right: 5px;vertical-align: middle;" src="app_plugins/uoou/dynamic/friend_dynamic/img/3.8_10.png">
+                更多服务
+                <img class="icon" style="width:15px;height:15px;margin-top:18px;right: 10px;position: absolute;" 
+                     src="app_plugins/uoou/dynamic/img/member_43.png">
+            </a>-->
+
+        </div>
+        
+        <div footerpadding></div>
+    </ion-content>
+</ion-view>

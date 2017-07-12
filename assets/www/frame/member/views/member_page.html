@@ -1,0 +1,107 @@
+<div class="bar bar-heade bar-light"
+     nav-bar
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     title="我的">
+</div>
+<!-- 会员中心/我的-->
+<ion-view>
+    <ion-content>
+        <div class="row" style="padding-top:16px;padding-bottom:10px;padding-right:0px;background:#FFFFFF;">
+            <div class="col col-33" style="padding:0px;">
+                <div class="imgtest" style="margin:1px;">
+                    <figure class="img_center" >
+                        <div style="padding: 0px;margin: 0px;">
+                            <img ng-src="{{pData.User_HeadImgUrl|hostFilter}}" ng-click="Jump('member.editheader')" />
+                        </div>
+                    </figure>
+                </div>
+            </div>
+            <div class="col pl-10" style="padding-top:4px;color:#595959;font-size:12px;margin-top: auto;margin-bottom:auto">
+                <div class="account_div_padding_top" style="padding-top: 3px;">
+                    <span>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名:</span><span class="member_info_margin_left" ng-bind="pData.User_Name"></span>
+                </div>
+                <div class="account_div_padding_top" >
+                    <span>登陆账号:</span><span class="member_info_margin_left" ng-bind="pData.User_account"></span>
+                </div>
+
+                <div class="account_div_padding_top" >
+                    <span>社员类型:</span>
+                    <span class="member_info_margin_left" ng-switch on="pData.MemberType">
+                        <span ng-switch-when="1" >消费者社员</span>
+                        <span ng-switch-when="2" >单位消费者社员</span>
+                        <span ng-switch-when="3" >生产者社员</span>
+                    </span>
+                </div>
+                <div ng-show="pData.User_account_type && pData.User_account_type != 'null'" class="account_div_padding_top" style="padding-top: 3px;">
+                    <span >社员身份:</span>
+                    <span  class="member_info_margin_left" ng-bind="pData.User_account_type"></span>
+                </div>
+                <div ng-show="!pData.User_account_type || pData.User_account_type == 'null'" class="account_div_padding_top" style="padding-top: 3px;">
+                    <span>&nbsp;</span>
+                </div>
+
+                <!--<div class="account_div_padding_top"><span>现金:</span><span class="member_info_margin_left" ng-bind="pData.User_Cash | ptoy"></span>元</div>-->
+                <!--<div class="account_div_padding_top"><span>积分:</span><span class="member_info_margin_left" ng-bind="pData.User_integral | number:0"></span></div>-->
+
+            </div>
+        </div><!-- 
+        <div class="diveline-2">&nbsp;</div> -->
+        <div  class="row bg-2 pb-5" style="">
+            <div ng-click="My_information()" class="col-33 member_oper line_right cm">
+                <img style="width:20px; vertical-align: middle;" src="img/user-2.png">
+                <span style="vertical-align:middle;">修改资料</span>
+            </div>
+            <div ng-click="modify_password()" class="col-33 member_oper line_right cm">&nbsp;
+                <img style="width:20px; vertical-align: middle;" src="img/user-3.png">
+                <span style="vertical-align:middle;">修改密码</span>
+            </div>
+            <div ng-click="loginOut()" class="col-33 member_oper cm" >&nbsp;
+                <img style="width:20px; vertical-align:middle;" src="img/user-4.png">
+                <span style="vertical-align:middle;">退出登录</span>
+            </div>
+            <br>
+        </div>
+        <div class="diveline-2">&nbsp;</div>
+        <!--<div ng-repeat="list in pData.memberCenterListJson">-->
+        <!--&lt;!&ndash;<ion-item ng-repeat="item in list" ng-click="Jump('{{item.address}}')">&ndash;&gt;-->
+        <!--&lt;!&ndash;{{item.title}}&ndash;&gt;-->
+        <!--&lt;!&ndash;</ion-item>&ndash;&gt;-->
+        <!--</div>-->
+
+        <!--<div class="list" ng-repeat="list in pData.memberCenterListJson">-->
+        <!--&lt;!&ndash;<a class="item list_padding item-icon-left" ng-repeat="item in list" ng-click="Jump('{{item.address}}')">&ndash;&gt;-->
+        <!--&lt;!&ndash;<i class="icon member_icon_color {{item.icon}}"></i>&ndash;&gt;-->
+        <!--&lt;!&ndash;<i class="icon ion-ios-telephone-outline"></i>&ndash;&gt;-->
+        <!--&lt;!&ndash;</a>&ndash;&gt;-->
+
+        <!--<a class="item list_padding item-icon-left item-icon-right" ng-repeat="item in list" ng-click="Jump('{{item.address}}')">-->
+        <!--<i class="icon member_icon_color {{item.icon}}"></i>-->
+        <!--{{item.title}}-->
+        <!--<i class="icon ion-chevron-right icon-accessory"></i>-->
+        <!--</a>-->
+
+        <!--</div>-->
+
+
+        <div class="row row-wrap" style="margin:10px 0 0 0; padding:0px;
+             vertical-align: middle;" >
+            <div class="col-50" ng-repeat="item in pData.memberCenterListJson" ng-click="Jump('{{item.address}}')"  style="height: 58px;line-height: 58px;
+
+                 vertical-align: middle;border-bottom: 1px solid #CCCCCC;border-right: 1px solid #CCCCCC;background: #FFFFFF;margin:0px;text-align:left;padding-left: 10px;">
+                <img class="col-50" ng-src="{{item.icon}}" style="vertical-align: middle;width: 13%;height:auto;" class='img-responsive' />
+                <span style="text-align: center;display:inline-block;padding-left: 13px;vertical-align: middle;font-size:12px;color:#5959559;">{{item.title}}</span>
+            </div>
+        </div>
+
+        <div class="row row-wrap" style="margin:10px 0 0 0; padding:0px;height: 58px;line-height: 55px;
+             vertical-align: middle;" >
+            <div class="col-50" ng-repeat="item in pData.memberCenterListJsons" ng-show="item.show" ng-click="Jump('{{item.address}}')" style="height: 58px;line-height: 58px;
+                 vertical-align: middle;border-bottom: 1px solid #CCCCCC;border-right: 1px solid #CCCCCC;background: #FFFFFF;margin:0px;text-align:left;padding-left: 10px;">
+                <img class="col-50" ng-src="{{item.icon}}" style="vertical-align: middle;width: 13%;height:auto;" class='img-responsive' />
+                <span style="text-align: center;display:inline-block;padding-left: 13px;vertical-align: middle;font-size:12px;color:#5959559;">{{item.title}}</span>
+            </div>
+        </div>
+        <div footerpadding></div><br/><br/><br/>
+    </ion-content>
+</ion-view>

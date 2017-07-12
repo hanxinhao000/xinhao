@@ -1,0 +1,293 @@
+<!--设置店铺-->
+
+<style>
+    .btn-store-choice{
+        width:100%;
+        height: 48px;
+        background-color: rgb(231,247,247);
+        border:1px solid #ddd;
+        color: rgb(42,212,212);
+    }
+    .btn-store-no-choice{
+        width:100%;
+        height: 48px;
+        background-color: #FFFFFF;
+        border:1px solid #ddd;
+        color: rgb(42,212,212);
+    }
+    .platform-android .checkbox-platform input:before, .platform-android .checkbox-platform .checkbox-icon:before, .checkbox-square input:before, .checkbox-square .checkbox-icon:before{
+        border-radius: 50%;
+    }
+
+    .option {
+        font-size: 12px;
+    }
+    .toggle.toggle-assertive input:checked + .track {
+        border-color: #2ad4d4;
+        background-color: #2ad4d4;
+    }
+    .checkbox input:checked:before, .checkbox input:checked + .checkbox-icon:before {
+        background: #2ad4d4;
+        border-color: #2ad4d4;
+    }
+    .btn-push{
+        background-color:#2ad4d4;
+        height: 35px;
+        width: 100%;
+        color: white;
+        border-radius: 3px;
+        border:0px;
+    }
+    
+    .row_input{
+       padding: 0px 0px 3px 0px;
+       height: 42px;
+    }
+    .row_input_title{
+        text-align: right;
+        padding-top: 11px;
+        width:29%;
+        color:#666666;
+    }
+    .row_input_in{
+        padding-top: 5px;
+        width:70%;
+    }
+    .row_input_in input{
+        font-size:15px;
+        color:#888888;
+    }
+    .row_input_in select{
+        font-size:15px;
+        color:#888888;
+    }
+    .row_input_in textarea{
+        font-size:15px;
+        color:#888888;
+    }
+    .item {
+        border-color: #fffbfb;
+    }
+</style>
+
+<!--<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="设置店铺">
+</div>-->
+<ion-view>
+    <ion-nav-buttons side="left">
+        <div  ng-click="back()"  class="public_comment_header_bar_padding_left">
+            <i class="icon head_left_back"></i>
+        </div>
+    </ion-nav-buttons>
+
+    <ion-nav-title>
+        <div class="fs_4">
+            设置店铺
+        </div>
+    </ion-nav-title>
+    
+    <ion-content style="background-color:white;">
+
+   <div class="list bg-2 fs-15" style="padding-bottom:10px;">
+            <div class="row row_input" >
+                <div class="row_input_title">
+                    <span>铺铺名称：</span>
+                </div>
+                <div  class="row_input_in" >
+                    <input type="text" style="padding-left: 8px;background-color: rgb(246,246,246);width: 100%;" placeholder="请输入铺铺名称" ng-model="pData.storeName"/>
+                </div>
+            </div>
+            <div class="row row_input" >
+                <div  class="row_input_title" >
+                    <span>店铺分类：</span>
+                </div>
+                <div class="row_input_in">
+                    <select  style="padding-left:10px;background-color: rgb(246,246,246);width: 49%;height: 34px;border: 0px;"  
+                            ng-options="items.ID as items.CLASS_NAME for items in pData.mainClassData" ng-model="pData.storeMainClass" >
+
+                    </select>
+                     <select  style="padding-left:10px;background-color: rgb(246,246,246);width: 49%;height: 34px;border: 0px;" 
+                            ng-options="items.ID as items.CLASS_NAME for items in pData.subClassData" ng-model="pData.storeSubClass"
+                            ng-change="initTabs()">
+                    </select>
+                </div>
+            </div>
+            <div class="row row_input">
+                <div  class="row_input_title" >
+                    <span>店铺地址：</span>
+                </div>
+                <div  class="row_input_in" >
+                    <select style="padding-left:10px;background-color: rgb(246,246,246);width: 33%;height: 34px;border: 0px;" 
+                            ng-model="pData.recvProvince" ng-options="province.PROID as province.PRONAME for province in cascadePCZ.provinces" />
+                        <option value="">-省-</option>
+                    </select>
+                    <select style="padding-left:10px;background-color: rgb(246,246,246);width: 31%;height: 34px;border: 0px;" 
+                            ng-model="pData.recvCity" ng-options="city.CITYID as city.CITYNAME for city in cascadePCZ.cities"/>
+                        <option value="">-市-</option>
+                    </select>
+                    <select style="padding-left: 4px;background-color: rgb(246,246,246);width: 31%;height: 34px;border: 0px;" 
+                            ng-model="pData.recvArea" ng-options="zone.ZONEID as zone.ZONENAME for zone in cascadePCZ.zones" />
+                        <option value="">-区/县-</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row row_input" >
+                <div  class="row_input_title" >
+                    <span>详细地址：</span>
+                </div>
+                <div  class="row_input_in" >
+                    <input type="text" style="padding-left: 8px;background-color: rgb(246,246,246);width: 100%;" placeholder="请输入详细地址" ng-model="pData.storeAddress"/>
+                </div>
+            </div>
+            <div class="row row_input">
+                <div  class="row_input_title" >
+                    <span>营业时间：</span>
+                </div>
+                <div  class="row_input_in" >
+                    <input type="text" style="padding-left: 8px;background-color: rgb(246,246,246);width: 100%;"  placeholder="请输入营业时间" ng-model="pData.businessTime"/>
+                </div>
+            </div>
+            <div class="row row_input" >
+                <div  class="row_input_title" >
+                    <span>服务热线：</span>
+                </div>
+                <div  class="row_input_in" >
+                     <input type="text" style="padding-left: 8px;background-color: rgb(246,246,246);width: 100%;" placeholder="请输入服务热线" ng-model="pData.hotline"/>
+                </div>
+            </div>
+            <div class="row row_input">
+                <div  class="row_input_title" >
+                    官方提示：
+                    <!--<span style="display: inline-table;margin-top: 7px;margin-left: 8.5%;">可开通使用代金券</span>-->
+                </div>
+                <div style="width: 50%;padding-top: 11px;color: #666666;">可开通使用代金券</div>
+                <div  class="row_input_in" style="width: 20%;text-align: right;padding-top: 7px;" >
+                    
+                   <label class="toggle toggle-assertive" style="border: 0px;">
+                        <input type="checkbox" ng-model="pData.choice"/>
+                        <div class="track" style="width: 43px;">
+                            <div class="handle"></div>
+                        </div>
+                    </label>
+                </div>
+            </div>
+            <div class="item" style="padding-left: 0px;padding-right: 0px;">
+                <div class="row" style="padding-left: 0px;padding-right: 0px;">
+                    <div class="row_input_title" style="margin-top: auto;margin-bottom: auto; font-size:15px;">
+                        选择标签：
+                    </div>
+                    <div class="col" style="margin-top: auto;margin-bottom: auto;">
+                        <ion-checkbox style="border: 0px;" ng-repeat="item in pData.tabData" ng-model="item.CHECKED">{{item.TAB_NAME}}</ion-checkbox>
+                    </div>
+                </div>
+            </div>
+            <!--选择图片、图集-->
+
+            <div class="item" style="padding:0px;">
+                <div class="row" style="padding:0px;padding-top: 11px;">
+                    <div class="row_input_title" style="margin-top: auto;margin-bottom: auto;padding:0px;font-size:15px;padding-left: 0px;" >
+                        店铺图集：
+                    </div>
+                </div>
+            </div>
+             <div class="item">
+                <div album max="10" table="UU_STORE" pvalue="{{pData.storeId}}" field="ATLAS" source="{{pData.showData.ATLAS}}"
+                         out-data="pData.imgPath" style="background-color: #FFFFFF;margin-top: 7px;padding:3px 0px 0px 1px;">
+                </div>
+            </div>
+        </div>
+        
+        <!--于2017年1月11日15:39:30将商铺介绍以及详细内容字号大小改为14号 -->
+        <div class="item" style="min-height: 50px;height: 50px;padding-top: 0px;margin-top: 10px;padding: 0px;font-size: 14px;">
+            <div class="row" style="padding: 0px;">
+                <div class="col col-33" style="padding: 0px;">
+                    <button ng-class="pData.storeIntrClass" ng-click="store()" style="font-size: 15px;">店铺介绍</button>
+                </div>
+                <div class="col col-33" style="padding: 0px;">
+                    <button ng-class="pData.activityIntrClass" ng-click="activity()" style="font-size: 15px;">活动介绍</button>
+                </div>
+                <div class="col col-33" style="padding: 0px;">
+                    <button ng-class="pData.recruitmentInfoClass" ng-click="recruitment()" style="font-size: 15px;">招聘信息</button>
+                </div>
+            </div>
+        </div>
+
+        <!--店铺介绍-->
+        <div class="item" ng-if="pData.storeIntrState">
+            <div class="row" style="padding:0px;font-size: 14px;">
+                <div class="col">
+                    <textarea ng-model="pData.storeIntr" style="width: 100%;min-height: 100px;overflow:hidden; resize:none;font-size: 14px;" placeholder="请输入店铺介绍"></textarea>
+                </div>
+            </div>
+            <div class="row" style="padding:0px;">
+                <div class="col" ng-if="pData.storeIntrImg">
+                    <i ng-click="deleteImg('1')" class="icon ion-close-circled" 
+                       style="color: red;position: relative;float: right;right: 0px;top: 0px;font-size:20px;"></i>
+                    <img style="width:100%;height: auto;border-radius: 10px;" ng-src="{{pData.storeIntrImg|hostFilter:'ImageJSON'}}"/>
+                </div>
+            </div>
+            <div ng-if="!pData.storeIntrImg">
+                <!--选择图片-->
+                <div  album  max="1" table="UU_STORE" pvalue="{{pData.storeId}}" field="STORE_INTR_IMG"
+                      out-data="pData.storeIntrImg" style="background-color: #FFFFFF;margin-top: 7px;padding:0px 0px 0px 1px;"></div>
+            </div>
+        </div>
+
+        <!--活动介绍-->
+        <div class="item" ng-if="pData.activityIntrState">
+            <div class="row" style="padding:0px;">
+                <div class="col">
+                    <textarea ng-model="pData.activityIntr" style="width: 100%;min-height: 100px;overflow:hidden; resize:none;font-size: 14px;" placeholder="请输入活动介绍"></textarea>
+                </div>
+            </div>
+            <div class="row" style="padding:0px;" ng-if="pData.activityIntrImg">
+                <div class="col">
+                    <i ng-click="deleteImg('2')" class="icon ion-close-circled" 
+                       style="color: red;position: relative;float: right;right: 0px;top: 0px;font-size:20px;">
+                    </i>
+                    <img style="width:100%;height: auto;border-radius: 10px;" ng-src="{{pData.activityIntrImg|hostFilter:'ImageJSON'}}"/>
+                </div>
+            </div>
+            <div ng-if="!pData.activityIntrImg">
+                <!--选择图片-->
+                <div  album  max="1" table="UU_STORE" pvalue="{{pData.storeId}}" field="ACTIVITY_INTR_IMG"
+                      out-data="pData.activityIntrImg" style="background-color: #FFFFFF;margin-top: 7px;padding:0px 0px 0px 1px;"></div>
+            </div>
+        </div>
+
+        <!--招聘信息-->
+        <div class="item" ng-if="pData.recruitmentInfoState">
+            <div class="row" style="padding:0px;">
+                <div class="col">
+                    <textarea ng-model="pData.recruitmentInfo" style="width: 100%;min-height: 100px;overflow:hidden; resize:none;font-size: 14px;" placeholder="请输入招聘信息"></textarea>
+                </div>
+            </div>
+            <div class="row" style="padding:0px;" ng-if="pData.recruitmentInfoImg">
+                <div class="col">
+                    <i ng-click="deleteImg('3')" class="icon ion-close-circled" 
+                       style="color: red;position: relative;float: right;right: 0px;top: 0px;font-size:20px;">
+                    </i>
+                    <img style="width:100%;height: auto;border-radius: 10px;" ng-src="{{pData.recruitmentInfoImg|hostFilter:'ImageJSON'}}"/>
+                </div>
+            </div>
+            <div ng-if="!pData.recruitmentInfoImg">
+                <!--选择图片-->
+                <div  album  max="1" table="UU_STORE" pvalue="{{pData.storeId}}" field="RECRUITMENT_INFO_IMG"
+                      out-data="pData.recruitmentInfoImg" style="background-color: #FFFFFF;margin-top: 7px;padding:0px 0px 0px 1px;"></div>
+            </div>
+        </div>
+        <br/>
+        <br/><br/>
+        <br/>
+        <div footerpadding></div>
+        
+        
+    </ion-content>    
+</ion-view>
+<div class="bar bar-footer" style="margin: auto;padding-left:5px;padding-right: 5px; display: inline;height: 50px;background-position:bottom;background-color: #f6f6f6;">
+    <div ng-click="saveStore()" class="btn-push" style="margin: auto;height: 34px;text-align: center;
+         font-size: 17px;padding: 7px;">保存</div>
+</div> 

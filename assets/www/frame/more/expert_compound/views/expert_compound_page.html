@@ -1,0 +1,56 @@
+<!-- 科普引智专家大院 -->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="科普引智专家大院">
+</div>
+<ion-view view-title="科普引智专家大院">
+    <ion-content>
+        <!-- 		<select class="item item-input drop_down_title" ng-model="pageData.ftype" style="height:46px;">
+                    <option value="" >选择分类</option>
+                    <option ng-repeat="item in favoritesdata" value="{{item}}" >{{item.CATE_NAME}}</option>
+                </select> -->
+        <label class="item item-input item-select h-46" style="width:100%;">
+            <div class="input-label">类型
+            </div>
+            <select ng-model="pageData.ftype" ng-options="m.ID as m.CATE_NAME for m in favoritesdata">
+                <option value="">请选择</option>
+            </select>
+        </label>
+
+        <label class="item item-input h-46">
+            <input type="text" ng-model="pageData.pcTitle" placeholder="请输入标题">
+        </label>
+        <div class="row" style="background: #FFFFFF;">
+            <div class="col">
+                <button ng-click="query()" class="button button_with  myinfoborder-radius h-43 agriculture_project_title">查询</button>
+            </div>
+        </div>
+        <div style="padding:10px 0px 0px 0px;margin:0px;" item="false" aslist rcode="expertCompound" temp-url="frame/more/expert_compound/views/expert_compound_list_page.html" list-events="pageData.listEvents" params="{{pageData.params}}"></div>
+        <div footerpadding></div>
+    </ion-content>
+    <div class="row bar bar-footer ios-margin-button" style="padding:6px;margin:0px;" ng-if="badgename[0].ID">
+        <div class="col" style="width: 40%;">
+            <button class="button button_with  myinfoborder-radius h-43 agriculture_project_title" ng-click="myArticles()">
+                我的技术文章
+            </button>
+        </div>
+        <div class="col" style="width: 40%;">
+            <button class="button button_with  myinfoborder-radius h-43 agriculture_project_title" ng-click="publishArticles()">
+                发布技术文章
+            </button>
+        </div>
+    </div>
+
+    <!--   <div class="bar bar-footer" ng-if="badgename[0].ID">
+            <colgroup style="width:49%;"></colgroup>
+            <colgroup style="width:49%;"></colgroup>
+            <tr>
+                <button ng-click="myArticles()" class="button button_with  myinfoborder-radius h-43" style="margin-right:1.5px;font-size:14px;">我的技术文章</button>
+            </tr>
+            <tr>
+                <button ng-click="publishArticles()" class="button button_with  myinfoborder-radius h-43" style="margin-left:1.5px;font-size:14px;">发布技术文章</button>
+            </tr>
+      </div> -->
+</ion-view>

@@ -1,0 +1,21 @@
+<!-- 冷柜开通列表 -->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="社区交易冷柜使用开通">
+</div>
+<ion-view view-title="社区交易冷柜使用开通">
+    <ion-content>
+        <div class="bg-1 fs-14 talign-c pt-20" ng-if="pageData.repeatdata.length == 0">
+            您还没有开通冷柜
+        </div>
+        <div style="padding:0px;margin:0px;" item="false" aslist rcode="lxny.foodSafety.freezerOpen.freezerOpen" 
+             temp-url="app_plugins/food_safety/freezer_open/views/freezer_open_list_page.html" params="{{pageData.params}}" 
+             no-show-more=false repeatdata="pageData.repeatdata"></div>
+        <div footerpadding></div>
+    </ion-content>
+    <div class="bar bar-footer ios-margin-button" ng-if="pageData.repeatdata.length == 0">
+        <button ng-click="freezerOpen()" class="button button_with  myinfoborder-radius h-43" style="margin-left: 1px;font-size: 14px;">开通</button>
+    </div>
+</ion-view>

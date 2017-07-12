@@ -1,0 +1,9 @@
+<!--店铺评价列表-->
+<div class="item item-avatar list" style="padding-top: 19px; padding-left:80px; margin-top: -3px;">
+    <img ng-src="{{value.WXHEADIMG|hostFilter}}"  ng-click="dynamic(value.MEMBERID)" style="width: 53px; height: 53px;max-width: 53px;max-height: 53px;border-radius: 5px;"/>
+    <span class="fs-13" style="border: none;">
+        <span ng-bind="value.MEMBERNAME"></span>
+    </span>
+    <p style="border: none; "><span ng-bind="value.EVALDATETIME1"></span></p>
+    <p style="border: none;margin: 0px; margin:0px 5% 6px 0px;"><span ng-bind="value.CONTENT1"></span></p>
+</div>

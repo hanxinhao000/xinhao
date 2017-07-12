@@ -1,0 +1,97 @@
+<!--优惠组合订订单详情-->
+
+<!--产品主信息 start-->
+<div class="bg-2">
+	<div class="row list pt-10 pr-10 pl-10">
+		<div class="col cl-12 fs-13">
+			<!-- <div ng-repeat="item in citem.groupInfo">
+				<span class="fs-14 cl-11" ng-bind="item.STORE_NAME"></span>
+				<span class="fs-12 cl-12" ng-bind="item.name"></span>
+			</div> -->
+			<span class="cl-0 fs-13" ng-bind="pData.orderInfo.NAME"></span>
+		</div>
+		<div class="col" style="padding:5px 0px 0px 0px;">
+			<span class="fs-13" ng-if="pData.orderInfo.CANCEL==1">
+				<i class="icon ion-ios-close-outline"></i>预订成功后，不可取消
+			</span>
+		</div>
+	</div>
+	<div class="row cl-12">
+		<div class="col CM fs-13">
+			<div ng-click="switchShowOrderMsg()">
+				<span style="display:block">预订须知</span>
+				<span class="fs-16 cl-0">&nbsp;&nbsp;
+					<i ng-if="!pData.showOrderMsg" class="cl-0 icon ion-ios-arrow-down"></i>
+					<i ng-if="pData.showOrderMsg" class="cl-0 icon ion-ios-arrow-up"></i>
+					&nbsp;&nbsp;</span>
+			</div>
+		</div>
+	</div>
+	<div class="row" ng-show="pData.showOrderMsg">
+		<div class="col" ng-if="pData.orderMsg">
+			<div ng-bind-html="pData.orderMsg|imgFmt"></div>
+		</div>
+	</div>
+</div>
+
+<!--商品主要信息 end-->
+<div class="split-line-2"></div>
+
+<div class="list bg-2  pb-10" >
+	<div class="row pl-10" style="padding-top:0px;padding-bottom:0px;">
+		<div class="col-33 vmiddle">
+			<span>日期</span>
+		</div>
+		<div class="col cr">
+			<div class=" fs-14">
+				<span ng-bind="pData.orderInfo.START_DATE|dateFormat:'yyyy-MM-dd'"></span>
+			</div>
+		</div>
+	</div>
+	<div class="row pl-10" style="padding-top:0px;padding-bottom:0px;">
+		<div class="col-33 vmiddle">
+			<span>单价</span>
+		</div>
+		<div class="col cr">
+			<div class=" fs-14">
+				￥<span ng-bind="pData.orderInfo.SALEPRICE|number:2"></span>
+			</div>
+		</div>
+	</div>
+	<div class="row pl-10" style="padding-top:0px;padding-bottom:0px;">
+		<div class="col-33 vmiddle">
+			<span>数量</span>
+		</div>
+		<div class="col cr">
+			<div class="fs-16">
+				<span ng-bind="pData.orderInfo.SALENUMBER|number:0"></span>
+			</div>
+		</div>
+	</div>
+	<div class="row pl-10" style="padding-top:0px;padding-bottom:0px;">
+		<div class="col-33 vmiddle">
+			<span>总价</span>
+		</div>
+		<div class="col cr">
+			<div class="red_price fs-16">
+				￥<span ng-bind="pData.orderInfo.TOTALPRICE|number:2"></span>
+			</div>
+		</div>
+	</div>
+	<div class="row pl-10">
+		<div class="col-33 vmiddle">
+			<span>联系人:</span>
+		</div>
+		<div class="col cr">
+			<span ng-bind="pData.orderInfo.CONTACT"></span>
+		</div>
+	</div>
+	<div class="row pl-10">
+		<div class="col-33 vmiddle">
+			<span>联系电话:</span>
+		</div>
+		<div class="col cr">
+			<span ng-bind="pData.orderInfo.CONTACTPHONE"></span>
+		</div>
+	</div>
+</div>

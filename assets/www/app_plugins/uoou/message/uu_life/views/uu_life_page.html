@@ -1,0 +1,119 @@
+<!--UU生活-->
+<style>
+    .city-btn{
+        width: 100%;
+        background-color: #FFFFFF;
+        height: 41.5px;
+        border:0px;
+        padding-right:10%;
+        border-radius: 2px;
+        text-align: right;
+    }
+    .clas-div{
+        padding:5px;
+        text-align:center;
+    }
+    .nav-bar-right-td{
+        text-align: right;
+        vertical-align: middle;
+        line-height: 22px;
+        margin: 0px !important;
+    }
+</style>
+
+<!--
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-click-fun="myUStore()"
+     right="{{pData.rightDiv}}"
+     title="生活">
+</div>-->
+<ion-view>
+    
+    
+     <ion-nav-buttons side="left">
+        <div  ng-click="back()"  class="public_comment_header_bar_padding_left">
+            <i class="icon head_left_back"></i>
+        </div>
+    </ion-nav-buttons>
+    
+	<ion-nav-title>
+            <div class="fs_4">生活</div>
+        </ion-nav-title>
+    
+	<ion-nav-buttons side="right">
+                <div ng-click="myUStore()"  style="margin-top:-3px;margin-right: 5px;" ng-bind-html="pData.rightDiv | trustHtml">
+                   
+                </div>
+        </ion-nav-buttons>
+    
+    
+    
+    
+    
+    <ion-content>
+        <div class="row" style=" text-align: center; padding: 0px 3px; background-color: #f2f2f2;  ">
+            <div class="col col-25">
+                <div> 
+                    <button class="city-btn fs-12" ng-click="addressSelect()" >
+                        <div style=" float: left;">
+                        {{pData.cityName| limitTo : 3}}
+                        </div>
+                       <div style=" float: right">
+                        <img src="app_plugins/uoou/message/uu_life/img/2.1_2.png" 
+                             style="vertical-align: middle;width: 10px;height: auto;" />
+                        </div>
+                    </button>
+                </div>
+            </div>
+            <div class="col col-75">
+                <form ng-submit="toList()">
+                    <label class="item-input-wrapper" style="background: #FFFFFF;border-radius: 2px;height: 41.5px;padding-left: 8px;">
+                        <i class="icon ion-ios-search placeholder-icon">
+                        </i>
+                        <input type="search" placeholder="Search"  keyboard-attach  ng-model="pData.storeName">
+                    </label>
+                </form>
+            </div>
+        </div> 
+        <div id="storeMainClassSwiper" class="swiper-container bg-2" style="height: 295px;">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" ng-repeat="item in classData1">
+                    <div class="row row-wrap" style="padding-top: 18px;">
+                        <div class="col-25 {{value.CSS}} clas-div"  ng-repeat="value in item"
+                             ng-click="toClassList('{{value.ID}}','{{value.CLASS_NAME}}')">
+                            <img ng-src="{{value.CLASS_IMG| hostFilter:'ImageJSON'}}" style="width:45px;height: 45px;"/>
+                            <div>
+                                {{value.CLASS_NAME}}
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+        <div style="padding: 5px 5px 0px 5px;">
+            <img ng-src="{{pData.storeActivityImg|hostFilter}}" style="width: 100%;height: auto;" ng-click="storeActivity()"/>
+        </div>
+
+        <!--广告模块-->
+        <div style="padding:0px 5px 5px 5px;">
+            <div banner menucode="PromotionPlatform" bwidth="100%" bheight="154px" controlid="123" orgcode='org'>
+
+            </div>
+        </div>
+        <br/>
+        <br/>
+        <br/>
+        
+<!--        <div footerpadding></div>
+        <div footerpadding></div>
+        <div footerpadding></div>-->
+        
+    </ion-content>
+</ion-view>
+
+

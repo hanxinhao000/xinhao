@@ -1,0 +1,14 @@
+<!--分类列表div-->
+<div ng-switch="pageData.classOrGoods">
+
+    <div  style="padding: 5px 0px 0px 0px;" ng-switch-when="class"  item="false" no-show-more="false" aslist item-css="col-50 waterfall" rcode="mallClassListonActive" temp-url="app_plugins/mall/mall_class/views/mall_class_detail_list.html" list-events="pageData.listEvents" params="{{pageData.activeParam}}"></div>
+    <div ng-if="pageData.madData.length>0" style="margin: 7px 0 0 0;width:100%;height:37px;line-height: 37px;text-align: center;background:#FFFFFF;">
+      <img  ng-src="img/Product_shelves-5.png" style="width:8%;height:auto;vertical-align:middle;">&nbsp;
+      <span style="height:100%;vertical-align: middle;color:#11c6dc;font-size:14px;">&nbsp;<i ng-bind="pageData.title"></i></span>
+    </div>
+    <div style="padding: 0px;" aswfall item-css="col-50 waterfall" rcode="mallActiveCommodityDetial" temp-url="app_plugins/mall/commodity/comd_list/views/commodity_list_item.html" list-events="pageData.listEventss" repeatdata="pageData.madData"  params="{{pageData.params}}"></div>
+</div>
+<!--分类列表div  end-->
+
+<!-- <aslist style="padding: 0px;margin: 0px;" item="false" no-show-more="false"  item-css="col-50 waterfall" rcode="mallClassListonActive" temp-url="app_plugins/mall/home/views/home_activite_list_item.html" list-events="pData.listEvents" params="{{pageData.activeParam}}" repeatdata="pageData.limitData"></aslist> -->
+

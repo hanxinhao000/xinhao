@@ -1,0 +1,95 @@
+<!-- 提现详情 -->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     title="提现">
+</div>
+<ion-view view-title="提现" >
+    <ion-content>
+        <ion-list class="disable-user-behavior">
+            <div class="list">
+                <ion-item type="item-text-wrap" class="item" style="padding:0px;">
+                    <!--<div class="row">-->
+                    <!--<div class="col" style="text-align: left">-->
+                    <!--<label>余额：<label ng-bind="pageData.balance"></label>元</label>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <label class="item item-input">
+                        <span class="input-label">余额</span>
+                        <label ng-bind="pageData.balance | ptoy"></label>元</label>
+                    </label>
+                    <label class="item item-input item-select">
+                        <div class="input-label">
+                            请选择提现账户
+                        </div>
+                        <select disabled ng-model="pageData.outAccountId" ng-options="m.ID as m.SA_NAME for m in pageData.accountInfo">
+                            <option value="">--请选择--</option>
+                        </select>
+                    </label>
+                    <label  class="item item-input" style="padding:6px 10px 5px 16px;">
+                        <span class="input-label">提现金额</span>
+                        <input type="number"  maxlength="6" ng-model="pageData.paymoney" class="ng-pristine ng-untouched ng-valid">元
+                    </label>
+                    <label class="item item-input item-select" ng-show="pageData.bindingZfbInfo.length > 0 && pageData.zfbFlag">
+                        <div class="input-label">
+                            支付宝账号
+                        </div>
+                        <select ng-change="zfbChange()" ng-model="pageData.zfbInfo" >
+                            <option value="">--请选择--</option>
+                            <option ng-repeat="item in pageData.bindingZfbInfo" value="{{item.ID}}">{{item.ID_CODE}}</option>
+                        </select>
+
+                    </label>
+                    <label class="item item-input item-select" ng-show="pageData.bindingWxInfo.length > 0 && pageData.wxFlag">
+                        <div class="input-label">
+                            微信账号
+                        </div>
+                        <select ng-change="wxChange()" ng-model="pageData.wxInfo">
+                            <option value="">--请选择--</option>
+                            <option ng-repeat="item in pageData.bindingWxInfo" value="{{item.ID}}">{{item.ID_CODE}}</option>
+                        </select>
+                    </label>
+                    <label  class="item item-input item-select" ng-show="pageData.bindbingBankInfo.length > 0 && pageData.bankFlag">
+                        <div class="input-label">
+                            绑定银行卡账号
+                        </div>
+                        <select ng-change="bankChange()" ng-model="pageData.bankInfo" >
+                            <option value="">--请选择--</option>
+                            <option ng-repeat="item in pageData.bindbingBankInfo" value="{{item.ID}}">{{item.ID_CODE}}&nbsp;&nbsp;{{item.ID_NAME}}</option>
+                        </select>
+                    </label>
+                    <!--<div class="row">-->
+                    <!--<div class="col-10" style="text-align: center;padding-top: 3%;">-->
+                    <!--&nbsp;-->
+                    <!--</div>-->
+                    <!--<div class="col-20" style="text-align: center;padding-top: 3%;">-->
+                    <!--<label>充值金额:&nbsp;</label>-->
+                    <!--</div>-->
+                    <!--<div class="col-50">-->
+                    <!--<label class="item myinfoborder-radius item-input">-->
+                    <!--<input type="text" style="text-align: right;" maxlength="6" ng-model="pageData.paymoney" class="ng-pristine ng-untouched ng-valid">-->
+                    <!--</label>-->
+                    <!--</div>-->
+                    <!--<div class="col-10" style="text-align: center;padding-top: 3%;">-->
+                    <!--<label>元</label>-->
+                    <!--</div>-->
+                    <!--<div class="col-10" style="text-align: center;padding-top: 3%;">-->
+                    <!--&nbsp;-->
+                    <!--</div>-->
+                    <!--</div>-->
+                </ion-item>
+                <div>
+                </div>
+            </div>
+        </ion-list>
+        <div class="row">
+            <div class="col">
+                <button class="button editpwd_mauto editpwd_button button-block button-positive" ng-click="withdrawClick()" style="width: 90%    ">提现</button>
+            </div>
+        </div>
+        <div footerpadding></div>
+    </ion-content>
+
+</ion-view>

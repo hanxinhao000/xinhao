@@ -1,0 +1,163 @@
+<style>
+    .btn-mine{
+        width: 100%;
+        height: 47px;
+        background-color: #FFFFFF;
+        padding-top: 14px;
+    }
+</style>
+<!--<div class="bar bar-heade bar-light"
+     nav-bar
+     title-css="header_title fs_4"
+        right-css="header_title fs_4"
+     title="我的">
+</div>-->
+<!-- 会员中心/我的-->
+<ion-view>
+    
+    <ion-nav-title>
+        <div class="fs_4">
+            我的
+        </div>
+    </ion-nav-title>
+    
+    <ion-content style="background-color: rgb(236,239,239)">
+        <div class="row" style="padding-top:10px;padding-bottom:10px;padding-left: 10px;background:#FFFFFF;">
+            <div style="width:20%;">
+                <div class="imgtest" style="margin:1px;border-radius: 0px;">
+                    <figure class="img_center" >
+                        <div style="padding: 0px;margin: 0px;border-radius: 0px;">
+                            <img style="border-radius: 5px;" ng-src="{{pData.User_HeadImgUrl|hostFilter}}" ng-click="Jump('member.editheader')" />
+                        </div>
+                    </figure>
+                </div>
+            </div>
+            <div style="width:55%;" ng-click="My_information()">
+                <div class="account_div_padding_top" style="padding-top: 6px;">
+                    <span class="fs-16" style="color: #333333;" ng-bind="pData.User_Name"></span>
+                </div>
+                <div class="account_div_padding_top fs-12" style="color: #a5a5a5;">
+                    <span>登录账号:</span><span class="member_info_margin_left " ng-bind="pData.User_account"></span>
+                </div>
+            </div>
+            <div style="width: 20%;">
+                <div class="imgtest" style="float: right;width:25px;height:25px;">
+                    <figures class="img_center" style="padding-top:3px;">
+
+<!--                        <img ng-src="{{pData.qrCodeUrl|hostFilter}}" ng-click="Jump('message.myqrcode')" style="width:25px;height:25px;"/>-->
+                             <img class="icon" style="" ng-click="Jump('message.myqrcode')" src="app_plugins/uoou/mine/img/3.12_7.png">
+                    </figures>
+                </div>
+            </div>
+            <div style="width:5%;text-align: right;" ng-click="My_information()">
+                <img class="icon" style="width:15px;height:15px;margin-top:18px;right: 10px;" 
+                     src="app_plugins/uoou/dynamic/img/member_43.png">
+            </div>
+        </div>
+        <div class="item" style="height:58px;">
+            <div class="row">
+                <div class="col" style="padding-top: 0px;">
+                    <div class="account_div_padding_top">
+                        <span class="fs-13" style="color: #666666;">会员等级：</span>
+                        <span class="fs-13" ng-if="pData.memberType === '0'" style="color: #666666;">普通用户</span>
+                        <span class="fs-13" ng-if="pData.memberType === '1'" style="color: #666666;">普通会员</span>
+                        <span class="fs-13" ng-if="pData.memberType === '2'" style="color: #666666;">中级会员</span>
+                        <span class="fs-13" ng-if="pData.memberType === '3'" style="color: #666666;">超级会员</span>
+                        <span class="fs-13" ng-if="pData.memberType === '4'" style="color: #666666;">皇冠会员</span>
+                    </div>
+                </div>
+                <div class="col" style="padding-top: 0px; text-align:center">
+                    <div class="account_div_padding_top" ng-if="pData.reputation">
+                        <span class="fs-13" style="color: #666666; ">商家信誉：</span>
+                        <span style="color: #FF6600;" ng-bind="pData.reputation"></span>
+                        <span style="color: #FF6600;">分</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <a ng-if="pData.platformStr" class="item" style="padding:0px;margin-top: 5px;">
+            <div class="row" style="text-align: center;margin-top: 0px;padding: 0px;">
+                <div class="col-50" ng-click="JumpOpenV('member.mycoupon')">
+                    <div class="btn-mine" style="border-right: 1px solid #ddd;">
+                        <span class="fs-16" style="color: #2ad4d4;">代金劵（{{pData.coupListSize}}）</span>
+                    </div>
+                </div>
+                <div class="col-50" ng-click="JumpOpenV('mine.openmember')">
+                    <div class="btn-mine">
+                        <span class="fs-16" style="color: #2ad4d4;">开通会员</span>
+                    </div>
+                </div>
+            </div>
+        </a>
+        <a ng-if="pData.platformStr" class="item" style="padding:0px;">
+            <div class="row" style="background:#FFFFFF;text-align: center;padding: 0px;">
+                <div class="col-50" ng-click="toAccountInfo()" >
+                    <div class="btn-mine" style="border-right: 1px solid #ddd;">
+                        <span class="fs-16" style="color: #2ad4d4;">余额宝({{pData.User_Cash|ptoy}}元)</span>
+                    </div>
+                </div>
+                <div class="col-50">
+                    <div class="btn-mine" ng-click="toUUWelfare()">
+                        <span class="fs-16" style="color: #2ad4d4;">推广福利</span>
+                    </div>
+                </div>
+            </div>
+        </a>
+        
+        
+        <a ng-if="!pData.platformStr" class="item" style="padding:0px;margin-top: 5px;">
+            <div class="row" style="text-align: center;margin-top: 0px;padding: 0px;">
+                <div class="col-50" ng-click="JumpOpenV('member.mycoupon')">
+                    <div class="btn-mine" style="border-right: 1px solid #ddd;">
+                        <span class="fs-16" style="color: #2ad4d4;">代金劵（{{pData.coupListSize}}）</span>
+                    </div>
+                </div>
+                <div class="col-50" ng-click="toAccountInfo()" >
+                    <div class="btn-mine">
+                        <span class="fs-16" style="color: #2ad4d4;">余额宝({{pData.User_Cash|ptoy}}元)</span>
+                    </div>
+                </div>
+            </div>
+        </a>
+        <a ng-if="!pData.platformStr" class="item" style="padding:0px;">
+            <div class="row" style="background:#FFFFFF;text-align: center;padding: 0px;">
+                <div class="col-50">
+                    <div class="btn-mine" ng-click="toUUWelfare()" style="border-right: 1px solid #ddd;">
+                        <span class="fs-16" style="color: #2ad4d4;">推广福利</span>
+                    </div>
+                </div>
+                <div class="col-50"></div>
+            </div>
+        </a>
+        
+        
+        <div class="row row-wrap" style="margin:6px 0 0 0; padding:0px;height: 58px;line-height: 55px;
+             vertical-align: middle;" >
+            <div class="col" ng-click="myUStore()" style="padding:0px 10px 0px 10px;height: 58px;line-height: 58px;
+                 vertical-align: middle;border-bottom: 1px solid #CCCCCC;border-right: 1px solid #CCCCCC;background: #FFFFFF;margin:0px;text-align:left;">
+                <img class="col-50 img-responsive" ng-src="app_plugins/uoou/mine/img/3.12_2.png" style="vertical-align: middle;width:35px;height:auto;" />
+                <span style="text-align: center;display:inline-block;padding-left: 13px;vertical-align: middle;font-size:15px;color:#5959559;">我的店铺
+					<span ng-if="pData.storeStatus=='2'" style="font-size:11px;">（新订单{{pData.newOrderNumber}}个）</span></span>
+                <!--添加新订单个数-->
+                
+                
+                <img class="icon" style="width:15px;height:15px;margin-top:21px;right: 10px;position: absolute;" 
+                     src="app_plugins/uoou/dynamic/img/member_43.png">
+            </div>
+        </div>
+        <div class="row row-wrap" ng-repeat="item in pData.memberCenterListJson" style="margin:0.1px 0 0 0; padding:0px;height: 58px;line-height: 55px;
+             vertical-align: middle;" >
+            <div class="col" ng-click="Jump('{{item.address}}')" style="padding:0px 10px 0px 10px;height: 58px;line-height: 58px;
+                 vertical-align: middle;border-bottom: 1px solid #CCCCCC;border-right: 1px solid #CCCCCC;background: #FFFFFF;margin:0px;text-align:left;">
+                <img class="col-50 img-responsive" ng-src="{{item.icon}}" style="vertical-align: middle;width:35px;height:auto;" />
+                <span style="text-align: center;display:inline-block;padding-left: 13px;vertical-align: middle;font-size:15px;color:#5959559;">{{item.title}}</span>
+                <img class="icon" style="width:15px;height:15px;margin-top:21px;right: 10px;position: absolute;" 
+                     src="app_plugins/uoou/dynamic/img/member_43.png">
+            </div>
+        </div>
+         <div footerpadding></div>
+    </ion-content>
+
+</ion-view>

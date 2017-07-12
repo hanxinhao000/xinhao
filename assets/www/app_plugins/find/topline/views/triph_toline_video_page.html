@@ -1,0 +1,17 @@
+<div class="row" style="width:100%;padding:0px 10px 5px 10px;margin: 0px">
+    <div ng-click="toVideo({{value}})" style="width:100%;text-align:center;">
+        <img src="{{value.LISTIMGAGE|hostFilter}}" style="height: 180px;width: inherit">
+    </div>
+</div>
+<div class="row" style="width:100%;padding:0 10px 9px 10px;margin: 0px">
+	<div class="fs-11 microsoft_yahei find_words"style="width:50%;text-align:left;">
+        <span ng-bind="value.TITLE"></span>
+    </div>
+    <div style="width:50%;text-align:right;">
+        <img src="img/find_04.png" style="width:14px;height: auto;vertical-align: middle;">
+		<span class="fs-11 microsoft_yahei find_words" ng-bind="value.COUNT"></span>
+    </div>
+</div>
+<!-- <div class="pt-10">
+    <div id="find_player_video_page" style="width:100%;background-color:back;"></div>
+</div> -->

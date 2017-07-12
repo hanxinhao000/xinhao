@@ -1,0 +1,26 @@
+<ion-item class="item-remove-animate " ng-click="editAddres('{{value.ID}}')" style="padding: 0px 13px 13px 13px;margin-bottom: 7px;">
+   <table class="full-table fs-12 mt-12">
+        <tr class="full-w">
+            <td class="cl-02">
+                <span class="fs-12 cl-21">姓名:{{value.BANK_HOLDER}}</span>
+            </td>
+        </tr>
+    </table>
+    <table class="full-table fs-12 mt-12">
+        <tr class="full-w">
+            <td class="cl-02">
+                <span class="fs-12 cl-21">账号:{{value.BANK_CODE}}</span>
+            </td>
+            <td class="cl-02" style="text-align:right;">
+                <span  class="fs-12 cl-21" ng-bind="value.NAME"></span>
+            </td>
+        </tr>
+    </table>
+<!--  <span style="padding: 5px 10px;display: inline-block;">姓名:</span><span ng-bind="value.BANK_HOLDER"></span>
+  <br>
+  <span style="padding: 0px 10px;display: inline-block;">卡号:</span><span style="white-space: normal;" ng-bind="value.BANK_CODE"></span><br>-->
+  <ion-option-button class="button-assertive" ng-click="deleteAdders('{{value.ID}}')">
+    删除
+  </ion-option-button>
+</ion-item>
+<!--{{value}}-->

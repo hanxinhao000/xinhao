@@ -1,0 +1,229 @@
+/* 下拉标题文字  */
+.drop_down_title{
+	width: 100%;
+  height: 50px;
+  font-size: 14px;
+}
+.dc_details_title {
+	text-align: center;
+    font-size: 18px;
+    /*font-weight: bold;*/
+    padding-top: 20px;
+}
+.dc_list_grade {
+	text-align: center;
+}
+.agriculture_project_title{
+	font-size: 11px;
+}
+.agriculture_project_content{
+	font-size: 10px;
+}
+.agriculture_project_bottom{
+	background-color:#21B35D;
+}
+.form_height{
+  	height: 46px;
+  	color: #595959;
+    font-size: 12px;
+    border-bottom: 1px solid #E5E5E5;
+}
+.input-form-label{
+	  display: table;
+    padding: 7px 10px 7px 0px;
+    color: #444;
+    font-size: 14px;
+}
+.picture-list{
+    position: absolute;
+    top: 16px;
+    left: 10px;
+    max-width: 70px;
+    max-height: 70px;
+    width: 100%;
+    height: 100%;
+}
+.query{
+    width: 0px;
+    text-align: center;
+}
+/*合作社*/
+.app_plugins_main_page{
+  background: url("../img/cooperative_1.png");
+  background-size:20% auto;
+  background-repeat:no-repeat;
+  /*background-position:center;*/
+  background-position:center top;
+  text-align: center;
+  color: #FFFFFF;
+  font-size: 14px;
+  padding: 0px;
+  margin: 0px;
+  vertical-align: top;
+}
+/*合作社*/
+.app_plugins_main_project{
+  background: url("../img/cooperative_2.png");
+  background-size:20% auto;
+  background-repeat:no-repeat;
+  /*background-position:center;*/
+  background-position:center top;
+  text-align: center;
+  color: #FFFFFF;
+  font-size: 14px;
+  padding: 0px;
+  margin: 0px;
+  vertical-align: top;
+}
+.right{
+    width:1px;
+    background:#FFFFFF;
+}
+/*首页标题*/
+.home_title{
+  background: url("../img/logo1.png");
+  background-size:66px auto;
+  background-repeat:no-repeat;
+  background-position:center;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 14px;
+  padding: 0px;
+  margin: 0px;
+  vertical-align: top;
+  /*background-position:center top;*/
+}
+.list-style{
+    padding-top: 15px;
+    padding-right: 120px;
+    padding-left: 20px;
+    min-height: 100px;
+}
+/**导航栏，默认中间字体样式**/
+.header_title_blue{
+    color:#558FFC;
+    text-align:center;
+    vertical-align:middle;
+    height:100%;
+    line-height: 43px;
+    margin-left: -10px;
+}
+.title_right_white{
+    text-align: left;
+    color:#FFFFFF;
+}
+.find_button{
+    float: right;
+    color: #FF0000;
+    font-size: 16px;
+}
+.address_select{
+  border: 0px;
+  width: 97%;
+  font-family: -webkit-body;
+}
+.address_padding_all{
+  padding-left:27.3px;
+}
+.address_textarea{
+  border-bottom: 1px solid #ddd;
+}
+.address_border{
+  border-bottom: 1px solid #ddd;
+  border-top: 1px solid #ddd;
+}
+.month_button{
+    width: 69px;
+    height: 28px;
+}
+.destination_button{
+    min-height: 0px;
+    line-height: 0px;
+}
+.triph_topLine_quer{
+  background-image: url(../img/top_line-1.png);
+  background-repeat: no-repeat;
+  background-size:22px 22px;
+  background-position: 95%
+}
+.not_used_coupon{
+  width: 72px;
+  height: 24px;
+  border-radius: 0px;
+}
+.used_coupon{
+  width: 72px;
+  height: 24px;
+  border:1px solid #0095ff;
+  background-color: #0095ff;
+  text-align: center;
+  color:#ffffff;
+}
+.speciality_comd-title{
+  padding:13px 22px 11px 20px;
+  font-size:12px;
+}
+.modal_money_td{
+    padding-bottom: 5px;
+    padding-right: 43px;
+    vertical-align: top;
+    padding-top: 55px;
+}
+.feature_story{
+    height:130px;
+    width:100%;
+    padding:0px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+.feature_story_content{
+    max-height: 20%;
+    height: 29px;
+    background: rgba(255, 255, 255, 0.5);
+    line-height: 29px;
+}
+.car_list-btn{
+  width: 70px;
+  height: 22px;
+  border:1px solid #FF9700;
+  background-color: #ffffff;
+  text-align: center;
+  color:#FF9700;
+  overflow:hidden;
+}
+.car_list-btn-new{
+  width: 60px;
+  height: 22px;
+  border:1px solid #FF9700;
+  background-color: #ffffff;
+  text-align: center;
+  color:#FF9700;
+  overflow:hidden;
+}
+.car_list-btn-red{
+  width: 70px;
+  height: 22px;
+  border:1px solid #FF0000;
+  background-color: #ffffff;
+  text-align: center;
+  color:#FF0000;
+  overflow:hidden;
+}
+.car_list-btn-blue{
+  width: 70px;
+  height: 22px;
+  border:1px solid #0094FF;
+  background-color: #ffffff;
+  text-align: center;
+  color:#0094FF;
+  overflow:hidden;
+}
+.car_label_btn{
+  width: 73px;
+  height: 24px;
+  border: 1px solid #FF9700;
+  background-color: #FF9700;
+  text-align: center;
+  color:#FFFFFF;
+  overflow:hidden;
+}

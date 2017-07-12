@@ -1,0 +1,75 @@
+<!-- 我的任务列表 -->
+<!--<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     title="我的任务">
+</div>-->
+<style>
+    .common_message_label_on
+    {
+        border:1px solid rgb(36, 179, 94);
+        color:#FFFFFF;
+        background: rgb(36, 179, 94);
+        text-align: center;
+        padding: 5px;
+
+    }
+    .common_message_label_off
+    {
+        border:1px solid rgb(36, 179, 94);
+        background:#FFFFFF;
+        color:rgb(36, 179, 94);
+        text-align: center;
+        padding: 5px;
+    }
+</style>
+<ion-view view-title="我的任务">
+    <ion-nav-buttons side="left">
+        <div ng-click="back()"  class="public_comment_header_bar_padding_left">
+            <i class="icon head_left_back"></i>
+        </div>
+    </ion-nav-buttons>
+
+    <ion-nav-title>
+        <div class="bar_title fs_4">
+            我的任务
+        </div>
+    </ion-nav-title>
+    <ion-content>
+
+    </ion-content>
+
+    <ion-content list-events="pageData.serverhost">
+        <div  style="padding:15px 0px; text-align: center;">
+            <div class="{{pageData.useredTaskStatus}}" ng-click="usedTaskInfo()" style="text-align:center;width: 72px; display: inline-block;" >未完成</div>
+            <div class=" {{pageData.notUsedTaskStatus}}" ng-click="notUsedTaskInfo()" style="text-align:center;width: 72px;display: inline-block;margin-left: -3px;" >已完成</div>
+        </div>
+        <!--<div ng-include="'frame/member/task/mytask/views/mytask_list.html'"></div>-->
+<!--        <div style="padding:0px;margin:0px;" item="false" aslist rcode="" temp-url="frame/member/task/mytask/views/mytask_list.html" list-events="pageData.list_events" params="{{pageData.params}}" repeatdata="pageData.repeatdata"></div>-->
+
+        <a class="item item-box" ng-click="seeDetails(value.UTID)" ng-repeat="value in pageData.repeatdata">
+            <h3 style="color:#010101;" ng-bind="value.TASKNAME"></h3>
+            <p style="font-size:12px;white-space:normal;max-height:37px;overflow:hidden;" ng-bind-html="value.content"></p>
+            <table class="full-table fs-12 mt-12">
+                <tr class="full-w">
+                    <td >
+                        <span>任务状态:
+                            <i class="cl-03" ng-if="value.TASKRUNSTATE == '0'">已完成</i>
+                            <i ng-if="value.TASKRUNSTATE == '1'">未完成</i></span>
+                    </td>
+                    <td class="cl-02" style="text-align:right;">
+                        <span>任务时间:{{value.CREATEDATE}}</span>
+                    </td>
+                </tr>
+            </table>
+        </a>
+        
+
+        
+        
+        <div footerpadding></div>
+    </ion-content>
+
+</ion-view>

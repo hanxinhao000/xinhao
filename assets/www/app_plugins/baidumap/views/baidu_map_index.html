@@ -1,0 +1,24 @@
+<!--<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="地图">
+</div>-->
+<ion-view>
+    
+    <ion-nav-buttons side="left">
+        <div ng-click="back()"  class="public_comment_header_bar_padding_left">
+            <i class="icon head_left_back"></i>
+        </div>
+    </ion-nav-buttons>
+
+    <ion-nav-title>
+        <div class="fs_4">
+            地图
+        </div>
+    </ion-nav-title>
+    
+	<ion-content>
+		 <iframe src="{{pageData.address}}" style="width: 100%;height: 100%;"></iframe>
+	</ion-content>
+</ion-view>

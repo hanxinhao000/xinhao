@@ -1,0 +1,61 @@
+<style>
+    .btn-push{
+        background-color: rgb(42,212,212);
+        height: 35px;
+        color: white;
+        border-radius: 3px;
+
+        border:0px;
+    }
+</style>
+
+
+<!--访客流量-->
+<!--<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="我的客户">
+</div>-->
+
+<ion-view view-title="我的客户" class="fs_4">
+    
+    <ion-nav-buttons side="left">
+        <div  ng-click="back()"  class="public_comment_header_bar_padding_left">
+            <i class="icon head_left_back"></i>
+        </div>
+    </ion-nav-buttons>
+
+    <ion-nav-title>
+        <div class="fs_4">
+            我的客户
+        </div>
+    </ion-nav-title>
+
+    
+  <ion-content>
+    <div class="list">
+         <div class="list" item="false" aslist rcode="uoou.mine.myclient" 
+             temp-url="app_plugins/uoou/mine/my_client/views/my_client_item.html" 
+             list-events="pData.list_events" params="{{pData.params}}">
+        </div>
+    </div>
+     <div footerpadding></div>
+  </ion-content>
+  
+</ion-view>
+
+<div class="bar bar-footer" style="padding:auto;display: inline;height: 50px;background-color: rgb(236,239,239);background-position:bottom;" >
+    
+    <div class="row" style="padding: auto;">
+        <div class="col-90" style="padding-top: 3px;text-align: center;margin: auto;" >
+            <div ng-click="to_edit()" class="btn-push" style="height: 34px;margin: auto;text-align: center;
+                 font-size: 15px;padding: 7px;">编辑活动内容/一键推送</div>
+        </div>
+    </div>   
+</div>
+
+<!--
+<div class="bar bar-footer bar-balanced ios-margin-button" style="height: 35px;background-color: rgb(42,212,212);    background-image: linear-gradient(180deg, rgb(42,212,212), rgb(42,212,212) 0%, transparent 0%);">
+      <div class="title" style="line-height: 37px;font-size:17px;" ng-click="to_edit()">编辑活动内容/一键推送</div>
+</div>-->

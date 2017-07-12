@@ -1,0 +1,121 @@
+<!--土豪世界 编辑页面-->
+<style>
+    .btn-push{
+        background-color: rgb(42,212,212);
+        height: 35px;
+        width: 150px;
+        color: white;
+        border-radius: 3px;
+        border:0px;
+    }
+    
+    .row_input{
+       padding: 0px 0px 3px 0px;
+       height: 42px;
+    }
+    .row_input_title{
+        text-align: right;
+        padding-top: 11px;
+        width:30%;
+        color:#666666;
+    }
+    .row_input_in{
+        padding-top: 5px;
+        width:70%;
+    }
+    .row_input_in input{
+        font-size:15px;
+        color:#888888;
+    }
+    .row_input_in select{
+        font-size:15px;
+        color:#888888;
+    }
+    .row_input_in textarea{
+        font-size:15px;
+        color:#888888;
+    }
+</style>
+<!--<div  class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     title="{{pData.title}}" >
+</div>-->
+<ion-view >
+    <ion-nav-buttons side="left">
+        <div class="public_comment_header_bar_padding_left" ng-click="back()">
+            <i class="icon head_left_back"></i>
+        </div>
+    </ion-nav-buttons>
+    <ion-nav-title>
+        <div class="fs_4">{{pData.title}}</div>
+    </ion-nav-title>
+    
+    
+    <ion-content style="background-color:#fff;">
+       
+        <div class="list bg-2 fs-15" style="padding-bottom:10px;">
+            <div class="row row_input" >
+                <div class="row_input_title">
+                    <span>摘要：</span>
+                </div>
+                <div  class="row_input_in" >
+                    <input style="padding-left: 8px;background-color: rgb(246,246,246);width: 100%;" ng-model="pData.abstract" {{pData.disable}} type="text" keyboard-attach>
+                </div>
+            </div>
+            <div class="row row_input"  style="height:108px;" >
+                <div  class="row_input_title" >
+                    <span>红包内容:</span>
+                </div>
+                <div  class="row_input_in" >
+                   <textarea  style="padding-left: 8px;background-color: rgb(246,246,246);width: 100%;
+                              overflow-y:visible;height: 100px;resize:none;" ng-model="pData.coment" {{pData.disable}} placeholder="大吉大利,恭喜发财" keyboard-attach></textarea>
+                </div>
+            </div>
+            <div class="row row_input">
+                <div  class="row_input_title" >
+                    <span>份数：</span>
+                </div>
+                <div  class="row_input_in" >
+                    <input  class="fs-15 cl-21" style="padding-left: 8px;background-color: rgb(246,246,246);width: 100%;"  ng-model="pData.number" {{pData.disable}} string-to-number type="number" placeholder="(必填)" keyboard-attach>
+                </div>
+            </div>
+            <div class="row row_input" >
+                <div  class="row_input_title" >
+                    <span>单个金额(元)：</span>
+                </div>
+                <div  class="row_input_in" >
+                    <input ng-model="pData.single_amount"  string-to-number style="padding-left: 8px;background-color: rgb(246,246,246);width: 100%;" {{pData.disable}}  string-to-number  type="number" keyboard-attach >
+                </div>
+            </div>
+            <div class="row row_input">
+                <div  class="row_input_title" >
+                    <span>总金额(元)：</span>
+                </div>
+                <div  class="row_input_in" >
+                    <input ng-model="pData.count_amount" style="padding-left: 8px;background-color: rgb(246,246,246);width: 100%;"  string-to-number readonly type="number" keyboard-attach >
+                </div>
+            </div>
+            <div class="row row_input" >
+                <div  class="row_input_title" >
+                    <span>抽中率(%)：</span>
+                </div>
+                <div  class="row_input_in" >
+                    <input type="number" style="padding-left: 8px;background-color: rgb(246,246,246);width: 100%;" string-to-number ng-model="pData.winning" {{pData.disable}} placeholder="整数(必填)" keyboard-attach>
+                </div>
+            </div>
+        </div>
+        
+        <div footerpadding ></div>
+    </ion-content>
+</ion-view>
+    <div class="bar bar-footer" style="background: none;padding: 0px 30px 60px 30px;display: inline;
+    background-color: rgb(236,239,239);
+    background-position: bottom;
+    margin-bottom:0px;">
+    <button style="background:rgb(0,218,216)" ng-click="sendPacket()" class="button button-full button-positive">
+        发红包
+    </button>
+</div>

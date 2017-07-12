@@ -1,0 +1,161 @@
+<!--支付界面-->
+<div class="bar bar-heade bar-light " 
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     title="{{pData.title}}">
+ </div>
+<ion-view >
+	<ion-content>
+		<!--景区订单提交界面-->
+		<ng-include ng-if="pData.shopInfo[0].MALL_CLASS=='1' "  src="'app_plugins/mall/payment/views/payment_scenic.html'"></ng-include>
+		<!--酒店订单提交界面-->
+		<ng-include ng-if="pData.shopInfo[0].MALL_CLASS=='2' "  src="'app_plugins/mall/payment/views/payment_hotel.html'"></ng-include>
+		<!--餐饮订单提交界面-->
+		<ng-include ng-if="pData.shopInfo[0].MALL_CLASS=='3' "  src="'app_plugins/mall/payment/views/payment_food.html'"></ng-include>
+		<!--演艺订单提交界面-->
+		<ng-include ng-if="pData.shopInfo[0].MALL_CLASS=='4' "  src="'app_plugins/mall/payment/views/payment_show.html'"></ng-include>
+		<!--特产类商品提交界面-->
+		<ng-include ng-if="pData.shopInfo[0].MALL_CLASS=='5' " src="'app_plugins/mall/payment/views/payment_specialty.html'"></ng-include>
+		<!--租车订单提交界面-->
+		<ng-include ng-if="pData.shopInfo[0].MALL_CLASS=='6' "  src="'app_plugins/mall/payment/views/payment_car_rental.html'"></ng-include>
+		<!--优惠组合订单提交界面-->
+		<ng-include  ng-if="pData.shopInfo[0].MALL_CLASS=='7' "  src="'app_plugins/mall/payment/views/payment_group.html'"></ng-include>
+		<!--跟团游订单提交界面-->
+		<ng-include  ng-if="pData.shopInfo[0].MALL_CLASS=='8' "  src="'app_plugins/mall/payment/views/payment_group_tourism.html'"></ng-include>
+
+	<div class="split-line-2"></div>
+
+<!--	<div class="list bg-2" >
+		<div class="pl-10 row list item fs-14">
+			<div class="col" style="color:#363636;">优惠券</div>
+			<div class="col cl-12 cr" ng-if="pData.coupList.length==0">暂无可用</div>
+		</div>
+	</div>
+	<div class="list bg-2" ng-if="pData.coupList.length>0" style="margin-top:-5px;">
+		优惠券 start
+		<div style="background-color:#efefef;">
+			<ion-list >
+			   <div class="list row item" style="padding:3px" ng-click="changeCurrentCoup('-1')">
+			  		<div class="col-10 l-height-25 talign-c pt-5">
+							<i class="{{pData.coupNone.CSS}} c-positive fs-26"></i>
+					</div>
+					<div class="col-90 pt-10">
+						<p class="pl-10" href="javascript:void(0);">不使用</p>
+					</div>
+			    </div>
+
+			   <div class="list item"  ng-repeat="item in pData.coupList" ng-click="changeCurrentCoup('{{$index}}')" style="text-align: center;padding:7px 0px 7px 0px;">	
+			   	<div class=" row">
+			   		<div class="col-10 vmiddle">
+			   			<i class="{{item.CSS}} c-positive fs-26 "></i>
+			   		</div>
+			   		<div class="col">
+			   			<img ng-src="{{item.ICONPATH|hostFilter:'ImageJSON'}}" style="width:95%;height:100%;">
+			   		</div>
+			   	</div>
+			   	<div class="row " style="padding:0px 0px 0px 0px;">
+				   	<div class="col-10 vmiddle">
+				   	</div>
+				   	<div class="col-20 vmiddle">
+				   		<span class="pl-10 now-price pl-10">￥<font ng-bind="item.CASH"></font></span>
+				   	</div>
+				   	<div class="col vmiddle cr">
+				   		过期日期:<span ng-bind="item.EXPIRED|dateFormat:'yyyy-MM-dd'" class="pl-10"></span>
+				   	</div>
+			   		
+			   	</div>
+				</div>
+			</ion-list>
+		</div>
+	</div>-->
+	
+        <ion-list class="disable-user-behavior bg-2">
+        <div class="list">
+          <ion-item type="item-text-wrap" class="item" style="padding:0px;">
+                          <label class="item item-input item-select">
+                                  <div class="input-label-input cl-03">送货方式</div>
+                                  <select ng-model="pData.shippingMethod" >
+                                                  <option ng-selected="item.value==1" ng-value="item.value" ng-repeat="item in pData.shippingMethodDataSet" ng-bind="item.name"></option>
+                                          </select>
+                          </label>
+          </ion-item>
+          <ion-item type="item-text-wrap" class="item" style="padding:0px;" ng-if="pData.shippingMethod==2">
+                          <label class="item item-input">
+                                  <div class="input-label-input cl-03">预约日期</div>
+                                  <input style="text-align: right;" class="" type="date" ng-model="pData.bespeakTime" placeholder="请在次输入预约日期">
+                          </label>
+          </ion-item>
+        </div>
+        </ion-list>                               
+        <br><br><br><br><br><br>
+	</ion-content>
+	<div class="bar bar-footer clear_confirm_bar ios-margin-button" style="background-image: linear-gradient(0deg, #FF9000, #FF9000 100%, transparent 100%);">
+		<table class="full confirm_bar1">
+			<colgroup style="width:50%;"></colgroup>
+			<colgroup style="width:50%;"></colgroup>
+			<tr>
+				<td class="cm">
+					<div class="buy-price fs-16">
+					<span class="cl-01">总价:</span>&nbsp;<span>￥<i ng-bind="pData.paymentTotal|number:2"></i></span>
+			  		</div>
+				</td>
+				<td class="col-50 btn-energized1 cm buy-price" ng-click="confirmToPayment()">
+					<span class="fs-16 cl-10">在线支付</span>
+				</td>
+			</tr>
+		</table>
+	</div>
+	
+</ion-view>
+
+<!--选择地址模太框-->
+<script id="select-address-modal.html" type="text/ng-template">
+	<!--选择收货地址-->
+	<div class="bar bar-heade bar-light bar-positive"
+	     nav-bar
+	     left-css=""
+	     title-css="header_title fs_4"
+	     right="<i class='ion-ios-close-outline fs-26'></i>"
+	     title="选择收货地址" 
+	     right-click-fun="closeSelectAddClick()"
+	     >
+	 </div>
+	<ion-view view-title="选择收货地址">
+		<ion-content>
+			<div class="split-line-2"></div>
+			<div ng-repeat="addItem in pData.memberAddresList" ng-click="selectAddres('{{$index}}')">
+				<div class="row pt-10 pb-10 item" >
+					<div class="col-10 valign-m l-height-80 talign-c pt-10">
+						<i class="fs-30 icon ion-ios-location-outline"></i>
+					</div>
+					<div class="col-50 pt-10 pb-10 pl-10">
+						<div class="pt-10">
+							收货人:<span ng-bind="addItem.RECV_NAME"></span>
+						</div>
+						<div class="pt-10">
+							<span>收货地址:</span><span style="white-space: pre-wrap;" ng-bind="addItem.DETAILEDADDRESS"></span>
+						</div>
+					</div>
+					<div class="col-25 pt-10">
+						<div class="pt-10">
+							<span ng-bind="addItem.RECV_PHONE"></span>
+						</div>	
+					</div>
+					<div class="col-25 valign-m l-height-80 talign-c pt-10">
+						<i class="fs-30 icon ion-ios-arrow-right"></i>
+					</div>
+				</div>
+				<div ng-if="addItem.SORT==1" class="split-line-3">&nbsp;</div>
+				<div class="split-line-2">&nbsp;</div>
+			</div>
+			<div class="pl-10 pr-10">
+				<button style="border:1px solid rgb(0,160,73);" class="myinfo_button button button-full" ng-click="toAddres()">
+					 <span style="margin: auto;font-size: 17px;">添加新地址</span> 
+				</button>
+			</div>
+			
+		</ion-content>
+	</ion-view>
+</script>

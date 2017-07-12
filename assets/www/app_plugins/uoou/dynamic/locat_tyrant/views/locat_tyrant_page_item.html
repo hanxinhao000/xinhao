@@ -1,0 +1,62 @@
+<div class="list">
+    <div class="item item-thumbnail-left" style="min-height: 100px;padding-left: 66px;padding-top: 17px;" >
+      <img  ng-src="{{value.WXHEADIMG|hostFilter}}" ng-click="dynamic(value.MEMBER_ID)" style="width:40px; height: 40px; border-radius: 3px;">
+      <p  style="margin-bottom: 0px; font-size:14px; color: #000;"><span ng-bind="value.MEMBERNAME"></span>
+          <span style="background-color:#fac30e; color:#fff; border-left:5px #fac30e solid; border-right:5px #fac30e solid; font-size:10px;" ng-if="$index == '0'">金牌土豪</span>
+          <span style="background-color:#c7c9c8; color:#fff; border-left:5px #c7c9c8 solid; border-right:5px #c7c9c8 solid; font-size:10px;" ng-if="$index == '1'">银牌土豪</span>
+          <span style="background-color:#d17449; color:#fff; border-left:5px #d17449 solid; border-right:5px #d17449 solid; font-size:10px;" ng-if="$index == '2'">铜牌土豪</span>
+      </p>
+      <div class="row" style="padding:2px 0" ng-if="value.TOTAL_MONEY <1000000">
+          <div class="col" style="padding: 0; width: 50%; font-size:12px;">红包总额：{{value.TOTAL_MONEY|ptoy}}元</div>
+          <div class="col" style="padding: 0; width: 50%; font-size:12px;">红包金额：{{value.RE_MONEY|ptoy}}元</div>
+      </div>
+       <div class="row" style="padding:2px 0" ng-if="value.TOTAL_MONEY >=1000000">
+          <div class="col" style="padding: 0; width: 50%; font-size:12px;">红包总额：{{value.TOTAL_MONEY/1000000}}万元</div>
+          <div class="col" style="padding: 0; width: 50%; font-size:12px;">红包金额：{{value.RE_MONEY|ptoy}}元</div>
+      </div>
+      <div class="row" style="padding:2px 0">
+          <div class="col" style="padding: 0; width: 50%; font-size:12px;">剩余红包数量：{{value.SURPLUS_NUM}}</div>
+          <div class="col" style="padding: 0; width: 50%; font-size:12px;">抽中率：{{value.WIN_ODDS}}%</div>
+      </div>
+      
+      <div class="row" style="padding:3px;">
+          <div class="col-50" ng-bind="value.ABSTRACT"></div>
+      </div>
+      <div class="row" style="padding:5px 0px;">
+          <div class="col" style="text-align: right;padding:0px;">
+              <button ng-click="toPage('{{value.ID}}')" class="button button-large button-assertive activated " style="font-size: 12px;padding: 0 10px;min-width: 52px;min-height: 24px;
+                line-height: 25px;">抢红包 </button>
+          </div>
+      </div>
+    </div>
+</div>
+<!--<div class="list">
+    <div class="item item-thumbnail-left" style="min-height: 100px;padding-left: 66px;padding-top: 17px;" >
+      <img src="{{value.WXHEADIMG|hostFilter}}" style="width: 40px;height: 40px;border-radius: 5px;">
+      <div class="row">
+      <p  style="margin-bottom: 0px; font-size:14px; color: #000;">
+          <span style="font-weight: bold;" ng-bind="value.MEMBERNAME"></span>
+          <span style="background-color:#fac30e; color:#fff; border: 10px #fac30e solid; font-size:12px;" ng-if="$index == '0'">金牌土豪</span>
+          <span style="background-color:#c7c9c8; color:#fff; border: 10px #c7c9c8 solid; font-size:12px;" ng-if="$index == '1'">银牌土豪</span>
+          <span style="background-color:#d17449; color:#fff; border: 10px #d17449 solid; font-size:12px;" ng-if="$index == '2'">铜牌土豪</span>
+      </p>
+      </div>
+      <div class="row" style="display: block;">
+          <div class="col-50">红包总额：{{value.TOTAL_MONEY|ptoy}}元</div>
+          <div class="col-50">红包金额：{{value.RE_MONEY|ptoy}}元</div>          
+      </div>
+      <div class="row" style="padding-top: 0px;">
+          <div class="col-50">剩余红包数量:{{value.SURPLUS_NUM}}</div>
+          <div class="col-50">抽中率:{{value.WIN_ODDS}}%</div>          
+      </div>
+      <div class="row" style="padding-top: 3px;">
+          <div class="col-100 text-overflow-elipsis" ng-bind="value.ABSTRACT"></div>
+      </div>
+      <div class="row" style="padding:5px 0px;">
+          <div class="col" style="text-align: right;padding:0px;">
+              <button ng-click="toPage('{{value.ID}}')" class="button button-large button-assertive activated " style="font-size: 12px;padding: 0 10px;min-width: 52px;min-height: 24px;
+                line-height: 25px;">抢红包 </button>
+          </div>
+      </div>
+    </div>
+</div>-->

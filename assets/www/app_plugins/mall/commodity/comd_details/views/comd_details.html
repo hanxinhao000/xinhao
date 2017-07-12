@@ -1,0 +1,191 @@
+<!--商品详情界面-->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     title="{{pData.title}}">
+</div>
+<ion-view view-title="{{pData.title}}">
+    <ion-content>
+        <!--商品主图div   start-->
+        <div class="swiper-container" style="height:260px;overflow:hidden;" id="comdd_swiper">
+            <!-- Additional required wrapper ng-click="toPage('{{item.ID}}')" -->
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" ng-repeat="item in pData.mainImages">
+                    <img ng-src="{{item.path|hostFilter}}" style="width:100%;height:auto;max-height:none;">
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div> <!--商品主图div   end-->
+
+        <!--商品信息 start-->
+        <div class="full-w pt-15 bg-2">
+            <div class="comd-title cl-02" ng-bind="pData.comdData.NAME"></div>
+            <div ng-if="pData.comdData.DISCOUNT != 0 && pData.comdData.DISCOUNT != 1">
+                <!--有折扣样式-->
+                <div class="now-price fs-16 pl-10">￥<span ng-bind="pData.comdData.PRICE*pData.Discount|number:2"></span></div>
+                <div class="pl-10">原价：￥<span class="del-line" ng-bind="pData.comdData.PRICE|number:2"></span></div>
+            </div>
+            <div ng-if="pData.comdData.DISCOUNT == 1"><!--没有折扣样式-->
+                <div class="now-price fs-16 pl-10">￥<span ng-bind="pData.comdData.PRICE|number:2"></span></div>
+            </div>
+            <div class="pt-10 pb-10">
+                <table class="full-w">
+                    <tr>
+                        <td class="pl-10">
+                            <!--邮费-->
+                            <span freight comdity-id="{{pData.comdData.ID}}"  is-postage="{{pData.comdData.ISPOSTAGE}}"></span>
+                        </td>
+                        <td class="talign-r pr-10">
+                            <span>已售<i ng-bind="pData.comdData.SALENUMBER"></i>件</span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="split-line-1"></div>
+            <div class="row h-51 d-item item fs-12 cl-02 pt-15">
+                <a class="col-33 cm cl-02" ng-click="toComdFormat('{{pData.comdData.ID}}')">
+                    <i class="icon "></i>
+                    选择规格
+                    <i class="icon ion-arrow-right-b icon-accessory"></i>
+                </a>
+                <a class="col-33 cm cl-02" href="#/commodity/ordercomment/{{pData.comdData.ID}}">
+                    <i class="icon "></i>
+                    商品评价
+                    <i class="icon ion-arrow-right-b icon-accessory"></i>
+                </a>
+                <a class="col-33 cm cl-02" ng-click="toCmdTransRecord({{pData.comdData.ID}})">
+                    <i class="icon "></i>
+                    成交记录
+                    <i class="icon ion-arrow-right-b"></i>
+                </a>
+            </div>
+            <div class="split-line-1"></div>
+            <!--套餐-->
+            <div ng-if="pData.cmodPags.length > 0" class="h-51 fs-12 cl-02 CM lh-42 pl-10 pt-5" style="text-align:left;">
+                <a ng-class="[pgItem.CSS, 'cm_pg_default']" class="cm_pg CM lh-42" ng-repeat="pgItem in pData.cmodPags" ng-bind="pgItem.TITLE" ng-click="selectPackage($index)"></a>
+            </div>
+            <div class="split-line-1">&nbsp;</div>
+            <div class="tabs-striped tabs-top tabs-background-light tabs-color-balanced">
+                <div class="tabs" style="width:100%;position:static;">
+                    <a style="{{item.style}}" ng-click="selectCards('{{$index}}')" ng-class="[item.CSS, 'tab-item']" ng-repeat="item in pData.comdSelectCards" ng-bind="item.title">
+                    </a>
+                </div>
+            </div>
+            <div class="comd_details_div" >
+                <!--图文详情-->
+                <div class="padding"  ng-bind-html="pData.comdData.DETILIMAGES | imgFmt" ng-show="pData.comdSelectCards[0].show"></div>
+                <!--参数-->
+                <div  ng-show="pData.comdSelectCards[1].show">
+                    <div class="row" ng-repeat="item in pData.comdSpace" style="font-size: 12px;font-family: 微软雅黑;">
+                        <div class="col col-10">&nbsp;</div>
+                        <div class="col col-40" ng-bind="item.PARAMENAME"></div>
+                        <div class="col" ng-bind="item.PARAMEVALUE"></div>
+                    </div>
+                </div>
+                <!--配套推荐-->
+                <div  ng-show="pData.comdSelectCards[2].show" class="row waterfall" >
+                    <div ng-repeat="value in pData.comdRecomd" class="col-50" >
+                        <div ng-include="'app_plugins/mall/commodity/comd_list/views/commodity_list_item.html'"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--商品信息end-->
+        <div footerpadding></div>
+    </ion-content>
+    <!--加入购物车 start-->
+    <div class="bar bar-footer ios-margin-button h-55">
+        <div class="row CM">
+            <div class="col-33">
+                <a ng-click="addCollection('{{pData.comdData.ID}}')" style="width:80%;" class="button" href="javaScript:void(0);">
+                    <i class="ion-ios-star-outline fs-14"></i>
+                    收藏
+                </a>
+            </div>
+            <div class="col-33">
+                <a ng-click='addShopCard("{{pData.comdData.ID}}")' style="width:80%;" class="button" href="javaScript:void(0);">
+                    加入购物车
+                </a>
+            </div>
+            <div class="col-33">
+                <button style="width:80%;" ng-click="buyNow('{{pData.comdData.ID}}')" class="button button-balanced h-40 full-w">购买</button>
+            </div>
+        </div>
+    </div>
+    <!--加入购物车 end-->
+</ion-view>
+
+<!--模态框模版-->
+<script id="my-modal.html" type="text/ng-template">
+    <ion-modal-view style="background-color: rgba(255,255,255,0.0);">
+    <ion-header-bar style="background-color: rgba(255,255,255,0.0);">
+    <table class="full-w" >
+    <tr class="full-w">
+    <td>
+    <div class="format-content" style="background-color: rgba(255,255,255,0.0);">
+    <div class="format-img-content">
+    <img class="format-img" ng-src="{{pData.currentFormat.SPECIMAGES|hostFilter}}" >
+    </div>
+    </div>
+    </td>
+    <td class="talign-r close-td" ng-click="closeFormatModel()">
+    <i class="ion-ios-close-outline fs-26"></i>
+    </td>
+    </tr>
+    </table>
+    </ion-header-bar>
+    <ion-content>
+
+    <p>&nbsp;</p>
+    <p class="now-price pl-10 bg-2 h-40 lh-40" ng-if="pData.currentFormat.PRICE">
+    价格￥:<span ng-bind="pData.currentFormat.PRICE*pData.Discount|number:2"></span><br>
+    </p>
+    <p class="now-price pl-10 bg-2 h-40 lh-40" ng-if="!pData.currentFormat.PRICE">
+    价格￥:0.00<br>
+    </p>
+    <!--		<p class="format-item-content bg-2">
+    <span ng-class="[item.CSS,'cm_pg_default']" class="formt-item" ng-repeat="item in pData.formatData" ng-bind="item.NAME" ng-click="selectCurrentFormat('{{$index}}')"></span>
+    </p>-->
+    <div class="format-item-content" style="padding-top:0px;padding-bottom: 18px;margin-bottom: 0px;">
+    <span ng-class="[item.CSS,'cm_pg_default']" class="formt-item" ng-repeat="item in pData.formatData" ng-bind="item.NAME" ng-click="selectCurrentFormat('{{$index}}')"></span>
+    </div>
+
+    <table class="full-w pt-10 pl-10 bg-2 h-40 lh-40">
+    <tr>
+    <td class="pl-10"><span>购买数量</span></td>
+    <td class="cr pr-10">
+    <div buy-number outdata="pData.buyNumber"></div>
+    </td>
+    </tr>
+    </table>
+    <div class="split-line-1"></div>
+    <div class="format-explain bg-2 pt-10 pl-10 pr-10" style="height:100%">
+    <p ng-bind="pData.currentFormat.EXPLAIN"></p>
+    </div>
+    <div class="split-line-1"></div>
+
+    <!--套餐-->
+    <div ng-if="false" class="h-51 fs-12 cl-02 CM lh-42 pl-10 pt-5" style="text-align:left;">
+    <a ng-class="[pgItem.CSS,'cm_pg_default']" class="cm_pg CM lh-42" ng-repeat="pgItem in pData.cmodPags" ng-bind="pgItem.TITLE" ng-click="selectPackage($index)"></a>
+    </div>
+
+    </ion-content>
+    <div class="bar bar-footer h-55">
+    <div class="row CM" ng-if="pData.operation.selectFormat.SELECTED">
+    <div class="col-50">
+    <a ng-click='formatAddShopCard("{{pData.comdData.ID}}")' style="width:80%;" class="button " href="javaScript:void(0);">
+    加入购物车
+    </a>
+    </div>
+    <div class="col-50">
+    <button style="width:80%;" ng-click="formatBuyNow('{{pData.comdData.ID}}')" class="button button-balanced h-40 full-w">购买</button>
+    </div>
+    </div>
+    <div class="row CM" ng-if="!pData.operation.selectFormat.SELECTED">
+    <button ng-click="confirmOperation('{{pData.comdData.ID}}')" class="button button-balanced h-40 full-w">确定</button>
+    </div>
+    </div>
+    </ion-modal-view>
+</script>

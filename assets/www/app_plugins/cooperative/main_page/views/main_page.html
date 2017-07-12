@@ -1,0 +1,50 @@
+<!-- 理性农业食品安全GAP信用体系 -->
+<div nav-bar class="bar bar-heade bar-light"
+     nav-bar
+     title-css="header_title fs-14"
+     right-css="header_title fs-14"
+     title="{{pageData.pageTitle}}">
+</div>
+
+<ion-view view-title="">
+    <ion-content>
+        <div style="height:96px; background-color:#5bb37f;">
+            <div style="height:24px;">
+            </div>
+            <div class="row" style="padding:0px; height:52px;">
+                <div class="col col-49 app_plugins_main_page" ng-click="toStartBusiness()">
+                    <div style="vertical-align: bottom;margin-top: 38px;">科学帮扶大众创业</div>
+                </div>
+                <div class="right">
+                </div>
+                <div class="col col-49 app_plugins_main_project" ng-click="agroProj()">
+                    <div style="vertical-align: bottom;margin-top: 38px;">理性扶持投资农业</div>
+                </div>
+                <div style="height:20px;">
+                </div>
+            </div>
+        </div>
+
+        <div class="row row-wrap" style="margin:10px 0 0 0; padding:0px;
+             vertical-align: middle;" >
+            <div class="col-50" ng-repeat="item in pageData.linkData" ng-click="Jump('{{item.address}}','{{item.params}}')" style="height: 58px;line-height: 58px;
+                 vertical-align: middle;border-bottom: 1px solid #CCCCCC;border-right: 1px solid #CCCCCC;background: #FFFFFF;margin:0px;text-align:left;padding-left: 10px;">
+                <img class="col-50" ng-src="{{item.icon}}" style="vertical-align: middle;width: 13%;height:auto;" class='img-responsive' />
+                <span style="display:inline-block;padding-left: 13px;vertical-align: middle;font-size:12px;color:#5959559;width: 76%;line-height: 15px;" ng-bind="item.title"></span>
+            </div>
+        </div>
+
+        <div class="row row-wrap" style="margin:10px 0 0 0; padding:0px;line-height: 55px;
+             vertical-align: middle;" >
+            <div ng-if="item.role" class="col-50" ng-repeat="item in pageData.linkDatas" ng-click="Jump('{{item.address}}','{{item.params}}')" style="height: 58px;line-height: 58px;
+                 vertical-align: middle;border-bottom: 1px solid #CCCCCC;border-right: 1px solid #CCCCCC;background: #FFFFFF;margin:0px;text-align:left;padding-left: 10px;">
+                <img class="col-50" ng-src="{{item.icon}}" style="vertical-align: middle;width: 13%;height:auto;" class='img-responsive' />
+                <span style="display:inline-block;padding-left: 13px;vertical-align: middle;font-size:12px;color:#5959559;width: 76%;line-height: 15px;" ng-bind="item.title"></span>
+            </div>
+        </div>
+        <!--     <div class="item list_padding item-icon-left item-icon-right" ng-repeat="item in pageData.linkData">
+                <div><a href="{{item.link}}" class="href" ng-bind="item.name"></a></div>
+            </div> -->
+        <div footerpadding></div>
+    </ion-content>
+</ion-view>

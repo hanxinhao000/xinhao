@@ -1,0 +1,56 @@
+<style>
+    .meteor_shower_footer_content
+    {
+        text-align:right;line-height: 15px;color:rgb(187,187,187);
+    }
+    .meteor_shower_footer_content_link
+    {
+        color:rgb(0,218,216);
+        border-bottom:rgb(0,218,216) solid 2px;
+    }
+</style>
+
+<!--<div class="bar bar-heade bar-light" style="background-color: rgba(0,0,0,0.1);border: none;background-size: 0px;" 
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     title="{{pData.title}}" >
+</div>-->
+    <div class="row bar bar-light bar-header "> 
+    <div class="col-33 public_comment_header_bar_padding_left" style="padding:0px 12px" ng-click="back()">
+        <i class="icon head_left_back"></i>
+    </div>
+    <div class="col-33 " style="line-height:44px; text-align:center;font-size: 18px;margin:0 auto;font-family: 微软雅黑 ">{{pData.title}}</div>
+   
+    </div> 
+
+<ion-view hide-nav-bar="true">
+    <ion-content style="background-size: 100%;
+                 background-image:url(app_plugins/uoou/dynamic/meteor_shower/img/background_01.png);
+                 width:100%;
+                 height:auto;border: none;">
+    </ion-content>
+</ion-view>
+<div class="bar bar-footer" 
+     style="    border: none;
+    background-size: 0px;padding: 0px;background-color: rgba(0,0,0,0.1);background-position: bottom;
+">
+    <div class="row" style="padding: 0px 5px;">
+        <div class="col-33 fs-16 meteor_shower_footer_content {{pData.selected0}}" ng-click="selectTab('0')">
+            <img src="app_plugins/uoou/dynamic/meteor_shower/img/3.11_2.png" width="30px;"alt="上海鲜花港 - 郁金香" style="margin-right: 8%;height:30px;width:30px;">
+
+            <div>看星愿</div>
+        </div>
+        <div class="col-33 fs-16 meteor_shower_footer_content {{pData.selected0}}" style="text-align:center;" ng-click="selectTab('1')">
+            <img src="app_plugins/uoou/dynamic/meteor_shower/img/3.11_4.png" width="30px;" style = "height:30px;width:30px;">
+
+            <div>许星愿</div>
+        </div>
+        <div class="col-33 fs-16 meteor_shower_footer_content {{pData.selected0}}" style="text-align:left;" ng-click="selectTab('2')">
+            <img src="app_plugins/uoou/dynamic/meteor_shower/img/3.11_6.png" style="margin-left: 8%;height:30px;width:30px;" width="30px;">
+
+            <div>看过的</div>
+        </div>
+    </div>
+</div>

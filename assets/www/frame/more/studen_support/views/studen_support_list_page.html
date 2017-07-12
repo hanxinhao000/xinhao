@@ -1,0 +1,27 @@
+<a class="item item-box" ng-click="studentSupportDetails(value.ID)">
+      <h3 style="color:#010101;" ng-bind="value.MEMBERNAME"></h3>
+      <table class="full-table fs-12 mt-12">
+      	<tr class="full-w">
+      		<td class="cl-02">
+      			<span>{{value.ZONENAME}}</span>
+      		</td>
+      	</tr>
+      </table>
+      <table class="full-table fs-12 mt-12">
+      	<tr class="full-w">
+      		<td class="cl-02">
+      			申请原因:<span style="display: block;word-break: normal;white-space: pre-wrap;word-wrap: break-word;overflow: hidden;">{{value.REASONS_REMAKE}}</span>
+      		</td>
+      	</tr>
+      </table>
+      <table class="full-table fs-12 mt-12">
+      	<tr class="full-w">
+      		<td class="cl-03 ">
+      			<span>{{value.AMOUNT_OF_SUBSIDY|ptoy}}</span>
+      		</td>
+        	<td class="cl-02" style="text-align:right;">
+                <span>{{value.CREATETIME}}</span>
+            </td>
+      	</tr>
+      </table>
+</a>

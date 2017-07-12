@@ -1,0 +1,24 @@
+<div class="list">
+    <a class="item item-thumbnail-left" style="padding-top:5px;padding-bottom: 5px;">
+      <img ng-src="{{value.ICONPATH | hostFilter}}">
+      <div class="row">
+        <b><span ng-bind="value.SNAME"></span></b>
+      </div>
+      <div class="row" style="white-space: normal;padding:2px;">
+        <div class="col ng-binding">
+          <span>面值:</span><span>{{value.CASH}}</span>
+        </div>
+        <div class="col ng-binding" style="text-align: right">
+          <span>有效期天数:</span><span>{{value.EFFECTIVEDATE}}</span>
+        </div>
+      </div>
+      <div class="row"  style="white-space:normal;padding:2px;">
+        <div class="col">
+          <span style="font-size: 15px;font-weight: bolder;color: red">积分:</span><span style="font-size: 15px;font-weight: bolder;color: red" ng-bind="value.SCOREVALUE  "></span>
+        </div>
+        <div class="col-25" style="text-align: right">
+          <button class="button button-small button-small button-positive" ng-click="listEvents.ExchangeCoupon('{{value.ID}}','{{value.EFFECTIVEDATE}}','{{value.SCOREVALUE}}')">兑换</button>
+        </div>
+      </div>
+    </a>
+</div>

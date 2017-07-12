@@ -1,0 +1,41 @@
+<!--信用保证金账户 CREDIT_MARGIN_ACCOUNT   CreditMarginAccountCtrl-->
+<div nav-bar class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs-14"
+     right-css="header_title fs-14"
+     right-css="header_title fs-14"
+     title="{{pageData.pageTitle}}">
+</div>
+
+<ion-view view-title="">
+    <ion-content>
+        <div class="pt-10"></div>
+        <div class="list">
+            <div class="item item-avatar" style="min-height: 48px;padding-left: 11%;">
+                <img style="top:12px;border-radius: 0;width: 5%;height: auto;" src="img/cash_03.png">
+                <span>余额</span><span style="float:right;" >{{pageData.balance|ptoy}}元</span>
+            </div>
+            <div class="pt-10"></div>
+            <div class="item item-avatar " style="min-height: 48px;padding: 6px 0 0 0px;text-align: center;">
+                <div class="row col" style="text-align: center;">
+                    <div ng-click="toPayPage()" class="account_bar_div" class="account_bar_div" style="border:none;">
+                        <img class="account_bar_div_img_01"  src="img/user-5.png" style="width: 4%">
+                        <span style="vertical-align: middle;">充值</span>
+                    </div>
+                </div>
+            </div>
+            <div class="pt-10"></div>
+            <div class="item " ng-click="toPage()" style="padding:8px;">
+                <div class="row">
+                    <div class="col-80" style="color:#595959;">交易记录</div>
+                    <div class="col-20" style="text-align: right;">
+                        <i class="icon ion-chevron-right icon-accessory more_button" style="line-height:20px;"></i>
+                    </div>
+                </div>
+            </div>
+            <div  style="padding:0px;margin:0px;" no-show-more="false" item="false" aslist rcode="transaction_record_info" temp-url="app_plugins/common/record/views/transaction_record_index.html" list-events="pageData.list_events" params="{{pageData.params}}"></div>
+            <div footerpadding></div>
+        </div>
+    </ion-content>
+</ion-view>

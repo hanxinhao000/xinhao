@@ -1,0 +1,137 @@
+<!--<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     title="推广福利"
+     right-click-fun="share()"
+     right="{{pData.right}}">
+</div>-->
+<style>
+    .welfare_head_bg{
+        background-image: url('app_plugins/uoou/mine/uu_welfare/images/3.13_1.png');
+        height: 115px;
+        background-size: 100% 100%;
+    }
+    .switch{
+        height:47px;
+        border:solid 2px #e1e1e1;
+        border-left:0px;
+        border-right: 0px;
+        margin-top:5px;
+    }
+    .switch .button{
+        background-color:#FFFFFF;
+        color: #2ad4d4;
+        border-color:#e1e1e1;
+    }
+    .switch .selected{
+        background-color: #E7F7F7;
+    }
+    .text_p{
+        font-size:14px;
+        color:#333333;
+    }
+    .main_label{
+
+    }
+    .section_label{
+        color: #666666;
+    }
+    .welfare_head_content{
+        padding-top:15px;
+        padding-left:20px;
+    }
+    .wf_content{
+        margin-top:15px;
+        background-color:white;
+        padding:15px;
+    }
+    .task_content{
+        margin-top:15px;
+    }
+    .task_title{
+        color:#333333;
+        font-size:16px;
+    }
+    .task_desc{
+        font-size:12px;
+        white-space:normal;
+        max-height:37px;
+        overflow:hidden;
+        color:#666666;
+    }
+    .uoou_welfare_head_img_left
+    {
+        font-size: 22px !important;
+    }
+</style>
+<!-- 我的/UU福利-->
+<ion-view>
+
+    <ion-nav-buttons side="left">
+        <div ng-click="back()"  class="public_comment_header_bar_padding_left">
+            <i class="icon head_left_back"></i>
+        </div>
+    </ion-nav-buttons>
+
+    <ion-nav-title>
+        <div class="fs_4">
+            推广福利
+        </div>
+    </ion-nav-title>
+
+    <ion-nav-buttons side="right">
+        <div style="margin-right:10px;margin-top:5px;"  ng-bind-html="pData.right" ng-click="share()">
+             
+        </div>
+    </ion-nav-buttons>
+    
+    <ion-content style="background: #E8E8E8;">
+        
+        <!-- 头部内容 -->
+        <div class="welfare_head_bg"  >
+            <div class="welfare_head_content" >
+                <p class="fs-16" style="color: #333333;">
+                    <span class="main_label" >个人推荐代码:</span>
+                    &nbsp;<span class="section_label" ng-bind="pData.invitsCode"></span>
+                </p>
+                <p class="fs-16" style="color: #333333;">
+                    <span class="main_label">已推荐人数:</span>
+                    &nbsp;<span class="section_label">{{pData.subMemberCount}}&nbsp;人</span>
+                </p>
+                <p class="fs-16"  ng-if="pData.invitsRanking" style="color: #333333;">
+                    <span class="main_label">您当前排名:</span>
+                    &nbsp;<span class="section_label">{{pData.invitsRanking}}&nbsp;名</span>
+                </p>
+            </div>
+        </div><!-- 头部内容 end -->
+        
+        <!--主体部分-->
+        <div class="button-bar switch">
+          <a style="font-size:16px;" class="button {{item.CSS}}" ng-click="switchCard($index)" ng-repeat="item in pData.switchCardData" ng-bind="item.NAME"></a>
+        </div>
+        
+        <div ng-if="!pData.showFundWelfare" class="task_content"><!-- 任务列表 -->
+            <div ng-if="pData.phoneType" ng-repeat="itemTask in pData.userTaskData">
+                <!-- 任务名称、任务说明(显示2行多出部分...)、任务状态、任务时间 -->
+                <a class="item" style="margin-bottom:5px;" ng-click="seeDetails(itemTask.UTID)">
+                      <div class="fs-15" style="color: #333333;" ng-bind="itemTask.TASKNAME"></div>
+                      <div style=" padding-top: 0px;padding-left: 5px; line-height: 30px; vertical-align: middle;" >
+                          <img  src="app_plugins/uoou/mine/uu_welfare/images/2.1_4.png"  style="height: 15px; width: 15px;line-height: 30px; vertical-align: middle;  ">
+                          <span style="font-size: 11px; color: #a5a5a5;line-height: 30px; vertical-align: middle;" ng-if="itemTask.TASKRUNSTATE=='0'">已完成&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                          <span style="font-size: 11px; color: #a5a5a5;line-height: 30px; vertical-align: middle;" ng-if="itemTask.TASKRUNSTATE=='1'">未完成&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                          <img  src="app_plugins/uoou/mine/uu_welfare/images/2.1_5.png"  style="height: 15px; width: 17px;line-height: 30px; vertical-align: middle; ">
+                          <span style="font-size: 11px;color: #a5a5a5;line-height: 30px; vertical-align: middle;" ng-bind="itemTask.CREATEDATE"></span>
+                      </div>
+                      <p class="task_desc" style="font-size:13px;color: #666666" ng-bind-html="itemTask.content"></p>
+                </a>
+            </div>
+        </div>
+        <div class="wf_content" ng-if="pData.showFundWelfare"><!-- 基金股权福利 -->
+            <div ng-bind-html="pData.fundWelfare|imgFmt" style="font-size:12px;"></div>
+        </div><!-- 基金股权福利  end-->
+
+
+    </ion-content>
+</ion-view>

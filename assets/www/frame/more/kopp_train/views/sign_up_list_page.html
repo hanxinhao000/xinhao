@@ -1,0 +1,21 @@
+<a class="item item-box" ng-click="signUpDetails(value.ID)">
+      <h3 style="color:#010101;" ng-bind="value.PC_TITLE"></h3>
+      <!-- <p style="font-size:12px;white-space:normal;max-height:37px;overflow:hidden;" ng-bind="value.ABSTRACT"></p> -->
+      <table class="full-table fs-12 mt-12">
+      	<tr class="full-w">
+      		<td class="cl-02">
+      			<span>{{value.ZONENAME}}</span>
+      		</td>
+      		<td class="cl-02" style="text-align:right;">
+      			<span>{{value.RELTIME}}</span>
+      		</td>
+      	</tr>
+      </table>
+      <table class="full-table fs-12 mt-12">
+      	<tr class="full-w">
+      		<td>
+      			<span class="cl-03 ">已参{{value.COUNTPEOPER}}人</span>
+      		</td>
+      	</tr>
+      </table>
+</a>

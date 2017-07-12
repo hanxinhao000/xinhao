@@ -1,0 +1,78 @@
+
+<style>
+    .member_red_packet_open_body
+    {
+        width: 100%;
+        text-align: center;
+    }
+    .member_red_packet_color
+    {
+     color:rgb(255,220,177);   
+    }
+    .member_red_packet_pop_headimg
+    {
+        border-radius: 50%;
+        background-size: 100%;
+        height: 40px;
+        width: 40px;
+        text-align: center;
+        display: inline-block;
+        width: 90%;
+        
+    }
+    
+    @media screen and (max-width:320px)
+    { 
+        .member_red_packet_pop_h{height:120px;}
+
+    }
+
+    @media screen and (min-width:321px) and (max-width:360px)
+    { 
+        .member_red_packet_pop_h{height:150px;}
+
+    } 
+
+    @media screen and (min-width:361px) and (max-width:375px)
+    { 
+        .member_red_packet_pop_h{height:170px;}
+
+    }
+
+    @media screen and (min-width:411px)
+    { 
+        .member_red_packet_pop_h{height:210px;}
+
+    }
+    .member_red_packet_remark
+    {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        -o-text-overflow: ellipsis;
+        overflow: hidden;
+    }
+</style>
+
+<div class="item popup-item" style="background:none;">
+    <div class="popup-icon fs-26" style="width: 100%;height: 100%;border-radius:0;"  ng-click="closePopup()">
+        <img src="frame/member/red_parket/img/red_close.png" style="width:100%;">
+    </div>
+</div>
+<div class="member_red_packet_open_body">   
+    <div class="member_red_packet_pop_headimg" style="background-image:url({{pageData.wxheadimg}})">
+    </div>
+    <div class="member_red_packet_color" ng-bind="pageData.uname"></div>
+    <div class="member_red_packet_color">给你发了一个红包</div>
+    <br>
+    <span class="fs-30 member_red_packet_color member_red_packet_remark" ng-bind="pageData.remark|contentSplitFmt:9"></span>
+    <br>
+    <div class="member_red_packet_color fs-20" ng-if="pageData.money!='0'">已拆红包金额{{pageData.money|ptoy}}元</div>
+    <br>
+    <div style="width: 100%;" class="member_red_packet_pop_h" ng-click="openthis()"></div>
+    <div class="member_red_packet_color" style="width:100%;">
+        <span>拆入账户</span>&nbsp;
+        <select class="item myinfoborder-radius item-input" style="color:rgb(255,220,177);border-color:none;display: inline-block;width:35%;background-color: #ef473a;" ng-model="pageData.select_account" ng-options="m.CODE as m.NAME for m in pageData.account_info"  required>
+                <option value="">-请选择账户-</option>
+        </select>
+    </div>
+</div>

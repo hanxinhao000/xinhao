@@ -1,0 +1,94 @@
+<!-- 单位帮扶-帮扶机构 -->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="社会化精准帮扶">
+</div> 
+<ion-view view-title="社会化精准帮扶">
+
+    <ion-content>
+        <div class="row" style="background: #FFFFFF;">
+            <div class="col col-33">
+                <select class="item myinfoborder-radius item-input" style="width:100%;" ng-model="pageData.recvProvince" ng-options="province.PRONAME for province in cascadePCZ.provinces"  required>
+                    <option value="">-请选择省-</option>
+                </select>
+            </div>
+            <div class="col col-33">
+                <select class="item myinfoborder-radius item-input" style="width:100%;" ng-model="pageData.recvCity" ng-options="city.CITYNAME for city in cascadePCZ.cities"  required>
+                    <option value="">-请选择市-</option>
+                </select>
+            </div>
+            <div class="col col-33">
+                <select class="item myinfoborder-radius item-input" style="width:100%;" ng-model="pageData.recvArea" ng-options="zone.ZONENAME for zone in cascadePCZ.zones"  required>
+                    <option value="">-请选择区-</option>
+                </select>
+            </div>
+        </div>
+
+        <label class="item item-input item-select">
+            <div class="input-label-input">选择联合社/合作社/自然村农厂:</div>
+            <select ng-model="pageData.tableName"  ng-options="m.value as m.name for m in pageData.tableEnum">
+                <option value="">请选择</option>
+            </select>
+        </label>
+
+        <label class="item item-input h-46">
+            <span class="input-label-input">输入名称:</span>
+            <input type="text" ng-model="pageData.name">
+        </label>
+
+        <div class="row bar bar-footer" style="padding:6px;margin:0px;position: initial;">
+            <div class="col" style="width: 40%;">
+                <button ng-click="query()" class="button button_with ng-binding myinfoborder-radius h-43 agriculture_project_title">查询</button>
+            </div>
+            <div class="col" style="width: 40%;">
+                <button ng-click="againMate()" class="button button_with ng-binding myinfoborder-radius h-43" style="font-size:14px;">重新匹配</button>
+            </div>
+        </div>
+
+        <label class="item item-input h-46">
+            <span class="input-label-input fs-14 cl-02">已匹配到需要帮扶的自然村农厂:</span>
+        </label>
+
+        <label class="item item-input h-46">
+            <span class="input-label-input">名称:</span>
+            <span class="fs-12" ng-bind="pageData.u_name"></span>
+        </label>
+
+        <!--           <label class="item item-input h-46">
+                    <span class="input-label-input">组织机构代码证:</span>
+                    <span class="fs-12" ng-bind="pageData.identitycardnumber"></span>
+                  </label> -->
+
+        <label class="item item-input h-46">
+            <span class="input-label-input">联系电话:</span>
+            <span class="fs-12" ng-bind="pageData.phone"></span>
+        </label>
+
+        <label class="item item-input h-46">
+            <span class="input-label-input">地址:</span>
+            <span class="fs-12" ng-bind="pageData.memberaddress"></span>
+        </label>
+
+        <label class="item item-input item-select">
+            <div class="input-label-input">帮扶类型:</div>
+            <select ng-model="pageData.helpType"  ng-options="m.value as m.name for m in pageData.helpTypeEnum">
+                <option value="">请选择</option>
+            </select>
+        </label>
+
+        <label class="item item-input h-46">
+            <span class="input-label-input">帮扶金额:</span>
+            <input type="number" ng-model="pageData.money">
+        </label>
+        <!--         <label class="item item-input h-46">
+                    <span class="input-label-input">现金账户余额:</span>
+                    <span class="fs-12" ng-bind="pageData.balance|ptoy"></span>元
+                </label> -->
+        <div footerpadding></div>
+    </ion-content>
+    <div class="bar bar-footer ios-margin-button">
+        <button ng-click="confirmHelp()" class="button button_with ng-binding myinfoborder-radius h-43" style="font-size:14px;">确认帮扶</button>
+    </div>
+</ion-view>

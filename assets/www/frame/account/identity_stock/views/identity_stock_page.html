@@ -1,0 +1,95 @@
+<!--身份股金账户-->
+<div nav-bar class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs-14"
+     right-css="header_title fs-14"
+     title="{{pageData.pageTitle}}">
+</div>
+
+<ion-view view-title="">
+    <ion-content>
+
+        <!--<div class="row" style="padding-left: 10%;">-->
+        <!--<div class="col">当前余额：</div>-->
+        <!--<div class="col col-75"><span ng-bind="pageData.balance|ptoy"></span><span>元</span></div>-->
+        <!--</div>-->
+        <!--<div class="row" style="padding-left: 10%;">-->
+        <!--<div class="col">累计金额：</div>-->
+        <!--<div class="col col-50"><span ng-bind="pageData.total_amount|ptoy"></span><span>元</span></div>-->
+        <!--<div class="col"><a href="#" ng-click="withdrawClick()">提现</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#" ng-click="virement()">转账</a></div>-->
+        <!--</div>-->
+        <!--<div class="button-bar bar-stable">-->
+        <!--<a class="button active" id="prospectus" ng-click="showtab('prospectus')">已投资项目</a>-->
+        <!--<a class="button" id="transfer" ng-click="showtab('transfer')">交易明细</a>-->
+        <!--</div>-->
+        <!--&lt;!&ndash; 已投资项目 &ndash;&gt;-->
+        <!--<div item="false" ng-if="pageData.showView =='prospectus'" style="padding:0px;margin:0px;" aslist rcode="myProject" temp-url="frame/account/identity_stock/views/invested_project_list.html"  list-events="pageData.list_events" params="{memberid:{{pageData.memberid}}}">-->
+        <!--</div>-->
+        <!--&lt;!&ndash; <div> <a href="#/cooperative/projectDetails">xiangmu</a></div> &ndash;&gt;-->
+        <!--&lt;!&ndash; 交易明细 &ndash;&gt;-->
+        <!--<div item="false" ng-if="pageData.showView=='transfer'" style="padding:0px;margin:0px;" aslist rcode="income" temp-url="frame/member/withdraw/views/transaction_item.html" params="{memberid:{{pageData.memberid}},type:'trade_total_money<0'}">-->
+        <!--</div>-->
+
+
+
+
+
+        <div class="pt-10"></div>
+        <div class="list">
+            <div class="item item-avatar" style="min-height: 48px;padding-left: 11%;">
+                <img style="top:12px;border-radius: 0;width: 5%;height: auto;" src="img/cash_03.png">
+                <span>总投资额:</span><span style="float:right;" >{{pageData.count_balance|ptoy}}元</span>
+            </div>
+            <div class="item item-avatar" style="min-height: 48px;padding-left: 11%;">
+                <img style="top:12px;border-radius: 0;width: 5%;height: auto;" src="img/cash_03.png">
+                <span>总分红额:</span>
+                <span style="float:right;" >{{pageData.count_money|ptoy}}元</span>
+            </div>
+            <div class="item item-avatar" style="min-height: 48px;padding-left: 11%;">
+                <img style="top:12px;border-radius: 0;width: 5%;height: auto;" src="img/cash_03.png">
+                <span>分红余额:</span>
+                <span style="float:right;" >{{pageData.balance|ptoy}}元</span>
+            </div>
+
+            <div class="pt-10"></div>
+            <div class="item item-avatar " style="min-height: 0px;
+                 padding: 8px 0px;">
+                <div class="row" >
+                    <div class="col-33" style="padding-right:10px;text-align: center;border-right: 1px solid #CCCCCC;" ng-click="toFarm()">
+                        <img class="account_bar_div_img_03" style="width:15%;" src="img/invest_no.png" >
+                        <span style="vertical-align: middle;">农业投资</span>
+                    </div>
+                    <div class="col-33" ng-click="toWithPage()" style="text-align: center;border-right: 1px solid #CCCCCC;">
+                        <img class="account_bar_div_img_04" style="width: 11%;" src="img/cash_18.png">
+                        <span style="vertical-align: middle;">提现</span>
+                    </div>
+                    <div class="col-33" ng-click="toSendRedPacket()" style="text-align: center;">
+                        <img class="account_bar_div_img_04" style="width: 11%;" src="img/cash_11.png">
+                        <span style="vertical-align: middle;">发果蔬红包</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-10 tabs-striped tabs-top tabs-background-light tabs-color-balanced">
+                <div class="tabs" style="width:100%;position:static;">
+                    <a style="{{item.style}}" ng-click="selectCards('{{$index}}')" ng-class="[item.CSS, 'tab-item']" ng-repeat="item in pageData.comdSelectCards" ng-bind="item.title">
+                    </a>
+                </div>
+            </div>
+
+            <!-- 已投资项目 -->
+            <div item="false" ng-if="pageData.type == '0'" style="padding:0px;margin:0px;" aslist rcode="myProject" temp-url="frame/account/identity_stock/views/invested_project_list.html"  list-events="pageData.list_events" params="{memberid:{{pageData.memberid}}}">
+            </div>
+
+            <!--交易明细-->
+            <div ng-if="pageData.type == '1'"  style="padding:0px;margin:0px;" no-show-more="false" item="false" aslist rcode="transaction_record_info" temp-url="app_plugins/common/record/views/transaction_record_index.html" list-events="pageData.list_events" params="{{pageData.params}}"></div>
+
+            <div ng-if="pageData.type == '1'" class="row col" style="text-align: center;padding:10px;" ng-click="toPage()" >
+                <span >点击查看更多
+                </span>
+            </div>
+            <div footerpadding></div>
+        </div>
+    </ion-content>
+</ion-view>

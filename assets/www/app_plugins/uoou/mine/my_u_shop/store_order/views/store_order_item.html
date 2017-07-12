@@ -1,0 +1,23 @@
+
+<!--铺铺订单详情-->
+
+<a class="item item-thumbnail-left item-icon-right" style=" height: 75px; padding:6px 0px 0px 75px;">
+    <img style="max-width: 50px; max-height: 50px;top:10px;left:10px; border-radius: 5px;"  ng-src="{{value.WXHEADIMG| hostFilter}}" ng-click="personDynamic(value.MEMBER_ID)">
+    <div ng-click="to_details('{{value.ID}}')">
+        <div class="row " style="padding-top: 0px;" > 
+            <p style="font-size:13px;">会员名称：{{value.MEMBERNAME}}</p>
+        </div>
+        <div class="row">
+            <p style="font-size:13px;">订单时间：{{value.CREATETIME}}</p>
+        </div>
+        <div class="row">
+            <p ng-if="value.ORDER_STATUS === '0'" style="font-size:13px;">订单状态：新订单</p>
+            <p ng-if="value.ORDER_STATUS === '1'" style="font-size:13px;">订单状态：待支付</p>
+            <p ng-if="value.ORDER_STATUS === '2'" style="font-size:13px;">订单状态：已支付</p>
+            <p ng-if="value.ORDER_STATUS === '4'" style="font-size:13px;">订单状态：已完成</p>
+            <p ng-if="value.ORDER_STATUS === '5'" style="font-size:13px;">订单状态：申请退款</p>
+            <p ng-if="value.ORDER_STATUS === '6'" style="font-size:13px;">订单状态：退款完成</p>
+        </div>
+        <img class="icon" ng-src="app_plugins/uoou/dynamic/img/member_43.png" style="width:15px;height:15px;margin-top: 32px;"/>
+    </div>
+</a>

@@ -1,0 +1,35 @@
+
+
+<div class="bg-2 row" style="width: 100%;display: -webkit-flex;" ng-click="buttonClick()">
+	<div class="col-90" style="text-align:center;font-family: 微软雅黑;font-size: 13px;-webkit-box-flex: 1;overflow: hidden;" >{{defautLable}}</div>
+	<div class="col-10" style="-webkit-box-flex: 1;"><img ng-src="{{ImageUrl}}" style="width:10px;"></div>
+</div>
+
+
+<script id="control/select_control/select-modal.html" type="text/ng-template">
+<ion-modal-view style="height: 100%" class="select_show_model">
+	<ion-content style="padding-top: 0px;border-top: 1px solid #f5f5f5;margin-top: 0px;" scroll="false" class="select_show_model">
+			<div ng-if="styleType==1" class='bg-2' style="width: 100%" ng-repeat='items in ListData'>
+				<div style='width:100%;font-family: 微软雅黑;font-size: 13px;line-height: 30px;font-weight: bold;' class="row " >&nbsp;{{items.name}}&nbsp;<i ng-click='close()' class="icon ion-close-circled" style="position: absolute;right: 10px;font-size: 20px;color:#2ad4d4;"></i></div>
+				<div style='flex-wrap:wrap;display:-webkit-box;alignltems:"flex-start";width:100%;' class="row">
+					<div style="min-width:33%;display:inline-block;" ng-repeat='(key,value) in items.data track by key'>
+						<div style="margin:5px;border:1px solid #000;text-align:center;border-radius:5px;" 
+							 ng-click="ItemClick('{{key}}','{{value}}')">{{key}}</div>
+					</div>
+				</div>
+			</div>
+
+			<div ng-if="styleType==2" style="width: 100%;height:100%;" ng-repeat='items in ListData'>
+				<div style='width:100%;font-family: 微软雅黑;font-size: 13px;line-height: 30px;font-weight: bold;' class="row bg-2 "  >&nbsp;{{items.name}}&nbsp;<i ng-click='close()' class="icon ion-close-circled" style="position: absolute;right: 10px;font-size: 20px;color:#2ad4d4;"></i></div>
+				<ion-scroll direction="y" class="select_show_model_item" style="margin-top: 0px;" scroll-height>
+					<div style="width:100%;" ng-repeat='(key,value) in items.data track by key'>
+						<div style="line-height: 40px;text-align: left;margin-top: 1px;font-family: 微软雅黑;font-size: 13px;" class="bg-2"
+							 ng-click="ItemClick('{{key}}','{{value}}')">&nbsp;&nbsp;&nbsp;&nbsp;{{key}}</div>
+					</div>
+				</ion-scroll>
+			</div>
+
+
+	</ion-content>
+</ion-modal-view>
+</script>

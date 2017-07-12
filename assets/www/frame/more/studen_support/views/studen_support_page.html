@@ -1,0 +1,52 @@
+<!-- 大学生资助 -->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="大学生资助">
+</div>
+<ion-view view-title="大学生资助">
+    <ion-content>
+        <div class="row" style="background: #FFFFFF;">
+            <div class="col col-33">
+                <select class="item myinfoborder-radius item-input" style="width:100%;" ng-model="pageData.recvProvince" ng-options="province.PRONAME for province in cascadePCZ.provinces"  required>
+                    <option value="">-请选择省-</option>
+                </select>
+            </div>
+            <div class="col col-33">
+                <select class="item myinfoborder-radius item-input" style="width:100%;" ng-model="pageData.recvCity" ng-options="city.CITYNAME for city in cascadePCZ.cities"  required>
+                    <option value="">-请选择市-</option>
+                </select>
+            </div>
+            <div class="col col-33">
+                <select class="item myinfoborder-radius item-input" style="width:100%;" ng-model="pageData.recvArea" ng-options="zone.ZONENAME for zone in cascadePCZ.zones"  required>
+                    <option value="">-请选择区-</option>
+                </select>
+            </div>
+        </div>
+        <div class="row" style="background: #FFFFFF;">
+            <div class="col">
+                <button ng-click="query()" class="button button_with  myinfoborder-radius h-43 agriculture_project_title">查询</button>
+            </div>
+        </div>
+        <div style="padding:10px 0px 0px 0px;margin:0px;" item="false" aslist rcode="studentSupport" temp-url="frame/more/studen_support/views/studen_support_list_page.html" list-events="pageData.listEvents" params="{{pageData.params}}"></div>
+        <div footerpadding></div>
+    </ion-content>
+    <div class="bar bar-footer" ng-if="pageData.type != 2">
+        <colgroup style="width:33%;"></colgroup>
+        <colgroup style="width:33%;"></colgroup>
+        <colgroup style="width:33%;"></colgroup>
+        <tr>
+        <button ng-click="applySupport()" class="button button_with  myinfoborder-radius h-43" style="margin-right:10px;font-size:14px;">申请资助</button>
+        </tr>
+        <tr>
+        <button ng-click="myApply()" class="button button_with  myinfoborder-radius h-43" style="margin-right:10px;margin-left:10px;font-size:14px;">我的申请</button>
+        </tr>
+        <tr>
+        <button ng-click="mySupport()" class="button button_with  myinfoborder-radius h-43" style="margin-left:10px;font-size:14px;">我的资助</button>
+        </tr>
+    </div>
+    <div class="bar bar-footer ios-margin-button" ng-if="pageData.type == 2">
+        <button ng-click="mySupport()" class="button button_with  myinfoborder-radius h-43" style="font-size:14px;">我的资助</button>
+    </div>
+</ion-view>

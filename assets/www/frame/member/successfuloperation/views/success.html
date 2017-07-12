@@ -1,0 +1,28 @@
+<!-- 忘记密码设置新密码-->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     title="{{pData.TITLE}}">
+</div>
+<ion-view>
+  <ion-content>
+    <div class="row find_success_top">
+      <div class="col">
+        <span class="icon-duigou font_span_center text_color" style="color: #2ad4d4;"></span>
+        <span class="font_span_center find_success_span_top" ng-bind="pData.SUCCESSMSG"></span>
+        <span class="font_span_center find_success_span_top" ng-bind="pData.welcomeMSG"></span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <button class="button login_mauto login_button button-block button-balanced" ng-click="go()" 
+                style="width: 90%;color:#ffffff;border:0px;border-radius: 5px;background-color: #2ad4d4;">
+          立即登录
+        </button>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,33 @@
+<div class="item item-thumbnail-left bg-2 {{value.IS_DISCOUNT==1?'recommend_background_css':''}}" style="padding: 10px 5px;padding-left: 115px;" ng-click="discountGroup(value.ID)">
+    <img style="max-width: 96px; max-height: 96px;top:10px;"  ng-src="{{value.LISTIMAGE| hostFilter:'ImageJSON'}}">
+    <h2 class="recommend_list_h2_css" ng-bind="value.NAME" style="padding-top:5px;    margin-bottom: 0px;"></h2>
+    <div class="row cl-19 fs-13" style="border-bottom: none;padding:0;">
+        <div as-start model="s" value="{{value.PJPXDF | number:0}}"></div>
+        <div class="recommend_list_label_f_css">{{value.PJPXDF==''?"0":value.PJPXDF}}分</div>
+        <div><span><i ng-bind="value.SALENUMBER"></i>人消费</span></div>
+    </div>
+    <div class="row" style="padding: 0px;padding-top: 5px;">
+    	<div style="width:40%;padding-left: 0px;">
+            <div class="car_list-btn" ng-if="value.THEM">
+            	<span class="fs-12" ng-bind="value.CXNAME"></span>
+            </div>
+        </div>
+        <div style="width:60%;padding:0px;">
+        	<div class="car_list-btn" ng-if="value.GROUP_LABEL">
+            	<span class="fs-12" ng-bind="value.ZWNAME"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="padding:5px 10px 0px 0px;margin-top: 1px;display: -webkit-flex;">
+        <s class="col fs-10" style="padding:0;-webkit-box-flex: 1;">原价:￥{{value.PRICE|number:0}}</s>
+        <div class="col fs-18 cl-20" style="text-align: right;-webkit-box-flex: 1;" ng-if="value.DISCOUNT==0||value.DISCOUNT==1">
+        	￥<span ng-bind="value.PRICE|number:0"></span>
+        </div>
+        <div class="col fs-18 cl-20" style="text-align: right;-webkit-box-flex: 1;"ng-if="value.DISCOUNT<1&&value.DISCOUNT>0">
+                ￥<span ng-bind="value.PRICE*value.DISCOUNT|number:0"></span>
+        </div>
+        <div class="col fs-18 cl-20" style="text-align: right;-webkit-box-flex: 1;" ng-if="value.DISCOUNT>1">
+                ￥<span ng-bind="value.PRICE-value.DISCOUNT|number:0"></span>
+        </div>
+    </div>
+</div>

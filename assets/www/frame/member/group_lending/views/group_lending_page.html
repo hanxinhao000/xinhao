@@ -1,0 +1,35 @@
+<!-- 联保贷款 -->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="联保贷款">
+</div>
+<ion-view view-title="联保贷款">
+  <ion-content>
+  	<div class="tabs-striped tabs-top tabs-background-light tabs-color-balanced">
+        <div class="tabs" style="width:100%;position:static;">
+            <a style="{{item.style}}" ng-click="selectCards('{{$index}}')" ng-class="[item.CSS,'tab-item']" ng-repeat="item in pageData.comdSelectCards" ng-bind="item.title">
+            </a>
+        </div>
+    </div>
+
+    <!-- 我发起的贷款 -->
+    <div item="false" ng-if="pageData.type =='0'" style="padding:0px;margin:0px;" aslist rcode="GroupLending" temp-url="frame/member/group_lending/views/group_lending_list_page.html"  list-events="pageData.list_events" params="{{pageData.params}}" repeatdata="pageData.repeatdata">
+    </div>
+
+    <!--邀请我的贷款-->
+    <div ng-if="pageData.type =='1'" style="padding:0px;margin:0px;" item="false" aslist rcode="requestGroupLending" temp-url="frame/member/group_lending/views/my_group_lending_list_page.html" list-events="pageData.list_events" params="{{pageData.params}}"></div>
+  
+    <div class="row" style="height:100px;line-height:100px;">
+      <div class="col">&nbsp;<a href="javaScript:void(0);" style="display:none;">&nbsp;</a></div>
+    </div>
+    <div class="row">
+      <div class="col">&nbsp;<a href="javaScript:void(0);" style="display:none;">&nbsp;</a></div>
+    </div>
+
+  </ion-content>
+  <div class="bar bar-footer ios-margin-button" ng-if="pageData.type =='0'">
+		<button ng-click="applyLoan()" class="button button_with  myinfoborder-radius h-43" style="font-size:14px;">贷款申请</button>
+  </div>
+</ion-view>

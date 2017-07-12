@@ -1,0 +1,22 @@
+<a class="item item-box" ng-click="confirmReceipt(value.ID)">
+      <h3 style="color:#010101;" ng-bind="value.TITLE"></h3>
+      <p style="font-size:12px;white-space:normal;max-height:37px;overflow:hidden;" ng-bind="value.ME_CONTENT"></p>
+      <table class="full-table fs-12 mt-12">
+      	<tr class="full-w">
+      		<td class="cl-02">
+      			<span>发布时间:{{value.SHELVETIME}}</span>
+      		</td>
+      		<td class="cl-03" style="text-align:right;">
+      			<span>价格:{{value.PRICE|ptoy}}元</span>
+      		</td>
+      	</tr>
+      </table>
+      <table class="full-table fs-12 mt-12">
+      	<tr class="full-w">
+      		<td class="cl-02">
+      			<span>状态:</span>
+                <span ng-bind="value.MTRSTATUS|enum:statusEnum"></span>
+      		</td>
+      	</tr>
+      </table>
+</a>

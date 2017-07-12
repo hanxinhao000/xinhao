@@ -1,0 +1,167 @@
+<!--<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="添加地址">
+</div>-->
+<style>
+    .input-label {
+        display: table;
+        padding: 7px 10px 7px 0px;
+        max-width: 200px;
+        width: 20%;
+        color: #666666;
+        font-size: 15px;
+    }
+    .input-label-input {
+        display: table;
+        padding: 7px 10px 7px 0px;
+        max-width: 200px;
+        color: #666666;
+        font-size: 15px;
+    }
+    textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], 
+    input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], 
+    input[type="email"], input[type="url"], input[type="search"], input[type="tel"],
+    input[type="color"] {
+        display: block;
+        padding-top: 2px;
+        padding-left: 0;
+        height: 34px;
+        color: #888888;
+        vertical-align: middle;
+        font-size: 15px;
+        line-height: 16px;
+    }
+    .item-select select {
+        color: #666666;
+        font-size: 15px;
+    }
+    .item{
+        font-size:15px;
+        color:#666666;
+    }
+
+    .address_select {
+        text-align: right;
+    }
+    .address_select option {
+        text-align: right;
+    }
+
+</style>
+<ion-view>
+    <ion-nav-buttons side="left">
+        <div class="public_comment_header_bar_padding_left"  ng-click="back()">
+            <i class="icon head_left_back"></i>
+        </div>
+    </ion-nav-buttons>
+    <ion-nav-title>
+        <div class="fs_4">添加地址</div>
+    </ion-nav-title>
+    <ion-nav-buttons side="right">
+        <div class="fs_4" style="line-height:44px;height:44px;margin-right:10px;margin-top: -3px;">
+        </div>
+    </ion-nav-buttons>
+
+    
+ 	<ion-content>
+        <div class="list">
+            <label class="item item-input h-46">
+                <span class="input-label">联系人:</span>
+                <input type="text" ng-model="pData.recvName" placeholder="请输入联系人（必填）" required  keyboard-attach>
+            </label>
+
+
+
+            <label class="item item-input h-46">
+                <span class="input-label">联系电话:</span>
+                <input type="number" string-to-number ng-model="pData.recvPhone" placeholder="请输入联系电话（必填）" required  keyboard-attach>
+            </label>
+
+            <!--<label class="item item-input item-select h-46">-->
+                <!--<span class="input-label-input">省:</span>-->
+                <!--<select ng-model="pData.recvProvince" ng-options="province.PRONAME for province in cascadePCZ.provinces" required  keyboard-attach>-->
+                    <!--<option value="">请选择</option>-->
+                <!--</select>-->
+            <!--</label>-->
+
+            <!--<label class="item item-input item-select h-46">-->
+                <!--<span class="input-label-input">市:</span>-->
+                <!--<select ng-model="pData.recvCity" ng-options="city.CITYNAME for city in cascadePCZ.cities" required keyboard-attach>-->
+                    <!--<option value="">请选择</option>-->
+                <!--</select>-->
+            <!--</label>-->
+
+            <!--<label class="item item-input item-select h-46">-->
+                <!--<span class="input-label-input">区/县:</span>-->
+                <!--<select ng-model="pData.recvArea" class="item myinfoborder-radius item-input" ng-options="zone.ZONENAME for zone in cascadePCZ.zones" required keyboard-attach>-->
+                    <!--<option value="">请选择</option>-->
+                <!--</select>-->
+            <!--</label>-->
+
+            <div class="row" style="background: #FFFFFF;padding:3px 0;border-bottom: 1px solid #ddd;margin-bottom: 5px;">
+                <div class="col col-67" style="padding: 10px 5px 5px 16px;color:#595959;font-size:15px;">省:</div>
+                <div class="col">
+                    <select style="background:#FFFFFF;width:100%;padding: 6px 0px 5px 2px;border:0px;" class="item myinfoborder-radius item-input"
+                            ng-model="pData.recvProvince"
+                            ng-options="province.PRONAME for province in cascadePCZ.provinces"
+                            ng-disabled="pData.readonly">
+                        <option value="">请选择</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row" style="background: #FFFFFF;padding:3px 0;border-bottom: 1px solid #ddd;margin-bottom: 5px;">
+                <div class="col col-67" style="padding: 10px 5px 5px 16px;color:#595959;font-size:15px;">市:</div>
+                <div class="col">
+                    <select style="background:#FFFFFF;width:100%;padding: 6px 0px 5px 2px;border:0px;" class="item myinfoborder-radius item-input"
+                            ng-model="pData.recvCity"
+                            ng-options="city.CITYNAME for city in cascadePCZ.cities"
+                            ng-disabled="pData.readonly">
+                        <option value="">请选择</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row" style="background: #FFFFFF;padding:3px 0">
+                <div class="col col-67" style="padding: 10px 5px 5px 16px;color:#595959;font-size:15px;">区/县:</div>
+                <div class="col">
+                    <select style="background:#FFFFFF;width:100%;padding: 6px 0px 5px 2px;border:0px;" class="item myinfoborder-radius item-input"
+                            ng-model="pData.recvArea"
+                            ng-options="zone.ZONENAME for zone in cascadePCZ.zones"
+                            ng-disabled="pData.readonly">
+                        <option value="">请选择</option>
+                    </select>
+                </div>
+            </div>
+
+            <label class="item item-input h-46">
+                <span class="input-label">详细地址:</span>
+                <input type="text" ng-model="pData.recvDetail" placeholder="请输入详细地址（必填）" required  keyboard-attach>
+            </label>
+
+            <label class="item item-input h-46">
+                <span class="input-label">邮政编码:</span>
+                <input type="number" string-to-number ng-model="pData.recvPostallCode"  placeholder="请输入邮政编码（必填）"  required  keyboard-attach>
+            </label>
+
+            <ion-checkbox class="myinfoborder-radius h-46" ng-model="pData.defaultAddr"
+            >设置为默认地址</ion-checkbox>
+
+
+        </div>
+
+
+
+
+ 	  <!--<div ng-form name="loanForm" keyboard-attach> &lt;!&ndash;ng-from start&ndash;&gt;-->
+
+
+
+      <!--</div>-->
+ 	</ion-content>
+    <div class="bar bar-footer ios-margin-button" style="padding-left:5px;padding-right: 5px;">
+      <button ng-click="saveAddress()" class="button button_with  myinfoborder-radius h-43 agriculture_project_title button-calm" style="font-size:17px;background: rgb(0,218,216);border-color: rgb(0,218,216);color: #ffffff;">保存</button>
+    </div>
+</ion-view>

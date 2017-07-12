@@ -1,0 +1,80 @@
+<!--大众创业-->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     title="{{pageData.title}}">
+
+
+</div>
+<ion-view view-title="{{pageData.title}}">
+    <ion-content >
+        <!--<div class="list">-->
+        <!--<label class="item item-input">-->
+        <!--<span class="input-label">名称</span>-->
+        <!--<input type="text" disabled ng-bind="pageData.serviceData.T_NAME">-->
+        <!--</label>-->
+        <!--<label class="item item-input">-->
+        <!--<span class="input-label">价格</span>-->
+        <!--<input type="text" ng-bind="pageData.sericeData.PRICE">-->
+        <!--</label>-->
+        <!--<label class="item item-input">-->
+        <!--<span class="input-label">类型</span>-->
+        <!--<input type="text" ng-bind="pageData.sericeData.SC_NAME">-->
+        <!--</label>-->
+        <!--</div>-->
+        <ul class="list">
+            <!--       <li class="item">
+                    <span >现金余额:</span><span  ng-bind="pageData.balance |ptoy"></span>元
+                  </li> -->
+
+
+            <li class="item item-input">
+
+                <span class="input-label">名称:</span>
+                <input type="text" ng-model="pageData.DataName" placeholder="请输入您要创业的组织名称（必填）">
+
+            </li>
+            <li class="item">
+                <span >价格:</span><span  ng-bind="pageData.serviceData[0].PRICE | ptoy"></span>元
+            </li>
+            <li class="item">
+                <span >类型:</span><span  ng-bind="pageData.serviceData[0].SC_NAME"></span>
+            </li>
+
+        </ul>
+        <div style="padding: 6px 13px 6px 13px;" class="item-text-wrap pb-10 pl-10 pr-10 pt-10 am-content ng-binding" ng-bind-html="pageData.serviceData[0].SC_CONTENT">
+        </div>
+        <div class="item item-body" ng-repeat="item in pageData.inputData track by $index">
+            <div class="row">
+                <img id="img_{{$index}}" class="col col-80" style="width:100%;height:100%;overflow:hidden;"  ng-src="{{item.data}}" >
+                <div class="col col-20" ng-click="delete(item)" >删除</div>
+            </div>
+        </div>
+        <a  class="item" add-resource type="01" out-data="pageData.inputData" href="#">
+            <img  style="vertical-align: middle;width: 15px;padding-bottom: 3px;" src="img/add_file_2_03.png">
+            <span>提交资料文件</span>
+        </a>
+        <div footerpadding></div>
+    </ion-content>
+    <div class="bar bar-footer h_69 ios-margin-button">
+        <button  ng-click="redirect('1')" style="width:40%;
+                 margin-left:7%;
+                 margin-right:6%"
+                 class="button ng-binding myinfoborder-radius h-43 agriculture_project_title"
+                 >
+            支付并创建
+        </button>
+
+        <button  ng-click="redirect('2')" style="width:40%;
+                 margin-left:;
+                 margin-right:3%"
+                 class="button ng-binding myinfoborder-radius h-43 agriculture_project_title"
+                 >
+            借款创业
+        </button>
+
+
+    </div>
+</ion-view>

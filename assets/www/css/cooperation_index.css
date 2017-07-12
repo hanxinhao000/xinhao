@@ -1,0 +1,16 @@
+.no-choice-btn{
+	width: 72px;
+	height: 24px;
+	border:1px solid #0095ff;
+	background-color: white;
+	text-align: center;
+	color:#0095ff;
+}
+.choice-btn{
+	width: 72px;
+	height: 24px;
+	border:1px solid #0095ff;
+	background-color: #0095ff;
+	text-align: center;
+	color:#ffffff;
+}

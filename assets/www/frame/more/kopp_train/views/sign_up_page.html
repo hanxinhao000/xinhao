@@ -1,0 +1,59 @@
+<!-- 我要报名 -->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="我要报名"
+     right-css="header_title fs_4"
+     right="我的"
+     right-click-fun="mySignUp()">
+</div>
+<ion-view view-title="我要报名">
+    <ion-content>
+        <div class="row" style="background: #FFFFFF;">
+            <div class="col col-33">
+                <select class="item myinfoborder-radius item-input" style="width:100%;" ng-model="pageData.recvProvince" ng-options="province.PRONAME for province in cascadePCZ.provinces"  required>
+                    <option value="">-请选择省-</option>
+                </select>
+            </div>
+            <div class="col col-33">
+                <select class="item myinfoborder-radius item-input" style="width:100%;" ng-model="pageData.recvCity" ng-options="city.CITYNAME for city in cascadePCZ.cities"  required>
+                    <option value="">-请选择市-</option>
+                </select>
+            </div>
+            <div class="col col-33">
+                <select class="item myinfoborder-radius item-input" style="width:100%;" ng-model="pageData.recvArea" ng-options="zone.ZONENAME for zone in cascadePCZ.zones"  required>
+                    <option value="">-请选择区-</option>
+                </select>
+            </div>
+        </div>
+        <div class="diveline-2"></div>
+        <div class="row" style="background: #FFFFFF;">
+            <div class="col col-25">
+                <span style="padding-top: 10px;" class="input-label query">开始时间:</span>
+            </div>
+            <div class="col col-25">
+                <input type="date" ng-model="pageData.startDate" >
+            </div>
+            <div class="col col-25">
+                <input type="date" ng-model="pageData.endDate">
+            </div>
+        </div>
+        <div class="diveline-2"></div>
+        <!--     <label  class="item item-input" style="padding:6px 10px 5px 16px;">
+                <div class="row">
+                  <div class="col">
+                    <button ng-click="query()" class="button button_with  myinfoborder-radius h-43 agriculture_project_title">查询</button>
+                  </div>
+              </div>
+            </label>
+        -->
+        <div class="row" style="background: #FFFFFF;">
+            <div class="col">
+                <button ng-click="query()" class="button button_with  myinfoborder-radius h-43 agriculture_project_title">查询</button>
+            </div>
+        </div>
+        <div style="padding:10px 0px 0px 0px;margin:0px;" item="false" aslist rcode="signUpSQL" temp-url="frame/more/kopp_train/views/sign_up_list_page.html" list-events="pageData.listEvents" params="{{pageData.params}}"></div>
+        <div footerpadding></div>
+    </ion-content> 
+</ion-view>

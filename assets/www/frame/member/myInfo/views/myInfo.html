@@ -1,0 +1,299 @@
+<!--<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     right="{{pData.rightTitle}}"
+     right-click-fun="save()"
+     title="我的资料">
+</div>-->
+<!--我的资料-->
+
+<style>
+    .input-label {
+        display: table;
+        padding: 7px 10px 7px 0px;
+        max-width: 200px;
+        width: 20%;
+        color: #595959;
+        font-size: 15px;
+    }
+    textarea, input[type="text"], input[type="password"], input[type="datetime"], 
+    input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], 
+    input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], 
+    input[type="tel"], input[type="color"] {
+        display: block;
+        padding-top: 2px;
+        padding-left: 0;
+        height: 34px;
+        color: #111;
+        vertical-align: middle;
+        font-size: 15px;
+        line-height: 16px;
+    }
+    .item {
+        font-size: 15px;
+    }
+    .simulate-textarea{
+        display: inline-block;
+        width: calc(100% - 40px);
+        min-height: 90px;
+        _height: 20px;
+        max-height: 150px;
+        outline: 0;
+        word-break: break-all;
+        word-wrap: break-word;
+        white-space: pre-wrap;
+        overflow-x: hidden;
+        overflow-y: auto;
+        line-height: 20px;
+        padding-left: 37px;
+    }
+</style>
+<ion-view>
+    <ion-nav-buttons side="left">
+        <div class="public_comment_header_bar_padding_left"  ng-click="back()">
+            <i class="icon head_left_back"></i>
+        </div>
+    </ion-nav-buttons>
+    <ion-nav-title>
+        <div class="fs_4">我的资料</div>
+    </ion-nav-title>
+    <ion-nav-buttons side="right">
+        <div class="fs_4" ng-click="save()" style="line-height:44px;height:44px;margin-right:10px;margin-top: -3px;">
+           {{pData.rightTitle}}
+        </div>
+    </ion-nav-buttons>
+    
+    <ion-content>
+
+         <div class="list">
+            <label class="item item-input" style="margin-top: 7px;">
+                <span class="input-label">账号:</span>
+                <input style="background:#FFFFFF;" type="text" ng-model="pData.User_Account" ng-readonly="true" />
+            </label>
+            <label class="item item-input">
+                <span class="input-label" >昵称:</span>
+                <input style="background:#FFFFFF;" type="text" ng-model="pData.User_Name" placeholder="（必填）" ng-readonly="pData.readonly" keyboard-attach>
+            </label>
+            <div class="row " style="padding:0px;">
+                <div class="col" style="padding:0px;">
+                    <label class="item myinfoborder-radius item-input" >
+                        <span class="input-label">性别:</span>
+                        <ion-radio  ng-model="pData.User_gender" ng-value="'1'" ng-disabled="pData.readonly">男</ion-radio>
+                        <ion-radio ng-model="pData.User_gender" ng-value="'2'" ng-disabled="pData.readonly">女</ion-radio>
+                    </label>
+                </div>
+            </div>
+            <label class="item item-input">
+                <span class="input-label" >年龄:</span>
+                <input style="background:#FFF;" type="text" ng-model="pData.memberAge"  ng-readonly="pData.readonly" keyboard-attach />
+            </label>
+            <label class="item item-input">
+                <span class="input-label">生日:</span>
+                <input style="background:#FFFFFF;" type="date" ng-model="pData.User_memberbirthday"  ng-readonly="pData.readonly" keyboard-attach>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">星座:</span>
+                <select style="background:#FFFFFF;" class="item myinfoborder-radius item-input" 
+                        ng-options="item.code as item.name for item in pData.constellationData" ng-model="pData.constellation"
+                        ng-disabled="pData.readonly">
+                    <option></option>
+                </select>
+                
+            </label>
+            <label class="item item-input">
+                <span class="input-label">座右铭:</span>
+                <input style="background:#FFFFFF;" type="text" ng-model="pData.motto" ng-readonly="pData.readonly" keyboard-attach>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">情感:</span>
+                <select style="background:#FFFFFF;" class="item myinfoborder-radius item-input" 
+                        ng-model="pData.emotion" ng-disabled="pData.readonly">
+                    <option value="1">单身</option>
+                    <option value="2">恋爱中</option>
+                    <option value="3">已婚</option>
+                    <option value="4">同性</option>
+                    <option value="5">保密</option>
+                </select>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">职业:</span>
+                <input style="background:#FFFFFF;" type="text" ng-model="pData.occupation" ng-readonly="pData.readonly" keyboard-attach>
+            </label>
+
+            <div class="row" style="background: #FFFFFF;padding:3px 0">
+                <div class="col col-20" style="padding: 10px 5px 5px 16px;color:#595959;font-size:15px;">故乡:</div>
+                <div class="col col-25">
+                    <select style="background:#FFFFFF;width:100%;padding: 6px 0px 5px 2px;" class="item myinfoborder-radius item-input"
+                            ng-model="pData.recvProvince" 
+                            ng-options="province.PROID as province.PRONAME for province in cascadePCZ.provinces"
+                            ng-disabled="pData.readonly">
+                        <option value="">-省-</option>
+                    </select>
+                </div>
+                <div class="col col-25">
+                    <select style="background:#FFFFFF;width:100%;padding: 6px 0px 5px 2px;" class="item myinfoborder-radius item-input"
+                            ng-model="pData.recvCity" ng-options="city.CITYID as city.CITYNAME for city in cascadePCZ.cities"  
+                            ng-disabled="pData.readonly" required>
+                        <option value="">-市-</option>
+                    </select>
+                </div>
+                <div class="col col-25">
+                    <select style="background:#FFFFFF;width:100%;padding: 6px 0px 5px 2px;" class="item myinfoborder-radius item-input"
+                            ng-model="pData.recvArea" ng-options="zone.ZONEID as zone.ZONENAME for zone in cascadePCZ.zones"  
+                            ng-disabled="pData.readonly" required>
+                        <option value="">-区-</option>
+                    </select>
+                </div>
+            </div>
+
+            <label class="item item-input">
+                <span class="input-label">常出没:</span>
+                <input style="background:#FFFFFF;" type="text" ng-model="pData.User_address" ng-disabled="pData.readonly" keyboard-attach>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">特长爱好:</span>
+                <input style="background:#FFFFFF;" type="text" ng-model="pData.member_hobby" ng-disabled="pData.readonly" keyboard-attach>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">邮箱:</span>
+                <input style="background:#FFFFFF;" type="email" ng-model="pData.User_EMAIL" ng-disabled="pData.readonly" keyboard-attach>
+            </label>
+<!--            <label class="item item-input" style="padding-bottom:0px; border-bottom:0px;">
+                <span class="input-label" style="padding:0px;">简介:</span>
+            </label>
+            <label class="item item-input" style="border-top:0px;">
+                <textarea style="background:#FFFFFF; width: 100%; height:100%;" rows=5  placeholder="请输入你的简介" ng-model="pData.introduction" ng-disabled="pData.readonly" keyboard-attach></textarea>
+            </label>-->
+            <label class="item item-input item-floating-label" style=" background-color:#fff">
+                <span style="float: left; margin-right: 5px;">简介:</span>
+                <div class="simulate-textarea" id="sts" rows=5 ng-bind-html="pData.introduction" contenteditable="true" keyboard-attach placeholder="请输入内容"></div>
+                <!--<textarea  placeholder=" 请输入个人说明" style="background:#FFFFFF; width: 85%; height:100%; float: left;" rows=5 ng-bind-html="pData.introduction" ng-disabled="pData.readonly" keyboard-attach></textarea>-->
+            </label>
+        </div>
+
+        
+        
+        
+        
+        
+<!--        <div class="list">
+            <label class="item item-input" style="margin-top: 7px;">
+                <span class="input-label">账号:</span>
+                <input style="background:#FFFFFF;" type="text" ng-model="pData.User_Account" ng-readonly="true" />
+            </label>
+            <label class="item item-input">
+                <span class="input-label" >昵称:</span>
+                <input style="background:#FFFFFF;" type="text" ng-model="pData.User_Name" placeholder="（必填）" ng-readonly="pData.readonly" keyboard-attach>
+            </label>
+            <div class="row " style="padding:0px;">
+                <div class="col" style="padding:0px;">
+                    <label class="item myinfoborder-radius item-input" >
+                        <span class="input-label">性别:</span>
+                        <ion-radio  ng-model="pData.User_gender" ng-value="'1'" ng-disabled="pData.readonly">男</ion-radio>
+                        <ion-radio ng-model="pData.User_gender" ng-value="'2'" ng-disabled="pData.readonly">女</ion-radio>
+                    </label>
+                </div>
+            </div>
+            <label class="item item-input">
+                <span class="input-label" >年龄:</span>
+                <input style="background:#FFF;" type="text" ng-model="pData.memberAge" placeholder="（必填）" ng-readonly="pData.readonly" keyboard-attach />
+            </label>
+            <label class="item item-input">
+                <span class="input-label">生日:</span>
+                <input style="background:#FFFFFF;" type="date" ng-model="pData.User_memberbirthday" placeholder="（必填）" ng-readonly="pData.readonly" keyboard-attach>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">星座:</span>
+                <select style="background:#FFFFFF;" class="item myinfoborder-radius item-input" 
+                        ng-options="item.code as item.name for item in pData.constellationData" ng-model="pData.constellation"
+                        ng-disabled="pData.readonly">
+                    <option></option>
+                </select>
+                
+            </label>
+            <label class="item item-input">
+                <span class="input-label">座右铭:</span>
+                <input style="background:#FFFFFF;" type="text" ng-model="pData.motto" ng-readonly="pData.readonly" keyboard-attach>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">情感:</span>
+                <select style="background:#FFFFFF;" class="item myinfoborder-radius item-input" 
+                        ng-model="pData.emotion" ng-disabled="pData.readonly">
+                    <option value="1">单身</option>
+                    <option value="2">恋爱中</option>
+                    <option value="3">已婚</option>
+                    <option value="4">同性</option>
+                    <option value="5">保密</option>
+                </select>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">职业:</span>
+                <input style="background:#FFFFFF;" type="text" ng-model="pData.occupation" ng-readonly="pData.readonly" keyboard-attach>
+            </label>
+
+            <div class="row" style="background: #FFFFFF;padding:3px 0">
+                <div class="col col-20" style="padding: 10px 5px 5px 16px;color:#595959;font-size:15px;">故乡:</div>
+                <div class="col col-25">
+                    <select style="background:#FFFFFF;width:100%;padding: 6px 0px 5px 2px;" class="item myinfoborder-radius item-input"
+                            ng-model="pData.recvProvince" 
+                            ng-options="province.PROID as province.PRONAME for province in cascadePCZ.provinces"
+                            ng-disabled="pData.readonly">
+                        <option value="">-省-</option>
+                    </select>
+                </div>
+                <div class="col col-25">
+                    <select style="background:#FFFFFF;width:100%;padding: 6px 0px 5px 2px;" class="item myinfoborder-radius item-input"
+                            ng-model="pData.recvCity" ng-options="city.CITYID as city.CITYNAME for city in cascadePCZ.cities"  
+                            ng-disabled="pData.readonly" required>
+                        <option value="">-市-</option>
+                    </select>
+                </div>
+                <div class="col col-25">
+                    <select style="background:#FFFFFF;width:100%;padding: 6px 0px 5px 2px;" class="item myinfoborder-radius item-input"
+                            ng-model="pData.recvArea" ng-options="zone.ZONEID as zone.ZONENAME for zone in cascadePCZ.zones"  
+                            ng-disabled="pData.readonly" required>
+                        <option value="">-区-</option>
+                    </select>
+                </div>
+            </div>
+
+            <label class="item item-input">
+                <span class="input-label">常出没:</span>
+                <input style="background:#FFFFFF;" type="text" ng-model="pData.User_address" ng-disabled="pData.readonly" keyboard-attach>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">特长爱好:</span>
+                <input style="background:#FFFFFF;" type="text" ng-model="pData.member_hobby" ng-disabled="pData.readonly" keyboard-attach>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">邮箱:</span>
+                <input style="background:#FFFFFF;" type="email" ng-model="pData.User_EMAIL" ng-disabled="pData.readonly" keyboard-attach>
+            </label>
+            <label class="item item-input" style="padding-bottom:0px; border-bottom:0px;">
+                <span class="input-label" style="padding:0px;">简介:</span>
+            </label>
+            <label class="item item-input" style="border-top:0px;">
+                <textarea style="background:#FFFFFF; width: 100%; height:100%;" rows=5  placeholder="请输入你的简介" ng-model="pData.introduction" ng-disabled="pData.readonly" keyboard-attach></textarea>
+            </label>
+            <label class="item item-input item-floating-label" style=" background-color:#fff">
+                <span style="float: left; margin-right: 5px;">简介:</span>
+                <textarea  placeholder=" 请输入个人说明" style="background:#FFFFFF; width: 85%; height:100%; float: left;" rows=5 ng-model="pData.introduction" ng-disabled="pData.readonly" keyboard-attach></textarea>
+            </label>
+        </div>-->
+
+
+
+<!--        <div class="row">
+            <div class="col">
+                <button class="button button_with  myinfoborder-radius h-43 agriculture_project_title" ng-click="save()">
+                    保存
+                </button>
+
+            </div>
+        </div>-->
+
+        <div footerpadding></div>
+    </ion-content>
+</ion-view>

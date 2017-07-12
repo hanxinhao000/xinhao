@@ -1,0 +1,17 @@
+<!-- 任务名称、任务说明(显示2行多出部分...)、任务状态、任务时间 -->
+<a class="item item-box" ng-click="seeDetails(value.UTID)">
+      <h3 style="color:#010101;" ng-bind="value.TASKNAME"></h3>
+      <p style="font-size:12px;white-space:normal;max-height:37px;overflow:hidden;" ng-bind-html="value.DESC"></p>
+      <table class="full-table fs-12 mt-12">
+      	<tr class="full-w">
+      		<td >
+      			<span>任务状态:
+                            <i class="cl-03" ng-if="value.TASKRUNSTATE=='0'">已完成</i>
+                             <i ng-if="value.TASKRUNSTATE=='1'">未完成</i></span>
+      		</td>
+      		<td class="cl-02" style="text-align:right;">
+      			<span>任务时间:{{value.CREATEDATE}}</span>
+      		</td>
+      	</tr>
+      </table>
+</a>

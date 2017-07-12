@@ -1,0 +1,111 @@
+<!--uoou 群消息页面-->
+<style>
+    .uoou_message_head_img
+    {
+        width: 32px;
+        vertical-align: middle;
+        text-align: center;
+    }
+    
+    .uoou_message_head_img_left
+    {
+        width: 25px;
+        vertical-align: middle;
+        
+        
+    }
+    
+    .uoou_message_head_middle_div_left
+    {
+        display: inline-block;
+        height: 100%;
+        width: 45%;
+        border:1px solid rgb(205,249,249);
+        padding:0px; margin:0px;
+        margin-right: -5px;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+    }
+    .uoou_message_head_middle_div_right
+    {
+        display: inline-block;
+        height: 100%;
+        width: 45%;
+        border:1px solid rgb(205,249,249);
+        padding:0px; margin:0px;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+    }
+    
+    
+    .uoou_message_friend_img_count
+    {
+        color:rgb(185,185,185);width: 21px;
+        height: 100%;
+        text-align: center;
+        background: #f71616;
+        color: #FFFFFF;
+        /* border: 10px; */
+        border-radius: 50px;
+        
+    }
+    
+    .uoou_message_friend_middle_div_content
+    {
+        padding-left: 23px;color:rgb(185,185,185);width:93%;
+    }
+</style>
+
+<!--<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="{{pData.title}}">
+</div>-->
+
+<ion-view>
+    
+    
+    
+     <ion-nav-buttons side="left">
+        <div  ng-click="back()"  class="public_comment_header_bar_padding_left">
+            <i class="icon head_left_back"></i>
+        </div>
+    </ion-nav-buttons>
+    
+	<ion-nav-title>
+            <div class="fs_4">{{pData.title}}</div>
+        </ion-nav-title>
+    
+	
+    
+    
+    
+    
+    <ion-content>
+        <!--群信息-->
+        
+        
+         <ion-item class="item-remove-animate item-icon-left row-wrap"  style="height: 70px;padding: 5px;" ng-repeat="value in pData.newGroupMessageDate" ng-if="value.message.length>0" ng-click="toMessage('{{value.groupid}}')">
+            <img class="icon" src="app_plugins/uoou/message/img/3.3_6.png" style="max-width:45px;max-height:45px;border-radius: 0;top: 5px;height: 45px;line-height: 45px;">
+            <div class="row" style="padding: 0px;">
+                <div style="width: 100%;">
+                    <div class="row " style="padding: 0px;padding-top: 2px">
+                        <div class="col" style="padding: 0px;">
+                            <span class="fs-14 text-overflow-elipsis" style="padding-left: 23px;" ng-bind="value.groupname"></span>
+                            <span class="fs-12" style="display: inline-block;float:right;color:rgb(185,185,185);" ng-bind="pData.groupMessageDate[pData.groupMessageDate.length-1].pushtime|datefmttoday"></span>
+                        </div>
+                    </div>
+                    <div class="row" style="padding: 0px;padding-top: 5px;">
+                        <span class="fs-12"  style="padding-left: 23px;color:rgb(255,142,41);width: 95%;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;" ng-bind-html="value.message[value.message.length-1].content">暂无新群消息</span>
+                        <span class="fs-12 uoou_message_friend_img_count" ng-if="value.messagenum!='0'"  ng-bind="value.messagenum"></span>
+                    </div>
+                </div>
+            </div>
+            <ion-option-button class="button-assertive"  ng-click="deleteFriend('{{value.ID}}')">
+                删除
+            </ion-option-button>
+        </ion-item>
+       
+    </ion-content>
+</ion-view>

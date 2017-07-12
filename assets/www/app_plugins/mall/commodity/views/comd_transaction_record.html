@@ -1,0 +1,16 @@
+<div nav-bar class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs-14"
+     right-css="header_title fs-14"
+     title="成交记录">
+ </div>
+
+<ion-view view-title="">
+  <ion-content>
+  	<div class="pt-10"></div>
+    <!--成交记录-->
+   <div style="padding:10px 0px 0px 0px;margin:0px;" item="false" aslist rcode="getComdityTrsfRecord" temp-url="app_plugins/mall/commodity/views/comd_transf_record_item.html" list-events="pData.listEvents" params="{{pData.params}}"></div>
+
+  </ion-content>
+</ion-view>

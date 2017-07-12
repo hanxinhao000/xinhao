@@ -1,0 +1,41 @@
+<!-- 更多页面-->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     right-click-fun="recordClick()"
+     title="科普引智社会化服务">
+</div>
+<ion-view view-title="科普引智社会化服务" style="overflow-y:visible">
+    <ion-content>
+
+        <!--      <div ng-repeat="item in pageData.custMenuList">
+                <a class="item list_padding item-icon-left item-icon-right ng-binding" ng-click="custGoto('{{item.key}}')">
+                    <i class="icon member_icon_fontsize {{item.icon}} placeholder-icon" style="color: #0c60ee"></i>
+                    <img class="col-50" ng-src="{{item.icon}}" style="vertical-align: middle;width: 13%;height:auto;" class='img-responsive' />
+                    {{item.title}}
+                    <i class="icon ion-chevron-right icon-accessory"></i>
+                </a>
+              </div> -->
+        <div class="row-wrap" style="margin:10px 0 0 0; padding:0px;
+             vertical-align: middle;" >
+            <div class="more_top" ng-repeat="item in pageData.content.list" ng-click="Jump('{{item.key}}')">
+                <img class="more_img img-responsive"ng-src="{{item.icon}}" />
+                <span class="more_content" ng-bind="item.title"></span>
+                <i class="icon ion-chevron-right icon-accessory more_button" style="line-height:46px;"></i>
+            </div>
+        </div>
+        <div class="row-wrap" style="padding:0px;vertical-align: middle;" >
+            <div class="more_top" ng-repeat="item in pageData.custMenuList" ng-click="custGoto('{{item.address}}')">
+                <img class="more_img img-responsive"ng-src="{{item.icon}}" />
+                <span class="more_content" ng-bind="item.title"></span>
+                <i class="icon ion-chevron-right icon-accessory more_button" style="line-height:46px;"></i>
+            </div>
+        </div>
+
+        <!--     <div class="row" style="height:49px;">
+              <div class="col">&nbsp;<a href="javaScript:void(0);" style="display:none;">&nbsp;</a></div>
+            </div> -->
+        <div footerpadding></div>
+    </ion-content>
+</ion-view>

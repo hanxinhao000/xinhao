@@ -1,0 +1,19 @@
+<!--商城首页-->
+<div class="bar bar-heade bar-light"
+     nav-bar
+
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     right-title="分类"
+     right-click-fun="rightOne()"
+     right="<span class='ion-navicon fs-30'></span>"
+      title="{{pageData.title}}">
+</div>
+<!-- <img style='width: 20px;height: auto;line-height: 47px;vertical-align: middle;' src='img/home1_03.png'> -->
+<ion-view view-title="农业立体联动社会化综合服务平台">
+  <ion-content>
+	<!--<div style="padding:0px;margin:0px;" aslist rcode="login" temp-url="app_plugins/mall/home/views/shop_item.html" params=""></div>-->
+    <div ng-include="'app_plugins/mall/home/views/home_index.html'"></div>
+    <!-- <div class="row"><div class="col">&nbsp;</div></div> -->
+  </ion-content>
+</ion-view>

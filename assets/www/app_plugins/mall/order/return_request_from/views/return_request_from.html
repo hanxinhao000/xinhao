@@ -1,0 +1,61 @@
+<!--退货申请-->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     title="退货申请">
+</div>
+
+
+<ion-view view-title="退货申请">
+  <ion-content>
+    <div class="list">
+
+      <label class="item item-input">
+        <span class="input-label">退货状态：</span>
+        <input type="text" ng-readonly="!pData.textreadonly" ng-model="pData.returngoodsstuts" />
+      </label>
+
+      <label class="item item-input">
+        <span class="input-label">申请退款金额：</span>
+        <input type="text" ng-readonly="!pData.textreadonly" ng-model="pData.refundamount" />
+      </label>
+
+      <label class="item item-input" ng-show="pData.showdiv">
+        <span class="input-label">实际退款金额：</span>
+        <input type="text" ng-readonly="!pData.textreadonly"  ng-model="pData.actualrefundamount"/>
+      </label>
+
+      <label class="item item-input">
+        <span class="input-label">退款原因：</span>
+        <input  type="text" ng-model="pData.refundreason" ng-readonly="pData.textinforeadonly"/>
+      </label>
+
+      <label class="item item-input">
+        <span class="input-label">退款编号：</span>
+        <input type="text" ng-readonly="!pData.textreadonly"  ng-model="pData.refundnumber"/>
+      </label>
+
+      <label class="item item-input">
+        <span class="input-label">退款申请时间：</span>
+        <input type="text" ng-readonly="!pData.textreadonly" ng-model="pData.refundapplicationtime" />
+      </label>
+
+      <label class="item item-input" ng-show="pData.showdiv">
+        <span class="input-label">退款时间：</span>
+        <input type="text" ng-readonly="!pData.textreadonly" ng-model="pData.refundtime" />
+      </label>
+
+    </div>
+
+    <div class="row" ng-show="!pData.showdiv">
+      <div class="col">
+        <button class="button myinfo_mauto myinfo_button button-block button-positive" ng-click="saveRefund()"  style="width: 90%">
+            确定退货
+        </button>
+      </div>
+    </div>
+
+  </ion-content>
+</ion-view>

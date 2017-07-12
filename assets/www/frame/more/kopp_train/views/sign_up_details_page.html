@@ -1,0 +1,67 @@
+<!-- 现代理性农业科普培训详情 -->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="现代理性农业科普培训">
+</div>
+<ion-view view-title="现代理性农业科普培训">
+    <ion-content>
+        <div class="split-line"></div>
+        <div class="bg-2 am-content pt-13 pb-13">
+            <div><h3 class="cl-03 content-title" style="margin-bottom:0px;">{{pageData.pcTitle}}</h3></div>
+        </div>
+        <div class="bg-2 am-content pt-10 pb-10">
+            <table class="full-table fs-10 ">
+                <tr class="full-w">
+                    <td>
+                        <span class="cl-02">开始时间:{{pageData.reltime}}</span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="bg-2 am-content pt-10 pb-10">
+            <table class="full-table fs-10 ">
+                <tr class="full-w">
+                    <td>
+                        <span class="cl-02">地区:{{pageData.zonename}}</span>
+                    </td>
+                    <td class="cl-02" style="text-align:right;">
+                        <span>费用:{{pageData.cost|ptoy}}元</span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="bg-2 am-content pt-10 pb-10">
+            <table class="full-table fs-10 ">
+                <tr class="full-w">
+                    <td>
+                        <span class="cl-02">最大人数:{{pageData.maxNumber}}人</span>
+                    </td>
+                    <td class="cl-02" style="text-align:right;">
+                        <span>最低人数:{{pageData.minNumber}}人</span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="bg-2 am-content pb-20">
+            <div ng-bind-html="pageData.pcContent | imgFmt"></div>
+        </div>
+
+        <div class="split-line"></div>
+        <div class="bg-2 am-content pt-13 pb-13">
+            <div><h3 class="cl-03 content-title" style="margin-bottom:0px;">目前已经报名人数{{pageData.countPeoper}}人</h3></div>
+        </div>
+        <div class="row bg-2">
+            <span class="col col-50" style="text-align:center;">社员</span>
+            <span class="col col-50" style="text-align:center;">报名人数</span>
+        </div>
+        <div style="padding:10px 0px 0px 0px;margin:0px;" item="false" aslist rcode="signUpPeople" temp-url="frame/more/kopp_train/views/already_registeredpage_page.html" list-events="pageData.listEvents" params="{id:{{pageData.pcId}}}"></div>
+        <div footerpadding></div>
+    </ion-content>
+    <div class="bar bar-footer ios-margin-button">
+        <tr>
+        <button ng-click="signUp()" class="button button_with  myinfoborder-radius h-43" style="margin-left: 1px;font-size: 14px;">我要报名</button>
+        </tr>
+    </div>
+</ion-view>

@@ -1,0 +1,50 @@
+<!-- 我的地址列表 -->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     title="绑定交易账号">
+</div>
+<ion-view view-title="绑定交易账号">
+    <ion-content>
+        <div class="button-bar bar-stable">
+            <a class="button {{pageData.alipayCSS}}" ng-click="AlipayAccountClick()">支付宝</a>
+            <a class="button {{pageData.wechatCSS}}" ng-click="WechatAccountClick()">微信</a>
+            <a class="button {{pageData.bankcardCSS}}" ng-click="BankCardClick()">银行卡</a>
+        </div>
+        <!-- 支付宝 -->
+        <div item="false" ng-if="pageData.alipayShow" no-show-more="false" item="false" style="padding:0px;margin:0px;" aslist rcode="transactionaccount"
+             list-events="pageData.listEvents" temp-url="frame/member/binding_account/views/binding_account_item.html" params="{memberid:{{pageData.memberid}},type:'1'}">
+        </div>
+        <!-- 微信 -->
+        <div item="false" ng-if="pageData.wechatShow" no-show-more="false" item="false" style="padding:0px;margin:0px;" aslist rcode="transactionaccount"
+             list-events="pageData.listEvents" temp-url="frame/member/binding_account/views/binding_account_item.html" params="{memberid:{{pageData.memberid}},type:'2'}">
+        </div>
+        <!-- 银行卡 -->
+        <div item="false" ng-if="pageData.bankcardShow" no-show-more="false" item="false" style="padding:0px;margin:0px;" aslist rcode="transactionaccount"
+             list-events="pageData.listEvents" temp-url="frame/member/binding_account/views/binding_account_item.html" params="{memberid:{{pageData.memberid}},type:'3,4,5'}">
+        </div>
+
+        <div class="list">
+
+            <a class="item item-avatar" href="#">
+                <img src="venkman.jpg">
+                <h2>Venkman</h2>
+                <p>Back off, man. I'm a scientist.</p>
+            </a>
+        </div>
+        <div class="row">
+            <div class="col" ng-if="pageData.alipayShow">
+                <button class="button editpwd_mauto editpwd_button ng-binding button-block button-positive" ng-click="UpdateClick('alipay')" style="width: 90%">添加</button>
+            </div>
+            <div class="col" ng-if="pageData.wechatShow">
+                <button class="button editpwd_mauto editpwd_button ng-binding button-block button-positive" ng-click="UpdateClick('wechat')" style="width: 90%">添加</button>
+            </div>
+            <div class="col" ng-if="pageData.bankcardShow">
+                <button class="button editpwd_mauto editpwd_button ng-binding button-block button-positive" ng-click="UpdateClick('bankcard')" style="width: 90%">添加</button>
+            </div>
+        </div>
+        <div footerpadding></div>
+    </ion-content>
+</ion-view>

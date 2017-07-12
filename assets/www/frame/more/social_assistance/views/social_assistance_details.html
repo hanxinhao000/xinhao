@@ -1,0 +1,38 @@
+<!-- 社会救助详情 -->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="社会救助扶贫帮困">
+</div>
+<ion-view view-title="社会救助扶贫帮困">
+    <ion-content>
+        <div class="split-line"></div>
+        <div class="bg-2 am-content pt-13 pb-13">
+            <div><h3 class="cl-03 content-title" style="margin-bottom:0px;">{{pageData.title}}</h3></div>
+        </div>
+        <div class="diveline-2"></div>
+        <div class="bg-2 am-content pt-10 pb-10">
+            <table class="full-table fs-10 ">
+                <tr class="full-w">
+                    <td class="cl-02">
+                        <span>发布时间:{{pageData.cedata}}</span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="diveline-2"></div>
+        <div class="bg-2 am-content pb-20">
+            <div ng-bind-html="pageData.detailed | imgFmt"></div>
+        </div>
+        <div footerpadding></div>
+    </ion-content>
+    <div class="bar bar-footer h-60 ios-margin-button">
+        <colgroup style="width:50%;"></colgroup>
+        <colgroup style="width:50%;"></colgroup>
+        <label class="item-input" style="width:100%;">
+            <input type="number" ng-model="pageData.paymoney" placeholder="{{pageData.rescueName}}">
+        </label>
+        <button ng-click="rescue()" class="button button_with  myinfoborder-radius h-43 agriculture_project_title">救助</button>
+    </div>
+</ion-view>

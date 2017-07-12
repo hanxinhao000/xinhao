@@ -1,0 +1,57 @@
+
+<style>
+.common_message_label_on
+{
+	/*border:1px solid rgb(36, 179, 94);*/
+	color:#FFFFFF;
+	background: #2ad4d4;
+	text-align: center;
+	padding: 5px;
+
+}
+.common_message_label_off
+{
+	/*border:1px solid rgb(36, 179, 94);*/
+	background:#FFFFFF;
+	color: #2ad4d4;
+	text-align: center;
+	padding: 5px;
+}
+</style>
+
+
+<!-- 公共消息 -->
+<!--<div class="bar bar-heade bar-light"
+		nav-bar
+		left-css="head_left_back"
+		title-css="header_title fs_4"
+		right-css="header_title fs_4"
+		title="{{pageData.title}}">
+</div>-->
+
+<ion-view>
+    
+    
+     <ion-nav-buttons side="left">
+        <div  ng-click="back()"  class="public_comment_header_bar_padding_left">
+            <i class="icon head_left_back"></i>
+        </div>
+    </ion-nav-buttons>
+    
+	<ion-nav-title>
+            <div class="fs_4">{{pageData.title}}</div>
+        </ion-nav-title>
+    
+	
+    
+    
+  	<ion-content style="padding-top:45px;height: 100%; margin: -40px 0px; ">
+  		<div  style="padding:15px 0px; text-align: center;">
+
+			<div class=" {{pageData.clickCssA}}" ng-click="selectClick('1')" style="text-align:center;width: 72px;display: inline-block;" >通知</div>
+			<div class="{{pageData.classCssB}}" ng-click="selectClick('2')" style="text-align:center;width: 72px; display: inline-block;margin-left: -3px;" >消息</div>
+		</div>
+  		<div style="padding:0px;margin:0px;" item="false" aslist rcode="tripth.app_plugins.common.message.GetMessageInfo" temp-url="app_plugins/common/message/views/message_list_item.html" list-events="pageData.list_events" params="{{pageData.params}}" repeatdata="pageData.repeatdata"></div>
+                <div footerpadding></div>
+  	</ion-content>
+</ion-view>

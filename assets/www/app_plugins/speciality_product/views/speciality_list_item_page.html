@@ -1,0 +1,19 @@
+<div ng-click="goComdDeatils('{{value.ID}}')" class="item item-thumbnail-left" style="padding: 10px 18px 5px 0; height: 115px; padding-left: 115px;" ng-click="toPage('{{item}}')">
+  	<img style="max-width: 96px; max-height: 96px;top:10px;" ng-src="{{value.LISTIMAGE|hostFilter:'ImageJSON'}}">
+  	<div class="recommend_list_h2_css fs-14 text-overflow-elipsis" ng-bind="value.NAME"></div>
+  	<p style="font-size:12px;line-height: 15px;white-space:normal;max-height:28px;overflow:hidden;color:#666666;margin-bottom: 5px;" ng-bind-html="value.ABSTRACT|imgFmt"></p>
+  	<div class="row" style="width:100%;padding: 0px;margin-top: 1px;">
+  		<div style="width:70%;">
+  			<img src="img/techan/techan_04.png" ng-if="value.NATIONAL_PACKAGE==1"style="width: 52px;height: auto;">
+			<img src="img/techan/techan_05.png" ng-if="value.ONE_DAY_TO_ARRIVE==1" style="width: 65px;height: auto;">
+		</div>
+		<div class="fs-18 cl-20" style="text-align: right;width:30%;" ng-if="value.DISCOUNT==0||value.DISCOUNT==1">￥<span ng-bind="value.YUANJIA|number:0"></span></div>
+		<div class="fs-18 cl-20" style="text-align: right;width:30%;"ng-if="value.DISCOUNT<1&&value.DISCOUNT>0">￥<span ng-bind="value.YUANJIA*value.DISCOUNT|number:0"></span>
+		</div>
+		<div class="fs-18 cl-20" style="text-align: right;width:30%;" ng-if="value.DISCOUNT>1">￥<span ng-bind="value.YUANJIA-value.DISCOUNT|number:0"></span></div>
+	</div> 
+  	<div class="row" style="border-bottom: none;padding: 0px;">
+		<div class="col fs-12 cl-12" >已售:{{value.SALENUMBER==null?"0":value.SALENUMBER}}笔</div>
+		<s class="col fs-12 cl-12" style="text-align:right">原价:￥{{value.YUANJIA|number:0}}</s>
+	</div>
+</div>

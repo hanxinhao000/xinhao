@@ -1,0 +1,118 @@
+
+<style>
+    .btn-push{
+        background-color: rgb(42,212,212);
+        height: 35px;
+        color: white;
+        border-radius: 3px;
+        border:0px;
+    }
+</style>
+
+<!--<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="铺铺订单">
+</div>-->
+<ion-view>
+    
+    <ion-nav-buttons side="left">
+        <div ng-click="back()"  class="public_comment_header_bar_padding_left">
+            <i class="icon head_left_back"></i>
+        </div>
+    </ion-nav-buttons>
+
+    <ion-nav-title>
+        <div class="fs_4">
+            铺铺订单
+        </div>
+    </ion-nav-title>
+    
+    <ion-content delegate-handle="mainScroll">
+        <!--会员订单列表-->
+        <div class="list">
+            <div class="item item-thumbnail-left item-icon-right" style=" height: 75px; padding-left: 75px;padding-right: 0px;border-bottom: 0px;">
+                <img style="max-width: 50px; max-height: 50px;top:10px;left:10px;" ng-src="{{pData.UserHeadImg|hostFilter}}" ng-click="personDynamic(pData.MemberId)">
+                <div class="row" style="padding:0 5px; margin-bottom: 10px;">
+                    <span class="fs-15 cls-21" ng-bind="pData.UserName"></span>
+                </div>
+                <div class="row fs-15 cl-21">
+                    状态：
+                    <span ng-if="pData.OrderStatus == '0'">新订单</span>
+                    <span ng-if="pData.OrderStatus == '1'">待支付</span>
+                    <span ng-if="pData.OrderStatus == '2'">已支付</span>
+                    <span ng-if="pData.OrderStatus == '3'">待评价</span>
+                    <span ng-if="pData.OrderStatus == '4'">已完成</span>
+                    <span ng-if="pData.OrderStatus == '5'">申请退款</span>
+                    <span ng-if="pData.OrderStatus == '6'">退款完成</span>
+                </div>
+
+            </div>
+            <div style="background:#FFFFFF;border: 0px;padding:0px;margin-top:0px;margin-bottom: 1px;">
+                <div class="row fs-15 cl-21" style="height:47px;margin-left:10px;">
+                    <span>联系姓名:&nbsp;&nbsp;&nbsp;{{pData.contacts}}</span>
+                </div>
+                <div class="row fs-15 cl-21" style="height:47px;margin-left:10px;">
+                    <span>联系电话:&nbsp;&nbsp;&nbsp;{{pData.phone}}</span>
+                </div>
+                <div class="row fs-15 cl-21" style="height:47px;margin-left:10px;">
+                    <span>联系地址:&nbsp;&nbsp;&nbsp;{{pData.address}}</span>
+                </div>
+            </div>
+            <label class="item item-input">
+                <input class="fs-15 cl-21" ng-model="pData.OrderMoney" type="text" placeholder="请设置订单金额(元)" ng-readonly="pData.pageStatus" style="background-color:#FFFFFF; font-size: 15px;">
+            </label>
+            <div class="item" ng-if="pData.OrderStatus !== '5'">
+                <textarea class="fs-15 cl-21"  ng-model="pData.OrderContent" type="text" placeholder="请描述订单内容"
+                          style="width:100%;height:200px;background-color:#FFFFFF;resize:none;font-size: 15px;" ng-readonly="pData.pageStatus" ></textarea>
+            </div>
+            <div class="item" ng-if="pData.OrderStatus === '5'">
+                <textarea  class="fs-15 cl-21"   ng-model="pData.OrderContent" type="text" placeholder="请描述订单内容"
+                           style="width:100%;height:100px;background-color:#FFFFFF;resize:none;" ng-readonly="pData.pageStatus" ></textarea>
+            </div>
+
+            <div class="item" ng-if="pData.OrderStatus === '5'">
+                <textarea  class="fs-15 cl-21"  ng-model="pData.decline_cause" type="text" placeholder="拒绝原因"
+                           style="width:100%;height:100px;background-color:#FFFFFF;resize:none;" ng-readonly="pData.pageStatus1" ></textarea>
+            </div>
+
+
+        </div>
+    </ion-content>
+</ion-view>    
+<div class="bar bar-footer" style="display: inline;height: 50px;background-color: rgb(236,239,239);background-position:bottom;" ng-if="pData.OrderStatus === '0'">
+    <div class="row" style="padding: 0px;">
+        <div style="padding-left: 5px;padding-right: 5px;text-align: center;width:100%;" >
+            <div ng-click="save()" class="btn-push" style="height: 34px;margin-top: 5px;text-align: center;
+                 font-size:17px;padding: 7px;">保存</div>
+        </div>
+    </div>
+</div>
+<!-- <div class="bar bar-footer" style="display: inline;height: 50px;background-color: rgb(236,239,239);background-position:bottom;" ng-if="pData.OrderStatus === '5'">
+        <div class="row" style="padding: 0px;">
+            <div class="col-50" style="padding: 0px;text-align: center;width:40%;" >
+                <div ng-click="Agreed_refund()" class="btn-push" style="height: 34px;margin: auto;text-align: center;
+                     font-size: 15px;padding: 7px;">同意</div>
+            </div>
+            <div class="col-50" style="padding: 0px;text-align: center;width:40%;" >
+                <div ng-click="decline_refund()" class="btn-push" style="height: 34px;margin: auto;text-align: center;
+                     font-size: 15px;padding: 7px;">拒绝</div>
+            </div>
+        </div>
+    </div>-->
+<div class="bar bar-footer" style="display: inline;height: 50px;background-color: rgb(236,239,239);background-position:bottom;"ng-if="pData.OrderStatus === '5'" >
+
+    <div class="row" style ="padding: 0px;">
+        <div class="col-50" style="padding: 3px;text-align: center;margin: auto;">
+            <div ng-click="Agreed_refund()" class="btn-push" style="height: 34px;margin: auto;text-align: center;
+                 font-size: 17px;padding: 7px;">同意</div>
+        </div>
+        <div class="col-50" style="padding: 3px;text-align: center;width:80%;margin: auto;" >
+            <div ng-click="decline_refund()" class="btn-push" style="height: 34px;margin: auto;text-align: center;
+                 font-size: 17px;padding: 7px;">拒绝</div>
+        </div>
+    </div>   
+</div>
+
+

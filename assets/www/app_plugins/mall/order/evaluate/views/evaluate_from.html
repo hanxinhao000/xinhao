@@ -1,0 +1,91 @@
+<!--订单评论-->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     title="订单评价">
+</div>
+
+
+<ion-view view-title="订单评价">
+    <ion-content>
+
+        <div class="bg-2 fs-12">
+            <div class="row">
+                <div class="col">评星</div>
+                <div class="col col-75">
+                    <div as-start value="{{pData.star_level}}" model="{{pData.star_state}}" ng-disabled="pData.inputstatus" as-model="pData.star_level" style="font-size:25px;color:#595959;"></div>
+                </div>
+            </div>
+            <div class="diveline bg-1"></div>
+            <div class="row">
+                <div class="col col-20 ">
+                    <span>评价内容</span>
+                </div>
+                <div class="col col-80">
+                    <textarea rows="5" ng-model="pData.content" placeholder="请在次输入你的评价" ng-disabled="pData.inputstatus" style="width:100%;"></textarea>
+                </div>
+            </div>
+            <div class="diveline bg-1"></div>
+
+            <div class="row">
+                <div class="col col-20 vmiddle">
+                    <span>评价时间</span>
+                </div>
+                <div class="col col-80 vmiddle">
+                    <input type="text" ng-model="pData.time" disabled="disabled">
+                </div>
+            </div>
+            <div class="diveline bg-1"></div>
+
+            <div class="row">
+                <!-- <div class="col" ng-click="checkisanonymous()">
+                  <span ng-class="pData.icon" class="cl-5" style="font-size:20px;"></span>
+                  <span>是否匿名</span>
+                </div> -->
+                <div class="col">
+                    <ion-checkbox style="border:0px;" ng-model="pData.rememberstate" ng-disabled="pData.star_state != 'e'">是否匿名</ion-checkbox>
+                </div> 
+            </div>
+            <div class="diveline bg-1"></div>
+
+            <!--  <label class="item item-input item-stacked-label" ng-show="pData.showdiv">
+               <span class="input-label">追评内容</span>
+               <textarea rows="5" ng-model="pData.content1" placeholder="追评内容"></textarea>
+             </label>
+       
+             <label class="item item-input item-stacked-label"  ng-show="pData.showdiv">
+               <span class="input-label" ng-model="pData.time1" ng-disabled="pData.inputstatus">追评时间</span>
+               <input type="text" ng-model="pData.time1" disabled="disabled">
+             </label> -->
+
+            <div class="item item-body" ng-repeat="item in pData.inputData track by $index">
+                <div class="row">
+                    <img ng-if="!item.data" id="img_{{$index}}" class="col col-80" style="width:100%;height:100%;overflow:hidden;"  ng-src="{{item|hostFilter}}" >
+                    <img ng-if="item.data&&pData.isDerive==true" id="img_{{$index}}" class="col col-80" style="width:100%;height:100%;overflow:hidden;"  ng-src="{{item.data}}" >
+                    <img ng-if="item.data&&pData.isDerive==false" id="img_{{$index}}" class="col col-80" style="width:100%;height:100%;overflow:hidden;"  ng-src="{{item.data|hostFilter}}" >
+                    <div class="col col-20" ng-click="delete(item)" ng-if="item.data" >删除</div>
+                </div>
+            </div>
+            <a  class="item" ng-show="!pData.showdiv&&pData.isDerive" add-resource type="01" out-data="pData.inputData" href="JavaScript:void(0);">
+                <img  style="vertical-align: middle;width: 15px;padding-bottom: 3px;" src="img/add_file_2_03.png">
+                <span>提交资料文件</span>
+            </a>
+            
+            
+            <a  class="item" ng-show="!pData.showdiv&&!pData.isDerive" ngf-accept="'image/*'"  ngf-select="upload($file)" href="JavaScript:void(0);">
+                <img  style="vertical-align: middle;width: 15px;padding-bottom: 3px;" src="img/add_file_2_03.png">
+                <span>提交资料文件</span>
+            </a>
+            <div class="row cm" ng-show="!pData.showdiv">
+                <div class="col CM">
+                    <button class="CM button button-block" ng-click="saveevaluate()" style="width:90%;">
+                        保存
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>

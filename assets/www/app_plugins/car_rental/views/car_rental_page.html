@@ -1,0 +1,60 @@
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="triph_topLine_quer"
+     right-click-fun="toSearch()"
+     title="{{pageData.title}}">
+</div>
+<ion-content delegate-handle="mainScroll">
+	<!-- 顶部 -->
+	<div class="row list-row" style="margin-bottom: 5px;padding: 0px;">
+            <div class="col list-col" style="padding-top:4px;">
+                <ctl-select-directive style-type="2" ng-model="pageData.quercx" click-select="selectClick1" 
+                                                              defaut-lable="车型" select-data="{{pageData.cxData}}">
+                                                            </ctl-select-directive>
+            </div>
+        
+            <div class="col list-col" style="padding-top:4px;">
+                <div class="col" style="padding: 0px;">
+                    <ctl-select-directive style-type="2" click-select="selectClick2" 
+                                                              defaut-lable="座位数" select-data="{{pageData.zwData}}">
+                                                            </ctl-select-directive>
+                </div>
+            </div>
+            <div class="col list-col" style="border:0px;padding-top:4px;">
+                <div class="col" style="padding: 0px;">
+                    <ctl-select-directive style-type="2" click-select="selectClick3" 
+                                                              defaut-lable="价格" select-data="{{pageData.jgData}}">
+                                                            </ctl-select-directive>
+                </div>
+            </div>
+        </div>
+		<!-- <div class="row list-row" style="margin-bottom: 5px;">
+			<div class="col list-col">
+				<select class="list-select" ng-model="pageData.quercx" ng-change="quer()" style="width:100%;">
+					<option value="">车型</option>}
+					<option ng-repeat="item in pageData.cxData" ng-value="item.VALUE">{{item.NAME}}</option>
+				</select>
+			</div>
+			<div class="col list-col">
+				<select class="list-select" ng-model="pageData.querzw" ng-change="quer()" style="width:100%;">
+					<option value="">座位数</option>
+					<option ng-repeat="item in pageData.zwData" ng-value="item.VALUE">{{item.NAME}}</option>
+					option>
+				</select>
+			</div>
+			<div class="col list-col" style="border:0px;">
+				<select class="list-select" ng-model="pageData.querjg" ng-change="quer()" style="width:100%;">
+					<option value="">价格</option>
+					<option ng-repeat="item  in pageData.jgData" ng-value="item.VALUE">{{item.NAME}}</option>
+				</select>
+			</div>
+		</div> -->
+		<!-- 列表 -->
+	<div class="list" item="false" aslist rcode="triph.carRental.carRentalCheXing" 
+		temp-url="app_plugins/car_rental/views/car_rental_item.html" list-events="pageData.List_Events" params="{{pageData.params}}">
+	</div>
+        <div footerpadding></div>
+</ion-content>
+<div suspend-box></div>

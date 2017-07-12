@@ -1,0 +1,32 @@
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     title="绑定手机号">
+</div>
+<!-- 会员中心/绑定手机号-->
+<ion-view>
+	<ion-content>
+
+	  	<div class="list">
+		    <div class="item item-input">
+		        <input type="text" placeholder="请输入新手机号" ng-model="pageData.NewPhone">
+		        <button class="button"  style="margin-right: 3%;background-color: #0094ff;color:#ffffff;height: 43px;min-height:43px;border: 0px;"
+                        ng-click="sendNewPhoneCode()" ng-disabled="pageData.NewSmsCodeDisabled" >
+                    <span ng-bind="pageData.NewCodeText"></span>
+                </button>
+		    </div>
+		    <div class="item item-input">
+		        <input type="text" placeholder="请输入短信验证码" style="height: 56px;" ng-model="pageData.NewVerificationCode">
+		    </div>
+		</div>
+		<div style="text-align: center;margin-top:20px;">
+    		<button class="button" style="width: 91%;height: 48px;background-color: #0094ff;border: 0px;"
+            ng-click="verificationSmsCode()">
+      			<span style="color:#ffffff;font-size: 16px;">确认</span>
+    		</button>
+  		</div>
+  		
+	</ion-content>
+</ion-view>

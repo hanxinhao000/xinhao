@@ -1,0 +1,96 @@
+<!--酒店订单提交界面-->
+
+<!--产品主信息 start-->
+<div ng-repeat="citem in pData.shopInfo">
+<div class="bg-2 pr-10 pl-10">
+	<div class="row">
+		<div class="col">
+			<span class="cl-0 fs-13" ng-bind="featureData.COMD_INFO.STORE_NAME"></span>
+		</div>
+	</div>
+	<dvi class="row">
+		<div class="col cl-12">
+			<span ng-if="citem.cancel==1">
+				<i class="icon ion-ios-close-outline fs-16 pr-3"></i>订单确定后，不可取消
+			</span>
+		</div>
+	</dvi>
+	<dvi class="row">
+		<div class="col cl-12">
+			<span ng-bind="citem.startDate|dateFormat:'yyyy-MM-dd'"></span>入住，
+			<span ng-bind="citem.endDate|dateFormat:'yyyy-MM-dd'"></span>离店，
+			<span ng-bind="citem.endDate|dateDiff:citem.startDate"></span>晚
+		</div>
+	</dvi>
+	<dvi class="row">
+		<div class="col cl-12">
+			<span ng-bind="citem.name"></span>
+		</div>
+	</dvi>
+	<div class="row">
+		<div class="col CM fs-13">
+			<div ng-click="switchShowOrderMsg()">
+				<span style="display:block">预订须知</span>
+				<span class="fs-16 cl-0">&nbsp;&nbsp;
+					<i ng-if="!pData.showOrderMsg" class="cl-0 icon ion-ios-arrow-down"></i>
+					<i ng-if="pData.showOrderMsg" class="cl-0 icon ion-ios-arrow-up"></i>
+				&nbsp;&nbsp;</span>
+			</div>
+		</div>
+	</div>
+	<div class="row" ng-show="pData.showOrderMsg">
+		<div class="col" ng-if="pData.orderMsg">
+			<div ng-bind-html="pData.orderMsg|imgFmt"></div>
+		</div>
+	</div>
+</div>
+<!--商品主要信息 end-->
+<div class="split-line-2"></div>
+<div class="bg-2 pr-10 pl-10 ">
+	<div class="row pl-10" style="padding-top:0px;padding-bottom:0px;">
+		<div class="col-33 vmiddle">
+			<span>单价</span>
+		</div>
+		<div class="col cr">
+			<div  class="red_price fs-16"><!--没有折扣样式-->
+				￥<span ng-bind="citem.fPrice|number:2"></span>
+			</div>
+		</div>
+	</div>
+	<div class="row pl-10 " style="padding-top:0px;padding-bottom:0px;">
+		<div class="col-33 vmiddle">
+			<span>房间数</span>
+		</div>
+		<div class="col cr pt-10">
+			<!-- <div class="vmiddle" outdata="citem.buyNumber" a-click="calcPayment" buy-number outdata="pData.buyNumber"></div> -->
+			<div ng-if="citem.stock>0" class="vmiddle" outdata="citem.buyNumber" a-click="calcPayment" error-tips="buyNumberTips" buy-number outdata="pData.buyNumber" max-data="{{citem.stock}}"></div>
+			<span ng-if="citem.stock==0"> 暂无房间<i style="visibility:hidden;">{{citem.buyNumber=0}}</i></span>
+		</div>
+	</div>
+	<div class="row pl-10">
+		<div class="col-33 vmiddle">
+			<span>预计到店</span>
+		</div>
+		<div class="col cr">
+			<select  ng-model="citem.expectArrivalTime" style="border: none;background:white;" ng-options="selectItem.name for selectItem in expectArrivalTimeList">
+			</select>
+		</div>
+	</div>
+	<div class="row pl-10">
+		<div class="col-33 vmiddle">
+			<span>联系人:</span>
+		</div>
+		<div class="col cr">
+			<input style="margin-left:auto;" type="text" ng-model="orderData.contact" placeholder="请输入联系人">
+		</div>
+	</div>
+	<div class="row pl-10">
+		<div class="col-33 vmiddle">
+			<span>联系电话:</span>
+		</div>
+		<div class="col cr">
+			<input  style="margin-left:auto;"   type="number" minlength="11" maxlength="11"  ng-model="orderData.contactPhone" placeholder="请输入联系电话">
+		</div>
+	</div>
+</div>
+</div>

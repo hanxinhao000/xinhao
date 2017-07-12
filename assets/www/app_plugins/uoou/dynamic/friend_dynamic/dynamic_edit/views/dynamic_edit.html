@@ -1,0 +1,40 @@
+<!--好友动态-->
+<!--<div class="bar bar-heade bar-light"
+     nav-bar
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     left-css="head_left_back"
+     title="{{pData.title}}"
+     right="发布"
+     right-click-fun="validate_click()"
+     >
+</div>-->
+<ion-view>
+    
+    <ion-nav-buttons side="left">
+        <div class="public_comment_header_bar_padding_left" ng-click="back()">
+            <i class="icon head_left_back"></i>
+        </div>
+    </ion-nav-buttons>
+    <ion-nav-title>
+        <div class="fs_4">{{pData.title}}</div>
+    </ion-nav-title>
+    <ion-nav-buttons side="right">
+        <div class="public_comment_header_bar_padding_right" ng-click="validate_click()" style="line-height: 42px; font-size: 16px;">
+           发布
+        </div>
+    </ion-nav-buttons>
+    
+    <ion-content><!--动态内容编辑-->
+        <div align=center >
+            <label class="item item-input">
+                <textarea class="fs-14" ng-model="pData.content" placeholder="这一刻你的想法..."  maxlength=150 style="width: 100%;height: 200px;"></textarea>
+            </label>
+        </div>
+        
+        <!--选择图片-->
+        <div album  max="4" table="UU_DYNAMIC" pvalue="CONTENT_IMGS" field="{{pData.memberId}}"
+             out-data="pData.content_img" style="background-color: #FFFFFF;padding:18px 0px 0px 10px; height: 100px;">
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,344 @@
+<!-- 货架显示功能模板 -->
+<div  ng-repeat="rootItem in ShelvesData" >
+    
+    <div ng-repeat="classItem in rootItem.MALL_COMMODITYCLASS">
+
+<!-- 0=普通卖场类-首图类========================================================================================= -->
+
+<div ng-if="rootItem.ACTIVITIESTYPE =='0'"  mall-shelves-directive-child01 title="{{rootItem.CONTENT}}" html-div="{{rootItem}}" itype="{{classItem.CONTENT_TYPE}}"></div>
+
+<!-- 1=商品列表-二列类-01======================================================================================= -->
+        
+        <div ng-if="rootItem.ACTIVITIESTYPE =='1'" style="background-color: #FFFFFF;margin-top: 7px;">
+            
+            <div  class="list bg-7 mall_activity_adv_7" style="background-color: #FFFFFF;padding-top: 15px;" >
+            <!-- 	<div  class="row mallshelevs_template_title_bar fs-15" style="
+            " ng-bind="classItem.TITLE"> -->
+            <div class="" ng-bind-html="rootItem.CONTENT|imgFmt"></div>
+            </div>
+            
+            <div ng-if="classItem.CONTENT_TYPE=='1'" class="row" style="padding:0px;flex-wrap:wrap;padding:0px 0px;">
+
+                    <div  class="col-50 waterfall" ng-repeat="childComdityItem in classItem.MALL_STORE" id="{{childComdityItem.ID}}" style="display: inline-block;">
+                            <div ng-click="toUrl('{{classItem.CONTENT_TYPE}}','{{childComdityItem.MALL_CLASS}}','{{childComdityItem.ID}}','','')" class="" >
+                                    <div class="" style="padding: 5px;text-align: center;">
+                                    <img  style="height:auto;overflow:hidden;" class="full-image" ng-src="{{childComdityItem.SHELF_IMAGE|hostFilter:'ImageJSON'}}" ng-click="toPage('{{childComdityItem.ID}}')" alt="{{childComdityItem.NAME}}">
+                                    </div>
+
+                            </div>
+
+                    </div>
+
+            </div>
+
+            <div ng-if="classItem.CONTENT_TYPE=='2'" class="row" style="padding:0px;flex-wrap:wrap;padding:0px 0px;">
+                <div  class="col-50 waterfall" ng-repeat="childComdityItem in classItem.CHILDCOMMODITY" id="{{childComdityItem.ID}}" style="display: inline-block;">
+                    <div ng-click="toUrl('{{classItem.CONTENT_TYPE}}','{{childComdityItem.MALL_CLASS}}','{{childComdityItem.ID}}','','')" class="" >
+                        <div style="padding: 5px;text-align: center;">
+                        <img  style="height:auto;overflow:hidden;" class="full-image" ng-src="{{childComdityItem.SHELF_IMAGE|hostFilter:'ImageJSON'}}"  alt="{{childComdityItem.NAME}}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+<!-- 6=限时抢购、整点秒杀-产品轮播类-01 （首页）==================================================================== -->
+	<div  ng-if="rootItem.ACTIVITIESTYPE == '6'"  style="padding:15px 0px 0px 0px;">
+		<!-- <div  class="row mallshelevs_template_title_bar fs-15"  ng-bind="classItem.TITLE">
+		</div> -->
+            <div class="" ng-bind-html="rootItem.CONTENT |imgFmt"></div>
+            <div time-out-fmt-data type="1" start-time-mins="{{rootItem.START_DATE}}" end-time-mins="{{rootItem.END_DATE}}" end-time="{{rootItem.STARTDATE}}" start-time="{{rootItem.ENDDATE}}" ></div>
+            
+            <div  style="padding:5px;height:153px;width: 100%;"  class="swiper-container mall_activity_adv mall_activity_adv_{{classItem.ID}}_{{$index}}">
+                <div class="swiper-wrapper" >
+                    <div ng-if="classItem.CONTENT_TYPE=='1'"  ng-repeat= "childComdityItem in classItem.MALL_STORE track by $index" 
+                                class="swiper-slide" style="width:153px;height:153px;" 
+                                ng-click="toUrl('{{classItem.CONTENT_TYPE}}','{{childComdityItem.MALL_CLASS}}','{{childComdityItem.ID}}','{{rootItem.STARTDATE}}','{{rootItem.ENDDATE}}')">
+                                <img ng-src="{{childComdityItem.SHELF_IMAGE | hostFilter:'ImageJSON'}}" style="width:100%;">
+                        </div> 
+                         <div ng-if="classItem.CONTENT_TYPE=='2'" ng-repeat= "childComdityItem in classItem.CHILDCOMMODITY track by $index" 
+                                class="swiper-slide" style="width:153px;height:153px;" 
+                                ng-click="toUrl('{{classItem.CONTENT_TYPE}}','{{childComdityItem.MALL_CLASS}}','{{childComdityItem.ID}}','{{rootItem.STARTDATE}}','{{rootItem.ENDDATE}}')">
+                                <img ng-src="{{childComdityItem.SHELF_IMAGE | hostFilter:'ImageJSON'}}" style="width:100%;">
+                        </div>        
+                </div>
+                 <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+            </div>
+            
+	</div>
+
+<!-- 2=限时抢购、整点秒杀-首图类==================================================================================== -->
+
+<div ng-if="rootItem.ACTIVITIESTYPE =='2'"  mall-shelves-directive-child01 title="{{rootItem.CONTENT}}" html-div="{{rootItem}}" itype="{{classItem.CONTENT_TYPE}}"></div>
+
+
+<!-- 3=商品列表-二列类-02 (首页)=================================================================================== -->
+        
+        <div ng-if="rootItem.ACTIVITIESTYPE =='3'" >
+            
+            <div  class="list bg-7 mall_activity_adv_7"  style="padding-top: 15px;">
+            <!-- 	<div  class="row mallshelevs_template_title_bar fs-15" style="
+            " ng-bind="classItem.TITLE"> -->
+            <div class="" ng-bind-html="rootItem.CONTENT|imgFmt"></div>
+            </div>
+            
+            <div ng-if="classItem.CONTENT_TYPE=='1'" class="row" style="padding:0px;flex-wrap:wrap;padding:0px 0px;">
+
+                    <div  class="col-50 waterfall" ng-repeat="childComdityItem in classItem.MALL_STORE" id="{{childComdityItem.ID}}" style="display: inline-block;">
+                            <div ng-click="toUrl('{{classItem.CONTENT_TYPE}}','{{childComdityItem.MALL_CLASS}}','{{childComdityItem.ID}}','','')" class="" >
+                                    <div class="" style="padding: 5px;text-align: center;">
+                                    <img  style="height:auto;overflow:hidden;" class="full-image" ng-src="{{childComdityItem.SHELF_IMAGE|hostFilter:'ImageJSON'}}" ng-click="toPage('{{childComdityItem.ID}}')" alt="{{childComdityItem.NAME}}">
+                                    </div>
+
+                            </div>
+
+                    </div>
+
+            </div>
+
+            <div ng-if="classItem.CONTENT_TYPE=='2'" class="row" style="padding:0px;flex-wrap:wrap;padding:0px 0px;">
+                <div  class="col-50 waterfall" ng-repeat="childComdityItem in classItem.CHILDCOMMODITY" id="{{childComdityItem.ID}}" style="display: inline-block;">
+                    <div ng-click="toUrl('{{classItem.CONTENT_TYPE}}','{{childComdityItem.MALL_CLASS}}','{{childComdityItem.ID}}','','')" class="" >
+                        <div style="padding: 5px;text-align: center;">
+                        <img  style="height:auto;overflow:hidden;" class="full-image" ng-src="{{childComdityItem.SHELF_IMAGE|hostFilter:'ImageJSON'}}"  alt="{{childComdityItem.NAME}}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+<!-- 7=商品列表-子分类-二列类 （首页)================================================================================== -->
+        
+        <div ng-if="rootItem.ACTIVITIESTYPE =='7' "  mall-shelves-directive-child title="{{rootItem.CONTENT}}" html-div="{{classItem}}" itype="{{classItem.CONTENT_TYPE}}"></div>
+
+<!-- 8=限时抢购、整点秒杀-产品轮播类-02 （穿越草原）===================================================================== -->
+        
+        <div  ng-if="rootItem.ACTIVITIESTYPE == '8'"  style="padding:15px 10px 0px; ">
+                <div acotime-out-fmt-data type="2" title="{{rootItem.CONTENT |imgFmt}}" end-time="{{rootItem.STARTDATE}}" start-time="{{rootItem.ENDDATE}}" start-time-mins="{{rootItem.START_DATE}}" end-time-mins="{{rootItem.END_DATE}}" ></div>
+
+            <div style="height:153px;width: 100%;" class="swiper-container  mall_activity_adv mall_activity_adv_{{classItem.ID}}_{{$index}}" >
+                <div class="swiper-wrapper"  >
+
+                    <div  ng-if="classItem.CONTENT_TYPE=='1'" ng-repeat= "childComdityItem in classItem.MALL_STORE track by $index" 
+                                    class="swiper-slide" style="width:153px;height:153px;" 
+                                    ng-click="toUrl('{{classItem.CONTENT_TYPE}}','{{childComdityItem.MALL_CLASS}}','{{childComdityItem.ID}}','{{rootItem.STARTDATE}}','{{rootItem.ENDDATE}}')">
+                        <img ng-src="{{childComdityItem.SHELF_IMAGE | hostFilter:'ImageJSON'}}" style="width:100%;">
+                    </div>
+
+                    <div  ng-if="classItem.CONTENT_TYPE=='2'" ng-repeat= "childComdityItem in classItem.CHILDCOMMODITY track by $index" 
+                    class="swiper-slide" style="width:153px;height:153px;" 
+                    ng-click="toUrl('{{classItem.CONTENT_TYPE}}','{{childComdityItem.MALL_CLASS}}','{{childComdityItem.ID}}','{{rootItem.STARTDATE}}','{{rootItem.ENDDATE}}')">
+                        <img ng-src="{{childComdityItem.SHELF_IMAGE | hostFilter:'ImageJSON'}}" style="width:100%;">
+                    </div>
+
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+            </div>
+                
+        </div>
+
+                
+<!-- 4=商品列表-二列类-01 （穿越草原)==================================================================================-->
+        
+        <div ng-if="rootItem.ACTIVITIESTYPE =='4'" >
+            
+            <div  class="list  mall_activity_adv_7" style="padding:15px 0px 0px 0px">
+                <div ng-bind-html="rootItem.CONTENT|imgFmt"></div>
+                
+                <div ng-if="rootItem.CONTENT_TYPE='1'" class="row" style="flex-wrap:wrap;padding:0px 2px;">
+                    <div class="col-50 waterfall" ng-repeat="childComdityItem in classItem.MALL_STORE track by $index" style="display: inline-block;">
+                        <div ng-click="toUrl('{{classItem.CONTENT_TYPE}}','{{childComdityItem.MALL_CLASS}}','{{childComdityItem.ID}}','','')"  class="" >
+                            <div style="padding: 5px;text-align: center;">
+                            <img  style="height:auto;overflow:hidden;" class="full-image" ng-src="{{childComdityItem.SHELF_IMAGE|hostFilter:'ImageJSON'}}"  alt="{{childComdityItem.NAME}}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div ng-if="rootItem.CONTENT_TYPE='2'" class="row" style="flex-wrap:wrap;padding:0px 2px;">
+                    <div class="col-50 waterfall" ng-repeat="childComdityItem in classItem.CHILDCOMMODITY track by $index" style="display: inline-block;" >
+                        <div ng-click="toUrl('{{classItem.CONTENT_TYPE}}','{{childComdityItem.MALL_CLASS}}','{{childComdityItem.ID}}','','')" class="" >
+                            <div style="padding: 5px;text-align: center;">
+                            <img  style="height:auto;overflow:hidden;" class="full-image" ng-src="{{childComdityItem.SHELF_IMAGE|hostFilter:'ImageJSON'}}" ng-click="toPage('{{childComdityItem.ID}}')" alt="{{childComdityItem.NAME}}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            
+        </div>
+
+
+<!-- 5=商品列表-一列类-01 （穿越草原）====================================================================================-->
+        
+        <div ng-if="rootItem.ACTIVITIESTYPE =='5'"  class="list list  mall_activity_adv_7" style="padding-top: 0px;padding-left:2px;padding-right:2px;">
+
+            <div ng-if="classItem.CONTENT_TYPE=='1'" ng-repeat="childComdityItem in classItem.MALL_STORE track by $index" ng-click="toUrl('{{classItem.CONTENT_TYPE}}','{{childComdityItem.MALL_CLASS}}','{{childComdityItem.ID}}','','')" class="row mall_list_img_row_01" style="flex-wrap:wrap;" >
+                <img ng-src="{{childComdityItem.SHELF_IMAGE|hostFilter:'ImageJSON'}}" style="width: 100%;">
+            </div>
+
+            <div ng-if="classItem.CONTENT_TYPE=='2'" ng-repeat="childComdityItem in classItem.CHILDCOMMODITY track by $index" ng-click="toUrl('{{classItem.CONTENT_TYPE}}','{{childComdityItem.MALL_CLASS}}','{{childComdityItem.ID}}','','')" class="row mall_list_img_row_01" style="flex-wrap:wrap;" >
+                <img ng-src="{{childComdityItem.SHELF_IMAGE|hostFilter:'ImageJSON'}}" style="width: 100%;">
+            </div>
+        
+        </div>
+
+                
+<!-- 9=限时抢购、整点秒杀-产品轮播类-03 （特产首页）=========================================================================-->
+        
+        <div ng-if="rootItem.ACTIVITIESTYPE =='9'" >
+            <div  class="list bg-2 mall_activity_adv_7" style="padding:15px 0px 0px 0px">
+                <div class="row " style="padding: 15px 0px;">
+                    <!-- <div class="col-50 mallshelevs_template_title_bar fs-15 " style="text-align:left;" ng-bind="classItem.TITLE"></div> -->
+                    <div class="col-50" ng-bind-html="rootItem.CONTENT|imgFmt"></div>
+                    <div tctime-out-fmt-data type="1" start-time-mins="{{rootItem.START_DATE}}" end-time-mins="{{rootItem.END_DATE}}"  end-time="{{rootItem.STARTDATE}}" start-time="{{rootItem.ENDDATE}}">
+                    </div>
+                </div>
+
+                <div class="row" style="flex-wrap:wrap;padding:0px 0px;">
+                    <!--店铺-->
+                    <div ng-if="classItem.CONTENT_TYPE=='1'" class="col-50 waterfall" ng-click="toUrl('{{classItem.MALL_STORE}}','{{classItem.MALL_STORE[0].MALL_CLASS}}','{{classItem.MALL_STORE[0].ID}}','{{rootItem.STARTDATE}}','{{rootItem.ENDDATE}}')" style="margin-top: 5px;">
+                              <div style="border: 1px solid #c9e8ff;text-align: center;" >
+                                <img ion-image-scale style="height:auto;overflow:hidden;" class="full-image" ng-src="{{classItem.MALL_STORE[0].SHELF_IMAGE|hostFilter:'ImageJSON'}}" alt="{{childComdityItem.NAME}}">
+                              </div>
+                    </div>
+                    <!--商品-->
+                    <div ng-if="classItem.CONTENT_TYPE=='2'" class="col-50 waterfall" ng-click="toUrl('{{classItem.CONTENT_TYPE}}','{{classItem.CHILDCOMMODITY[0].MALL_CLASS}}','{{classItem.CHILDCOMMODITY[0].ID}}','{{rootItem.STARTDATE}}','{{rootItem.ENDDATE}}')" style="margin-top: 5px;">
+                              <div style="border: 1px solid #c9e8ff;text-align: center;" >
+                                <img ion-image-scale style="height:auto;overflow:hidden;" class="full-image" ng-src="{{classItem.CHILDCOMMODITY[0].SHELF_IMAGE|hostFilter:'ImageJSON'}}" alt="{{childComdityItem.NAME}}">
+                              </div>
+                    </div>
+
+                    <!--店铺-->
+                    <div  ng-if="classItem.CONTENT_TYPE=='1'" class="col-50 waterfall" ng-click="toUrl('{{classItem.CONTENT_TYPE}}','{{classItem.MALL_STORE[1].MALL_CLASS}}','{{classItem.MALL_STORE[1].ID}}','{{rootItem.STARTDATE}}','{{rootItem.ENDDATE}}')" style="margin-top: 5px;">
+                              <div style="border: 1px solid #c9e8ff;text-align: center;" >
+                                <img ion-image-scale style="height:auto;overflow:hidden;" class="full-image" ng-src="{{classItem.MALL_STORE[1].SHELF_IMAGE|hostFilter:'ImageJSON'}}" alt="{{childComdityItem.NAME}}">
+                              </div>
+                    </div>
+                    <!--商品-->
+                    <div  ng-if="classItem.CONTENT_TYPE=='2'" class="col-50 waterfall" ng-click="toUrl('{{classItem.CONTENT_TYPE}}','{{classItem.CHILDCOMMODITY[1].MALL_CLASS}}','{{classItem.CHILDCOMMODITY[1].ID}}','{{rootItem.STARTDATE}}','{{rootItem.ENDDATE}}')" style="margin-top: 5px;">
+                              <div style="border: 1px solid #c9e8ff;text-align: center;" >
+                                <img ion-image-scale style="height:auto;overflow:hidden;" class="full-image" ng-src="{{classItem.CHILDCOMMODITY[1].SHELF_IMAGE|hostFilter:'ImageJSON'}}" alt="{{childComdityItem.NAME}}">
+                              </div>
+                    </div>
+                </div>
+                <div class="row" style="flex-wrap:wrap;padding:0px 0px;text-align: center;">
+                    <!--店铺-->
+                    <div ng-if="classItem.CONTENT_TYPE=='1'" class="col-33 waterfall" ng-click="toUrl('{{classItem.CONTENT_TYPE}}','{{classItem.MALL_STORE[2].MALL_CLASS}}','{{classItem.MALL_STORE[2].ID}}','{{rootItem.STARTDATE}}','{{rootItem.ENDDATE}}')"style="margin-top: 5px;" >
+                              <div style="border: 1px solid #c9e8ff;text-align: center;" >
+                                <img ion-image-scale style="height:auto;overflow:hidden;" class="full-image" ng-src="{{classItem.MALL_STORE[2].SHELF_IMAGE|hostFilter:'ImageJSON'}}" alt="{{childComdityItem.NAME}}">
+                              </div>
+                    </div>
+                    <!--商品-->
+                    <div ng-if="classItem.CONTENT_TYPE=='2'" class="col-33 waterfall" ng-click="toUrl('{{classItem.CONTENT_TYPE}}','{{classItem.CHILDCOMMODITY[2].MALL_CLASS}}','{{classItem.CHILDCOMMODITY[2].ID}}','{{rootItem.STARTDATE}}','{{rootItem.ENDDATE}}')"style="margin-top: 5px;" >
+                              <div style="border: 1px solid #c9e8ff;text-align: center;" >
+                                <img ion-image-scale style="height:auto;overflow:hidden;" class="full-image" ng-src="{{classItem.CHILDCOMMODITY[2].SHELF_IMAGE|hostFilter:'ImageJSON'}}" alt="{{childComdityItem.NAME}}">
+                              </div>
+                    </div>
+
+                    <!--店铺-->
+                    <div ng-if="classItem.CONTENT_TYPE=='1'" class="col-33 waterfall" ng-click="toUrl('{{classItem.CONTENT_TYPE}}','{{classItem.MALL_STORE[3].MALL_CLASS}}','{{classItem.MALL_STORE[3].ID}}','{{rootItem.STARTDATE}}','{{rootItem.ENDDATE}}')" class="" style="margin-top: 5px;">
+                              <div style="border: 1px solid #c9e8ff;text-align: center;" >
+                                <img ion-image-scale style="height:auto;overflow:hidden;" class="full-image" ng-src="{{classItem.MALL_STORE[3].SHELF_IMAGE|hostFilter:'ImageJSON'}}" alt="{{childComdityItem.NAME}}">
+                              </div>
+                    </div>
+                    <!--商品-->
+                    <div ng-if="classItem.CONTENT_TYPE=='2'" class="col-33 waterfall" ng-click="toUrl('{{classItem.CONTENT_TYPE}}','{{classItem.CHILDCOMMODITY[3].MALL_CLASS}}','{{classItem.CHILDCOMMODITY[3].ID}}','{{rootItem.STARTDATE}}','{{rootItem.ENDDATE}}')" class="" style="margin-top: 5px;">
+                              <div style="border: 1px solid #c9e8ff;text-align: center;" >
+                                <img ion-image-scale style="height:auto;overflow:hidden;" class="full-image" ng-src="{{classItem.CHILDCOMMODITY[3].SHELF_IMAGE|hostFilter:'ImageJSON'}}" alt="{{childComdityItem.NAME}}">
+                              </div>
+                    </div>
+                    <!--店铺-->
+                    <div ng-if="classItem.CONTENT_TYPE=='1'" class="col-33 waterfall" ng-click="toUrl('{{classItem.CONTENT_TYPE}}','{{classItem.MALL_STORE[4].MALL_CLASS}}','{{classItem.MALL_STORE[4].ID}}','{{rootItem.STARTDATE}}','{{rootItem.ENDDATE}}')" class="" style="margin-top: 5px;text-align: center;">
+                              <div style="border: 1px solid #c9e8ff;" >
+                                <img ion-image-scale style="height:auto;overflow:hidden;" class="full-image" ng-src="{{classItem.MALL_STORE[4].SHELF_IMAGE|hostFilter:'ImageJSON'}}" alt="{{childComdityItem.NAME}}">
+                              </div>
+                    </div>
+                    <!--商品-->
+                    <div ng-if="classItem.CONTENT_TYPE=='2'" class="col-33 waterfall" ng-click="toUrl('{{classItem.CONTENT_TYPE}}','{{classItem.CHILDCOMMODITY[4].MALL_CLASS}}','{{classItem.CHILDCOMMODITY[4].ID}}','{{rootItem.STARTDATE}}','{{rootItem.ENDDATE}}')" class="" style="margin-top: 5px;text-align: center;">
+                              <div style="border: 1px solid #c9e8ff;" >
+                                <img ion-image-scale style="height:auto;overflow:hidden;" class="full-image" ng-src="{{classItem.CHILDCOMMODITY[4].SHELF_IMAGE|hostFilter:'ImageJSON'}}" alt="{{childComdityItem.NAME}}">
+                              </div>
+                    </div>
+                </div>
+            </div>
+            <div class="m-0 h-4 bg-10"></div>
+        </div>
+
+                
+<!-- 10=商品列表-轮播类 （特产首页）========================================================================================-->
+        
+        <div  ng-if="rootItem.ACTIVITIESTYPE == '10'" class="bg-2"  style="padding:15px 0px;height: 100%;">
+            <div class="" ng-bind-html="rootItem.CONTENT|imgFmt"></div>
+            <div  style="height:1%;border: 1px solid #c9e8ff;padding: 5px 5px 0px 5px;border-bottom: 5px solid #c9e8ff;margin-top: 10px;"  class="swiper-container mall_activity_adv mall_activity_adv_{{classItem.ID}}_{{$index}}">
+                <div class="swiper-wrapper"  >
+                    <!--店铺-->
+                    <div  ng-if="classItem.CONTENT_TYPE=='1'" 
+                          ng-repeat= "childComdityItem in classItem.MALL_STORE track by $index" 
+                          class="swiper-slide" style="width:110px;height:auto;background-size: 100%;background-repeat:no-repeat;" 
+                          ng-click="toUrl('{{classItem.CONTENT_TYPE}}','{{childComdityItem.MALL_CLASS}}','{{childComdityItem.ID}}','','')" >
+                         <img ng-src="{{childComdityItem.SHELF_IMAGE | hostFilter:'ImageJSON'}}"/>
+                    </div> 
+                    <!--商品-->
+                     <div  ng-if="classItem.CONTENT_TYPE=='2'" 
+                          ng-repeat= "childComdityItem in classItem.CHILDCOMMODITY track by $index" 
+                          class="swiper-slide" style="width:110px;height:auto;background-size: 100%;background-repeat:no-repeat;" 
+                          ng-click="toUrl('{{classItem.CONTENT_TYPE}}','{{childComdityItem.MALL_CLASS}}','{{childComdityItem.ID}}','','')" >
+                         <img ng-src="{{childComdityItem.SHELF_IMAGE | hostFilter:'ImageJSON'}}"/>
+                    </div>    
+                </div>
+            </div>
+        </div>
+
+<!-- 10=商品列表-二列类 （首页-自动读取数据）========================================================================================-->
+        <div ng-if="rootItem.ACTIVITIESTYPE == '11'" style="background-color: #FFFFFF;margin-top: 7px;">
+            
+            <div  class="list bg-7 mall_activity_adv_7" style="background-color: #FFFFFF;padding-top: 15px;" >
+                <div  ng-bind-html="rootItem.CONTENT|imgFmt"></div>
+            </div>
+            
+            <div class='bg-2 row' style='flex-wrap:wrap;'>
+                <div class="col-50 waterfall" style="display:inline-block;" ng-repeat='value in classItem.CHILDCOMMODITY track by $index'>
+                    <div ng-click="toUrl('{{classItem.CONTENT_TYPE}}','{{value.MALL_CLASS}}','{{value.ID}}','','')"  class="comd_list_item_content" >
+                        <div class="comd_list_item item item-body CM" >
+                          <img ion-image-scale style="height:auto;overflow:hidden;" class="full-image" ng-src="{{value.LISTIMAGE|hostFilter}}" alt="{{value.NAME}}">
+                        </div>
+                        <a class="assertive" href="#" style="font-size:12px;">
+                            <table class="full-table fs-12" style="height:25%;">
+                             <tr>
+                               <td colspan="2" >
+                                 <div class="pt-6 CM comd_list_item_text" style="color:black;max-height:50px;height:50px;overflow:hidden;text-overflow:ellipsis;text-align:left;" ng-bind="value.NAME" ></div>
+                               </td>
+                             </tr>
+                                 <tr class="fs-12" class="CM">
+                                         <td colspan="2" class="pr-5" style="text-align:left;">
+                                 <div class="CM comd_list_item_text">
+                                   <table class="full-table pr-5 pl-6" >
+                                     <colgroup style="width:50%;"></colgroup>
+                                     <colgroup style="width:50%;"></colgroup>
+                                       <tr>
+                                         <td class="talign-l">
+                                            <span class="subdued" style="color:#FC2A29;">￥<i ng-bind="value.PRICE|number:2"></i></span>
+                                         </td>
+                                         <td class="talign-r" style="color:#8c8c8c;">
+                                           已售<span class="subdued" ng-bind="value.SALENUMBER"></span>件
+                                         </td>
+                                       </tr>
+                                     </table>
+                                 </div>
+                                 </td>
+                                 </tr>
+                            </table>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

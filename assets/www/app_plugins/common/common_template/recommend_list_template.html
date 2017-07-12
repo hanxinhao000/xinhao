@@ -1,0 +1,68 @@
+<!-- 周边推荐模板 -->
+<!-- <div class="item item-divider recommend_list_fonts">
+    周边推荐
+</div> -->
+<div ng-if="pageData!=0" class="list" style="padding: 0px;">
+
+	<div  class="button-bar bar-positive recommend_list_bar_button" >
+		  <a class="button " style="background:{{jbuttonCss}};" ng-click="selectClick('1')">景区</a>
+		  <a class="button" style="background:{{dbuttonCss}};" ng-click="selectClick('2')">酒店</a>
+		  <a class="button" style="background:{{cbuttonCss}};" ng-click="selectClick('3')">餐饮</a>
+		  <a class="button" style="background:{{zbuttonCss}};" ng-click="selectClick('7')">组合</a>
+	 </div>
+	<div class="list">
+
+	 <div ng-if="!shows" class="item item-thumbnail-left recommend_background_css"  ng-repeat="item in pageData" style="padding: 10px 5px; height: 115px; padding-left: 115px;" ng-click="toPage('{{item.id}}')">
+	      	<img style="max-width: 96px; max-height: 96px;top:10px;"  ng-src="{{item.list_image| hostFilter:'ImageJSON'}}">
+	      	<h2 class="recommend_list_h2_css" ng-bind="item.store_name"></h2>
+	      	<div class="row cl-19" style="border-bottom: none;
+    			padding: 0px;">
+		        <div  as-start model="s" value="{{item.pjpxdf | number:0}}"></div>
+		        <div class="recommend_list_label_f_css">{{item.pjpxdf==null?"0":item.pjpxdf}}分</div><div class="recommend_list_label_f_css" >{{item.yscpzs==null?"0":item.yscpzs}}人消费</div>
+    		</div>
+
+    		<div class="row" style="padding-top: 5px; padding-left: 0px; padding-bottom: 0px;">
+    			<div class="recommend_list_label_css" ng-bind = "item.lable_name"></div> 
+    		</div>
+    	
+    		<div class="row" style="padding: 0px;margin-top: 1px;
+">
+    			<div class="recommend_list_label_address_css" style="text-align: left;border:none;"  >原价:<span ng-bind="item.price |number:2"></span ></div>
+    			<div class="recommend_list_label_distance_css_y fs-13">优惠价：￥<span ng-bind="item.distance" class="fs-16"></span></div>
+    		</div>
+	    </div>
+	 
+	     <div  ng-if="shows" class="item item-thumbnail-left"  ng-repeat="item in pageData" style="padding: 10px 5px; height: 115px; padding-left: 115px;" ng-click="toPage('{{item.id}}')">
+	      	<img style="max-width: 96px; max-height: 96px;top:10px;"  ng-src="{{item.list_image | hostFilter:'ImageJSON'}}">
+	      	<h2 class="recommend_list_h2_css" ng-bind="item.store_name"></h2>
+	      	<div class="row cl-19" style="border-bottom: none;
+    			padding: 0px;">
+		        <div  as-start model="s" value="{{item.pjpxdf | number:0}}"></div>
+		        <div class="recommend_list_label_f_css">{{item.pjpxdf==null?"0":item.pjpxdf}}分</div><div class="recommend_list_label_f_css" >{{item.yscpzs==null?"0":item.yscpzs}}人消费</div>
+    		</div>
+    		<div class="row fs-14" style="padding: 2px 0px;">
+    			￥{{item.price==null?'0': item.price| number:0}}起
+    		</div>
+    		<div class="row" style="padding: 0px;margin-top: 1px;
+">
+    			<div class="recommend_list_label_css" ng-bind = "item.lable_name"></div> 
+    			<div class="recommend_list_label_address_css text-overflow-elipsis " ng-bind="item.addressdetil" ></div>
+    			<div class="recommend_list_label_distance_css"  ng-bind="item.distance"></div>km
+    		</div>
+	    </div>
+	   
+	     
+	</div>
+	
+	
+
+	
+
+	<!-- <div class="list">
+	    <a class="item item-thumbnail-left" ng-repeat= "item in pageData">
+	      <img src="cover.jpg">
+	      <h2></h2>
+	      <p></p>
+	    </a>
+	</div> -->
+</div>

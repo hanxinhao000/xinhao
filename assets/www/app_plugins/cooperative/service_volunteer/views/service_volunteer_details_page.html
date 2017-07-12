@@ -1,0 +1,20 @@
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     title="城乡服务志愿者详情">
+ </div>
+<ion-view view-title="城乡服务志愿者详情">
+  <ion-content >
+  <div class="dc_details_title fs-14 bg-2"><em style="font-size: 18px;">{{pageData.levelName}}</em>共<em style="font-size: 18px;color: red">{{pageData.count}}</em>人</div>
+        <div class="row dc_list_grade fs-14 bg-2">
+         <div class="col col-30"><span>手机</span></div>
+         <div class="col col-30"><span>姓名</span></div>
+         <div class="col col-30"><span>消费额度</span></div>
+        </div>
+        <div class="diveline-2"></div>
+		<div style="padding:0px;margin:0px;" item="false" aslist rcode="serviceVolunteerDetails" temp-url="app_plugins/cooperative/service_volunteer/views/service_volunteer_details_list_page.html" params="{{pageData.params}}"></div>
+
+  </ion-content>
+</ion-view>

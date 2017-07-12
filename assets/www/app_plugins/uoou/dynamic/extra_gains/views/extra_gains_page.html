@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<!--
+外快专区
+-->
+<style>
+    .demo-choice{
+        border-bottom: 1px solid rgb(42,212,212);
+        color: rgb(42,212,212);
+    }
+    .class_choice{
+        color: rgb(42,212,212);
+    }
+    .btn-store-choice{
+        width:100%;
+        height: 48px;
+        background-color: rgb(231,247,247);
+        border:1px solid #ddd;
+        color: rgb(42,212,212);
+    }
+    .btn-store-no-choice{
+        width:100%;
+        height: 48px;
+        background-color: #FFFFFF;
+        border:1px solid #ddd;
+        color: rgb(42,212,212);
+    }
+</style>
+
+
+<style>
+    .share_img{
+        width: 28px; 
+        height: 28px; 
+        margin-top: 8px;
+    }
+    .biaoqian{
+        height: 30px;
+        text-align: center;
+        border:1px #fc952b solid; 
+        padding:5px;
+        color:#fc952b;
+        border-radius: 3px;
+    }
+    .button_bar_select{
+        color:#2ad4d4;
+        background-color: #e7f7f7;
+    }
+    .button_bar_unselect{
+        color:#2ad4d4;
+        border-bottom:none;
+    }
+
+    .bar_select{
+        min-width: 0px;
+        min-height: 0px;
+        font-size: 18px;
+        line-height: inherit;
+        margin: 0px;
+        width: 100px;
+        border-right: 1px solid #ddd;
+        padding:10px 30px 12px 27px;
+    }
+</style>
+
+<!--
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-click-fun="releaseDemand()"
+     right="发布需求"
+     title="外快专区">
+</div>-->
+
+<ion-view>
+    
+    
+    
+     <ion-nav-buttons side="left">
+        <div  ng-click="back()"  class="public_comment_header_bar_padding_left">
+            <i class="icon head_left_back"></i>
+        </div>
+    </ion-nav-buttons>
+    
+	<ion-nav-title>
+            <div class="fs_4">外快专区</div>
+        </ion-nav-title>
+    
+	<ion-nav-buttons side="right">
+                <div ng-click="releaseDemand()"  style="padding: 8px 4px;">
+                  发布需求
+                </div>
+        </ion-nav-buttons>
+    
+    
+    
+    <ion-content style="background-color: rgb(236,239,239);">
+        <div class="row" style="text-align: center;background-color: #FFFFFF;margin-bottom: 6px;">
+            <div class="col" style="height: 45px;line-height: 45px;padding:0px;text-align: center;" ng-class="[item.css]"  
+                 ng-repeat="item in pData.comdSelectCards" ng-click="selectCards('{{$index}}')">
+                <span class="" style="font-size: 15px;" 
+                      ng-bind="item.title">
+                </span>
+            </div>
+        </div>
+        <div id="demandClassSwiper" class="swiper-container bg-2" style="height: 195px;margin-bottom: 5px;" 
+             ng-if="pData.comdSelectCards[0].show">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" ng-repeat="item in classData1">
+                    <div class="row row-wrap" style="padding-top: 18px;">
+                        <div class="col-20 {{value.CSS}}" style="text-align:center;" ng-repeat="value in item"
+                             ng-click="demandClassClick('{{value.ID}}')">
+                            <img ng-src="{{value.CLASS_IMG| hostFilter:'ImageJSON'}}" style="width:45px;height: 45px;"/>
+                            <div>
+                                {{value.CLASS_NAME}}
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+        
+                <!--活动 评价 简介 招聘-->
+<!--        <div ng-if="pData.comdSelectCards[0].show" >
+            
+            <div buttonbar a-click="selectedCards" params="{{pData.bData}}" btemplte="app_plugins/uoou/message/uu_life/shop_details/views/select_button_item.html" controlid="121321" style="border-top:0px #ddd solid; border-bottom:1px #dddddd solid;"></div>
+           
+        </div>-->
+
+        <div class="item"  ng-if="pData.comdSelectCards[0].show" style="min-height: 50px;height: 50px;padding-top: 0px;margin-top: 10px;padding: 0px;">
+            <div class="row" style="padding: 0px;">
+                <div class="col col-33" style="padding: 0px;">
+                    <button ng-class="pData.storeIntrClass" ng-click="selectedCards('1')">最新</button>
+                </div>
+                <div class="col col-33" style="padding: 0px;">
+                    <button ng-class="pData.activityIntrClass" ng-click="selectedCards('2')">距离</button>
+                </div>
+                <div class="col col-33" style="padding: 0px;">
+                    <button ng-class="pData.recruitmentInfoClass" ng-click="selectedCards('3')">智能排序</button>
+                </div>
+            </div>
+        </div>
+      
+        
+        
+<!--        <div class="row" style="text-align: right;"  ng-if="pData.comdSelectCards[0].show" >
+            <div class="col" style="background-color: #FFFFFF;text-align: center;" ng-click="selectedCards('1')">
+                最新
+            </div>
+            <div class="col" style="background-color: #FFFFFF;text-align: center;" ng-click="selectedCards('2')">
+                距离
+            </div>
+            <div class="col" style="background-color: #FFFFFF;text-align: center;" ng-click="selectedCards('3')">
+                智能排序
+            </div>
+            <div class="col">
+                <input type="date" style="background-color:#FFFFFF;width: 100%;text-align: center;padding-top: 9px" ng-model="pData.startDate" ng-change="releaseDateClick()"/>
+            </div>
+        </div>-->
+        
+        
+        
+        
+        <div item="false" style="padding:0px;margin:0px;" aslist 
+             rcode="uoou.dynamic.demand_extragains" temp-url="app_plugins/uoou/dynamic/extra_gains/views/extra_gains_item.html"  
+             list-events="pData.list_events" params="{{pData.grabParams}}" ng-if="pData.comdSelectCards[0].show">
+        </div>
+        <div item="false" style="padding:0px;margin:0px;" aslist 
+             rcode="uoou.extragains.mygains" temp-url="app_plugins/uoou/dynamic/extra_gains/views/extra_gains_item.html"  
+             list-events="pData.list_events" params="{{pData.mygainsParams}}" ng-if="pData.comdSelectCards[1].show">
+        </div>
+        <div item="false" style="padding:0px;margin:0px;" aslist 
+             rcode="uoou.dynamic.mydemand" temp-url="app_plugins/uoou/dynamic/extra_gains/views/extra_gains_item.html"  
+             list-events="pData.list_events" params="{{pData.myDemoParams}}" ng-if="pData.comdSelectCards[2].show">
+        </div>
+        
+        <div footerpadding></div>
+    </ion-content>
+</ion-view>

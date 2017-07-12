@@ -1,0 +1,28 @@
+<!-- 红包列表 -->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     title="{{pageData.title}}">
+</div>
+<ion-view view-title="{{pageData.title}}" >
+    <ion-content>
+        <div class="row col" style="text-align: center;margin-top:10%;">
+
+            发送人:{{pageData.uname}}<br>
+            {{pageData.remark}}<br>
+            <div class="row" style="padding-left:15%;">
+                <div class="col col-33" style="padding: 10px 5px 5px 16px;color:#595959;font-size:12px;text-align:right;">拆入账户:</div>
+                <div class="col col-50">
+                    <select class="item myinfoborder-radius item-input" style="width:100%;" ng-model="pageData.select_account" ng-options="m.CODE as m.NAME for m in pageData.account_info"  required>
+                        <option value="">-请选择账户-</option>
+                    </select>
+                </div>
+            </div>
+            <div style="font-size: 16px;color: #2CC16A;" ng-if="pageData.money != '0'">红包金额{{pageData.money|ptoy}}元</div>
+        </div>
+        <div class="red_packet_div_bacground" ng-click="openthis()">
+        </div>
+    </ion-content>
+</ion-view>

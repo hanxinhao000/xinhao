@@ -1,0 +1,118 @@
+<!-- 支付 -->
+<!--<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     title="{{pageData.title}}">
+</div>-->
+<ion-view  >
+    
+    <ion-nav-buttons side="left">
+        <div ng-click="back()"  class="public_comment_header_bar_padding_left">
+            <i class="icon head_left_back"></i>
+        </div>
+    </ion-nav-buttons>
+
+    <ion-nav-title>
+        <div class="fs_4">
+            {{pageData.title}}
+        </div>
+    </ion-nav-title>
+
+    
+  <ion-content>
+    <div ng-if="pageData.orderInfo.CLOSE_TRAND_TIME" class="row" style="background-color:#e3e3e3;padding:0px 5px 0px 5px;">
+      <div class="col CM fs-13">
+        <span style="color;#999999;">支付关闭时间:
+          <i ng-bind="pageData.orderInfo.CLOSE_TRAND_TIME|dateFormat:'hh:mm'"></i>
+        </span>
+      </div>
+    </div>
+    <div class="list" style="margin-bottom: 0px;padding:5px 7px;background: #FFFFFF;">
+      <div class="row">
+        <div class="col" style="color:#000000;padding:0px;">
+          <span >订单号:</span>
+          <span ng-bind="pageData.orderInfo.ORDERCODE"></span>
+        </div>
+      </div>
+      <div class="row">
+       <div class="col" style="padding:5px 5px 0px 0px;text-align:right;margin-top:auto;">
+           <span style="color:#ff0000;font-size:20px;">￥<i ng-bind="pageData.pay_money|number:2"></i></span>
+        </div>
+      </div>
+      <div ng-bind-html="pageData.msg_template"></div>
+    </div>
+    <div class="split-line-2" style="height:20px;"></div>
+<!--    <div class="list">
+        <label class="item item-input">
+            <input type="password" ng-model="pageData.payPassword" placeholder="请输入登录密码后完成支付-必填">
+        </label>
+        <label class="item item-input">
+          <textarea ng-model="pageData.payRemake" rows="5" placeholder="请填写操作原因-必填"></textarea>
+        </label>
+    </div>-->
+    <div class="split-line-2" style="height:20px;"></div>
+    <div class="list" >
+        
+        <!--迭代显示系统已经启用的财务账号 start-->
+        <div class="list item"   ng-repeat="item in pageData.accountIdArr"  ng-click="selectPayMonth('{{$index}}')" style="padding:0px;" ng-if="item.TERMINAL_TYPE==pageData.derive||item.TERMINAL_TYPE=='ALL'">  
+            <div class=" row" ng-if="!pageData.isWx && item.SA_CODE=='ALIPAY_ACCOUNT_MODE_WEB' && (item.TERMINAL_TYPE =='WEB'||item.TERMINAL_TYPE=='ALL')">
+            <div class="col-20 vmiddle">
+              <img ng-src="{{item.ICON_PATH|hostFilter}}" style="width: 40px;height: auto;margin-left:10px;min-height:40px;">
+            </div>
+            <div class="col" style="text-align:left;padding:2px 0px 2px 0px;">
+              <span ng-bind="item.SA_NAME" style="color:#333333;font-size:16px;"></span>
+              <span ng-if="item.PAY_CLASS_CODE=='SYS_ACCOUNT'">
+                余额￥:{{item.BALANCE|ptoy}}
+              </span>
+              <br>
+              <span ng-bind="item.TIPS" style="color:#999999;font-size:12px;white-space:normal;"></span>
+            </div>
+            <div class="col-10 vmiddle">
+              <i class="{{item.CSS}} c-positive fs-26 "></i>
+            </div>
+          </div>
+            
+          <div class=" row" ng-if="pageData.isWx && item.SA_CODE=='MP_WECHAT_ACCOUNT_MODE' && (item.TERMINAL_TYPE =='WEB'||item.TERMINAL_TYPE =='ALL')">
+            <div class="col-20 vmiddle">
+              <img ng-src="{{item.ICON_PATH|hostFilter}}" style="width: 40px;height: auto;margin-left:10px;min-height:40px;">
+            </div>
+            <div class="col" style="text-align:left;padding:2px 0px 2px 0px;">
+              <span ng-bind="item.SA_NAME" style="color:#333333;font-size:16px;"></span>
+              <span ng-if="item.PAY_CLASS_CODE=='SYS_ACCOUNT'">
+                ￥:{{item.BALANCE|ptoy}}
+              </span>
+              <br>
+              <span ng-bind="item.TIPS" style="color:#999999;font-size:12px;white-space:normal;"></span>
+            </div>
+            <div class="col-10 vmiddle">
+              <i class="{{item.CSS}} c-positive fs-26 "></i>
+            </div>
+          </div>
+          <div class=" row"  ng-if="item.TERMINAL_TYPE=='APP'||item.TERMINAL_TYPE=='ALL'"> <!--  -->
+            <div class="col-20 vmiddle">
+              <img ng-src="{{item.ICON_PATH|hostFilter}}" style="width: 40px;height: auto;margin-left:10px;min-height:40px;">
+            </div>
+            <div class="col" style="text-align:left;padding:2px 0px 2px 0px;">
+              <span ng-bind="item.SA_NAME" style="color:#333333;font-size:16px;"></span>
+              <span ng-if="item.PAY_CLASS_CODE=='SYS_ACCOUNT'">
+                ￥:{{item.BALANCE|ptoy}}
+              </span>
+              <br>
+              <span ng-bind="item.TIPS" style="color:#999999;font-size:12px;white-space:normal;"></span>
+            </div>
+            <div class="col-10 vmiddle">
+              <i class="{{item.CSS}} c-positive fs-26 "></i>
+            </div>
+          </div>
+        </div>
+        <!--迭代显示系统已经启用的财务账号 end-->
+        
+    </div>
+  </ion-content>
+   <div class="bar bar-footer  btn-energized1 CM ios-margin-button clear_confirm_bar" style="background-image: linear-gradient(0deg, #FF9000, #FF9000 100%, transparent 100%);" ng-click="toPayment()">
+    <span class="fs-16 cl-10 CM vmiddle">确认支付&nbsp;&nbsp;￥<i ng-bind="pageData.pay_money|number:2"></i> </span>
+  </div>
+
+</ion-view>

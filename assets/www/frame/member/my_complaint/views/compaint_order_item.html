@@ -1,0 +1,23 @@
+<!--我的投诉 订单列表 ITEM-->
+<a class="item item-box" ng-click="toDetails('{{value.MMORDERID}}')">
+      <h3 style="color:#010101;">订单编号:<i ng-bind="value.ORDERCODE"></i> </h3>
+      <p style="font-size:12px;white-space:normal;max-height:37px;overflow:hidden;" ng-bind="value.COMMODITYNAME"></p>
+      <table class="full-table fs-12 mt-12">
+        <tr class="full-w">
+          <td class="cl-03">
+            <span>责任人:{{value.MEMBERNAME}}</span>
+          </td>
+          <td class="cl-02" style="text-align:right;">
+            <span></span>
+          </td>
+        </tr>
+        <tr class="full-w">
+          <td class="cl-03">
+            <span>罚款金额:{{value.PRD_FINE|number:2}}元</span>
+          </td>
+          <td class="cl-02" style="text-align:right;">
+            <span ng-bind="value.CMSTATUS"></span>
+          </td>
+        </tr>
+      </table>
+</a>

@@ -1,0 +1,96 @@
+<!-- 联保贷款申请 -->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="联保贷款申请">
+</div> 
+<ion-view view-title="联保贷款申请">
+    <ion-content>
+        <div ng-form name="loanForm"> <!--ng-from start-->
+            <label class="item item-input item-select">
+                <div class="input-label-input">申请银行:</div>
+                <select ng-model="pageData.applyBank"  ng-options="m.ORGID as m.ORGNAME for m in pageData.bank" required>
+                    <option value="">请选择</option>
+                </select>
+            </label>
+            <label class="item item-input h-46">
+                <span class="input-label-input">申请人:</span>
+                <input type="text" ng-model="pageData.appyName" required placeholder="请输入申请人（必填）">
+            </label>
+            <label class="item item-input h-46">
+                <span class="input-label-input">申请金额:</span>
+                <input type="number" string-to-number ng-model="pageData.money" required placeholder="请输入申请金额（必填）">
+            </label>
+            <label class="item item-input h-46">
+                <span class="input-label-input">身份证号:</span>
+                <input type="text" ng-model="pageData.code" required placeholder="请输入身份证号（必填）">
+            </label>
+            <label class="item item-input h-46">
+                <span class="input-label-input">证件有效期:</span>
+                <input type="date" style="padding-top: 8px;" ng-model="pageData.expiresDate" required>
+            </label>
+            <label class="item item-input h-46">
+                <span class="input-label-input">邮编:</span>
+                <input type="number" string-to-number ng-model="pageData.zipCode" required placeholder="请输入邮编（必填）">
+            </label>
+            <label class="item item-input h-46">
+                <span class="input-label-input">居住地:</span>
+                <input type="text" ng-model="pageData.address" required placeholder="请输入居住地（必填）">
+            </label>
+            <label class="item item-input h-46">
+                <span class="input-label-input">固定电话:</span>
+                <input type="number" string-to-number ng-model="pageData.telephone" placeholder="请输入固定电话（必填）">
+            </label>
+            <label class="item item-input h-46">
+                <span class="input-label-input">手机号:</span>
+                <input type="number" string-to-number ng-model="pageData.phone" required placeholder="请输入手机号（必填）">
+            </label>
+        </div><!--ng-from end-->
+        <div class="bg-2 am-content pt-13 pb-13">
+            <div><h3 class="cl-03 content-title" style="margin-bottom:0px;">联保成员</h3></div>
+        </div>
+        <div class="bar bar-footer" style="position: initial;">
+            <button ng-click="choiceLoanMember()" class="button button_with  myinfoborder-radius h-43" style="font-size:14px;">添加联保成员</button>
+<!--            <span ng-show="!loanForm.$valid" class="cl-03 pl-10 pt-5">请先填写表单信息!</span>-->
+        </div>
+        <ion-list show-delete="data.showDelete" show-reorder="data.showReorder">
+            <ion-item ng-repeat="item in pageData.loanMembername" class="item-remove-animate item h-46" style="padding: 4px 10px 0 10px;">
+                <span class="fs-12" ng-bind="item.MEMBERNAME"></span>
+                <span style="float: right;" ng-bind="item.LPG_STATUS|enum:pageData.lpgStatusEnum"> </span>
+                <ion-option-button class="button-assertive" ng-click="delete(item)">删除
+                </ion-option-button>
+            </ion-item>
+        </ion-list>
+
+        <div class="row" style="padding:0px;" ng-if="pageData.lpStauts == false">
+            <div class="col" style="margin:0px;text-align: right;">
+                <a tips-modal menucode="groupLoanProtocol" title="我同意联保贷款申请协议" ></a>
+                <label class="toggle toggle-assertive">
+                    <input ng-model="pageData.agree_type" type="checkbox">
+                    <div class="track">
+                        <div class="handle"></div>
+                    </div>
+                </label>
+            </div>
+        </div>
+
+        <div class="row" style="height:100px;line-height:100px;">
+            <div class="col">&nbsp;<a href="javaScript:void(0);" style="display:none;">&nbsp;</a></div>
+        </div>
+        <div class="row">
+            <div class="col">&nbsp;<a href="javaScript:void(0);" style="display:none;">&nbsp;</a></div>
+        </div>
+
+    </ion-content>
+    <div class="bar bar-footer ios-margin-button ios-margin-button" ng-if="pageData.lpStauts == false">
+        <div class="col" style="width: 40%;">
+            <button class="button button_with  myinfoborder-radius h-43 agriculture_project_title" ng-click="launchRequest()">发起邀请
+            </button >
+        </div>
+        <div class="col" style="width: 40%;">
+            <button class="button button_with  myinfoborder-radius h-43 agriculture_project_title" ng-click="submitApply()">提交申请
+            </button>
+        </div>
+    </div>
+</ion-view>

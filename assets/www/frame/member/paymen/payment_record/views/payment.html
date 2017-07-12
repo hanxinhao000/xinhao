@@ -1,0 +1,172 @@
+<!-- 支付 -->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     title="商品支付">
+</div>
+<ion-view view-title="商品支付" >
+    <ion-content>
+        <div class="item item-divider">
+            <b>支付清单</b>
+        </div>
+        <div class="list">
+            <div class="row">
+                <div class="col-15">
+                    <span style="font-size: 12px">支付单号:&nbsp;</span>
+                </div>
+                <div class="col-85">
+                    <span style="font-size: 12px" ng-bind="pageData.pay_id"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-15">
+                    <span style="font-size: 12px">支付类型:&nbsp; </span>
+                </div>
+                <div class="col-85">
+                    <span style="font-size: 12px" ng-bind="pageData.pay_type_name"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-15">
+                    <span style="font-size: 12px">应付金额:&nbsp; </span>
+                </div>
+                <div class="col-85">
+                    <span style="font-size: 12px" ng-bind="pageData.paymoney"></span>
+                </div>
+            </div>
+        </div>
+        <div class="item item-divider" ng-if="pageData.paymode == 'd'">
+            <b>现金支付</b>
+        </div>
+        <div class="item item-text-wrap" ng-if="pageData.paymode == 'd'">
+            <div class="row" ng-click="CashPayment()">
+                <div class="col">
+                    <span>现金支付</span>
+                </div>
+                <div class="col">
+                    <span>余额:&nbsp;</span><span ng-bind="pageData.blance | ptoy"></span>元
+                </div>
+            </div>
+        </div>
+        <div class="item-text-wrap" ng-repeat="item in paymentsetup.DATA">
+            <div class="item item-divider">
+                <b ng-bind="item.NAME"></b>
+            </div>
+            <div class="item item-text-wrap">
+                <div class="row">
+                    <div class="col-33">
+                        <img style="width: 100%;" ng-src="{{pageData.servehost}}{{item.ICONPATH}}" ng-click="Alipayment()"/>
+                    </div>
+                    <div class="col">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div footerpadding></div>
+    </ion-content>
+</ion-view>
+
+
+<!--&lt;!&ndash; 支付 &ndash;&gt;-->
+<!--<div class="bar bar-heade bar-light"-->
+<!--nav-bar-->
+<!--left-css="head_left_back"-->
+<!--title-css="header_title fs_4"-->
+<!--right-css="header_title fs_4"-->
+<!--title="商品支付">-->
+<!--</div>-->
+<!--<ion-view view-title="商品支付" >-->
+<!--<ion-content>-->
+<!--<div class="item item-divider">-->
+<!--<b>支付清单</b>-->
+<!--</div>-->
+<!--<div class="list">-->
+<!--<div class="row">-->
+<!--<div class="col-15">-->
+<!--<label style="font-size: 12px">支付单号:&nbsp;</label>-->
+<!--</div>-->
+<!--<div class="col-85">-->
+<!--<label style="font-size: 12px" ng-bind="pageData.id"></label>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="row">-->
+<!--<div class="col-15">-->
+<!--<label style="font-size: 12px">支付类型:&nbsp; </label>-->
+<!--</div>-->
+<!--<div class="col-85">-->
+<!--<label style="font-size: 12px" ng-bind="pageData.paysource"></label>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="row">-->
+<!--<div class="col-15">-->
+<!--<label style="font-size: 12px">应付金额:&nbsp; </label>-->
+<!--</div>-->
+<!--<div class="col-85">-->
+<!--<label style="font-size: 12px" ng-bind="pageData.paymoney"></label>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="item item-divider" ng-if="pageData.paymode=='d'">-->
+<!--<b>现金支付</b>-->
+<!--</div>-->
+<!--<div class="item item-text-wrap" ng-if="pageData.paymode=='d'" ng-click="CashPayment()">-->
+<!--<div class="row" >-->
+<!--<div class="col">-->
+<!--<label style="font-size: 12px">现金支付</label>-->
+<!--</div>-->
+<!--<div class="col">-->
+<!--<label>余额:&nbsp;</label><label ng-bind="pageData.blance"></label>元-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--<ion-list>-->
+<!--<ion-checkbox ng-model="filter.blue">Red</ion-checkbox>-->
+<!--</ion-list>-->
+<!--&lt;!&ndash;<div class="item-text-wrap" ng-repeat="item in paymentsetup.DATA">&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="item item-divider">&ndash;&gt;-->
+<!--&lt;!&ndash;<b ng-bind="item.NAME"></b>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="item item-text-wrap">&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="row">&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="col-33">&ndash;&gt;-->
+<!--&lt;!&ndash;<img style="width: 100%;" ng-src="{{pageData.servehost}}{{item.ICONPATH}}" ng-click="Alipayment()"/>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="col">&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+<!--<label  class="item item-input item-select" ng-show="pageData.bindingZfbInfo.length>0&&pageData.zfbFlag">-->
+<!--<div class="input-label">-->
+<!--支付宝账号-->
+<!--</div>-->
+<!--<select ng-model="pageData.zfbInfo" ng-change="zfbChange()" ng-options="m.ID_CODE for m in pageData.bindingZfbInfo">-->
+<!--<option value="">&#45;&#45;请选择&#45;&#45;</option>-->
+<!--</select>-->
+<!--</label>-->
+<!--<label  class="item item-input item-select" ng-show="pageData.bindingWxInfo.length>0&&pageData.wxFlag">-->
+<!--<div class="input-label">-->
+<!--微信账号-->
+<!--</div>-->
+<!--<select  ng-model="pageData.wxInfo" ng-change="wxChange()" ng-options="m.ID_CODE for m in pageData.bindingWxInfo">-->
+<!--<option value="">&#45;&#45;请选择&#45;&#45;</option>-->
+<!--</select>-->
+<!--</label>-->
+<!--<label  class="item item-input item-select" ng-show="pageData.bindbingBankInfo.length>0&&pageData.bankFlag">-->
+<!--<div class="input-label">-->
+<!--绑定银行卡账号-->
+<!--</div>-->
+<!--<select ng-model="pageData.bankInfo" ng-change="bankChange()" ng-options="m.ID_CODE+'  '+m.ID_NAME for m in pageData.bindbingBankInfo">-->
+<!--<option value="">&#45;&#45;请选择&#45;&#45;</option>-->
+<!--</select>-->
+<!--</label>-->
+<!--<div class="row">-->
+<!--<div class="col">-->
+<!--<button class="button editpwd_mauto editpwd_button button-block button-positive" ng-click="withdrawClick()" style="width: 90%">支付</button>-->
+<!--</div>-->
+<!--</div>-->
+<!--</ion-content>-->
+<!--</ion-view>-->

@@ -1,0 +1,15 @@
+<a class="item item-thumbnail-left item_top" ng-click="to_info('{{value.ID}}')" href="javascript:void(0)" style="padding-top: 7px;padding-left: 77px;padding-bottom: 7px;">
+    <img class="img_border_radius" style="top: 11px;width: 50px;height: 50px; font-size:14px;" ng-src="{{value.WXHEADIMG | hostFilter}}" >
+    <p style="font-size:13px;"><span class="text_padding_right">店铺名称:</span>{{value.STORE_NAME}}</p>
+    <p style="font-size:13px;"><span class="text_padding_right">订单时间:</span>{{value.CREATE_TIME}}</p>
+    <p style="font-size:13px;"><span class="text_padding_right">状&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;态:</span>
+        <span class="order_status_m" ng-show="{{value.ORDER_STATUS==0}}">新订单</span>
+        <span class="order_status_m" ng-show="{{value.ORDER_STATUS==1}}">待支付</span>
+        <span class="order_status_m" ng-show="{{value.ORDER_STATUS==2}}">已支付</span>
+        <span class="order_status_m" ng-show="{{value.ORDER_STATUS==3}}">待评价</span>
+        <span class="order_status_m" ng-show="{{value.ORDER_STATUS==4}}">已完成</span>
+        <span class="order_status_m" ng-show="{{value.ORDER_STATUS==5}}">申请退款</span>
+        <span class="order_status_m" ng-show="{{value.ORDER_STATUS==6}}">退款完成</span>
+    </p>
+    <i class="icon ion-chevron-right icon-accessory" style="line-height: 0px;position: absolute;font-size: 13px;right: 15px;top: 31px;"></i>
+</a>

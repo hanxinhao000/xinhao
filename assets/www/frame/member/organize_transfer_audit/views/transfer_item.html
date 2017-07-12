@@ -1,0 +1,15 @@
+<div class="list">
+    <a class="item" ng-click="details(value.ID)">
+        <p>
+            <label>转账机构：{{value.USERNAME}}</label><br>
+            <label>出账账号：{{value.SA_NAME}}</label><br>
+            <label>入账账号：{{value.IN_SA_NAME}}</label><br>
+            <label>提现金额：{{value.CASH_WITHDRAWAL|ptoy}}</label><br>
+            <label ng-if="value.SETTLEMENT_STATE == 1 || value.SETTLEMENT_STATE == 2">申请状态：申请中</label>
+            <label ng-if="value.SETTLEMENT_STATE == 3">申请状态：申请通过</label>
+            <label ng-if="value.SETTLEMENT_STATE == 4">申请状态：申请拒绝</label><br>
+            <label>申请时间：{{value.MENTIONTIME}}</label>
+        </p>
+
+    </a>
+</div>

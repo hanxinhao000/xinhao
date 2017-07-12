@@ -1,0 +1,81 @@
+<!-- 申请资助详情 -->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="资助信息">
+</div> 
+<ion-view view-title="资助信息">
+    <ion-content>
+        <ion-list class="disable-user-behavior">
+            <div class="list">
+                <ion-item type="item-text-wrap" class="item" style="padding:0px;">
+                    <label class="item item-input h-46">
+                        <span class="input-label">社员姓名:</span>
+                        <span class="fs-12" ng-bind="pageData.membername"></span>
+                    </label>
+
+                    <label class="item item-input h-46">
+                        <span class="input-label">资助金额:</span>
+                        <span class="fs-12" ng-bind="pageData.amountOfSubsidy | ptoy"></span>元
+                    </label>
+
+                    <label class="item item-input h-46">
+                        <span class="input-label">身份证号:</span>
+                        <span class="fs-12" ng-bind="pageData.cardNumber"></span>
+                    </label>
+
+                    <label class="item item-input h-46">
+                        <span class="input-label">联系号码:</span>
+                        <span class="fs-12" ng-bind="pageData.phone"></span>
+                    </label>
+
+                    <label class="item item-input h-46">
+                        <span class="input-label">性别:</span>
+                        <span class="fs-12" ng-bind="pageData.gendername"></span>
+                    </label>
+
+                    <label class="item item-input h-46">
+                        <span class="input-label" style="width:15%;">邮箱:</span>
+                        <span class="fs-12" ng-bind="pageData.email"></span>
+                    </label>
+
+                    <label class="item item-input h-46">
+                        <span class="input-label" style="width:15%;">学校:</span>
+                        <span class="fs-12" ng-bind="pageData.school"></span>
+                    </label>
+
+                    <label class="item item-input h-46">
+                        <span class="input-label" style="width:15%;">住址:</span>
+                        <span class="fs-12" ng-bind="pageData.address"></span>
+                    </label>
+
+                    <label class="item item-input h-46">
+                        <span class="input-label">申请时间:</span>
+                        <span class="fs-12" ng-bind="pageData.createtime"></span>
+                    </label>
+
+                    <label class="item item-input h-46">
+                        <span class="input-label">申请状态:</span>
+                        <span class="fs-12" ng-bind="pageData.statusname"></span>
+                    </label>
+
+                    <label class="item item-input h-46" ng-if="pageData.status == 5">
+                        <span class="input-label">资助人:</span>
+                        <span class="fs-12" ng-bind="pageData.name"></span>
+                    </label>
+                    <label class="item item-input " >
+                        <span class="input-label">申请原因:</span>
+                        <span style="word-break: normal;white-space: pre-wrap;word-wrap: break-word;overflow: hidden;" ng-bind="pageData.reasons_remake"></span>
+                    </label>
+                </ion-item>
+            </div>
+        </ion-list>
+        <div footerpadding></div>
+    </ion-content>
+    <div class="bar bar-footer ios-margin-button" ng-if="pageData.status == 5">
+        <tr>
+        <button ng-click="thankYou()" class="button button_with  myinfoborder-radius h-43" style="font-size:14px;">感恩答谢</button>
+        </tr>
+    </div>
+</ion-view>

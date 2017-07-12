@@ -1,0 +1,91 @@
+<!--特产类商品-->
+<a ng-if="pData.recvAddres" class="item item-icon-left item-icon-right" ng-click="selectRecvAddres()" href="javascript:void(0);" style="padding-right: 25px">
+<i class="fs-14 icon ion-ios-location-outline" style="font-size:22px;"></i>
+	<div class="row cl-11" style="padding:3px;margin-left:-15px;">
+		<div class="col-50">
+			收货人:<span ng-bind="pData.recvAddres.RECV_NAME"></span>
+		</div>
+		<div class="col-50 cr">
+			<span ng-bind="pData.recvAddres.RECV_PHONE"></span>
+		</div>
+	</div>
+	<div class="row cl-11" style="padding:3px;margin-left:-15px;">
+		<div class="col-90">
+			<span style="white-space: normal;">收货地址:<i ng-bind="pData.recvAddres.DETAILEDADDRESS"></i></span>
+		</div>
+	</div>
+<i class="icon ion-ios-arrow-forward"></i>
+</a>
+
+<div class="talign-r pr-10 pt-10 pb-10" ng-if="!pData.recvAddres">
+<button class="button button-assertive " ng-click="toAddres()">
+  添加新地址
+</button>
+</div>
+<!--收货地址 end-->
+
+<!--单个商品，商品信息 start-->
+<div ng-repeat="citem in pData.shopInfo">
+<div class="split-line-2"></div>
+    <a class="item item-thumbnail-left " style="min-height:100px;" href="javascript:void(0)">
+      <img ng-src="{{citem.specImages|hostFilter}}" style="width:76px;height:76px;max-width: 76px;max-height:76px;">
+      <div style="width: 100%;height:76px;line-height:2.6px;vertical-align:middle;line-height:1.5;">				      
+      <h2 ng-bind="citem.name" style="text-overflow:ellipsis;white-space:normal;color:#333333;"></h2>
+	      <span class="cl-12" ng-bind="citem.fname"></span><br>
+	      <p class="fs-14">
+			<div ><!--没有折扣样式-->
+				<table class="full-table">
+					<tr>
+						<td class="now-price">
+							<div>￥<span ng-bind="citem.fPrice|number:2"></span>
+						</td>
+						<td>
+							<span>x</span><span ng-bind="citem.buyNumber"></span>
+						</td>
+					</tr>
+				</table>
+			</div>
+	      </p>
+  		</div>
+    </a>
+<!--	<label class="item item-input item-select">
+		<div class="input-label-input">配送方式</div>
+    	<select ng-model="citem.shippingMethod" >
+			<option ng-selected="item.value==1" ng-value="item.value" ng-repeat="item in pData.shippingMethodDataSet" ng-bind="item.name"></option>
+		</select>
+  	</label>-->
+	<div class="row item lh-40 pr-10" style="padding:3px 15px 3px 15px;">
+		<div class="col-20">
+			<div class="d-line cl-11">买家留言:</div>
+		</div>
+		<div class="col-80" style="text-align: right;">
+			<input ng-model="citem.BUYERS_MESSAGE" class="fs-12" style="width:100%;border:0px;" placeholder="选填" />
+		</div>
+	</div>
+	<div class="row item lh-40 pr-10" style="padding:3px 15px 3px 15px;">
+		<div class="col-20 ">&nbsp;</div>
+		<div class="col " style="text-align:right;padding:0px;">
+			<span>共<e ng-bind="pData.shopInfo.length"></e>件商品&nbsp;&nbsp;合计:</span>
+			<span class="buy-price fs-12">￥</span>
+			<span class="buy-price fs-16" ng-bind="citem.fPrice*citem.buyNumber|number:2"></span>
+		</div>
+	</div>
+</div>
+<div class="split-line-2"></div>
+
+
+
+<!--支付方式 start-->
+<!--  1=在线支付，必须付款后才可订单分配
+  2=货到付款，直接进行订单分配，货款人工结算，系统不在处理 -->
+<!-- <div class="split-content-2 pt-10 pb-10">
+	<span class="pl-10  fs-15">支付方式</span>
+</div>
+<ion-list>
+	
+  <ion-radio ng-if="pData.shopInfo.commdityInfo.SUPPORTPAYMENTMODE==1" ng-model="pData.shopInfo.commdityInfo.SUPPORTPAYMENTMODE" ng-value="'1'">在线支付</ion-radio>
+  <ion-radio ng-if="pData.shopInfo.commdityInfo.SUPPORTPAYMENTMODE==2" ng-model="pData.shopInfo.commdityInfo.SUPPORTPAYMENTMODE" ng-value="'2'">货到付款</ion-radio>
+</ion-list> -->
+<!--支付方式 end-->
+<!-- <div class="row pt-10 pb-10"><span class="fs-14 cl-03">送货方式</span></div> -->
+

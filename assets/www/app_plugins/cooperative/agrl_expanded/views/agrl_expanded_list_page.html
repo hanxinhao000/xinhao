@@ -1,0 +1,22 @@
+<a class="item item-box" ng-click="AgrlExpandedDetails(value.ID)">
+      <h3 style="color:#010101;" ng-bind="value.TITLE"></h3>
+      <p style="font-size:12px;white-space:normal;max-height:37px;overflow:hidden;" ng-bind="value.ABSTRACT"></p>
+      <table class="full-table fs-12 mt-12">
+      	<tr class="full-w">
+      		<td class="cl-02">
+      			<span>分类:{{value.ATCTITLE}}</span>
+      		</td>
+      	</tr>
+      </table>
+      <table class="full-table fs-12 mt-12">
+      	<tr class="full-w">
+      		<td class="cl-02">
+      			<span>发布时间:</span>
+                <span ng-bind="value.RELEASETIME"></span>
+      		</td>
+      		<td class="cl-03" style="text-align:right;">
+      			<span>发布人:{{value.USERNAME}}</span>
+      		</td>
+      	</tr>
+      </table>
+</a>

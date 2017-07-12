@@ -1,0 +1,54 @@
+<!--<div   class="mall_Activity_list_body list bg-7 mall_activity_adv_7" >
+    <div class="row " style="padding: 15px 0;">
+             <div class="col-50 mallshelevs_template_title_bar fs-15 " style="text-align:left;" ng-bind="classItem.TITLE"></div> 
+            <div class="col"  ng-bind-html="ptitle|imgFmt"></div>
+            <div class="col fc-99 fs-14" ng-click="toUrlOthert('{{classItem.URL}}','{{classItem.URL_PARAM}}')"  style="text-align:right;">查看更多》</div>
+    </div>
+    <ion-scroll>
+        <div class="row fc-99 fs-14 " style="padding: 5px 2%;">
+                <div   ng-click="selectTitle('0')"  ng-bind="classItem.MALL_COMMODITYCLASS[0].TITLE"  class="malld_activity_title_07 col-50 fs-14 {{cssTitleA}}" style="width:48%;"> </div>
+                <div   ng-click="selectTitle('1')"  ng-bind="classItem.MALL_COMMODITYCLASS[1].TITLE"  class="malld_activity_title_07 col-50 fs-14 {{cssTitleB}}" style="width:48%;"> </div>
+                 <div class="col-33 fs-14" style="text-align:center;" ng-bind="classItem.MALL_COMMODITYCLASS[1].TITLE"> </div> 
+        </div>
+    </ion-scroll>
+     ng-repeat = "childComdityItem in classItem.MALL_COMMODITYCLASS[{{classIndex}}].CHILDCOMMODITY " 
+
+    <div ng-if="divShow" class="row" style="padding:0px;flex-wrap:wrap;padding:0px 0px;">
+
+            <div  class="col-50 waterfall" ng-repeat="childComdityItem in classItem.MALL_COMMODITYCLASS[0].CHILDCOMMODITY" style="display: inline-block;">
+
+                <div ng-click="toUrlt('','{{childComdityItem.MALL_CLASS}}','{{childComdityItem.ID}}','{{rootItem.STARTDATE}}','{{rootItem.ENDDATE}}')" class="" >
+                    <div style="padding: 5px;text-align: center;">
+                        <img  style="height:auto;overflow:hidden;" class="full-image" ng-src="{{childComdityItem.SHELF_IMAGE|hostFilter:'ImageJSON'}}" " alt="{{childComdityItem.NAME}}">
+                    </div>
+                </div>
+            </div>
+    </div>
+
+
+    <div ng-if="!divShow" class="row" style="padding:0px;flex-wrap:wrap;padding:0px 0px;">
+
+        <div class="col-50 waterfall" ng-repeat="childComdityItem in classItem.MALL_COMMODITYCLASS[1].CHILDCOMMODITY" style="display: inline-block;">
+
+            <div ng-click="toUrlt('','{{childComdityItem.MALL_CLASS}}','{{childComdityItem.ID}}','','','{{rootItem.STARTDATE}}','{{rootItem.ENDDATE}}')" class="" >
+                <div  style="padding: 5px;text-align: center;">
+                    <img  style="height:auto;overflow:hidden;" class="full-image" ng-src="{{childComdityItem.SHELF_IMAGE|hostFilter:'ImageJSON'}}"  alt="{{childComdityItem.NAME}}">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>-->
+
+<div ng-repeat="value in classItem.MALL_COMMODITYCLASS">
+    <div ng-click="toClassDeatils('{{value.URL}}','{{classItem.STARTDATE}}','{{classItem.ENDDATE}}','{{value.URL_PARAM}}','{{value.TITLE}}','{{classItem.ACTIVITIESTYPE}}','{{rootItem.START_DATE}}','{{rootItem.END_DATE}}')" class="mall_home_mallActive_main" >
+      <div class="item mall_storage_back" >
+        <div ng-bind-html="classItem.CONTENT|imgFmt" class="active_item_img"></div>
+      </div>
+        
+      <div mall-active-data start-time-mins="{{rootItem.START_DATE}}" end-time-mins="{{rootItem.END_DATE}}" mall-title="{{value.TITLE}}" start-time="{{classItem.STARTDATE}}" end-time="{{classItem.ENDDATE}}"  mall-type="{{classItem.ACTIVITIESTYPE}}" ></div>
+
+    </div>
+</div>
+
+

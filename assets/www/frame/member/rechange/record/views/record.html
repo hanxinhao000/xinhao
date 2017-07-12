@@ -1,0 +1,56 @@
+<!-- 充值支付清单 -->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     title="充值">
+</div>
+<ion-view view-title="充值" >
+    <ion-content>
+        <ion-list class="disable-user-behavior">
+            <div class="list">
+                <ion-item type="item-text-wrap" class="item-divider">
+                    <div class="row">
+                        <div class="col">
+                            <span>现金充值</span>
+                        </div>
+                        <div class="col" style="text-align: right">
+                            <span>余额：<span ng-bind="pageData.balance"></span>元</span>
+                        </div>
+                    </div>
+                </ion-item>
+                <ion-item type="item-text-wrap" class="item">
+                    <div class="row">
+                        <div class="col-10" style="text-align: center;padding-top: 3%;">
+                            &nbsp;
+                        </div>
+                        <div class="col-20" style="text-align: center;padding-top: 3%;">
+                            <span>充值金额:&nbsp;</span>
+                        </div>
+                        <div class="col-50">
+                            <label class="item myinfoborder-radius item-input">
+                                <input type="text" style="text-align: right;" maxlength="6" ng-model="pageData.paymoney" class="ng-pristine ng-untouched ng-valid">
+                            </label>
+                        </div>
+                        <div class="col-10" style="text-align: center;padding-top: 3%;">
+                            <span>元</span>
+                        </div>
+                        <div class="col-10" style="text-align: center;padding-top: 3%;">
+                            &nbsp;
+                        </div>
+                    </div>
+                </ion-item>
+                <div>
+                </div>
+            </div>
+        </ion-list>
+        <div class="row">
+            <div class="col">
+                <button class="button editpwd_mauto editpwd_button button-block button-positive" ng-click="recordPayment()" style="width: 90%">充 值</button>
+            </div>
+        </div>
+        <div footerpadding></div>
+    </ion-content>
+
+</ion-view>

@@ -1,0 +1,17 @@
+<!-- 搜索列表模板 -->
+ <div   class="item item-thumbnail-left "  style="padding: 10px 5px; height: 115px; padding-left: 115px;" ng-click="toPage('{{value.ID}}','{{value.TYPE}}','{{value.MALL_CLASS}}')">
+	      	<img style="max-width: 96px; max-height: 96px;top:10px;"  ng-src="{{value.IMG|hostFilter:'ImageJSON'}}">
+	      	<h2 class="recommend_list_h2_css" ng-bind="value.NAME"></h2>
+	      	<p style="font-size:12px;line-height: 15px;white-space:normal;max-height:28px;overflow:hidden;color:#666666;margin-bottom: 5px;" ng-bind-html="value.ABSTRACK"></p>
+	      	<div class="row cl-19" style="border-bottom: none;
+    			padding: 0px;">
+		        <div  as-start model="s" value="{{value.PJPXDF | number:0}}"></div>
+		        <div class="recommend_list_label_f_css">{{value.PJPXDF==""?"0":value.PJPXDF}}分</div><div class="recommend_list_label_f_css" >{{value.SALENUMBER==""?"0":value.SALENUMBER}}人消费</div>
+    		</div>
+
+
+    		<div class="row" style="padding: 0px;margin-top: 1px;
+">
+    			<div class="recommend_list_label_distance_css_y fs-13" style="width: 100%;">价格：￥{{value.PRICE==""?"0":value.PRICE | number:2}}</div>
+    	</div>
+</div>

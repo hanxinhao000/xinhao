@@ -1,0 +1,49 @@
+<!-- 公共搜索页面 ng-change="search(pageData.searchName)" -->
+
+<div class="bar bar-header item-input-inset" style="padding-right: 5px;background-image: none;">
+    <form ng-submit="search()" style="width: 87%;">
+        <div class="item-input-wrapper fs-12" style="border: 1px solid #0095ff;
+          height: 28px;background:0;">
+          <!-- <i class="icon placeholder-icon search_input_icon_01" ng-click="search()" style="padding-right: 12px;" ></i> -->
+          <i class='icon ion-search placeholder-icon' style="font-size: 16px;" ng-click="search()"></i>
+          <input type="search"  ng-model="pageData.searchName" style="width: 84%;padding-left: 12px;text-align: center;" placeholder="景区/酒店/关键字">
+           
+            <i ng-click="clear('1')" class="icon  placeholder-icon search_input_icon_02"  style="padding-right: 12px;width:16px;height: 16px;"></i>
+           
+        </div>
+    </form>
+        <button class="button button-clear" ng-click="back()" style="height: 25px;line-height: 25px;font-size:13px;color:#0094ff;padding-bottom: 9px;">
+          取消
+        </button>
+</div>
+<div class="list" style="border:none;">
+    <div class="item fs-15" style="padding: 5px;border-top:1px solid #0094ff;
+    text-align: center;">
+    <img src="app_plugins/common/search/img/shark_12.png" style="width: 25px;
+    line-height: 25px;
+    vertical-align: middle;
+    font-size: 15px;">摇一摇可搜附近
+    </div>
+</div>
+
+<ion-view>
+  <ion-content on-swipe-up style="padding-top: 80px;">
+	<div class="row col fs-13 " style="padding-left:15px;">热门搜索</div>
+	<div ng-if="pageData.labelData!=''" style="flex-wrap: wrap-reverse;padding: 5px 0px;margin-top: 2px;" class="row bg-2" >
+
+		<div  style="text-align: center;padding: 5px;border: 1px solid #a7a7a7;border-radius: 3px;margin: 5px 1.5%; width:30%;" ng-repeat="lable in pageData.labelData"  ng-bind="lable.LABLE_NAME" ng-click = "search(lable.LABLE_NAME)"></div>
+		
+	</div>
+	<div class="row col fs-13 " style="padding: 15px;">历史搜索</div>
+
+	<div class="list">
+	  <a class="item" ng-repeat = "item in pageData.localData.data"  ng-click = "search(item.name)" ng-bind="item.name">
+	  </a>
+	</div>
+  <div class="row col fs-13" style="color:#999999;text-align:center;padding-top:20px;" ng-click="clear('2')">
+    清空搜索记录
+  </div>
+
+  </ion-content>
+
+</ion-view> 	

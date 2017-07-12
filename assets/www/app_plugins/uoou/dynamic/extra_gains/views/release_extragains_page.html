@@ -1,0 +1,249 @@
+<!--
+发布需求
+-->
+<style>
+     .btn-push{
+        background-color: rgb(42,212,212);
+        height: 35px;
+        width: 150px;
+        color: white;
+        border-radius: 3px;
+        border:0px;
+    }
+    
+    .row_input{
+       padding: 0px 0px 3px 0px;
+       height: 42px;
+    }
+    .row_input_title{
+        text-align: right;
+        padding-top: 11px;
+        width:26%;
+        color:#666666;
+    }
+    .row_input_in{
+        padding-top: 5px;
+        width:70%;
+    }
+    .row_input_in input{
+        font-size:15px;
+        color:#888888;
+    }
+    .row_input_in select{
+        font-size:15px;
+        color:#888888;
+    }
+    .row_input_in textarea{
+        font-size:15px;
+        color:#888888;
+    }
+    
+</style>
+
+<!--
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="外快专区">
+</div>-->
+
+<ion-view>
+    
+    <ion-nav-buttons side="left">
+        <div  ng-click="back()"  class="public_comment_header_bar_padding_left">
+            <i class="icon head_left_back"></i>
+        </div>
+    </ion-nav-buttons>
+    
+	<ion-nav-title class="fs_4">
+            <div>外快专区</div>
+        </ion-nav-title>
+    
+    
+    
+    
+    <ion-content style="background-color: #fff;">
+        <div class="list bg-2 fs-15" style="padding-bottom:10px;">
+            <div class="row row_input" >
+                <div class="row_input_title">
+                    <span>状态：</span>
+                </div>
+                <div  class="row_input_in" >
+                    <select style="padding-left: 8px;background-color: rgb(246,246,246);width: 100%;height: 34px;border: 0px;" 
+                            ng-model="pData.demandstatus" disabled="true"/>
+                    <option value="0">草稿</option>
+                    <option value="1">待审核</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row row_input" >
+                <div  class="row_input_title" >
+                    <span>分类：</span>
+                </div>
+                <div  class="row_input_in" >
+                    <select style="padding-left: 8px;height: 34px;background-color: rgb(246,246,246);width: 100%;height: 34px;border: 0px;" ng-model="pData.demandClass" 
+                            ng-options="items.ID as items.CLASS_NAME for items in pData.demandClassData" required>
+                        <option value="0">请选择</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row row_input">
+                <div  class="row_input_title" >
+                    <span>需求标题：</span>
+                </div>
+                <div  class="row_input_in" >
+                    <input type="text"  style="padding-left: 8px;background-color: rgb(246,246,246);width: 100%;" ng-model="pData.title"  />
+                </div>
+            </div>
+            <div class="row row_input" >
+                <div  class="row_input_title" >
+                    <span>需求人数：</span>
+                </div>
+                <div  class="row_input_in" >
+                    <input type="number" string-to-number style="padding-left: 8px;background-color: rgb(246,246,246);width: 100%;" ng-model="pData.demandNum"  />
+                </div>
+            </div>
+            <div class="row row_input">
+                <div  class="row_input_title" >
+                    <span>消费状况：</span>
+                </div>
+                <div  class="row_input_in" >
+                    <select style="padding-left: 8px;background-color: rgb(246,246,246);width: 100%;height: 34px;border: 0px;" 
+                            ng-model="pData.consumption"/>
+                    <option value="0">请选择</option>
+                    <option value="1">AA制</option>
+                    <option value="2">求请客</option>
+                    <option value="3">本人买单</option>
+                    <option value="4">0消费</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row row_input" ng-if="pData.platformStr">
+                <div  class="row_input_title" >
+                    <span>完成形式：</span>
+                </div>
+                <div  class="row_input_in" >
+                    <select style="padding-left: 8px;background-color: rgb(246,246,246);width: 100%;height: 34px;border: 0px;" 
+                            ng-model="pData.completeForm"/>
+                    <option value="0">请选择</option>
+                    <option value="1">线上进行</option>
+                    <option value="2">线下进行</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row row_input">
+                <div  class="row_input_title" >
+                    <span>有效时间：</span>
+                </div>
+                <div  class="row_input_in" >
+                    <input type="datetime-local"  style="padding-left: 8px;padding-top: 9px;background-color: rgb(246,246,246);width: 100%;" ng-model="pData.effectiveTime"  />
+                </div>
+            </div>
+            <div class="row row_input">
+                <div  class="row_input_title" >
+                    <span>约见地点：</span>
+                </div>
+                <div  class="row_input_in" >
+                    <select style="background-color: rgb(246,246,246);width: 100%;height: 34px;border: 0px;" 
+                            ng-model="pData.recvProvince" ng-options="province.PROID as province.PRONAME for province in cascadePCZ.provinces"/>
+                    <option value="">-省-</option>
+                    </select>
+<!--                    <select style="background-color: rgb(246,246,246);width: 100%;height: 34px;border: 0px;" 
+                            ng-model="pData.recvCity" ng-options="city.CITYID as city.CITYNAME for city in cascadePCZ.cities"/>
+                        <option value="">-市-</option>
+                    </select>
+                    <select style="background-color: rgb(246,246,246);width: 100%;height: 34px;border: 0px;" 
+                            ng-model="pData.recvArea" ng-options="zone.ZONEID as zone.ZONENAME for zone in cascadePCZ.zones"/>
+                        <option value="">区/县</option>
+                    </select>-->
+                </div>
+            </div>
+            <div class="row row_input">
+                <div  class="row_input_title" >
+                    <span></span>
+                </div>
+                <div  class="row_input_in" >
+<!--                    <select style="background-color: rgb(246,246,246);width: 100%;height: 34px;border: 0px;" 
+                            ng-model="pData.recvProvince" ng-options="province.PROID as province.PRONAME for province in cascadePCZ.provinces"/>
+                    <option value="">-省-</option>-->
+                    <!--</select>-->
+                    <select style="background-color: rgb(246,246,246);width: 100%;height: 34px;border: 0px;" 
+                            ng-model="pData.recvCity" ng-options="city.CITYID as city.CITYNAME for city in cascadePCZ.cities"/>
+                        <option value="">-市-</option>
+                    </select>
+<!--                    <select style="background-color: rgb(246,246,246);width: 100%;height: 34px;border: 0px;" 
+                            ng-model="pData.recvArea" ng-options="zone.ZONEID as zone.ZONENAME for zone in cascadePCZ.zones"/>
+                        <option value="">区/县</option>
+                    </select>-->
+                </div>
+            </div>
+            <div class="row row_input">
+                <div  class="row_input_title" >
+                    <span></span>
+                </div>
+                <div  class="row_input_in" >
+<!--                    <select style="background-color: rgb(246,246,246);width: 100%;height: 34px;border: 0px;" 
+                            ng-model="pData.recvProvince" ng-options="province.PROID as province.PRONAME for province in cascadePCZ.provinces"/>
+                    <option value="">-省-</option>-->
+                    <!--</select>-->
+<!--                    <select style="background-color: rgb(246,246,246);width: 100%;height: 34px;border: 0px;" 
+                            ng-model="pData.recvCity" ng-options="city.CITYID as city.CITYNAME for city in cascadePCZ.cities"/>
+                        <option value="">-市-</option>
+                    </select>-->
+                    <select style="background-color: rgb(246,246,246);width: 100%;height: 34px;border: 0px;" 
+                            ng-model="pData.recvArea" ng-options="zone.ZONEID as zone.ZONENAME for zone in cascadePCZ.zones"/>
+                        <option value="">区/县</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row row_input" >
+                <div  class="row_input_title" >
+                    <span>详细地点：</span>
+                </div>
+                <div  class="row_input_in" >
+                    <input type="text"  style="padding-left: 8px;background-color: rgb(246,246,246);width: 100%;" ng-model="pData.meetPlace"  />
+                </div>
+            </div>
+            <div class="row row_input">
+                <div  class="row_input_title" >
+                    <span>总酬金：</span>
+                </div>
+                <div  class="row_input_in" >
+                    <input type="number" string-to-number  style="padding-left: 8px;background-color: rgb(246,246,246);width: 100%;" ng-model="pData.remuneration"  />
+                </div>
+            </div>
+            <div class="row row_input"  ng-if="pData.platformStr">
+                <div  class="row_input_title" >
+                    <span>服务时间：</span>
+                </div>
+                <div  class="row_input_in" >
+                    <input type="datetime-local"  style="padding-left: 8px;padding-top: 9px;background-color: rgb(246,246,246);width: 100%;"  ng-model="pData.serviceTime"/>
+                </div>
+            </div>
+            <div class="row row_input" style="height: 120px;">
+                <div  class="row_input_title" >
+                    <span>需求内容：</span>
+                </div>
+                <div  class="row_input_in" >
+                    <textarea style="padding-left: 8px;background-color: rgb(246,246,246);width: 100%;
+                              overflow-y:visible;height: 100px;resize:none;" ng-model="pData.content"/></textarea>
+                </div>
+            </div>
+        </div>
+        <div footerpadding ></div>
+
+    </ion-content>
+</ion-view>
+<div class="bar bar-footer" style="display: inline;height: 50px;background-color: rgb(236,239,239);background-position:bottom; padding-bottom:7px;">
+    <div class="row" style="padding: 0px;">
+        <div style="padding: 0px;text-align: center;width:50%;" >
+            <div ng-click="saveDemand()" class="btn-push" style="height: 40px;margin: auto;text-align: center; line-height:initial;
+                 font-size: 17px;padding: 7px; width: 89%; margin-left:15px;">保存</div>
+        </div>
+        <div style="padding: 0px;text-align: center;width:50%;" ng-if="pData.demandstatus=='0'">
+            <div ng-click="releaseDemand()" class="btn-push" style="height: 40px;margin: auto;text-align: center; line-height:initial;
+                 font-size: 17px;padding: 7px; width: 89%; margin-right:15px;">发布</div>
+        </div>
+    </div>   
+</div>

@@ -1,0 +1,97 @@
+<!-- 首页、合作社、社员、服务 -->
+<style>
+
+.cross{
+  background-image: url({{baseUrl}}/files/MJYC_RESOURCEMANAGEMENT/ac647b13-d11c-4bac-afd8-9f929fdaf8ea/bdpserverroute/fae3c913-371c-4018-95df-26044107d00c.png);
+    background-size: 48px 48px;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    position: relative;
+    height: 48px;
+}
+.cross_active{
+  background-image: url({{baseUrl}}/files/MJYC_RESOURCEMANAGEMENT/c264cefa-61d8-4ac3-a1b8-3b5b2f10fae1/bdpserverroute/87c43f2b-469c-42b9-80d5-f8f82f08b73b.png);
+    background-size: 48px 48px;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    position: relative;
+    height: 48px;
+}
+.thome{
+  background-image: url({{baseUrl}}/files/MJYC_RESOURCEMANAGEMENT/8c520617-20f4-49a8-aa0c-3592e5fcf317/bdpserverroute/50b46c44-eca4-470b-bd62-168c69e121fe.png);
+    background-size: 48px 48px;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    position: relative;
+}
+.thome_active{
+  background-image: url({{baseUrl}}/files/MJYC_RESOURCEMANAGEMENT/9fd29908-3a44-4644-bf97-21ad4b0881ad/bdpserverroute/de07b21b-6507-4623-9646-615d0ade8329.png);
+    background-size: 48px 48px;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    position: relative;
+}
+.tfind{
+  background-image: url({{baseUrl}}/files/MJYC_RESOURCEMANAGEMENT/f7cc26d1-74a9-4e06-a177-94bacf813693/bdpserverroute/f037609f-a11c-428a-b11f-4eb3cf49fc5d.png);
+    background-size: 48px 48px;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    position: relative;
+}
+.tfind_active{
+  background-image: url({{baseUrl}}/files/MJYC_RESOURCEMANAGEMENT/38b6ddf4-dc06-43f2-94ed-0db6c81b02af/bdpserverroute/c687256f-6cfc-4a34-a941-7b0bd2d0f708.png);
+    background-size: 48px 48px;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    position: relative;
+}
+.tshop_car{
+  background-image: url({{baseUrl}}/files/MJYC_RESOURCEMANAGEMENT/6077d453-c8c7-4026-be69-df20865cb3dc/bdpserverroute/bea2e6ff-fe57-43cf-989c-d7a5fc77efc1.png);
+    background-size: 48px 48px;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    position: relative;
+}
+.tshop_car_active{
+  background-image: url({{baseUrl}}/files/MJYC_RESOURCEMANAGEMENT/27cdedd3-0809-4515-bfde-9c6ea9f2425c/bdpserverroute/4feb373f-0244-454e-a9d6-d2fdc04106d8.png);
+    background-size: 48px 48px;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    position: relative;
+}
+.tme{
+  background-image: url({{baseUrl}}/files/MJYC_RESOURCEMANAGEMENT/5ef8ba6b-e864-488f-bc8d-bc80070072eb/bdpserverroute/8ad1bd67-f35f-4284-8bb0-98686e8acf05.png);
+    background-size: 48px 48px;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    position: relative;
+}
+.tme_active{
+  background-image: url({{baseUrl}}/files/MJYC_RESOURCEMANAGEMENT/172e4515-871e-4d3a-af59-8bb0856881c9/bdpserverroute/6f30d2fb-2eb1-4ad0-afc3-8772d7516743.png);
+    background-size: 48px 48px;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    position: relative;
+}
+</style>
+
+<ion-tabs class="tabs-icon-top bg-5 tabs-color-active-light">
+  <ion-tab title="" icon-off="thome" icon-on="thome_active" href="#/mall/home">
+    <ion-nav-view name="mall-home"></ion-nav-view>
+  </ion-tab>
+  <ion-tab title="" icon-off="tfind" icon-on="tfind_active" href="#/mall/find">
+    <ion-nav-view name="am-find"></ion-nav-view>
+  </ion-tab>
+  
+  <ion-tab title="" icon-off="cross" icon-on="cross_active" href="#/mall/grassland">
+    <ion-nav-view name="am-grassland"></ion-nav-view>
+  </ion-tab>
+
+  <ion-tab title="" icon-off="tshop_car" icon-on="tshop_car_active" href="#/mall/shopcard">
+    <ion-nav-view name="mall-shop-card"></ion-nav-view>
+  </ion-tab>
+
+  <ion-tab title="" icon-off="tme" icon-on="tme_active" href="#/mall/member">
+    <ion-nav-view name="am-member"></ion-nav-view>
+  </ion-tab>
+</ion-tabs>

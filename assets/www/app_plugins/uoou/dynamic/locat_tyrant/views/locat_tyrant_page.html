@@ -1,0 +1,84 @@
+<!--土豪世界-->
+<style>
+</style>
+<!--<div style="background-color: rgba(0,0,0,0.1); background-image: none;" class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     title="{{pData.title}}" 
+     right="记录"
+     right-click-fun="record()">
+</div>-->
+<div class="bar  bar-header bar-background-color" style="background-color: rgba(0,0,0,0.1);color: #FFFFFF;{{bar_header_ios_height_css}}"> 
+    <div class="row" style="line-height: {{pData.head_line}}px;">
+        <div class="col-33 public_comment_header_bar_padding_left" style="padding:0px 12px;margin-top: 0px;line-height: {{pData.head_line}}px;" ng-click="back()">
+            <i class="icon head_left_back"></i>
+        </div>
+
+        <div class="col-33 " style="font-family: inherit;text-align:center;font-size: 16px;font-weight: 500">{{pData.title}}</div>
+
+        <div class="col-33" ng-click="record()" style="font-family: inherit;font-weight: 500;text-align: right; padding-right: 15px;font-size: 16px;">
+            记录
+        </div>
+    </div>
+</div>
+
+<!-- <div  class="bar bar-heade bar-background-color" style="{{pData.bar_header_ios_height_css}}">
+    <div class="row"  style="width:100%;line-height: {{pData.head_line}}px;color:#FFFFFF;padding:5px 10px 5px 10px;" >
+        <div class=" col-25" style="text-align:left;" ng-click="back()">
+            <i class="icon head_left_back fs-30"></i>
+        </div>
+        <div class="col-50" style="text-align: center;">
+            <span class="fs_4" ng-bind="pData.title"></span>
+        </div> 
+        <div class="col-25" ng-click="record()" style="text-align: right;margin: 0px;   padding: 0px;">
+           记录
+        </div>
+    </div>
+</div> -->
+
+
+
+
+
+
+
+
+
+
+<ion-view hide-nav-bar="true" style="margin-top: 0px;">
+<!--    <ion-nav-buttons side="left">
+        <div class="public_comment_header_bar_padding_left" ng-click="back()">
+            <i class="icon head_left_back"></i>
+        </div>
+    </ion-nav-buttons>
+    <ion-nav-title>
+        <div class="bar_title">{{pData.title}}</div>
+    </ion-nav-title>
+    <ion-nav-buttons side="right">
+        <div class="public_comment_header_bar_padding_right" ng-click="record()">
+           记录
+        </div>
+    </ion-nav-buttons>-->
+    
+    <ion-content style="padding: 0px;">
+        <div class="row" ng-click="sendPack()" style="height: 45%;display: block;
+    background-size: 100% 100%;background-image:url({{pData.resourceBgImg|hostFilter}})">
+            <div class="col" style="height: 92%;"></div>
+            <div ng-if="pData.timer!=''" style="color:rgb(251,252,0);text-align:center; font-size: 12px;" class="col" >
+                {{pData.timer}}后,可以再次抢红包
+            </div>
+        </div>
+        <div class="item fs-16" style=" padding-top:  10px; padding-left:  9px;font-weight: bold; margin-top: 0px;">土豪排行榜</div>
+        
+        
+        <div style="padding:0px 0 10px 0 ;margin:0px;" item="false" 
+             aslist rcode="uoou.daynamic.redpacket.getRedPackedInfo" 
+             temp-url="app_plugins/uoou/dynamic/locat_tyrant/views/locat_tyrant_page_item.html" 
+             list-events="pData.listEvents" params="{{pData.params}}"
+             repeatdata="pData.repeatData"
+             page-size="pData.pageSize"></div>
+        <div footerpadding></div>
+    </ion-content>
+</ion-view>

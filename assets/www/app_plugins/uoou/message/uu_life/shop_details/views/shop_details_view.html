@@ -1,0 +1,214 @@
+<!--店铺详情-->
+
+<style>
+    .share_img{
+        width: 28px; 
+        height: 28px; 
+        margin-top: 8px;
+    }
+    .biaoqian{
+        height: 30px;
+        text-align: center;
+        border:1px #fc952b solid; 
+        padding:5px;
+        color:#fc952b;
+        border-radius: 3px;
+    }
+    .s_button_bar_select{
+        color:#2ad4d4;
+        background-color: #e7f7f7;
+    }
+    .s_button_bar_unselect{
+        color:#2ad4d4;
+        border-bottom:none;
+    }
+
+    .s_bar_select{
+        min-width: 0px;
+        min-height: 0px;
+        font-size: 18px;
+        line-height: inherit;
+        margin: 0px;
+        border-right: 1px solid #ddd;
+        text-align: center;
+        display: block;
+    }
+</style>
+<!--<div class="bar bar-heade bar-light"
+     nav-bar
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     left-css="head_left_back"
+     title="{{pData.detailsData.STORE_NAME}}"
+     right="{{pData.right}}"
+     right-click-fun="share()"
+     >
+</div>-->
+
+<ion-view>
+    
+    <ion-nav-buttons side="left">
+        <div  ng-click="back()"  class="public_comment_header_bar_padding_left">
+            <i class="icon head_left_back"></i>
+        </div>
+    </ion-nav-buttons>
+
+    <ion-nav-title>
+        <div class="fs_4">
+            {{pData.detailsData.STORE_NAME}}
+        </div>
+    </ion-nav-title>
+
+    <ion-nav-buttons side="right">
+        <div class="fs_4" style="line-height:44px;height:44px;padding-right:10px;" ng-bind-html="pData.right" ng-click="share()">
+        </div>
+    </ion-nav-buttons>
+    
+    <ion-content>
+        <!--图集-->
+        <div style="width: 100%; height: 210px; position:relative;" ng-click="imagePicker()">
+            
+            <img ng-src="{{pData.shopImgs|hostFilter}}" style="width: 100%; height: 100%">
+        </div>
+        <div class="row" style="height:33px;position: relative;margin-top: -45px;z-index: 1111;">
+            <div class="col" style="padding:0px;text-align: right;"ng-click="imagePicker()">
+                <span class="fs-14" style="color:#ffffff; ">相册（<span ng-bind="pData.storeImageNum"></span>）</span>
+            </div>
+        </div>
+        <!--店铺基本信息-->
+        <div style="padding-bottom:2px;">    
+            <div class="item item-avatar"  style="border: none;padding-top: 8px; padding-left:80px;min-height: 64px;">
+                <img ng-src="{{pData.detailsData.WXHEADIMG|hostFilter}}" style="width: 48px; height: 48px;max-width: 48px;max-height: 48px;top: 9px;border-radius: 5px;"/>
+                <div style="border: none; margin:2px 0px;font-size: 16px;font-family: '微软雅黑';color: #333333;" ng-bind="pData.detailsData.STORE_NAME"></div>
+
+                <div class="row fs-13" style="padding:0px;height: 16px;padding-top: 3px;">
+                    <div class="col" style="padding:0px 0px 0px 0px;">
+                        <p style="border: none; font-size: 12px;color: #a5a5a5;font-family: '微软雅黑';">商家代码:<span style="font-family: arial;" ng-bind="pData.detailsData.ACCOUNT_MEMBER"></span></p> 
+                    </div>
+                    <div class="col" style="padding:0px 0px 0px 14px;">
+                        <p style="border: none; font-size: 12px;color: #a5a5a5;font-family: '微软雅黑';">交易量:<span style="font-family: arial;" ng-bind="pData.detailsData.BUSINESS_NUM"></span>份</p> 
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--会员等级-->
+        <div class="item row" style="padding:0px; font-size: 13px;width: initial;">
+            <div class="col" style="padding:10px 15px;color:#666666;font-size: 12px; font-family: '微软雅黑'">
+                会员等级：
+                <span ng-if="pData.detailsData.MEMBER_TYPE == '0'">普通用户</span>
+                <span ng-if="pData.detailsData.MEMBER_TYPE == '1'">普通会员</span>
+                <span ng-if="pData.detailsData.MEMBER_TYPE == '2'">中级会员</span>
+                <span ng-if="pData.detailsData.MEMBER_TYPE == '3'">超级会员</span>
+                <span ng-if="pData.detailsData.MEMBER_TYPE == '4'">皇冠会员</span>
+            </div>
+            <div class="col" style=" text-align: center; padding:10px 20px;">
+                <span style="border: none;color:#666666;font-size: 12px;font-family: '微软雅黑'">商家信誉：</span><span style="font-family: 'Arial';color:#ff6600;" >{{pData.detailsData.REPUTATION}}分</span> 
+            </div>
+        </div>
+        <!--图标信息层-->
+        <div class="item item-avatar" style=" padding: 0px;margin-top: 5px;">
+            <div class="item item-avatar row" style="padding: 0px 12px; margin-top: 2px; height: 86px; width:70%; float: left; border: none">
+                <div class="col" ng-click="businessAddress()"  style="margin: auto; text-align: center; color: #000">
+                    <img ng-src="app_plugins/uoou/message/uu_life/shop_details/img/3.6_1.png" style="width: 30px; height: 30px"/>
+                    <br/><span>商家地址</span>
+                </div>
+                <div ng-click="shopTime()" class="col" style="margin: auto; text-align: center;color: #000 ">
+                    <img ng-src="app_plugins/uoou/message/uu_life/shop_details/img/3.6_2.png" style="width: 30px; height: 30px;"/>
+                    <br/><span>营业时间</span>
+                </div>
+                <a class="col" href="tel:{{pData.serviceTel}}" style="margin: auto; text-align: center; color: #000">
+                    <img ng-src="app_plugins/uoou/message/uu_life/shop_details/img/3.6_3.png" style="width: 30px; height: 30px;"/>
+                    <br/><span>服务热线</span>
+                </a>
+            </div>
+            <div class="" style="width: 30%; height:100%; float: left; padding:10px 0px 10px 18px;">
+                <button ng-if="pData.fllowStatus == '0'" class="button button-light" ng-click="addFollow()" style="width:80%; height: 30px; min-height:25px; float:left; border-color:#2ad4d4; color:#2ad4d4; line-height: 0px;">
+                    <span>关  注</span> 
+                </button>
+                <button ng-if="pData.fllowStatus == '1'" class="button button-light" ng-click="deleteFollow()" style="width:80%; height: 30px; min-height:25px; float:left; border-color:#2ad4d4; color:#2ad4d4; line-height: 0px;">
+                    <span>已关注</span>
+                </button>
+
+                <button class="button button-calm button-positive" ng-click="nextOrder()" style="width:80%; height: 30px; min-height:25px; float: left; margin-top: 6px; background-color: #2ad4d4; line-height: 0px;">
+                    下订单
+                </button>
+            </div>
+        </div>
+        <!--标签-->
+        <div ng-if="pData.detailsDatatab!=null " class="item item-avatar fs-13"  
+             style=" padding: 0px; padding: 5px 10px 5px 10px; margin-top:5px;">
+            <div class="row row-wrap" style="padding: 5px 3px;">
+                <div class="col-25" style="padding: 3px;" ng-repeat="item in pData.detailsDatatab">
+                    <div class="biaoqian">
+                        <span  ng-bind="item.TAB_NAME"></span>    
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <!--活动 评价 简介 招聘-->
+        <div style="height: 43px;background-color: white;margin-top: 5px;" ng-click="shopEvaluation()">
+            <div buttonbar a-click="testAClick" params="{{pData.bData}}" bwith="25%" btemplte="app_plugins/uoou/message/uu_life/shop_details/views/select_button_item.html" controlid="121321" style="border-top:0px #ddd solid; border-bottom:1px #dddddd solid;"></div>
+        </div>
+        <div buttonbar a-click="testAClick" params="{{pData.bData}}" style="height:1px;"></div>
+        
+        <!--活动-->
+        <div class="item item-body" ng-if="pData.id == '1'" style="border: none; padding: 0px;">
+            
+            <textarea ng-bind-html="pData.detailsData.ACTIVITY_INTR" readonly="readonly" style="width: 100%;min-height: 100px;overflow:hidden; resize:none;font-size: 13px;background-color: #FFF;margin-left: 10px;padding-right: 12px;"></textarea>
+            
+            <!--<div ></div>-->
+            <!--<p style="border: none;margin: 0px; margin:0px 5% 0px 5%; font-size: 13px;"><span ></span></p>-->
+            <img class="full-image" ng-src="{{pData.detailsData.ACTIVITY_INTR_IMG| hostFilter:'ImageJSON'}}" style="width: 90%; margin:14px 5% 10px 5%;">
+        </div>
+
+        <!--评价-->
+        <div class="list" ng-if="pData.id == '2'" style="border: none; padding: 0px;">
+
+            <div class="list" item="false" aslist
+                 rcode="uoou.uulife.shopdetailsevalist"
+                 temp-url="app_plugins/uoou/message/uu_life/shop_details/views/shop_eva_page.html" 
+                 list-events="pData.listEvents"
+                 repeatdata="pData.repeatData"
+                 params="{{pData.params}}">
+            </div>
+        </div>
+        
+        
+        <!--简介-->
+        <div class="item item-body" ng-if="pData.id == '3'" style="border: none; padding: 0px;">
+            <textarea ng-bind-html="pData.detailsData.STORE_INTR" readonly="readonly" style="width: 100%;min-height: 100px;overflow:hidden; resize:none;font-size: 13px;background-color: #FFF;margin-left: 10px;padding-right: 12px;"></textarea>
+            <!--<p style="border: none;margin: 0px; margin:0px 5% 0px 5%; font-size: 13px;"><span ng-bind="pData.detailsData.STORE_INTR"></span></p>-->
+            <img class="full-image" ng-src="{{pData.detailsData.STORE_INTR_IMG| hostFilter:'ImageJSON'}}" style="width: 90%; margin:14px 5% 0px 5%;">
+        </div>
+        
+        
+        <!--招聘-->
+        <div class="item item-body" ng-if="pData.id == '4'" style="border: none; padding: 0px;">
+            <textarea ng-bind-html="pData.detailsData.RECRUITMENT_INFO" readonly="readonly" style="width: 100%;min-height: 100px;overflow:hidden; resize:none;font-size: 13px;background-color: #FFF;margin-left: 10px;padding-right: 12px;"></textarea>
+           
+            <!--<p style="border: none;margin: 0px; margin:0px 5% 0px 5%; font-size: 13px;"><span ng-bind="pData.detailsData.RECRUITMENT_INFO"></span></p>-->
+            <img class="full-image" ng-src="{{pData.detailsData.RECRUITMENT_INFO_IMG| hostFilter:'ImageJSON'}}" style="width: 90%; margin:14px 5% 0px 5%;">
+        </div>
+        <div style="margin-top:10px; color:#999999;">
+            <center><span>以上信息，最终解释权归商铺所有</span></center>  
+        </div>
+
+        <div footerpadding></div>
+    </ion-content>
+
+</ion-view>
+<!--发消息-->
+<div class="bar bar-footer " style="display: inline;height: 50px;background-color: #f5f5f5;background-position:bottom;padding: 0px;">
+    <div class="row" style="padding:0px;margin:0px;">
+        <div class="col" style="width: 335;height:48; padding:0px 6px 0px 6px;">
+            <button class="button button-block button-light" style="margin-top: 0px;background-color: #2ad4d4;font-family: 微软雅黑;font-size: 18px;color: #ffffff;"  ng-click="sendMessage()">
+                <span>发消息</span>
+            </button>
+        </div>
+    </div>
+</div>
+<!--<div class="bar bar-footer  btn-energized1 CM ios-margin-button clear_confirm_bar" style="background-color: rgb(236,239,239);" ng-click="sendMessage()">
+    <span class="fs-18 cl-10 CM vmiddle">发消息 </span>
+  </div>-->

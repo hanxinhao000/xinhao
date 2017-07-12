@@ -1,0 +1,95 @@
+<div class="item-box  bg-2">
+  <a style="border-bottom:0px;" class="item item-thumbnail-left" ng-click="orderDetails(value.ID)">
+  <img ng-src="{{value.SPECIMAGES|hostFilter}}" class="rd-6" >
+  <h3 style="color:#010101;" ng-bind="value.NAME"></h3>
+<!--   <p ng-bind="value.ORDERCODE" style="font-size:12px;line-height:5px;white-space:normal;max-height:2px;overflow:hidden;"></p> -->
+<h4 class="fs-12 cl-02">订单编号:<i ng-bind="value.ORDERCODE"></i>  </h4>
+  <table class="full-table fs-12 cl-02 pt-5">
+    <colgroup style="width:60%;"></colgroup>
+    <colgroup style="width:40%;"></colgroup>
+    <tr class="full-w">
+      <td colspan="2">
+        <span>订单状态:</span>
+        <span ng-bind="value.ORDERSTATE|enum:OrderStateEnum"></span>
+      </td>
+    </tr>
+    <tr class="full-w">
+      <td>
+         <span>数量:</span><i ng-bind="value.SALENUMBER"></i>
+      </td>
+      <td class="cl-03">
+          <span >￥<i ng-bind="value.TOTALPRICE|number:2"></i></span>
+      </td>
+    </tr>
+    <tr class="full-w">
+      <td colspan="2">
+        <span >送货方式:</span>
+        <span ng-bind="value.SHIPPING_METHOD|enum:OrderShippingMethodEnum"></span>
+      </td>
+    </tr>
+  </table>
+</a>
+<div class="full-w CM bg-2" ng-if="value.TABNUMBER!=0">
+  <div class="diveline bg-6" style="width:90%;margin: 0px 15px 0px 16px;"></div>
+</div>
+<div ng-if="value.TABNUMBER!=0" style="text-align:right;padding:0px 15px 0px 0px;margin:0px;" ng-switch="{{value.TABNUMBER}}" class="fs-12 ">
+    <div class="col" ng-switch-when="1">
+      <a style="line-height:42px;" class="button icon-left ion-android-cancel button-clear cl-05" ng-click="myorderCancel('{{value.ID}}')">取消</a>
+    </div>
+    <div class="col" ng-switch-when="2">
+        <!-- <button class="button button-small button-positive" >确认收货</button> -->
+        <a style="line-height:42px;" class="button icon-left ion-ios-checkmark button-clear cl-05" ng-click="myorderConfirreceiptclick('{{value.ID}}')">确认收货</a>
+       <!--  <button class="button button-small button-positive" ng-click="myorderReturnGoods('{{value.ID}}')">&nbsp;&nbsp;&nbsp;退&nbsp;&nbsp;货&nbsp;&nbsp;&nbsp;</button> -->
+    </div>
+    <div class="col" ng-switch-when="3">
+    <!--   <button class="button button-small button-positive" ng-click="myorderConfirmationService('{{value.ID}}')">确认服务</button> -->
+        <a style="line-height:42px;" class="button icon-left ion-ios-checkmark button-clear cl-05" ng-click="myorderConfirmationService('{{value.ID}}')">确认服务</a>
+    </div>
+    <div class="col" ng-switch-when="4">
+      <!-- <button class="button button-small button-positive" ng-click="myorderEvaluate('{{value.ID}}')">&nbsp;&nbsp;&nbsp;评&nbsp;&nbsp;价&nbsp;&nbsp;&nbsp;</button> -->
+        <a style="line-height:42px;" class="button icon-left ion-chatbox-working button-clear cl-05" ng-click="myorderEvaluate('{{value.ID}}')">评价</a>
+        <span class="v-spline lh-42 mr-5" style="margin:0px 16px 0px 10px;"></span>
+        <a style="line-height:42px;" class="button icon-left ion-social-whatsapp button-clear cl-05" ng-click="orderComplain('{{value.ID}}')">投诉</a>
+    </div>
+    <div class="col" ng-switch-when="5">
+      <!-- <button class="button button-small button-positive" ng-click="myorderChaseratings('{{value.ID}}')">&nbsp;&nbsp;&nbsp;追&nbsp;&nbsp;评&nbsp;&nbsp;&nbsp;</button> -->
+        <a style="line-height:42px;" class="button icon-left ion-ios-checkmark button-clear cl-05" ng-click="myorderChaseratings('{{value.ID}}')">追评</a>
+    </div>
+  </div>
+  <div class="full-w CM bg-2" style="border-bottom:1px solid #ddd;">
+  </div>
+</div>
+<!-- 
+<ion-item class="item-thumbnail-left item-icon-left item-remove-animate">
+  <div class="row">
+    <div class="col-10">
+    </div>
+    <div class="col col-20" ng-click="orderDetails(value.ID)">
+      <img style="width:64px;height: 64px" ng-src="{{value.MAINIMAGES | hostFilter}}">
+    </div>
+    <div class="col" ng-click="orderDetails(value.ID)">
+      <label>{{value.ORDERID}}</label><br>
+      <label>{{value.NAME}}</label><br>
+      <label><font color="red">￥{{value.SALEPRICE | number}}</font> X </label><label name="salenumber" value="{{value.SALENUMBER}}">{{value.SALENUMBER}}</label>
+      <div style="display:none" name="orderid" value="{{value.ID}}">{{value.ID}}</div>
+    </div>
+  </div>
+  <div class="row" style="text-align: right;" ng-switch="{{value.TABNUMBER}}">
+    <div class="col" ng-switch-when="0"></div>
+    <div class="col" ng-switch-when="1"><button class="button button-small button-positive" ng-click="myorderCancel('{{value.ID}}')">取消订单</button></div>
+    <div class="col" ng-switch-when="2">
+        <button class="button button-small button-positive" ng-click="myorderConfirreceiptclick('{{value.ID}}')">确认收货</button>
+        <button class="button button-small button-positive" ng-click="myorderReturnGoods('{{value.ID}}')">&nbsp;&nbsp;&nbsp;退&nbsp;&nbsp;货&nbsp;&nbsp;&nbsp;</button>
+    </div>
+    <div class="col" ng-switch-when="3">
+      <button class="button button-small button-positive" ng-click="myorderConfirmationService('{{value.ID}}')">确认服务</button>
+    </div>
+    <div class="col" ng-switch-when="4">
+      <button class="button button-small button-positive" ng-click="myorderEvaluate('{{value.ID}}')">&nbsp;&nbsp;&nbsp;评&nbsp;&nbsp;价&nbsp;&nbsp;&nbsp;</button>
+    </div>
+    <div class="col" ng-switch-when="5">
+      <button class="button button-small button-positive" ng-click="myorderChaseratings('{{value.ID}}')">&nbsp;&nbsp;&nbsp;追&nbsp;&nbsp;评&nbsp;&nbsp;&nbsp;</button>
+    </div>
+  </div>
+</ion-item>
+ -->

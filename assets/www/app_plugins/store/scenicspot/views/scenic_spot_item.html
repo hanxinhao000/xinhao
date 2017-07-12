@@ -1,0 +1,46 @@
+<a class="item item-thumbnail-left" style=" height: 115px; padding-left: 115px;padding-right: 0px;" ng-click="getDetails(value.ID)">
+    <img style="max-width: 96px; max-height: 96px;top:10px;left:10px;"  ng-src="{{value.LIST_IMAGE| hostFilter:'ImageJSON'}}">
+    <div class="row " style="padding: 0px;">
+    	<h2 class="fs-13 text-overflow-elipsis" ng-bind="value.STORE_NAME"></h2>
+    </div>
+    <div class="row cl-19 fs-13" style="padding: 0px;padding-top:4px;">
+		<div class="col" style="padding: 0px;">
+			<div class="row" style="padding: 0px;">
+				<div as-start model="s" value="{{value.PJPXDF | number:0}}"></div>
+				<div class="recommend_list_label_f_css">{{value.PJPXDF==''?"0":value.PJPXDF}}分</div>
+			</div>
+		</div>
+		<div class="col" style="padding: 0px;">
+			<span class="fs-13 cl-19">
+				<span ng-bind="value.YSCPZS"></span>人消费
+			</span>
+		</div>
+    </div>
+	<div class="row" style="padding: 0px;padding-top:4px;">
+		<h3 class="fs-13" style="color: #FF0000">￥<span ng-bind="value.PJJG|number:0"></span>起</h3>
+	</div>
+    <div class="row" style="width:100%;padding-left: 0px;display: -webkit-flex;">
+    	<div style="width:38%;padding-left: 0px;padding-top: 4px;">
+			<div class="row" ng-if="value.WYW_ID" style="padding-left: 0px;">
+                <div class="col" style="padding:0px;width:0px;">
+                    <div class="list-btn">
+                        <span class="fs-12" ng-bind="value.WYW_ID"></span>
+                    </div>
+                </div>
+			</div>
+    	</div>
+    	<div style="width:62%;text-align: right">
+    		<div class="row" style="padding-right: 0px;">
+				<div class="col text-overflow-elipsis" style="text-align: right;padding-left: 0px;padding-right: 0px;">
+					<span class="fs-12 " ng-bind="value.SSJQDQID"></span>&nbsp;|&nbsp;<span class="fs-12" ng-bind="value.DISTANCE"></span>km
+				</div>
+				<!--<div class="col text-overflow-elipsis" style="text-align: left;padding-left: 0px;-->
+    <!--padding-right: 0px;">-->
+
+				<!--</div>-->
+
+    		</div>
+    		
+    	</div>
+    </div>
+</a>

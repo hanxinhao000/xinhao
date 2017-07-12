@@ -1,0 +1,27 @@
+<!-- <div class="row" style="text-align: center;padding:0;margin-bottom: 10px;">
+    <div style="width:10%;">
+    </div>
+    <div class="bg-2" style="width:80%;height:105px;padding:10px 0 0 0;">
+      <img ng-src="{{value.ICONPATH|hostFilter:'ImageJSON'}}" style="width:90%;height: 67px;">
+      <div style="text-align: left;padding-left: 20px;color: #fd0076;" ng-if="value.USESTATUS==1&&value.GUOQI=='true'">
+        {{value.EXPIRED}}
+      </div>
+    </div>
+    <div style="width:10%;">
+    </div>
+</div> -->
+<div style="padding: 20px;">
+    <div style="background:#FFFFFF;padding: 10px 15px;">
+        <img style=" width: 100%;" ng-src="{{value.ICONPATH|hostFilter:'ImageJSON'}}">
+        <div class="row" style="padding:10px 0 10px 0;">
+            <div class="col" style="text-align:left;padding:0px;">领取时间:{{value.GETDATETIME}}</div>
+            <div class="col" style="text-align:right;padding:0px;">过期时间:{{value.EXPIRED}}</div>
+        </div>
+        <div class="row" style="padding:0px 0 10px 0;">
+            <div class="col" style="text-align:left;padding:0px;"ng-if="value.USESTATUS==1&&value.GUOQI=='false'">使用状态:未过期</div>
+            <div class="col" style="text-align:left;padding:0px;"ng-if="value.USESTATUS==1&&value.GUOQI=='true'">使用状态:已过期</div>
+            <div class="col" style="text-align:left;padding:0px;"ng-if="value.USESTATUS==2">使用状态:已使用</div>
+            <div class="col" style="text-align:right;padding:0px;"ng-if="value.USESTATUS==2">消费时间:{{value.USEDATETIME}}</div>
+        </div>
+    </div>
+</div>

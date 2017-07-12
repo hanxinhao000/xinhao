@@ -1,0 +1,26 @@
+<!-- 评论list -->
+<div class="list">
+  <div class="item item-avatar" style="border-bottom: none;
+">
+    <img ng-src="{{value.WXHEADIMG | hostFilter:'ImageJSON'}}" >
+    <h2 style="height:20px;" ng-bind="{{value.MEMBERNAME}}"></h2>
+    <div class="row" style="border-bottom: none;
+    padding-bottom: 0px;">
+        <div class="col-20" as-start model="s" value="{{value.STARVALUE}}"></div>
+        <div class="col-50" ng-bind="value.EVALDATETIME1"></div>
+    </div>
+  </div>
+  <div class="item item-body" style="border: none;
+    padding-top: 0px;">
+    <div class="row row-wrap">
+      <div class="col col-20" ng-repeat="item in value.EVALIMAGES" style="text-align: center;padding: 5px 0 5px 0;">
+        <img ng-src="{{item.path | hostFilter:'ImageJSON'}}" ng-click="Jump('{{value.EVALIMAGES}}')"  style="width: 80%;height:auto;" class='img-responsive'/>
+      </div>
+    </div>
+    <p ng-bind="value.CONTENT1"></p>
+  </div>
+  <div class="item item-image">
+    
+  </div>
+
+</div>

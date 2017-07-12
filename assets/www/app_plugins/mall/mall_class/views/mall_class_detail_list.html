@@ -1,0 +1,12 @@
+
+<div ng-click="toGoodDeatils('{{value.ID}}','{{value.TITLE}}')"  class="mall_home_mallActive_main" style="position:relative;height:128px;padding:0px;margin-top:6px;">
+  <div class="item mall_storage_back" >
+    <img style="height:auto;overflow:hidden;min-height:128px;" class="full-image" ng-src="{{value.LISTIMAGE|hostFilter}}" alt="{{value.NAME}}">
+  </div>
+
+  <div class="row mall_storage_txt_start">
+    <div class="col-50 pl-10 mall_storage_txt_title ng-binding" ng-bind="value.TITLE"></div>
+    <div class="col-25 mall_storage_txt_content"></div>
+    <div class="col-25 mall_storage_txt_start_bar">购买</div>
+  </div>
+</div>

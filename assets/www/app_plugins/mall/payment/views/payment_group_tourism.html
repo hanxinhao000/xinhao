@@ -1,0 +1,165 @@
+<!--跟团游订单提交界面-->
+
+
+<!--产品主信息 start-->
+<div ng-repeat="citem in pData.shopInfo">
+<div class="bg-2">
+	<div class="row list item pr-10 pl-10 ">
+		<div class="col">
+			<span class="cl-0 fs-13" ng-bind="citem.name"></span>
+		</div>
+	</div>
+	<div class="row list item pr-10 pl-10 ">
+		<div class="col cl-12 fs-13">
+			<span >出发日期:</span>
+		</div>
+		<div class="col cl-11 cr">
+			<span class="cl-0 fs-13" >
+				<i ng-bind="citem.dates|dateFormat:'yyyy-MM-dd'"></i>
+			</span>
+		</div>
+	</div>
+</div>
+
+<div class="split-line-2" style="margin-top:0px;"></div>
+<div class="bg-2">
+	<div class="row list pt-10 pr-10 pl-10" >
+		<div class="col cl-12 fs-12" style="color:#5393FC;" >
+			<i class="icon ion-ios-checkmark-outline" ng-if="citem.isGroup==1"></i>
+			<span ng-if="citem.isGroup==1">铁定成团</span>
+			<i class="fs-16 icon ion-ios-calendar-outline pl-10" ng-if="citem.everySunday"></i>
+			<span ng-bind="citem.everySunday" ng-if="citem.everySunday"></span>
+		</div>
+		<div>
+			
+		</div>
+	</div>
+	<div class="row cl-12">
+		<div class="col CM fs-13 pt-10">
+			<div ng-click="switchShowOrderMsg()">
+				<span style="display:block">预订须知</span>
+				<span class="fs-16 cl-0">&nbsp;&nbsp;
+					<i ng-if="!pData.showOrderMsg" class="cl-0 icon ion-ios-arrow-down"></i>
+					<i ng-if="pData.showOrderMsg" class="cl-0 icon ion-ios-arrow-up"></i>
+					&nbsp;&nbsp;
+				</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="row" ng-show="pData.showOrderMsg">
+		<div class="col" ng-if="pData.orderMsg">
+			<div ng-bind-html="pData.orderMsg|imgFmt"></div>
+		</div>
+	</div>
+</div>
+
+<!--商品主要信息 end-->
+<div class="split-line-2"></div>
+
+<div class="bg-2">
+	<div class="row list item pr-10 pl-10 ">
+		<div class="col cl-12">
+			<span>成人(单价<i ng-bind="citem.fPrice|number:2"></i>)</span>
+		</div>
+		<div class="col cr">
+			<div class="vmiddle" outdata="citem.buyNumber" a-click="calcPayment" buy-number></div>
+		</div>
+	</div>
+	<div class="row list item pr-10 pl-10 " ng-if="citem.childPrice">
+		<div class="col  cl-12">
+			<span>儿童(单价<i ng-bind="citem.childPrice|number:2"></i>)</span>
+		</div>
+		<div class="col cr">
+			<div class="vmiddle" min-data=0 outdata="citem.childBuyNumber" a-click="calcPayment" buy-number ></div>
+		</div>
+	</div>
+	<div class="row list item pr-10 pl-10 pt-5 pb-5 ">
+		<div class="col-20  cl-12 vmiddle">
+			<span>&nbsp;起差说明:</span>
+		</div>
+		<div class="col" ng-bind="citem.diffInstr">
+			
+		</div>
+	</div>
+</div>
+
+	<div class="split-line-2" style="margin-top:0px;"></div>
+<div class="list bg-2" >
+	<div class="pl-10 row list item fs-14">
+		<div class="col" style="color:#363636;">游客信息</div>
+	</div>
+	<div class="pl-10 row list item fs-14">
+		<div class="col fs-13" >
+			<i class="vmiddle fs-16 icon ion-ios-person-outline" style="color:#5393fc;font-size:23px;margin-top:5px;"></i>
+			<span class="vmiddle">
+			请填写&nbsp;<i ng-bind="orderData.vesterNumber" style="color:#5393fc;"></i>&nbsp;名游客信息
+			</span>
+		</div>
+		<div class="col cr" ng-click="switchChildeData()">
+			<i class="fs-20 cl-0 vmiddle icon ion-ios-arrow-down" ng-if="orderData.childeDataShow"></i>
+			<i class="fs-20 cl-0 vmiddle icon ion-ios-arrow-up"  ng-if="!orderData.childeDataShow"></i>
+		</div>
+	</div>
+</div>
+<div ng-show="orderData.childeDataShow" class="bg-2 mt-10 ml-10 mr-10" ng-repeat="vitem in orderData.groupOrderInfo track by $index">
+	<div class="row pl-5">
+		<div class="col-33 vmiddle">
+			<span>游客姓名</span>
+		</div>
+		<div class="col cr">
+			<input style="margin-left:auto;" type="text" ng-model="vitem.vname" placeholder="请输入游客姓名">
+		</div>
+	</div>
+	<div class="row pl-5">
+		<div class="col-33 vmiddle">
+			<span>身份证号码</span>
+		</div>
+		<div class="col cr">
+			<input  style="margin-left:auto;"  type="text" ng-model="vitem.identity_code" maxlength="18" minlength="16" placeholder="请输入身份证号码">
+		</div>
+	</div>
+	<div class="row pl-5">
+		<div class="col-33 vmiddle">
+			<span>联系电话</span>
+		</div>
+		<div class="col cr">
+			<input  style="margin-left:auto;"  type="number" maxlength="11" ng-model="vitem.contactPhone" placeholder="请输入联系电话">
+		</div>
+	</div>
+</div>
+
+<div class="split-line-2" style="margin-top:0px;"></div>
+<div class="list bg-2" >
+	<div class="pl-10 row list item fs-14">
+		<div class="col" style="color:#363636;">联系人信息</div>
+	</div>
+</div>
+<div class="bg-2 mt-10 ml-10 mr-10">
+	<div class="row pl-5">
+		<div class="col-33 vmiddle">
+			<span>姓名</span>
+		</div>
+		<div class="col cr">
+			<input  style="margin-left:auto;"  type="text" ng-model="orderData.contact" placeholder="请输入联系人">
+		</div>
+	</div>
+	<div class="row pl-5">
+		<div class="col-33 vmiddle">
+			<span>手机号</span>
+		</div>
+		<div class="col cr">
+			<input  style="margin-left:auto;"  type="number" minlength="11" maxlength="11" ng-model="orderData.contactPhone" placeholder="请输入联系电话">
+		</div>
+	</div>
+	<div class="row pl-5">
+		<div class="col-33 vmiddle">
+			<span>备注</span>
+		</div>
+		<div class="col cr">
+			<input  style="margin-left:auto;"  type="text" ng-model="citem.BUYERS_MESSAGE" placeholder="无">
+		</div>
+	</div>
+</div>
+
+</div>

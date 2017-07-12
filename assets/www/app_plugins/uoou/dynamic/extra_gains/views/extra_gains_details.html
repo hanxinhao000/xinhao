@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<!--
+-->
+<style>
+    .btn-push{
+        background-color: rgb(42,212,212);
+        height: 35px;
+        color: white;
+        border-radius: 3px;
+
+        border:0px;
+    }
+</style>
+<!--
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="外快专区">
+</div>-->
+<ion-view>
+    
+    
+    <ion-nav-buttons side="left">
+        <div  ng-click="back()"  class="public_comment_header_bar_padding_left">
+            <i class="icon head_left_back"></i>
+        </div>
+    </ion-nav-buttons>
+    
+   
+    <ion-nav-title>
+          外快专区
+    </ion-nav-title>
+	
+    
+    
+    <ion-content style="background-color: rgb(236,239,239);">
+        <div class="item item-thumbnail-left item-icon-right" style=" height: 75px; padding:16px 0px 0px 75px;">
+            <img style="max-width: 50px; max-height: 50px;top:10px;left:10px;"  ng-src="{{pData.demandData.WXHEADIMG| hostFilter}}">
+            <div class="row " style="padding-top: 0px;">
+                昵称：<span class="fs-12 text-overflow-elipsis" ng-bind="pData.demandData.MEMBERNAME"></span>
+            </div>
+            <div class="row ">
+                任务状态：<span class="fs-12 text-overflow-elipsis" ng-bind="pData.demandData.STATUS"></span>
+            </div>
+        </div>
+        <div class="item">
+            <div class="row " style="white-space: normal;">
+                <span>
+                    <span class="fs-12" ng-bind="pData.demandData.PLACE"></span>，
+                    距离<span class="fs-12" ng-bind="pData.demandData.DISTANCE"></span>km
+                </span>
+            </div>
+        </div>
+        <div class="item">
+            <div class="row ">
+                发布时间：<span class="fs-12 text-overflow-elipsis" ng-bind="pData.demandData.RELEASE_TIME"></span>
+            </div>
+        </div>
+        <div class="item">
+            <div class="row ">
+                佣金：<span class="fs-12">
+                        <span class="fs-12 text-overflow-elipsis" ng-bind="pData.demandData.REMUNERATION | ptoy">
+
+                        </span>
+                  元</span>
+            </div>
+        </div>
+        <div class="item">
+            <div class="row ">
+                分类：<span class="fs-12 text-overflow-elipsis" ng-bind="pData.demandData.CLASS_NAME"></span>
+            </div>
+        </div>
+        <div class="item">
+            <div class="row " style="min-height: 80px;">
+                任务说明：<span class="fs-12" style="white-space: normal;" ng-bind="pData.demandData.CONTENT"></span>
+            </div>
+        </div>
+        <div class="row row_input" style="width: 100%; height: 120px; background-color: #fff;" ng-if="pData.demandData.DEMAND_STATUS=='3'">
+                <div  class="row_input_title" style=" margin-left: 12px;">
+                    <span>拒绝理由：</span>
+                </div>
+                <div  class="row_input_in" >
+                    <textarea style="padding-left: 8px;background-color: rgb(246,246,246);width: 100%;
+                              overflow-y:visible;height: 100px;resize:none;" ng-model="pData.decline_cause"/></textarea>
+                </div>
+            </div>
+    </ion-content>
+</ion-view>
+<div class="bar bar-footer" style="display: inline;height: 50px;background-color: rgb(236,239,239);background-position:bottom;" 
+     ng-if="pData.type == '0'&&!pData.personData">
+    <div class="row" style="padding: 0px;">
+        <div style="padding: 0px;text-align: center;width:80%;margin: auto;" >
+            <div ng-click="taking()" class="btn-push" style="height: 34px;margin: auto;text-align: center;
+                 font-size: 15px;padding: 7px;">接单</div>
+        </div>
+    </div>   
+</div>
+<div class="bar bar-footer" style="display: inline;height: 50px;background-color: rgb(236,239,239);background-position:bottom;" ng-if="pData.demandData.DEMAND_STATUS=='7'">
+    <div class="row" style="padding: 0px;">
+        <div class="col" style="padding: 0px;text-align: center;width:100%;" >
+            <div ng-click="AgreeRefund()" class="btn-push" style="width:90%;height: 34px;margin: auto;text-align: center;
+                 font-size: 15px;padding: 7px;">同意退款</div>
+        </div>
+         <div class="col" style="padding: 0px;text-align: center;width:100%;" >
+            <div ng-click="refuseRefund()" class="btn-push" style="width:90%;height: 34px;margin: auto;text-align: center;
+                 font-size: 15px;padding: 7px;">拒绝退款</div>
+        </div>
+    </div>   
+</div>

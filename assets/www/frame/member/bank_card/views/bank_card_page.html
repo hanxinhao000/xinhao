@@ -1,0 +1,38 @@
+<!-- 充值支付清单 -->
+<!--<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     right="添加"
+     right-click-fun="addBackCard()"
+     title="绑定账户">
+</div>-->
+<ion-view>
+    
+    <ion-nav-buttons side="left">
+        <div ng-click="back()"  class="public_comment_header_bar_padding_left">
+            <i class="icon head_left_back"></i>
+        </div>
+    </ion-nav-buttons>
+
+    <ion-nav-title>
+        <div class="fs_4">
+            绑定账户
+        </div>
+    </ion-nav-title>
+
+    <ion-nav-buttons side="right">
+        <div class="fs_4" style="line-height:44px;height:44px;margin-right: 10px;margin-top: -3px;" ng-click="addBackCard()">
+            添加
+        </div>
+    </ion-nav-buttons>
+
+    
+    <ion-content>
+        <div item="false"  style="padding:0px;margin:0px;" aslist rcode="mall_member_bank_info"
+             list-events="pageData.listEvents" temp-url="frame/member/bank_card/views/bank_card_item.html" params="{{pageData.params}}" repeatdata="pageData.repeatdata">
+        </div>
+        <div footerpadding></div>
+    </ion-content>
+</ion-view>

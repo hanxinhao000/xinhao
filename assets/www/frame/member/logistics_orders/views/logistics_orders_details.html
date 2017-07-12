@@ -1,0 +1,63 @@
+<!-- 物流接单详情 -->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="物流接单详情">
+</div>
+<ion-view view-title="物流接单详情">
+    <ion-content>
+        <ion-list class="disable-user-behavior">
+            <div class="list">
+                <ion-item type="item-text-wrap" class="item" style="padding:0px;font-size:13px;">
+                    <label  class="item item-input" style="padding:6px 10px 5px 16px;">
+                        <span class="input-label-nw">订单状态:</span>
+                        <span ng-bind="pageData.statusname">
+                        </span>
+                    </label>
+
+                    <label  class="item item-input" style="padding:6px 10px 5px 16px;">
+                        <span class="input-label-nw">运费:</span>
+                        <span ng-bind="pageData.freight | ptoy"></span>
+                    </label>
+
+                    <label  class="item item-input" style="padding:6px 10px 5px 16px;">
+                        <span class="input-label-nw">押金:</span>
+                        <span ng-bind="pageData.deposit | ptoy"></span>
+                    </label>
+
+                    <label  class="item item-input" style="padding:6px 10px 5px 16px;">
+                        <span class="input-form-label">运送物品说明:<br>
+                            <div ng-bind-html="pageData.explain"></div>
+                        </span>
+                    </label>
+
+                    <label  class="item" style="padding:6px 10px 5px 16px;">
+                        <span class="">出发地:<br>
+                            <div class="row" style="padding: 7px 0 7px 0;">
+                                <div class="col col-50" style="padding:0px;">联系人:{{pageData.fromContacts}}</div>
+                                <div class="col col-50" style="padding:0px;">联系电话:{{pageData.fromContactPhone}}</div>
+                            </div>
+                            地址:{{pageData.fromAddres}}
+                        </span>    
+                    </label>
+                    <label  class="item" style="padding:6px 10px 5px 16px;">
+                        <span class="">目的地:<br>
+                            <div class="row" style="padding: 7px 0 7px 0;">
+                                <div class="col col-50" style="padding:0px;">联系人:{{pageData.toContacts}}</div>
+                                <div class="col col-50" style="padding:0px;">联系电话:{{pageData.toContactPhone}}</div>
+                            </div>
+                            地址:{{pageData.toAddres}}
+                        </span>    
+                    </label>
+                </ion-item>
+                <div>
+                </div>
+            </div>
+        </ion-list>
+        <div footerpadding></div>
+    </ion-content>
+    <div class="bar bar-foote ios-margin-buttonr" ng-if="pageData.statusname == '待接单'">
+        <button  ng-click="confirmOrder()" class="button button_with  myinfoborder-radius h-43 agriculture_project_title">确定接单</button>
+    </div>
+</ion-view>

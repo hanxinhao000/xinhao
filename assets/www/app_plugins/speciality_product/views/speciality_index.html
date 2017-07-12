@@ -1,0 +1,51 @@
+<!--特产广告div-->
+<div class="swiper-container bg-10 specialty_swiper" id="specialty_swiper">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide" ng-repeat="item in pageData.specialtyData">
+            <img ng-click="toPage('{{item.URL}}')" ng-src="{{item.LISTIMGAGE|hostFilter }}" style="width:100%;">
+        </div>
+    </div>
+    <div class="swiper-pagination" id="swiper-pagination"></div>
+</div> <!--特产广告div   end-->
+<div class="row row-wrap" style="width:100%;background:#FFFFFF;padding:0;">
+  	<div ng-repeat="item in pageData.classifyData" style="width:20%;text-align: center;padding: 10px 0 10px 0;">
+    	<img ng-src="{{item.LISTIMAGE|hostFilter}}" ng-click="Jump('{{item.ID}}')" style="width:50px;height:auto;" class='img-responsive'/>
+<!--     <span style="display:block;width:100%;text-align: center;font-size:13px;color:#333333;">{{item.title}}</span> -->
+  	</div>
+</div>
+<div class="m-0 h-4 bg-10">
+</div>
+
+<div mall-shelves-directive page-type="3" style="height: 100%;"></div>
+<!-- 特色故事 -->
+<!-- <div class="row responsive-sm" ng-repeat="item in pageData.featureStoryData">
+	<div style="width:100%;">
+		<div style="height:130px;width:100%;padding:0px;background-image:url({{item.LISTIMGAGE|hostFilter:'ImageJOSN'}})">
+		</div>
+		<div>
+			<span ng-bind="item.TITLE"></span>
+		</div>
+</div>
+ -->
+<div class="row bg-2" style="padding: 15px 0px;">
+	<div class="col-50 mallshelevs_template_title_bar fs-15 " style="text-align:left;">特色故事</div>
+</div>
+<div class="bg-2 row row-wrap" style="padding: 5px 10px 5px 10px;" ng-repeat="item in pageData.featureStoryData">
+	<div style="width:100%;" ng-click="toDetails(item.ID)">
+		<img ng-click="toDetails(item.ID)" ng-src="{{item.LISTIMGAGE|hostFilter:'ImageJOSN' }}" style="width:100%;">
+	</div>
+</div>
+<!-- <div class="bg-2 row row-wrap" style="padding: 5px 10px 5px 10px;" ng-repeat="item in pageData.featureStoryData">  
+	<div style="height:130px;width:100%;" ng-click="toDetails(item.ID)">
+		<div class="feature_story" style="background-image:url({{item.LISTIMGAGE|hostFilter:'ImageJOSN'}});">
+		<div style="height:100%;">
+			<div style="height:80%;width:100%;">
+				&nbsp;
+			</div>
+			<div class="feature_story_content">
+				<span class="cl-09 fs-12 pl-10" ng-bind="item.TITLE"></span>
+			</div>
+		</div>
+		</div>
+	</div>
+</div> -->

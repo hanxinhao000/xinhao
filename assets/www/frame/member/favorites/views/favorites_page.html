@@ -1,0 +1,18 @@
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="我的收藏">
+</div>
+<ion-content>
+    <div class="row bg-2" style="width:100%">
+        <div class="col">
+            <ctl-select-directive style-type="2" click-select="selectClick" defaut-lable="商品" select-data="{{pageData.scData}}"></ctl-select-directive>
+        </div>
+    </div>
+    <!--     <select class="item item-input drop_down_title bg-2"  ng-model="pageData.ftype" >
+            <option ng-repeat="item in favoritesdata" value="{{item}}" >{{item.NAME}}</option>
+        </select> -->
+    <div style="padding:0px;margin:0px;" item="false" aslist rcode="{{pageData.showView}}" temp-url="frame/member/favorites/views/favorites_list.html" list-events="pageData.list_events" params="{{pageData.params}}" repeatdata="pageData.repeatdata"></div>
+    <div footerpadding></div>
+</ion-content>

@@ -1,0 +1,36 @@
+<!--目的地div-->
+<!-- Slider main container -->
+<div class="swiper-container destination_swiper" id="destination_swiper" style="height: 160px;">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+        <!-- Slides -->
+        <div class="swiper-slide" ng-repeat="item in pageData.destinationData">
+            <img ng-click="toPage('{{item.URL}}')" ng-src="{{item.LISTIMGAGE|hostFilter }}" style="width:100%;">
+        </div>
+    </div>
+    <!-- If we need pagination -->
+    <div class="swiper-pagination" id="swiper-pagination"></div>
+    <!-- If we need scrollbar -->
+</div> <!--目的地div   end-->
+<form ng-submit="querName()" style="padding-top: 10px;">
+<div class="row bg-2" style="width:100%;padding: 0 55px 0px 55px;margin: 0px;background: transparent;margin-bottom: 10px;display: -webkit-flex;">
+    <div class="col" style="text-align: -webkit-center;-webkit-box-flex: 1;padding: 0px;">
+    	<div class='item item-input' style="width:100%;color: #ffffff;opacity: 0.5;border-radius: 7px;padding: 0px;height: 24px;">
+        <i class='icon ion-search placeholder-icon' style="font-size: 16px;margin-left: 10px;line-height: 1.5;" ng-click="querName()"></i>
+        <input type='search' ng-model="pageData.querName" style="text-align: center;font-size: 10px;padding-top: 0px;height: 24px;" placeholder="目的地/关键词">
+        </div>
+    </div>
+</div>
+</form>
+    <div class="row bg-2" style="padding:0 0 0 18px;margin: 0px;">
+    <ion-scroll delegate-handle="small" style="height: auto;width: 100%" direction="x">
+        <div class="row myorder_padding" style="width:938px;padding:10px 0 16px 0;">
+            <div class="col myorder_padding" ng-repeat="item in pageData.comdSelectCards">
+                <button class="destination_button month_button" style="{{item.style}}" ng-click="selectCards('{{$index}}')" ng-class="[item.CSS,'tab-item']"  ng-bind="item.title">
+                </button>
+            </div>
+        </div>
+    </ion-scroll>
+</div>
+<div aswfall item-css="col-50 waterfall" rcode="triph.appPlugins.find.destination.destinationSql" temp-url="app_plugins/find/destination/views/destination_list.html" list-events="pageData.list_events" params="{{pageData.params}}"></div>
+<div footerpadding></div>

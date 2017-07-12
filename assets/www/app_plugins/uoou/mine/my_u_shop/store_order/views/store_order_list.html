@@ -1,0 +1,49 @@
+
+<!--铺铺订单列表-->
+<style>
+    .order-select{
+        border-bottom: 1px solid #2ad4d4;
+        color: #2ad4d4;
+    }
+    .order-no-select{
+        color: #a0a0a0;
+    }
+</style>
+<!--<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="铺铺订单">
+</div>-->
+<ion-view>
+    <ion-nav-buttons side="left">
+        <div  ng-click="back()"  class="public_comment_header_bar_padding_left">
+            <i class="icon head_left_back"></i>
+        </div>
+    </ion-nav-buttons>
+
+    <ion-nav-title>
+        <div class="fs_4" >
+            铺铺订单
+        </div>
+    </ion-nav-title>
+    
+    <ion-content style="background-color: rgb(236,239,239);">
+        <div class="row" style="text-align: center;padding:0px;background-color: #f5f5f5;margin-bottom: 5px;height:54px;">
+            <div class="col col-25" style="height: 54px;line-height: 54px;padding:0px;text-align: center;padding: 0px ;"
+                 ng-repeat="item in pData.listData">
+                <div ng-class="item.css" style="font-size: 15px;" ng-click="to_select($index,'{{item.params}}')">
+                    <span ng-bind="item.title"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="list" item="false" aslist
+             rcode="uoou.storeorder.orderlist"
+             temp-url="app_plugins/uoou/mine/my_u_shop/store_order/views/store_order_item.html" 
+             list-events="pData.List_Events" 
+             params="{{pData.params}}">
+        </div>
+        <div footerpadding></div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,40 @@
+<!-- 购物车-->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css=""
+     right-click-fun=""
+     title="购物车">
+</div>
+
+<ion-view>
+    <ion-content>
+        <div item="false" style="padding:0px;margin:0px;" aslist rcode="shopcard"
+             temp-url="app_plugins/mall/shop_card/views/shop_card_item.html" params="{{pageData.shopCardParams}}"
+             list-events="pageData.listEvents">
+        </div>
+        <div footerpadding></div>
+    </ion-content>
+    <div class="bar bar-footer ios-margin-button" style="padding:0px;height:41px;">
+        <div class="row fs-12" style="padding:0px 0px 0px 0px;display: -webkit-flex;">
+            <div class="col-25 selectAll" style="height:40px;line-height:40px;-webkit-box-flex: 1;">
+                <label class="checkbox" style="width:0px;padding-bottom:5px" for="selectAll">
+                    <input type="checkbox" style="display:inline-block;"  name="allcheck" ng-click="pageData.listEvents.AllChecked()">
+                </label>
+                <span class="fs-12" id="selectAll" style="display:inline-block;">全选<br></span>
+
+            </div>
+            <div class="col-33 CM" style="height:40px;line-height:40px;-webkit-box-flex: 1;">
+                <span> 合计:</span>
+                <span style="color:red;">￥<font ng-bind="pageData.shopMoney"></font>
+                </span>
+            </div>
+            <div class="col-25 button-assertive CM bg-8 cl-10" style="height:40px;line-height:40px;padding:0px;margin:0px;-webkit-box-flex: 1;" ng-click="ShopSettlement()"  >
+                <span>结算</span>(<i ng-bind="pageData.settlementnum"></i>)
+            </div>
+        </div>
+    </div>
+
+</ion-view>
+

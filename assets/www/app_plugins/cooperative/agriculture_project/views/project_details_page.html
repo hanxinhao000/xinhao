@@ -1,0 +1,30 @@
+<!-- 农业项目招股说明 -->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="{{pageData.pageTitle}}项目">
+</div>
+<ion-view>
+    <ion-content>
+        <div class="tabs-striped tabs-top tabs-background-light tabs-color-balanced">
+            <div class="tabs" style="width:100%;position:static;">
+                <a style="{{item.style}}" ng-click="selectCards('{{$index}}')" ng-class="[item.CSS, 'tab-item']" ng-repeat="item in pageData.comdSelectCards" ng-bind="item.title">
+                </a>
+            </div>
+        </div>
+       	<!-- 招股说明 -->
+        <div item="false" ng-if="pageData.type == '0'" style="padding:0px;margin:0px;" aslist rcode="agriculture_project_details" temp-url="app_plugins/cooperative/agriculture_project/views/project_prospectus_page.html" params="{id:{{pageData.projectId}}}" no-show-more="false">
+        </div>
+        <!-- 分红明细 -->
+        <div item="false" ng-if="pageData.type == '1'" style="padding:0px;margin:0px;" aslist rcode="dividendDetail" temp-url="app_plugins/cooperative/agriculture_project/views/dividend_detail_list.html" params="{projectid:{{pageData.projectId}},memberid:{{pageData.memberid}}}"></div>
+        <!-- <div class="col agriculture_project_content">
+        <div ng-bind-html="pageData.prospectus"></div>
+</div> -->
+        <div footerpadding></div>
+    </ion-content>
+    <!--投资 start-->
+    <div class="bar bar-footer h-60 ios-margin-button" ng-if="pageData.type == '0'">
+        <button ng-click="withdrawShare()" class="button button_with ng-binding myinfoborder-radius h-43 agriculture_project_title">退股</button>
+    </div>
+</ion-view>

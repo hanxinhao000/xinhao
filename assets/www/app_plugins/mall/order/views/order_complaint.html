@@ -1,0 +1,44 @@
+<!-- 订单投诉界面 -->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     title="订单投诉">
+</div>
+<ion-view view-title="订单投诉">
+    <ion-content>
+        <div class="bg-2 fs-12">
+            <div class="row">
+                <div class="col">投诉内容:</div>
+                <div class="col col-80">
+                    <textarea class="full-w" ng-model="pData.complaintInfo.COMPLAINT_CONTENT" rows="10" placeholder="请在此输入您的投诉内容" ng-readonly="!pData.isEdit"></textarea>
+                </div>
+            </div>
+            
+            <div class="item item-body" ng-repeat="item in pData.inputData track by $index">
+                <div class="row">
+                    <img ng-if="!item.data" id="img_{{$index}}" class="col col-80" style="width:100%;height:100%;overflow:hidden;"  ng-src="{{item|hostFilter}}" >
+                    <img ng-if="item.data" id="img_{{$index}}" class="col col-80" style="width:100%;height:100%;overflow:hidden;"  ng-src="{{item.data|hostFilter}}" >
+                    <div class="col col-20" ng-click="delete(item.data)" ng-if="item.data" >删除</div>
+                </div>
+            </div>
+            <a  class="item" ng-if="pData.isEdit" ngf-accept="'image/*'"  ngf-select="upload($file)" href="JavaScript:void(0);">
+                <img  style="vertical-align: middle;width: 15px;padding-bottom: 3px;" src="img/add_file_2_03.png">
+                <span>提交资料文件</span>
+            </a>
+            <div class="diveline bg-1"></div>
+            <div class="row" ng-if="pData.complaintInfo.REFUNDEXPLAIN">
+                <div class="col">投诉处理情况:</div>
+                <div class="col col-80">
+                    <textarea class="full-w" ng-model="pData.complaintInfo.REFUNDEXPLAIN" rows="10" placeholder="" ng-readonly="true"></textarea>
+                </div>
+            </div>
+            <div class="diveline bg-1"></div>
+        </div>
+    </ion-content>
+    <div class="bar bar-footer" ng-if="pData.isEdit">
+        <button ng-click="submintComplaint()" class="button button_with  myinfoborder-radius h-43" style="font-size:14px;">投诉</button>
+    </div>
+
+</ion-view>

@@ -1,0 +1,42 @@
+<!--进入二级通用页面-->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     title="{{pageData.title}}">
+</div>
+<ion-view view-title="{{pageData.title}}">
+
+    <ion-content>
+        <div ng-include="'app_plugins/common/access_navigetion/views/access_navigetion_index.html'"></div>
+
+        <div class="row" style="height:100px;line-height:100px;">
+            <div class="col">&nbsp;<a href="javaScript:void(0);" style="display:none;">&nbsp;</a></div>
+        </div>
+        <div class="row">
+            <div class="col">&nbsp;<a href="javaScript:void(0);" style="display:none;">&nbsp;</a></div>
+        </div>
+
+        {{pageData.show_type}}
+    </ion-content>
+
+    <div class="bar bar-footer h_69 ios-margin-button" ng-if="pageData.buttons.length > 0 && pageData.show_type != 'linkRow'">
+        <button  ng-repeat="item in pageData.buttons" ng-click="redirect(item)" style="width:{{pageData.button_width}}px;
+                 margin-left:{{$index==0?pageData.button_padding:''}};
+                 margin-right:{{$index==pageData.buttons.length-1?'':'5%'}}"
+                 class="button  myinfoborder-radius h-43 agriculture_project_title"
+                 ng-bind="item.button_title">
+        </button>
+    </div>
+    <div class="row bar bar-footer h_69 ios-margin-button" ng-if="pageData.buttons.length > 0 && pageData.show_type == 'linkRow'" style="display: block;height: 95px;">
+        <div class="row" ng-repeat="item in pageData.buttons" style="font-size: 16px; text-align: center; padding-bottom: 10px;">
+            <u style="width: 100%" ng-click="redirect(item)" ng-bind="item.button_title"></u>
+        </div>
+    </div>
+
+
+</ion-view>
+
+
+

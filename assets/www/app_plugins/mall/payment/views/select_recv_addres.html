@@ -1,0 +1,40 @@
+<!--选择收货地址-->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     title="选择收货地址">
+ </div>
+<ion-view view-title="选择收货地址">
+	<ion-content>
+		<div ng-repeat="addItem in pData.recvAddress" ng-click="selectAddres('{{addItem}}')">
+			<div class="row pt-10 pb-10 item" >
+				<div class="col-10 valign-m l-height-80 talign-c pt-10">
+					<i class="fs-30 icon ion-ios-location-outline"></i>
+				</div>
+				<div class="col-50 pt-10 pb-10 pl-10">
+					<div class="pt-10">
+						收货人:<span ng-bind="addItem.RECV_NAME"></span>
+					</div>
+					<div class="pt-10">
+						<span>收获地址:</span><span style="white-space: pre-wrap;" ng-bind="addItem.RECV_DETAIL"></span>
+					</div>
+				</div>
+				<div class="col-25 pt-10">
+					<div class="pt-10">
+						<span ng-bind="addItem.RECV_PHONE"></span>
+					</div>	
+				</div>
+				<div class="col-25 valign-m l-height-80 talign-c pt-10">
+					<!-- <i class="fs-30 icon ion-ios-arrow-right"></i> -->
+				</div>
+			</div>
+			<div ng-if="addItem.SORT==1" class="split-line-3">&nbsp;</div>
+			<div class="split-line-2">&nbsp;</div>
+		</div>
+		
+		
+
+	</ion-content>
+</ion-view>

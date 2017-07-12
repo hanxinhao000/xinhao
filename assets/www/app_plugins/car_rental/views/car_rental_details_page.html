@@ -1,0 +1,214 @@
+<div class="bar bar-heade" style="background: transparent;height: 52px;color: #FFFFFF;">
+    <div class="row" style="width:100%;padding:0px;padding-top:5px;padding-left:10px;">
+        <div style="width:16%;text-align:left;" ng-click="goBack()">
+            <img src="img/techan/techan_01.png" style="width: 20px;height: auto;">
+        </div>
+        <div class="cl-10"style="width:68%;">
+        </div>
+        <div style="width:8%;text-align:center;" ng-click="addCollection()">
+            <img src="img/techan/techan_06.png" style="width: 20px;height: auto;">
+        </div>
+        <div style="width:8%;text-align:center;" ng-click="share()">
+            <img src="img/techan/techan_07.png" style="width: 20px;height: auto;">
+        </div>
+    </div>
+</div>
+<ion-content style="padding:0px;" delegate-handle="mainScroll">
+    <div class="row" style="height: 239px;padding: 0px;" ng-click="tuji()">
+        <div class="col" style="height: 239px;padding:0px;">
+            <img ng-src="{{pageData.mainimage | hostFilter:'ImageJSON'}}" style="width: 100%;height:100%;" />
+        </div>
+    </div>
+    <!-- 图集 -->
+    <div style="text-align: right;height:34px;margin-top: -34px;" ng-click="tuji()">
+        <img src="img/atlas.png" style="width:34px;height: 34px;margin-right: 23px;margin-top: -12px;"/>
+        <div style="position: relative;margin-top: -23px;margin-right: 34px;">
+            <span class="fs-12" style="color: #ffffff;"><span  ng-bind="pageData.storeImageNum"></span></span>
+        </div>
+    </div>
+<!--    <div class="row" style="height: 239px;padding: 0px;" ng-click="tuji()">
+        <img ng-src="{{pageData.mainimage| hostFilter:'ImageJSON'}}" style="width: 100%;height: 100%;" />
+    </div>
+    <div style="text-align: right;height:34px;margin-top: -34px;" ng-click="tuji()">
+        <img src="img/atlas.png" style="width:34px;height:34px;margin-right: 23px;margin-top: -12px;"/>
+        <div style="position: relative;margin-top: -23px;margin-right: 34px;">
+            <span class="fs-12" style="color: #ffffff;"><span  ng-bind="pageData.storeImageNum"></span></span>
+        </div>
+    </div>-->
+<!--    <div style="text-align: right;height:34px;" ng-click="tuji()">
+        <img src="img/atlas.png" style="width:34px;height: 34px;margin-right: 23px;margin-top: -12px;"/>
+        <div style="position: relative;margin-top: -23px;margin-right: 34px;">
+            <span class="fs-12" style="color: #ffffff;"><span  ng-bind="pageData.storeImageNum"></span></span>
+        </div>
+    </div>-->
+    <div class="row pl-20 bg-15 fs-13" style="height: 34px;">
+    	<div class="col" style="padding:0;">
+    		<span class="cl-10 fs-13">
+            包、租车服务({{pageData.dityid}})
+        	</span>
+    	</div>
+    	<div class="col" style="padding:0;text-align:right;">
+    		<span class="cl-10 fs-12">
+            预订成功后100%有车
+        	</span>
+    	</div>
+    </div>
+    <div class="item" ng-repeat="item in pageData.commodityData" style="padding: 9px 0  0px 0;">
+        <div class="row" style="padding:0 10px 0 10px;">
+            <div class="col col-66 text-overflow-elipsis cl-11" style="text-align: left;padding:0;">
+                <span class="fs-13" ng-bind="item.CARNAME"></span>
+            </div>
+            <div class="col col-33 fs-20 cl-20" style="text-align: right;padding:0;">
+            	<div ng-if="item.DISCOUNT==0||item.DISCOUNT==1||item.DISCOUNT==''">
+					￥<span ng-bind="item.PRICE|number:2"></span>
+				</div>
+				<div ng-if="item.DISCOUNT<1&&item.DISCOUNT>0">
+					￥<span ng-bind="item.PRICE*item.DISCOUNT|number:2"></span>
+				</div>
+				<div ng-if="item.DISCOUNT>1">
+					￥<span ng-bind="item.PRICE-item.DISCOUNT|number:2"></span>
+				</div>
+            </div>
+        </div>
+        <div class="row" style="margin: 0;padding: 0 10px 7px 10px;">
+            <div class="col col-75" style="padding:10px 0 0 0;text-align: left;">
+                <div class="row" style="padding: 0px;">
+                    <div class="col" style="padding:0px;">
+                    	<div ng-if="item.CAR_RENTAL_TYPE == '1'" class="car_list-btn">
+                    		<span class="fs-12">包车服务</span>
+                    	</div>
+                    	<div ng-if="item.CAR_RENTAL_TYPE == '2'" class="car_list-btn-blue">
+                    		<span class="fs-12">租车服务</span>
+                    	</div>
+                    </div>
+                    <div class="col" style="padding:0px;margin-left: 6px;margin-right: 8px;">
+                    	<div ng-if="item.CANCEL == '1'" class="car_list-btn-red">
+                    		<span class="fs-12">不可取消</span>
+                    	</div>
+                    </div>
+                    <div class="col" style="padding:0px;">
+                        <span class="fs-13">已售
+                        	<span ng-bind="item.SALENUMBER"></span>
+                        </span>
+                    </div>  
+              	</div>
+            </div>
+            <div class="col col-25" style="text-align: right;padding:8px 0 0 0;" ng-click="showModal(item)">
+                <div class="car_label_btn" style="right: 5px;position: absolute;">在线预订</div>
+            </div>
+        </div>
+        <!-- <div class="split-line-1"></div> -->
+        <div class="row item" style="margin:0;padding:0;height: 30px;line-height: 30px" ng-click="comment(item)">
+            <div style="width:8%;height: 31px;text-align: center;line-height: 37px;">
+                <img src="img/techan/techan_09.png" style="width:19px;" />
+            </div>
+            <div style="width:45%;">
+                <span class="cl-19" as-start model="s" style="display: inline-block;padding-left: 7px;" value="{{item.PJPXDF|number:0}}"></span>
+                <span class="fs-13 cl-11 microsoft_yahei pl-10" ng-bind="item.PJPXDF|number:0"></span>分
+            </div>
+            <div style="width:40%;text-align: right;">
+                <span class="fs-13 cl-11 microsoft_yahei">{{item.QJZS|number:0}}条评价</span>
+            </div>
+            <div style="width:7%;">
+                <i class="icon ion-chevron-right icon-accessory more_button" style="line-height:30px;"></i>
+            </div>
+        </div>
+    </div>
+    <div class="list" style="margin-left: -6px;">
+        <div class="item item-avatar" style="height: 39px;min-height: 39px;padding-top:8px;padding-left: 47px;">
+            <img src="img/techan/techan_10.png" style="width:20px;height:20px;top: 7px;left: 13px;">
+            <span style="font-size:13px;color:#333333;">
+                购前导读
+            </span>
+        </div>
+        <div class="row bg-2" style="border-bottom: 1px solid #ddd;padding-top:8px;padding-left: 16px;padding-right: 16px;min-height: 100px;">
+            <div ng-bind-html="pageData.comment|imgFmt" style="white-space: initial;"></div>
+        </div>
+    </div>
+    <div footerpadding></div>
+<!--    <div class="row bg-2" style="padding:12px 0px 12px 5px;display: -webkit-flex;">
+        <div class="col" style="-webkit-box-flex: 1;padding: 0px;">
+            <img src="img/techan/techan_10.png" style="width:20px;height:20px;margin-right: 7px;" />
+            <span class="pl-7 fs-13 cl-11 microsoft_yahei">购前导读</span>
+        </div>
+    </div>
+    <div class="bg-2" style="padding:0 10px 12px 10px;">
+        <span ng-bind-html="pageData.comment|imgFmt"></span>
+    </div>-->
+</ion-content>
+<div suspend-box></div>
+<!--本页弹出内容 start-->
+<script id="carRentalDetails.html" type="text/ng-template">
+    <ion-modal-view style="background-color: rgba(255,255,255,0.0);">
+        <div class="modal">
+            <div class="item bar bar-heade item-icon-right fs-13" style="height: 39px;min-height: 39px;padding-top:8px;" >
+                <span ng-bind="pageData.params.CARNAME" style="font-size:13px;color:#333333;"></span>
+                <img class="icon" src="img/scenicspot/ticket_03.png" style="width:15px;height:15px;margin-top: 11px;" ng-click="closeModal()"/>
+            </div>
+            <ion-content style="padding:39px 0 0 0;">
+                <div class="list">
+                    <div class="row bg-7" style="padding: 0px;height: 41px;">
+                        <div class="col" style="padding: 0px;padding-left: 17px;;height: 41px;line-height:35px;">
+                            <img src="app_plugins/car_rental/img/car_01.png" style="width:20px;height: 13px;border-radius: 0px;"/>
+                            <span class="fs-14" ng-if="pageData.params.CAR_RENTAL_TYPE == '1'" style="padding-left: 11px;">包车服务</span>
+                            <span class="fs-14" ng-if="pageData.params.CAR_RENTAL_TYPE == '2'" style="padding-left: 11px;margin-right: 20px;">租车服务</span>
+                            <img src="app_plugins/car_rental/img/car_02.png" style="width:15px;height: 15px;border-radius: 0px;"/>
+                            <span class="fs-14" style="padding-left: 11px;">
+                                已售<span ng-bind="pageData.params.SALENUMBER"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="split-line-6"></div>
+                    <div carendar-bar  options-params ="{{pageData.dateData}}" result-start-date="reStartDate"  result-end-date="reEndDate" result-fun="result">
+                    </div>
+                    <div class="split-line-6"></div>
+                    <div class="row bg-7" style="padding: 12px 0px 12px 18px;">
+                        <span class="pl-7 fs-16 cl-11 microsoft_yahei">车辆信息</span>
+                    </div>
+                    <div class="bg-7" style="padding: 0 18px 12px 18px;">
+                        <span ng-bind-html="pageData.params.CHELIANGXINXI|imgFmt"></span>
+                    </div>
+                    <div class="split-line-6"></div>
+                    <div class="row bg-7" style="padding: 12px 0px 12px 18px;">
+                        <span class="pl-7 fs-16 cl-11 microsoft_yahei">预订须知</span>
+                    </div>
+                    <div class="bg-7" style="padding: 0 18px 12px 18px;margin-bottom: 48px;">
+                        <span ng-bind-html="pageData.params.YUDINGXUZHI|imgFmt"></span>
+                    </div>
+                </div>
+            </ion-content>
+            
+            <div class="bar bar-footer h-48" style="padding:0px;">
+                <div class="row" style="padding:0;">
+                    <div class="pt-10"style="width:50%;border-right: 1px solid #ddd;padding-left: 17px;">
+                        <div style="padding: 0px;" ng-if="pageData.choiceMoney==0">
+                            <div class="fs-16 cl-10 cl-20" ng-if="pageData.params.DISCOUNT==0||pageData.params.DISCOUNT==1">
+                                ￥<span ng-bind="pageData.params.PRICE|number:2"></span>
+                            </div>
+                            <div class="fs-16 cl-10 cl-20" ng-if="pageData.params.DISCOUNT<1&&pageData.params.DISCOUNT>0">
+                                ￥<span ng-bind="pageData.params.PRICE*pageData.params.DISCOUNT|number:2"></span>
+                            </div>
+                            <div class="fs-16 cl-10 cl-20" ng-if="pageData.params.DISCOUNT>1">
+                                ￥<span ng-bind="pageData.params.PRICE-pageData.params.DISCOUNT|number:2"></span>
+                            </div>
+                        </div>
+                        <div style="padding: 0px;" ng-if="pageData.choiceMoney!=0">
+                            ￥<span ng-bind="pageData.choiceMoney|number:2"></span>
+                        </div>
+                        <div style="padding: 0px;">
+                            <span class="fs-12 " style="color:#666666">
+                                原价<span  ng-bind="pageData.params.PRICE|number:2">
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="bg-11 pt-16" style="width:50%;text-align:center;" ng-click="buyNow()">
+                        <span class="fs-16 cl-10">
+                            在线预订
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+  </ion-modal-view>
+</script><!--本页弹出内容 end-->

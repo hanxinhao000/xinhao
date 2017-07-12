@@ -1,0 +1,30 @@
+<!--已屏蔽好友列表-->
+
+<!--<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="已屏蔽好友">
+</div>-->
+
+<ion-view>
+    
+    <ion-nav-buttons side="left">
+        <div class="public_comment_header_bar_padding_left" ng-click="back()">
+            <i class="icon head_left_back"></i>
+        </div>
+    </ion-nav-buttons>
+    <ion-nav-title>
+        <div class="fs_4">已屏蔽好友</div>
+    </ion-nav-title>
+
+    <ion-content>
+        <div class="list" item="false" aslist
+             rcode="uoou.dynamic.friend_dynamic.shield_friends"
+             temp-url="app_plugins/uoou/dynamic/friend_dynamic/shield_friends/views/shield_friends_item.html" 
+             list-events="pData.listEvents"
+             repeatdata="pData.repeatData"
+             params="{{pData.params}}">
+        </div>
+    </ion-content>
+</ion-view>

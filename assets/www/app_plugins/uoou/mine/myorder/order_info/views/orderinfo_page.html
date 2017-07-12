@@ -1,0 +1,125 @@
+<style>
+    .img_border_radius{
+        border-radius: 5px;
+    }
+    .text_padding_right{
+        padding-right: 7px;
+    }  
+    .order_status_m{
+        margin-left: -4px;
+    }
+
+</style>
+
+
+<!--订单详情-->
+<!--<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="订单详情">
+</div>-->
+
+<ion-view>
+    
+    <ion-nav-buttons side="left">
+        <div ng-click="back()"  class="public_comment_header_bar_padding_left">
+            <i class="icon head_left_back"></i>
+        </div>
+    </ion-nav-buttons>
+
+    <ion-nav-title>
+        <div class="fs_4">
+            订单详情
+        </div>
+    </ion-nav-title>
+    
+    <ion-content>      
+        <div class="item item-thumbnail-left item_top" style="padding-top: 7px;padding-left: 77px;padding-bottom: 9px;">
+            <img class="img_border_radius" style="top: 11px;width: 57px;height: 57px;" ng-src="{{pData.orderData.WXHEADIMG| hostFilter}}"">
+            <p style="margin: 10px 0px; font-size:15px;"><span class="text_padding_right">店铺名称:</span>{{pData.orderData.STORE_NAME}}</p>
+            <p style="font-size:15px;"><span class="text_padding_right">状&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;态:</span>
+                <span class="order_status_m" ng-show="pData.orderStatus == 0">新订单</span>
+                <span class="order_status_m" ng-show="pData.orderStatus == 1">待支付</span>
+                <span class="order_status_m" ng-show="pData.orderStatus == 2">已支付</span>
+                <span class="order_status_m" ng-show="pData.orderStatus == 3">待评价</span>
+                <span class="order_status_m" ng-show="pData.orderStatus == 4">已完成</span>
+                <span class="order_status_m" ng-show="pData.orderStatus == 5">申请退款</span>
+                <span class="order_status_m" ng-show="pData.orderStatus == 6">退款完成</span>
+            </p>
+        </div>
+        <div style="background:#FFFFFF;border: 0px;padding:0px;margin-top:0px;margin-bottom: 1px;">
+            <div class="item item-body" style="padding: 0px 16px;border: 0px;">
+                <p style="margin: 8px 0px; font-size:15px;" ng-bind-html="'联系姓名:&nbsp;&nbsp;&nbsp;'+pData.default_contacts">wd</p>
+            </div>
+            <div class="item item-body" style="padding: 0px 16px;border: 0px;">
+                <p style="margin: 8px 0px; font-size:15px;" ng-bind-html="'联系电话:&nbsp;&nbsp;&nbsp;'+pData.default_phone"></p>
+            </div>
+            <div class="item item-body" style="padding: 0px 16px;border: 0px;">
+                <p style="margin: 8px 0px; font-size:15px;" ng-bind-html="'联系地址:&nbsp;&nbsp;&nbsp;'+pData.default_address"></p>
+            </div>
+        </div>
+        <div class="item item-body" style="padding: 0px 16px;">
+            <p style="margin: 8px 0px; font-size:15px;" ng-bind-html="'订单内容:&nbsp;&nbsp;&nbsp;'+pData.orderData.ORDER_CONTENT"></p>
+        </div>
+        <div class="item item-body" style="padding: 0px 16px;">
+            <p style="margin: 8px 0px; font-size:15px;">订单金额:&nbsp;&nbsp;&nbsp;{{pData.orderData.ORDERMONEY| ptoy}}&nbsp;元</p>
+        </div>    
+
+
+        <!--        <div>
+                    <div align="left" style="float:left">左button</div>
+                     <div align="right">右button</div>
+                </div>-->
+        <div class="row">
+            <div class="col col-50">
+                <button class=" button button-light"  href='javascript:void(0)' ng-click="order_cancel()" style="width: 100%;" ng-if="pData.orderStatus == '1'">
+                    <label style='font-size:15px;'/>取消订单
+                </button>
+                <button class=" button button-light"  href='javascript:void(0)' ng-click="order_refund()" style="width: 100%;" ng-if="pData.orderStatus == '2'">
+                    <label style='font-size:15px;'/>申请退款
+                </button>
+            </div>
+            <div class="col col-50">
+                <button class="button button-calm"  href='javascript:void(0)' ng-click="order_pay()" style="width: 100%;background-color: rgb(0,218,216);" ng-if="pData.orderStatus == '1'">
+                    <label style=' font-size:15px;'/>订单支付
+                </button>
+                <button class="button button-calm"  href='javascript:void(0)' ng-click="order_confirm()" style="width: 100%; background-color: rgb(0,218,216);" ng-if="pData.orderStatus == '2'">
+                    <label style=' font-size:15px;'/>确认订单完成
+                </button>
+                <button class="button button-calm"  href='javascript:void(0)' ng-click="evaluate()" style="width: 100%; background-color: rgb(0,218,216);" ng-if="pData.orderStatus == '3'">
+                    <label style=' font-size:15px;'/>评价
+                </button>
+            </div>
+        </div>
+
+        <!--        <a class="item item-body" href='javascript:void(0)' ng-click="order_pay()" style="padding: 0px 16px;" ng-if="pData.orderStatus == '1'">
+                    <p style='margin-top: 8px;margin-bottom: 8px; font-size:15px;'>订单支付</p>
+                    <i class="icon ion-chevron-right icon-accessory" style="line-height: 0px;position: absolute;font-size: 15px;right: 15px;top: 12px;"></i>
+                </a>  
+                <a class="item item-body" href='javascript:void(0)' ng-click="order_cancel()" style="padding: 0px 16px;" ng-if="pData.orderStatus == '1'">
+                    <p style='margin-top: 8px;margin-bottom: 8px; font-size:15px;'>取消订单</p>
+                    <i class="icon ion-chevron-right icon-accessory" style="line-height: 0px;position: absolute;font-size: 15px;right: 15px;top: 12px;" ></i>
+                </a>-->
+<!--        <a class="item item-body" href='javascript:void(0)' ng-click="order_refund()" style="padding: 0px 16px;" ng-if="pData.orderStatus == '2'">
+            <p style='margin-top: 8px;margin-bottom: 8px; font-size:15px;'>申请退款</p>
+            <i class="icon ion-chevron-right icon-accessory" style="line-height: 0px;position: absolute;font-size: 15px;right: 15px;top: 12px;" ></i>
+        </a>
+        <a class="item item-body" href='javascript:void(0)' ng-click="order_confirm()" style="padding: 0px 16px;" ng-if="pData.orderStatus == '2'">
+            <p style='margin-top: 8px;margin-bottom: 8px; font-size:15px;'>确认订单完成</p>
+            <i class="icon ion-chevron-right icon-accessory" style="line-height: 0px;position: absolute;font-size: 15px;right: 15px;top: 12px;" ></i>
+        </a>
+        <a class="item item-body" href='javascript:void(0)' ng-click="evaluate()" style="padding: 0px 16px;"  ng-if="pData.orderStatus == '3'">
+            <p style='margin-top: 8px;margin-bottom: 8px; font-size:15px;'>评价</p>
+            <i class="icon ion-chevron-right icon-accessory" style="line-height: 0px;position: absolute;font-size: 15px;right: 15px;top: 12px;"></i>
+        </a>-->
+        <div ng-if="pData.decline_cause != ''">
+
+            <div class="item"  >
+                <p style="font-size:15px;">拒绝退款原因：</p>
+                <textarea  ng-model="pData.decline_cause" type="text" 
+                           style="width:100%;height:200px;background-color:#FFFFFF;resize:none; font-size: 13px;" ng-readonly="pData.pageStatus" ></textarea>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

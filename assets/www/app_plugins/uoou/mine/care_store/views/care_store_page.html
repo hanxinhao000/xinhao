@@ -1,0 +1,33 @@
+
+<!--我关注的店铺-->
+<!--<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="我关注的店铺">
+</div>-->
+
+<ion-view>
+    
+    <ion-nav-buttons side="left">
+        <div  ng-click="back()"  class="public_comment_header_bar_padding_left">
+            <i class="icon head_left_back"></i>
+        </div>
+    </ion-nav-buttons>
+
+    <ion-nav-title>
+        <div class="fs_4">
+            我关注的店铺
+        </div>
+    </ion-nav-title>
+    
+  <ion-content>
+    <div class="list">
+         <div class="list" item="false" aslist rcode="uoou.mine.carestore" 
+             temp-url="app_plugins/uoou/mine/care_store/views/care_store_item.html" 
+             list-events="pData.list_events" params="{{pData.params}}">
+        </div>
+    </div>
+      <div footerpadding></div>
+  </ion-content>
+</ion-view>

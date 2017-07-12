@@ -1,0 +1,25 @@
+<!-- 我的报名 -->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="我的报名">
+</div>
+<ion-view view-title="我的报名">
+    <ion-content>
+        <!-- <div class="button-bar bar-stable" style="padding-top: 6px;">
+          <a class="button active" id="notStart" ng-click="showtab('notStart')">未开始课程</a>
+          <a class="button" id="hasEnded" ng-click="showtab('hasEnded')">已结束课程</a>
+       	</div> -->
+        <div class="tabs-striped tabs-top tabs-background-light tabs-color-balanced">
+            <div class="tabs" style="width:100%;position:static;">
+                <a style="{{item.style}}" ng-click="selectCards('{{$index}}')" ng-class="[item.CSS, 'tab-item']" ng-repeat="item in pageData.comdSelectCards" ng-bind="item.title">
+                </a>
+            </div>
+        </div>
+        <div item="false" ng-if="pageData.type == '0'" style="padding:0px;margin:0px;" aslist rcode="mySignUp" temp-url="frame/more/kopp_train/views/my_sign_up_list_page.html" list-events="pageData.listEvents" params="{memberid:{{pageData.memberid}},startlTime:pc.startl_time>now()}">
+        </div>
+        <div item="false" ng-if="pageData.type == '1'" style="padding:0px;margin:0px;" aslist rcode="mySignUp" temp-url="frame/more/kopp_train/views/my_sign_up_list_page.html" list-events="pageData.listEvents" params="{memberid:{{pageData.memberid}},startlTime:pc.startl_time<now()}"></div>
+        <div footerpadding></div>
+    </ion-content>
+</ion-view>

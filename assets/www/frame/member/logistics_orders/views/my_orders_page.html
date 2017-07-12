@@ -1,0 +1,26 @@
+<!-- 我的物流接单 -->
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="我的物流接单">
+</div>
+<ion-view view-title="我的物流接单">
+    <ion-content>
+       	<div class="tabs-striped tabs-top tabs-background-light tabs-color-balanced">
+            <div class="tabs" style="width:100%;position:static;">
+                <a style="{{item.style}}" ng-click="selectCards('{{$index}}')" ng-class="[item.CSS, 'tab-item']" ng-repeat="item in pageData.comdSelectCards" ng-bind="item.title">
+                </a>
+            </div>
+        </div>
+       	<!-- 全部 -->
+        <div item="false" ng-if="pageData.type == '0'" style="padding:0px;margin:0px;" aslist rcode="my_orders" temp-url="frame/member/logistics_orders/views/logistics_orders_list_page.html" list-events="pageData.list_events" params="{{pageData.params}}">
+        </div>
+        <!-- 物流中 -->
+        <div item="false" ng-if="pageData.type == '1'" style="padding:0px;margin:0px;" aslist rcode="my_orders" temp-url="frame/member/logistics_orders/views/logistics_orders_list_page.html" list-events="pageData.list_events" params="{{pageData.logisticsParams}}"></div>
+        <!-- 已收货 -->
+        <div item="false" ng-if="pageData.type == '2'" style="padding:0px;margin:0px;" aslist rcode="my_orders" temp-url="frame/member/logistics_orders/views/logistics_orders_list_page.html" list-events="pageData.list_events" params="{{pageData.receivingParams}}">
+        </div>
+        <div footerpadding></div>
+    </ion-content>
+</ion-view>

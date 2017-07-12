@@ -1,0 +1,51 @@
+/*身份证号图标*/
+@font-face {font-family: "icomoon";
+  src: url('../fonts/myinfo/iconfont.eot?t=1459163949'); /* IE9*/
+  src: url('../fonts/myinfo/iconfont.eot?t=1459163949#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('../fonts/myinfo/iconfont.woff?t=1459163949') format('woff'), /* chrome, firefox */
+  url('../fonts/myinfo/iconfont.ttf?t=1459163949') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('../fonts/myinfo/iconfont.svg?t=1459163949#iconfont') format('svg'); /* iOS 4.1- */
+}
+@font-face {font-family: "icomoon";
+  src: url('../fonts/myinfo/iconfont_address.eot?t=1459164255'); /* IE9*/
+  src: url('../fonts/myinfo/iconfont_address.eot?t=1459164255#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('../fonts/myinfo/iconfont_address.woff?t=1459164255') format('woff'), /* chrome, firefox */
+  url('../fonts/myinfo/iconfont_address.ttf?t=1459164255') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('../fonts/myinfo/iconfont_address.svg?t=1459164255#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+
+.iconfont {
+  font-family:"icomoon" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-shenfenzheng:before { content: "\e6af"; }
+.icon-bbgzhuzhishouye:before { content: "\e685"; }
+
+
+
+.icon_font_size{
+  font-size: 30px;
+}
+.myinfoborder-radius{
+  border-radius: 3.3px;
+}
+.myinfo_padding
+{
+  padding-top: 5%;
+}
+.myinfo_mauto{
+  margin-right: auto;
+  margin-left: auto;
+}
+.myinfo_button{
+  /*border-top-left-radius: 20px;*/
+  /*border-top-right-radius: 20px;*/
+  /*border-bottom-left-radius: 20px;*/
+  /*border-bottom-right-radius: 20px;*/
+  border-radius: 30px;
+}

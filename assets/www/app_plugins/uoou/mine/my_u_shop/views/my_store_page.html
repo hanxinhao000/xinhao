@@ -1,0 +1,60 @@
+<!--我的u铺-->
+<style>
+    .sx{
+        color: #2AD4D4;
+    }
+</style>
+<!--<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="我的店铺">
+</div>-->
+<ion-view>
+    
+    <ion-nav-buttons side="left">
+        <div ng-click="back()"  class="public_comment_header_bar_padding_left">
+            <i class="icon head_left_back"></i>
+        </div>
+    </ion-nav-buttons>
+
+    <ion-nav-title>
+        <div class="fs_4">
+            我的店铺
+        </div>
+    </ion-nav-title>
+    
+    <ion-content style="background-color: rgb(236,239,239);">
+        <div class="item item-thumbnail-left item-icon-right" style=" height: 70px; padding-left: 60px;padding-right: 15px;margin-bottom: 5px;">
+            <img style="width: 48px; height: 48px;max-width: 48px; max-height: 48px;top:10px;left:10px; border-radius: 5px;"  ng-src="{{pData.storeData.WXHEADIMG| hostFilter}}" ng-click="to_dynamic()">
+            <div class="row " style=" padding-top: 0px; color:#333333;">
+                <span class="fs-14" style=" font-family: Microsoft YaHei;"><span class="fs-14 text-overflow-elipsis" ng-bind="pData.storeData.MEMBERNAME"></span>的店铺</span>
+            </div>
+            <div class="row " style="padding-top: 0px; font-family: Microsoft YaHei;">
+                <div class="col-40">
+                    <span style="color:#666666;">商家信誉：
+                        <span class="fs-12 text-overflow-elipsis" style="color:#ff6600;" ng-bind="pData.storeData.REPUTATION"></span>分
+                    </span>
+                </div>
+                <div class="col-40" style=" font-family: Microsoft YaHei;padding-left: 12px" ng-click="toVisitors()">
+                    <div style="color:#666666;">访客流量:
+                        <span class="fs-12 text-overflow-elipsis" ng-bind="pData.storeData.VISITOR_FLOW"></span>
+                    </div>
+                </div>
+                <div class="col-20" style="right: 10px; width: 48px;height: 48px;position: absolute;top: 10px;border-radius: 5px; font-size: 16px; ">
+                    <div class="set-store-btn" ng-click="setStore()" style="border: 1px solid rgb(42,212,212);border-radius: 5px; background-color: rgb(42,212,212);color: #FFFFFF;width: 48px; height: 48px; padding-left: 6px;padding-top: 3px;"><span>设 置<br/>店 铺</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="item item-icon-right" style="padding-left: 8px;padding-right:0px;min-height: 50px;height: 56px; "
+             ng-repeat="item in pData.listData" ng-click = "linkToPage('{{item.URL}}')">
+            <div class="row " style="padding-top: 0px;font-family: Microsoft YaHei;color: #333333;">
+                <div class="col">
+                    <span class="fs-14 text-overflow-elipsis"  ng-bind-html="item.TITLE"></span>
+                </div>
+            </div>
+            <img class="icon" ng-src="app_plugins/uoou/dynamic/img/member_43.png" style="width:15px;height:15px;margin-top:18px;right: 10px;"/>
+        </div>
+    </ion-content>
+</ion-view>

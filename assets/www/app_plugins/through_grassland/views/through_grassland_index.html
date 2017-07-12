@@ -1,0 +1,20 @@
+<!--穿越草原广告div-->
+<!-- Slider main container -->
+<div class="swiper-container grassland_swiper" id="grassland_swiper">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+        <!-- Slides -->
+        <div class="swiper-slide" ng-repeat="item in pageData.grasslandData">
+            <img ng-click="toPage('{{item.URL}}')" ng-src="{{item.LISTIMGAGE|hostFilter }}" style="width:100%;">
+        </div>
+    </div>
+    <!-- If we need pagination -->
+    <div class="swiper-pagination grassland-pagination" id="grassland-pagination"></div>
+    <!-- If we need scrollbar -->
+</div> <!--穿越草原广告div   end-->
+<div mall-shelves-directive page-type="2" style="height:100%;"></div>
+<div class="row">
+    <div class="col fs-14 cl-10" style="text-align:center;">
+        ————敬请期待————
+    </div>
+</div>

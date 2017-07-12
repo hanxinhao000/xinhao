@@ -1,0 +1,33 @@
+<!--商品分类查询框 -->
+<!-- <div style="margin: 10px 5px 5px 5px;" amsearch search-css="mall_search" go-back="mall.home" attch="location" target="commodity.searchList" key="cname"></div> -->
+<!--<div amsearch style="margin-top: 10px;" search-css="mall_search" target="commodity.searchList"></div>-->
+
+<!--商品分类 -->
+<!--<div class="mall_class_main"></div>-->
+    <!--一级菜单-->
+    <div  style="display: inline-block;height:100%;"> 
+        <div class="mall_left_menu_class fs-12" >
+            <ul class="list" style="border: 0px;" >
+                <li ng-class="[leftitem.CSS,'frist_item']"  ng-repeat="leftitem in pageData.leftMenuData"   ng-click="clickMenu(leftitem,$index)">
+                    <span  class="mall_left_menu_title">{{leftitem.TITLE}}</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!--右侧分类 -->
+    <div class="mall_right_menu">
+        <div  ng-repeat="secondItem in pageData.secondMenuData" >
+            <div  class="row col" 
+            style="height:33px;line-height:33px;text-align: left; margin:0px 0px 3px 0px;;padding: 0px 0 0 7px;background: #F2F2F2;color:#333333">{{secondItem.TITLE}}</div>
+            <!-- 列表-->
+            <div style="padding-left:0px;" ng-repeat="thirdItem in  pageData.thirdMenuData">
+                <div style="width: 33%;padding: 10px 0 10px 0px;text-align: center;" class="mall_third_menu"  ng-repeat="items in thirdItem" ng-show="{{items.UPID==secondItem.ID}}">
+                    <img src="{{items.LISTIMAGE|hostFilter}}" ng-click="toGoodsPage(items.ID)" class="mall_third_menu_img"/><br>
+                    <span class="mall_third_menu_title" >{{items.TITLE}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--商品分类 end -->

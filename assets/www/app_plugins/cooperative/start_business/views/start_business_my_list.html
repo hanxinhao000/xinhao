@@ -1,0 +1,77 @@
+<!-- <div class="bg-2" style="padding-left:13px;" ng-repeat="value in pageData.myServiceInfo" ng-click="toPage('{{value.data.ID}}','{{value.data.SC_TYPE}}','{{value.pay_type}}')">
+
+  <p class="fs-14">创办<span format-area-info province="{{value.PROVINCE_ID}}" city="{{value.CITY_ID}}"
+             zone="{{value.ZONE_ID}}"></span>{{value.pay_type_name}}
+  </p>
+  <p>类型：{{value.pay_type_name}}<span style="float: right;color:#2CC16A;">保证金:{{value.BUY_PRICE |ptoy}}</span></p>
+  <p>申请人: {{value.U_NAME}}</p>
+  <p>申请时间: {{value.CREATE_TIME}}</p>
+  <p ng-if="value.F_STATUS=='0'">申请状态: 待审核</p>
+  <p ng-if="value.F_STATUS=='1'">申请状态: 审核通过</p>
+  <p ng-if="value.F_STATUS=='2'">申请状态: 审核拒绝</p>
+  <p ng-if="value.F_STATUS=='3'">申请状态: 撤销</p>
+  <p ng-if="value.F_STATUS=='4'">申请状态: 借款审核中</p>
+  <p ng-if="value.F_STATUS=='5'">申请状态: 借款驳回</p>
+  <p ng-if="value.REMARKS!=''" ng-bind="value.REMARKS" style="white-space:normal;"></p>
+</div>
+<div style="width: 100%;text-align: center;padding-top:10px;">没有更多数据</div> -->
+
+<a class="item item-box" ng-repeat="value in pageData.myServiceInfo |orderBy:value.CREATE_TIME" ng-click="toPage('{{value.data.ID}}','{{value.data.SC_TYPE}}','{{value.pay_type}}')">
+      <h3 style="color:#010101;">{{value.sc_name}}</h3>
+      <table class="full-table fs-12 mt-12">
+            <tr class="full-w">
+                  <td class="cl-02">
+                        <span>{{value.GAP_NAME}}</span>
+                  </td>
+            </tr>
+      </table>
+      <table class="full-table fs-12 mt-12">
+            <tr class="full-w">
+                  <td class="cl-02">
+                       <span>区域：</span>
+                       <span format-area-info province="{{value.PROVINCE_ID}}" city="{{value.CITY_ID}}"zone="{{value.ZONE_ID}}"></span>
+                  </td>
+            </tr>
+      </table>
+      <!-- <h3 style="color:#010101;">创办<span format-area-info province="{{value.PROVINCE_ID}}" city="{{value.CITY_ID}}"zone="{{value.ZONE_ID}}"></span>{{value.pay_type_name}}</h3> -->
+      <table class="full-table fs-12 mt-12">
+            <tr class="full-w">
+                  <td class="cl-02">
+                        <span>类型：{{value.pay_type_name}}</span>
+                  </td>
+                  <td class="cl-03" style="text-align:right;">
+                        <span>金额:{{value.BUY_PRICE |ptoy}}</span>
+                  </td>
+            </tr>
+      </table>
+      <table class="full-table fs-12 mt-12">
+            <tr class="full-w">
+                  <td class="cl-02">
+                        <span>申请人: {{value.U_NAME}}</span>
+                  </td>
+                  <td class="cl-02" style="text-align:right;">
+                        <span>申请时间: {{value.CREATE_TIME}}</span>
+                  </td>
+            </tr>
+      </table>
+      <table class="full-table fs-12 mt-12">
+            <tr class="full-w">
+                  <td class="cl-02">
+                        <span ng-if="value.F_STATUS=='0'">申请状态: 待审核</span>
+                        <span ng-if="value.F_STATUS=='1'">申请状态: 审核通过</span>
+                        <span ng-if="value.F_STATUS=='2'">申请状态: 审核拒绝</span>
+                        <span ng-if="value.F_STATUS=='3'">申请状态: 撤销</span>
+                        <span ng-if="value.F_STATUS=='4'">申请状态: 借款审核中</span>
+                        <span ng-if="value.F_STATUS=='5'">申请状态: 借款驳回</span>
+                  </td>
+            </tr>
+      </table>
+      <table class="full-table fs-12 mt-12">
+            <tr class="full-w">
+                  <td class="cl-02">
+                        <span  style="white-space:normal;">审核说明: {{value.REMARKS}} </span>
+                  </td>
+            </tr>
+      </table>
+</a>
+<div style="width: 100%;text-align: center;padding-top:10px;">o(╯□╰)o 没有找到数据</div>

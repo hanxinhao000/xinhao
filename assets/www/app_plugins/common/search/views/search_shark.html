@@ -1,0 +1,45 @@
+<!-- 公共搜索页面 ng-change="search(pageData.searchName)" -->
+
+<div class="bar bar-header item-input-inset" style="padding-right: 5px;background-image: none;">
+    <form ng-submit="search()" style="width: 87%;">
+        <div class="item-input-wrapper fs-12" style="border: 1px solid #0095ff;
+          height: 25px;background:0;">
+          <!-- <i class="icon placeholder-icon search_input_icon_01" ng-click="search()" style="padding-right: 12px;" ></i> -->
+          <i class='icon ion-search placeholder-icon' style="font-size: 16px;" ng-click="search()"></i>
+          <input type="search"  ng-model="pageData.searchName" style="width: 84%;padding-left: 12px;text-align: center;" placeholder="景区/酒店/关键字">
+           
+            <i ng-click="clear('1')" class="icon  placeholder-icon search_input_icon_02"  style="padding-right: 12px;"></i>
+           
+        </div>
+    </form>
+        <button class="button button-clear" ng-click="back()" style="height: 25px;line-height: 25px;font-size:13px;color:#0094ff;padding-bottom: 9px;">
+          取消
+        </button>
+</div>
+
+
+<ion-view>
+  <ion-content on-swipe-up style="padding-top: 45px;">
+	<div class="list">
+<!-- 	  <div class="item" ng-repeat = "item in pageData.localData"  ng-click = "search(item.url)" ng-bind="item.name">
+      <div ></div>
+	  </div>
+ -->
+    <div class="item item-avatar item-icon-right" style="min-height: 50px;padding-left: 60px;padding-top: 15px;" ng-repeat = "item in pageData.localData" ng-click="toPage('{{item.url}}')">
+      <img style="top: 9px;
+    max-width: 30px;
+    max-height: 30px;" ng-src="{{item.img}}">
+      <h3  ng-bind="item.name"></h3>
+      <img class="icon" style="width: 17px;
+    height: auto;
+        top: 15px;
+    line-height: 50px;
+    vertical-align: middle;" src="app_plugins/common/search/img/shark_14.png">
+    </div>
+
+	</div>
+
+
+  </ion-content>
+
+</ion-view> 	

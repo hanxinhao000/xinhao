@@ -1,0 +1,30 @@
+<ion-item class="item item-box item-remove-animate" ng-click="myeditApply('{{value.ID}}')" style="padding: 16px;">
+    <h3 style="color:#010101;" ng-bind="value.ORGNAME"></h3>
+    <table class="full-table fs-12 mt-12">
+        <tr class="full-w">
+            <td class="cl-02">
+                <span>发起人:{{value.MEMBERNAME}}</span>
+            </td>
+        </tr>
+    </table>
+    <table class="full-table fs-12 mt-12">
+        <tr class="full-w">
+            <td class="cl-02">
+                <span>申请金额:{{value.APPY_AMOUNT|ptoy}}</span>元
+            </td>
+            <td class="cl-02" style="text-align:right;">
+                <span>申请日期:{{value.CREATETIME}}</span>
+            </td>
+        </tr>
+    </table>
+    <table class="full-table fs-12 mt-12">
+        <tr class="full-w">
+            <td class="cl-02">
+                <span>联保人数:{{value.COUNT}}</span>
+            </td>
+            <td class="cl-02" style="text-align:right;">
+                <span>状态:{{value.STAUTS}}</span>
+            </td>
+        </tr>
+    </table>
+</ion-item>

@@ -1,0 +1,33 @@
+<!--我的接单 订单列表 ITEM-->
+<div class="item-box  bg-2">
+<div style="border-bottom:0px;" class="item" ng-click="logisticsOrdersDetails('{{value.ID}}')">
+  <h3 style="color:#010101;">由{{value.FROM_ADDRES}}至{{value.TO_ADDRES}}</h3>
+  <table class="full-table fs-12 cl-02 pt-5 mt-12">
+    <colgroup style="width:60%;"></colgroup>
+    <colgroup style="width:40%;"></colgroup>
+    <tr class="full-w">
+      <td class="cl-02"> 
+            <span>运费：{{value.FREIGHT|ptoy}}元</span>
+      </td>
+      <td class="cl-02" style="text-align:right;">
+            <span>押金：{{value.DEPOSIT|ptoy}}元</span>
+      </td>
+    </tr>
+  </table>
+</div>
+<div>
+  <div class="full-w CM bg-2" >
+    <div class="diveline bg-6" style="width:90%;margin: 0px 15px 0px 16px;"></div>
+  </div>
+  <div class="fs-12 row" style="margin:-10px;">
+      <div class="col-80 cm">
+        &nbsp;
+      </div>
+      <div class="col-20 cm">
+        <a style="line-height:42px;" class="button icon-left ion-navigate ion-android-cancel button-clear cl-05" href="bdapp://map/direction?origin=latlng:{{currentPoint.lat}},{{currentPoint.lng}}|name:我的位置&destination={{value.ADDRESS}}&mode=driving&src=触角科技|理性农业" >导航</a>
+      </div>
+  </div>
+</div>
+<div class="full-w CM bg-2" style="border-bottom:1px solid #ddd;"></div>
+
+</div>

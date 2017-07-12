@@ -1,0 +1,74 @@
+<style>
+    .triangle_icon{
+        text-align: center;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        border: solid 1px #ccc; 
+        background:  url(app_plugins/uoou/message/uu_life/img/2.1_2.png)  no-repeat scroll right center transparent ;
+        background-size:10px;
+        background-position-x: 90%;
+        width:100%;padding-left: 0px;
+        font-size:12px;
+        min-width: 31px;
+        height: 31px;
+        line-height: 31px;
+        border-color: #ddd;
+        background-color: #fff;
+        color: #444; 
+        padding-top: 0px;
+        padding-left: 5px;
+    }
+    
+</style>
+
+<!--<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="店铺最新活动">
+</div>-->
+<ion-view>
+    <ion-nav-buttons side="left">
+        <div class="public_comment_header_bar_padding_left" ng-click="back()">
+            <i class="icon head_left_back"></i>
+        </div>
+    </ion-nav-buttons>
+    <ion-nav-title>
+        <div class="bar_title">店铺最新活动</div>
+    </ion-nav-title>
+    
+    <ion-content delegate-handle="mainScroll">
+        <!-- 顶部 -->
+        <div class="row" style="background: #FFFFFF;">
+            <div class="col">
+                <button ng-click="wholeCountry()" class="button button_with  myinfoborder-radius" 
+                        style="font-size:12px;height: 31px;min-width: 31px;min-height: 31px;line-height: 31px;border-color: #ddd;background-color: #fff; color: #444;">全国</button>
+            </div>
+            <div class="col" style="padding-top: 6px;">
+                <select class=" triangle_icon item myinfoborder-radius item-input" style="" ng-model="pData.recvProvince" 
+                        ng-options="province.PROID as province.PRONAME for province in cascadePCZ.provinces"  required>
+                    <option style="" value="">选择省</option>
+                </select>
+            </div>
+            <div class="col">
+                <select class=" triangle_icon item myinfoborder-radius item-input" style="" ng-model="pData.recvCity" 
+                        ng-options="city.CITYID as city.CITYNAME for city in cascadePCZ.cities"  required>
+                    <option value="">选择市</option>
+                </select>
+            </div>
+            <div class="col">
+                <select class=" triangle_icon item myinfoborder-radius item-input" style="" ng-model="pData.recvArea" 
+                        ng-options="zone.ZONEID as zone.ZONENAME for zone in cascadePCZ.zones"  required>
+                    <option value="">选择区</option>
+                </select>
+            </div>
+        </div>
+        
+        <div item="false" style="padding: 0px;" more-class="123" aslist rcode="uu.mine.shopActivityList" 
+             temp-url="app_plugins/uoou/mine/shop_activity/views/shop_activity_item.html" list-events="pData.list_events" 
+              params="{{pData.param}}">
+        </div>
+        <div footerpadding></div>
+    </ion-content>
+</ion-view>

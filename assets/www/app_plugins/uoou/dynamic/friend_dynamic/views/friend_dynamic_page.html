@@ -1,0 +1,91 @@
+<!--好友动态-->
+<style>
+    .bar-background-color
+    {
+        padding-bottom: 0px;
+        background: transparent;
+        height: 52px;
+        color: #FFFFFF;
+        margin-top: 0px;
+        background-color: rgba(0,0,0,0.1);
+    }
+    .bar-background-color1
+    {
+        padding-bottom: 0px;
+        background: #2ad4d4;
+        height: 52px;
+        color: #FFFFFF;
+        margin-top: 0px;
+    }
+    .bar-background-color2
+    {
+        padding-bottom: 0px;
+        background: #2ad4d4;
+        height: 52px;
+        /*color: #FFFFFF;*/
+        margin-top: 15px;
+    }
+    .friend_dynamic_head_background
+    {
+        background-color: rgba(16, 12, 12, 0.1);
+        FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=0,startColorStr=#b8c4cb,endColorStr=red);
+        background: -ms-linear-gradient(top, #fff, #0000ff);
+        background: -moz-linear-gradient(top,#b8c4cb,#f6f6f8);
+        background: -webkit-gradient(linear, 0% 0%, 0% 100%,from(#b8c4cb), to(#f6f6f8));
+        background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(23, 22, 22, 0.04)), to(rgba(17, 17, 19, 0.45)));
+        background: -webkit-linear-gradient(top, rgba(19, 15, 15, -1.95), rgba(37, 2, 9, 5.74));
+    }
+
+</style>
+<div  ng-class="pData.showClass" style="{{pData.bar_header_ios_height_css}}">
+    <div class="row"  style="width:100%;line-height: {{pData.head_line}}px;color:#FFFFFF;padding:5px 10px 5px 10px;" >
+        <div class=" col-25" style="text-align:left;" ng-click="back()">
+            <i class="icon head_left_back fs-30"></i>
+        </div>
+        <div class="col-50" style="text-align: center;">
+            <span class="fs_4" ng-bind="pData.title"></span>
+        </div>
+        <div class="col-25" style="text-align: right;     margin: 0px;   padding: 0px;padding-top:{{pData.head_button_top}}px;">
+            <button ng-click="Release_dynamic()" style="line-height: 25px;min-height: 25px;padding: 0 3px;height: 25px;" class="button button-positive activated fs-12">
+                发布动态</button>
+        </div>
+    </div>
+</div>
+<ion-view style="margin-top: 0px;" hide-nav-bar="true">
+    <ion-content style="padding-top:0px;" delegate-handle="mainScroll">
+        <div class="" style="background: #2ad4d4;height: 267px;" add-resource type="01" out-data="pData.inputData">
+            <img ng-src="{{pData.inputData[0].data}}" style="width: 100%;height: 100%;"/>
+            <!--<div class="row" style="height: 60%;"  >-->
+                <!--<div class="col" add-resource type="0,1" out-data="pData.inputData"></div>--> 
+            <!--</div>-->
+        </div>
+        
+        <div class="item item-thumbnail-left item-icon-right friend_dynamic_head_background" style="border: 0px;padding:6px 0px 0px 75px;height: 67px; color:#FFFFFF;height:67px;position: relative;margin-top: -67px;">
+            <img ng-click="toMemberInfo(pData.memberInfo.ID)" ng-src="{{pData.memberInfo.WXHEADIMG| hostFilter}}" style="vertical-align: bottom;top: 5px;width: 55px;height: 55px;border-radius: 5px; left: 13px;">
+            <div class="row" style="padding:0px 20px 0px 0px;">
+                <div class="col"  style=" display: inline-block;">
+                    <span class="fs-16" ng-bind="pData.memberInfo.MEMBERNAME"></span> <br/>
+                    <span class="fs-12" ng-bind="pData.memebr_vip==''?'&nbsp;':pData.memebr_vip" style="color:#aeaeae;"></span>
+                </div>
+                <div class="col text-overflow-elipsis" ng-click="toBrowserPag(pData.memberInfo.ID)" style="text-align:right;">
+                    <br/>
+                    <span class="fs-10" style="display: inline-block;color:#aeaeae;margin-top: 4px;">访问量:
+                        <span  class="fs-10" style="color: #ffbb04; display: inline-block;  ">{{pData.memberInfo.BROWSE_NUM}}</span>
+
+                    </span>
+                </div>  
+            </div>
+        </div>
+        <div class="row bg-2 fs-15 " style="margin-bottom:5px;padding: 7px 15px;color: #666666;">
+
+            <div class="col-80" style="color:#666666;" ng-bind="pData.memberInfo.MOTTO"></div>
+            <div class="col-20" style="text-align: right;" ng-click="shield_friend()">
+                <img style="width: 20px;vertical-align: middle;" src="app_plugins/uoou/dynamic/friend_dynamic/img/3.9_2.png">
+            </div>
+        </div>
+        <div item="false"  style="padding:0px;margin:0px;"  aslist rcode="uoou.dynamic.friend_dynamic" repeatdata="pData.dynamicRepeatDate"
+             list-events="pData.listEvents" temp-url="app_plugins/uoou/dynamic/friend_dynamic/views/friend_dynamic_item.html" params="{{pData.params}}" >
+        </div>
+        <!--        <span ng-bind="pData.memberInfo.MEMBERNAME"></span>-->
+    </ion-content>
+</ion-view>

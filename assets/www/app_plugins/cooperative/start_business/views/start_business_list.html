@@ -1,0 +1,23 @@
+<!-- <div class="item item-avatar" style="padding-left:13px;" ng-repeat="value in pageData.serviceData" ng-click="toPage('{{value.data.ID}}','{{value.data.SC_TYPE}}','{{value.pay_type}}','{{value.data.T_TABLE_NAME}}')">
+
+  <p>创办{{value.data.SC_NAME}} <span style="float: right;{{value.TRADE_TYPE=='1'?'color:#2CC16A;':'color:#FD7474'}}">保证金:{{value.data.PRICE |ptoy}}</span></p>
+  <p>{{value.data.SC_EXPLAIN}}</p>
+  <p>状态: {{value.pay_type=='1'?'对不起,您来晚了':'可以购买'}}</p>
+</div>
+<div style="width: 100%;text-align: center;padding-top:10px;">没有更多数据</div>
+ -->
+<a class="item item-box" ng-repeat="value in pageData.serviceData" ng-click="toPage('{{value.data.ID}}','{{value.data.SC_TYPE}}','{{value.pay_type}}','{{value.data.T_TABLE_NAME}}')">
+      <h3 style="color:#010101;">{{value.data.SC_NAME}}</h3>
+      <p style="font-size:12px;white-space:normal;max-height:37px;overflow:hidden;" ng-bind="value.data.SC_EXPLAIN"></p>
+      <table class="full-table fs-12 mt-12">
+      	<tr class="full-w">
+      		<td class="cl-02">
+      			<span>状态: {{value.pay_type=='1'?'您已购买':'可以购买'}}</span>
+      		</td>
+      		<td class="cl-03" style="text-align:right;">
+      			<span>保证金:{{value.data.PRICE |ptoy}}</span>
+      		</td>
+      	</tr>
+      </table>
+</a><!-- 
+<div style="width: 100%;text-align: center;padding-top:10px;">没有更多数据</div> -->

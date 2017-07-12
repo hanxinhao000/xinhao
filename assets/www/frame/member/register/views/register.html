@@ -1,0 +1,147 @@
+<!--<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     right-css="header_title fs_4"
+     title="注册">
+</div>-->
+<style>
+    .input-label {
+        color: #666666;
+        font-size: 15px;
+    }
+    textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], 
+    input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], 
+    input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"] {
+        color: #888888;
+        font-size: 15px;
+        line-height: 16px;
+    }
+    .toggle.toggle-assertive input:checked + .track {
+        border-color: #2ad4d4;
+        background-color: #2ad4d4;
+    }
+    .toggle {
+        line-height: 14px;
+        vertical-align: middle;
+    }
+</style>
+<!-- 会员注册-->
+<ion-view>
+    
+    <ion-nav-buttons side="left">
+        <div ng-click="back()"  class="public_comment_header_bar_padding_left">
+            <i class="icon head_left_back"></i>
+        </div>
+    </ion-nav-buttons>
+    
+    <ion-nav-title>
+        <div class="bar_title fs_4">
+            注册
+        </div>
+    </ion-nav-title>
+    
+    <ion-content >
+
+        <div class="list" >
+
+            <div class="row" style="margin-top:5px;border:0px;border-radius: 5px; padding: 10px 10px 0px 10px;">
+                <div class="col" style="padding:0px;">
+                    <div class="item register_input_width register_label item-input" style="border-radius: 5px;padding-right: 20px;">
+                        <i class="icon icon-mobile  placeholder-icon"></i>
+                        <span class="input-label"  >手机号:</span>
+                        <input type="tel"  ng-model="pData.account">
+                    <!--<i class="icon placeholder-icon"><button class="button ng-binding button-small button-positive" style="background-color: #2ad4d4;margin-right: 90px;font-family: 微软雅黑;font-size: 12px;color: #ffffff;" ng-disabled="pData.smscodedisabled" ng-click="SMScode()" ng-bind="pData.smscodetext"></button></i>-->
+                    </div>
+                </div>
+            </div>
+
+        <!--<label class="item item-input" style="border:0px;border-radius: 5px;margin: 5px 10px 0px 10px;;">-->
+        <div class="row" style="margin-top:0px;border:0px;border-radius: 5px; padding: 5px 10px 0px 10px;">
+            <div class="col" style="padding:0px;">
+                <div class="item register_input_width register_label item-input" style="border-radius: 5px;padding-right:0;">
+                    <i class="ion-chatbox-working placeholder-icon"></i>
+                    <span class="input-label" >验证码:</span>
+                    <input type="text"  ng-model="pData.inputSmsCode">
+                    <i class="icon placeholder-icon"><button class="button ng-binding button-small button-positive" style="background-color: #2ad4d4;font-family: 微软雅黑;font-size: 13px;color: #ffffff; width:90px; height:25px; float:right; margin-right: 20px;" ng-disabled="pData.smscodedisabled" ng-click="SMScode()" ng-bind="pData.smscodetext"></button></i>
+                </div>
+            </div>
+        </div>
+                <!--</label>-->
+            <label class="item item-input" style="border:0px;border-radius: 5px;margin: 5px 10px 0px 10px;;">
+                <i class="ion-ios-unlocked-outline placeholder-icon"></i>
+                <span class="input-label" >密码:</span>
+                <input type="password"  ng-model="pData.password">
+            </label>
+            <label class="item item-input" style="border:0px;border-radius: 5px;margin: 5px 10px 0px 10px;font-family: 微软雅黑;font-size: 16px;">
+                <i class="ion-ios-unlocked-outline placeholder-icon"></i>
+                <span class="input-label">确认密码:</span>
+                <input type="password"  ng-model="pData.repeatpwd">
+            </label>
+            <label class="item item-input" style="border:0px;border-radius: 5px;margin: 5px 10px 0px 10px;">
+                <i class="ion-social-pinterest placeholder-icon"></i>
+                <span class="input-label">推荐人代码：</span>
+                <input type="text"  ng-model="pData.invitationcode">
+            </label>
+            <!--            <label ng-show="pData.account_type == '1'" class="item item-input" style="margin-top: 7px;">
+                            <span class="input-label">经营土地面积:</span>
+                            <input type="number" placeholder="单位:亩" ng-model="pData.land">
+                        </label>
+                        <label ng-show="pData.account_type == '2'" class="item item-input" style="margin-top: 7px;">
+                            <span class="input-label">单位名称:</span>
+                            <input type="text" placeholder="请输入单位名称（必填）" ng-model="pData.business_name">
+                        </label>
+                        <label ng-show="pData.account_type == '2'" class="item item-input" style="margin-top: 7px;">
+                            <span class="input-label">组织机构证编码:</span>
+                            <input type="text" placeholder="请输入组织机构证编码（必填）" ng-model="pData.business_org">
+                        </label>
+                        <div class="row" style="background: #FFFFFF;margin-top: 7px;padding:3px 0">
+                            <div class="col col-20" style="padding: 10px 5px 5px 16px;color:#595959;font-size:12px;">常住地:</div>
+                            <div class="col col-25">
+                                <select class="item myinfoborder-radius item-input" style="width:100%;" ng-model="pData.recvProvince" ng-options="province.PROID as province.PRONAME for province in cascadePCZ.provinces"  required>
+                                    <option value="">-省-</option>
+                                </select>
+                            </div>
+                            <div class="col col-25">
+                                <select class="item myinfoborder-radius item-input" style="width:100%;" ng-model="pData.recvCity" ng-options="city.CITYID as city.CITYNAME for city in cascadePCZ.cities"  required>
+                                    <option value="">-市-</option>
+                                </select>
+                            </div>
+                            <div class="col col-25">
+                                <select class="item myinfoborder-radius item-input" style="width:100%;" ng-model="pData.recvArea" ng-options="zone.ZONEID as zone.ZONENAME for zone in cascadePCZ.zones"  required>
+                                    <option value="">-区-</option>
+                                </select>
+                            </div>
+                        </div>
+                        <label class="item item-input item-select" style="margin-top: 7px;padding: 8px 0 8px 16px;">
+                            <div class="input-label">
+                                社员身份:
+                            </div>
+                            <select ng-model="pData.member_identity" ng-options="v.ID as v.ID_NAME for v in pData.member_identity_info">
+                                <option value="">--请选择--</option>
+                            </select>
+                        </label>-->
+            <div class="row" style="padding:0px;">
+                <div class="col" style="margin:0px; padding-left: 25px;">
+                    <label class="toggle toggle-assertive">
+                        <input ng-model="pData.agree_type" type="checkbox">
+                        <div class="track">
+                            <div class="handle"></div>
+                        </div>
+                    </label>
+                    <a tips-modal menucode="memberRules" title="我同意《用户服务协议》" ></a>
+                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <button class="button button-block button-light"  style="background-color: #2ad4d4;font-family: 微软雅黑;font-size: 18px;color: #ffffff; " ng-click="register()">
+                        注册
+                    </button>
+
+                </div>
+            </div>
+        </div>
+        <div footerpadding></div>
+    </ion-content>
+</ion-view>

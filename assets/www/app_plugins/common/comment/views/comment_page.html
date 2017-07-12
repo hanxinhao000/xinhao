@@ -1,0 +1,69 @@
+<!-- 通用评论 -->
+<!--<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="评论">
+</div>-->
+<ion-view>
+    <ion-nav-buttons side="left">
+        <div class="public_comment_header_bar_padding_left" ng-click="back()">
+            <i class="icon head_left_back"></i>
+        </div>
+    </ion-nav-buttons>
+    <ion-nav-title>
+        <div class="fs_4">评论</div>
+    </ion-nav-title>
+    
+  <ion-content>
+  <div class="list">
+    <div class="item item-body" ng-repeat="item in commentdata.DATA" style="padding:0px;">
+      <table class="full-table mt-12">
+        <tr class="full-w">
+          <td class="cl-01 fs-14 pl-10" ng-click="upperreply(item.ID,$index)">
+            <span>{{item.MEMBERNAME}}</span>
+          </td>
+          <td class="cl-02 fs-12 pr-10" style="text-align:right;">
+            <span>{{item.TIME}}</span>
+          </td>
+        </tr>
+      </table>
+      <p class="pl-10" style="font-size:12px;white-space:normal;max-height:37px;overflow:hidden;margin-top:6px;" ng-bind="item.CONTENT"></p>
+      <table class="full-table fs-12 mt-12">
+        <tr class="full-w">
+          <td class="cl-03 pr-10" style="text-align:right;" ng-click="selreply($index)">
+            <span>{{item.openreply}}</span>
+          </td>
+        </tr>
+      </table>
+      <div class="list card" style="margin:1px 5px 0px 10px" ng-repeat="items in item.replydata" >
+        <table class="full-table mt-12">
+        <tr class="full-w">
+          <!-- ng-click="upperreply(items.ID,$index)" -->
+          <td class="cl-01 fs-14 pl-10">
+            <span>{{items.PLMEMBERNAME}}</span>
+          </td>
+          <td class="cl-02 fs-12 pr-10" style="text-align:right;">
+            <span>{{items.TIME}}</span>
+          </td>
+        </tr>
+      </table>
+      <p class="pl-10" style="font-size:12px;white-space:normal;max-height:37px;overflow:hidden;margin-top:6px;" ng-bind="items.CONTENT"></p>
+      </div>
+    </div>
+  </div>
+ <div footerpadding></div>
+  </ion-content>
+  	<div class="bar bar-footer h-60 ios-margin-button">
+<!--	  	<colgroup style="width:80%;"></colgroup>
+	  	<colgroup style="width:20%;"></colgroup>
+  		<tr>-->
+        <label class="item-input" style="width:100%;padding-left: 2px;">
+          <textarea type="text" name="comment" style="margin-left: 5px;width: 95%;height: 37px;overflow:hidden;border: 1px solid rgb(168, 168, 168);" placeholder="{{pageData.replyname}}" ng-model="pageData.surveycontent" required></textarea>
+        </label>
+<!--        </tr>
+        <tr>-->
+			<button ng-click="addComment()" style="width: 20%;" class="button button_with  myinfoborder-radius h-43 agriculture_project_title button-calm">评论</button>
+        <!--</tr>-->
+  	</div>
+</ion-view>

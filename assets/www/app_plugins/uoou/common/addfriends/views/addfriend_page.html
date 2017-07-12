@@ -1,0 +1,136 @@
+<style>
+    .popup-buttonss{
+        padding: 0;
+        margin: 0;
+        border-radius: 0;
+    }
+    .popup-buttons .button
+    {
+        border-radius: 0;
+    }
+    .popup-buttons .button
+    {
+        margin-right: 0px;
+    }
+    
+    .tab_active{
+        max-width: none !important;
+        background-color: #e7f7f7 !important;
+        margin: 0px !important;
+    }
+    .tab_unactive{
+        max-width: none;
+        background-color: #e7f7f7;
+        margin: 0px !important;
+    }
+    
+</style>
+
+<!--
+添加好友
+<div class="bar bar-heade bar-light"
+     nav-bar
+     left-css="head_left_back"
+     title-css="header_title fs_4"
+     title="添加好友">
+</div>-->
+
+<ion-view view-title="添加好友">
+    
+    
+    
+     <ion-nav-buttons side="left">
+        <div  ng-click="back()"  class="public_comment_header_bar_padding_left">
+            <i class="icon head_left_back"></i>
+        </div>
+    </ion-nav-buttons>
+    
+	<ion-nav-title>
+            <div class="fs_4">添加好友</div>
+        </ion-nav-title>
+    
+	
+    
+    
+  <ion-content>
+      
+      <div class="tabs-striped tabs-top tabs-background-positive tabs-color-light">
+        <div class="tabs" style="top: 0px;top: 0px;background-color: #FFF;color: #2ad4d4;border-color: #fff;border: 0px;margin: 0px;padding: 0px;">
+          <a class="tab-item"  ng-class="pData.active_css==0 ? 'tab_active':''" ng-click="selectTab('0')" href="javascript:void(0)" style="color: #2ad4d4;max-width: none;border-bottom-width:0px !important; font-size: 16px;">查找好友</a>
+          <a class="tab-item" ng-class="pData.active_css==1 ? 'tab_active':''" ng-class="pData.active_css" ng-click="selectTab('1')" href="javascript:void(0)" style="border-left: 1px solid #ddd;color: #2ad4d4;max-width: none;border-bottom-width:0px !important; font-size: 16px;">搜索群组</a>
+        </div>
+      </div>
+      
+      
+      <div style="top:50px;position: relative;">
+      <div class="list" ng-if="pData.tabs==0">
+          <div class="item item-input-inset" style="border-top: 0px;background: #F5F5F5;">
+            <label class="item-input-wrapper" style="height: 44px;background:#FFF;">
+              <i class="icon ion-search placeholder-icon fs-20"></i>
+              <input type="text" ng-model="pData.account" keyboard-attach  placeholder="输入账号添加好友" style="font-size:15px;">
+              <!--<input type="text" ng-model="pData.remark" placeholder="请输入验证信息" style="width: 100%;">-->
+            </label>
+            <button class="button button-stable" ng-click="clickAddFriend()" style="height: 44px;background: #E6E6E6; font-size: 15px;">添加好友</button>
+          </div>
+        </div>
+        
+        <div class="list" ng-if="pData.tabs==1">
+          <div class="item item-input-inset" style="border-top: 0px;background: #F5F5F5;">
+            <label class="item-input-wrapper" style="height: 44px;background:#FFF;">
+              <i class="icon ion-search placeholder-icon fs-20"></i>
+              <input type="text" ng-model="pData.groupnumber" keyboard-attach placeholder="输入账号添加群组" style="font-size:15px;">
+            </label>
+            <button class="button button-stable" ng-click="addGroup()" style="height: 44px;background: #E6E6E6; font-size: 15px;">添加群组</button>
+          </div>
+        </div>
+          
+      
+      <!--添加好友-->
+<!--      <div class="list card">
+        <div class="item item-avatar" style="text-align: center;padding-left: 0px;min-height: 48px;"> 
+          <h2>通过账号添加好友</h2>
+        </div>
+            <div class="item item-body" style="padding: 0px;border-bottom: 0px;">
+              <div class="item item-input-inset" style="border-bottom: 0px;">
+                <label class="item-input-wrapper">
+                    <input type="text" ng-model="pData.account" placeholder="好友账号">
+                </label>
+                  <button class="button button-small" ng-click="clickAddFriend()">
+                    &nbsp;&nbsp;加好友&nbsp;&nbsp;
+                </button>
+              </div>
+                <div class="item item-input-inset" style="border-top: 0px;padding-top: 0px;">
+                <label class="item-input-wrapper">
+                    <input type="text" ng-model="pData.remark" placeholder="请输入验证信息" style="width: 100%;">
+                </label>
+              </div>
+            </div>
+        <div class="item item-avatar" style="text-align: center;padding-left: 0px;min-height: 48px;"> 
+          <h2>通过账号添加群组</h2>
+        </div>
+        <div class="item item-body">
+            <div class="item item-input-inset" style="padding: 0px;">
+                <label class="item-input-wrapper">
+                  <input type="text" ng-model="pData.groupnumber" placeholder="群组账号">
+                </label>
+                <button class="button button-small" ng-click="addGroup()">
+                    &nbsp;&nbsp;加入群组&nbsp;&nbsp;
+                </button>
+              </div>    
+        </div>-->
+            <div>
+                <a class="item item-icon-left" href="javascript:void(0)" ng-click="qrcode()" style="font-size: 15px;">
+                    <i class="icon"><img src="app_plugins/uoou/common/addfriends/img/qrcode.png" style="width:35px;"></i>扫码加好友
+                </a>
+                <i class="icon ion-chevron-right icon-accessory" style="line-height: 0px;position: absolute;font-size: 15px;right: 15px;top: 82px;z-index: 99;"></i>
+            </div>
+
+            <div>
+                <a class="item item-icon-left" ng-click="creategroup()" href="javascript:void(0)" style="font-size: 15px;">
+                    <i class="icon"><img src="app_plugins/uoou/common/addfriends/img/group.png" style="width:35px;"></i>创建群组
+                </a>
+                <i class="icon ion-chevron-right icon-accessory" style="line-height: 0px;position: absolute;font-size: 15px;right: 15px;top: 129px;z-index: 99;"></i>
+            </div>
+      </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,38 @@
+<a class="item item-thumbnail-left" style=" height: 115px; padding-left: 115px;padding-right: 0px;" ng-click = "getDetails(value.ID)">
+    <img style="max-width: 96px; max-height: 96px;top:10px;left:10px;"  ng-src="{{value.LIST_IMAGE| hostFilter:'ImageJSON'}}">
+    <div class="row " style="padding: 0px;">
+        <h2 class="fs-13 text-overflow-elipsis" ng-bind="value.STORE_NAME"></h2>
+    </div>
+    <div class="row cl-19 fs-13" style="padding: 0px;margin-top:4px;">
+        <div class="col" style="padding: 0px;">
+            <div class="row" style="padding: 0px;">
+                <div as-start model="s" value="{{value.PJPXDF | number:0}}"></div>
+                <div class="recommend_list_label_f_css">{{value.PJPXDF==''?"0":value.PJPXDF}}分</div>
+            </div>
+        </div>
+        <div class="col" style="padding: 0px;">
+			<span class="fs-13 cl-19">
+				<span ng-bind="value.YSCPZS"></span>人消费
+			</span>
+        </div>
+    </div>
+    <div class="row" style="padding: 0px;">
+        <div class="col text-overflow-elipsis" style="padding-left: 0px;">
+            <span class="fs-12" ng-bind="value.SSJQDQID"></span><span>
+        &nbsp;&nbsp;距我
+            <span class="fs-12" ng-bind="value.DISTANCE"></span>km&nbsp;&nbsp;</span>
+            <span class="fs-12 " ng-bind="value.ADDRESSDETIL"></span>
+        </div>
+    </div>
+    <div class="row" style="padding: 0px;">
+        <div class="col" style="padding-left: 0px;">
+            <div class="list-btn" ng-if="value.WYC_ID"><span class="fs-12" ng-bind="value.WYC_ID"></span></div>
+        </div>
+        <div class="col" style="padding-left: 0px;">
+            
+        </div>
+        <div class="col" style="text-align: right;">
+            <h3 class="fs-13" style="color: #FF0000">￥<span ng-bind="value.PJJG|number:0"></span>起</h3>
+        </div>
+    </div>
+</a>

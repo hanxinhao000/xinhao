@@ -1,0 +1,18 @@
+<!--我的银行卡-->
+<ion-item class="item-remove-animate">
+  <div>
+    <div class="row" style="white-space: normal;padding:2px;">
+      <div class="col ng-binding">
+        <span ng-bind="value.ID_NAME"></span>
+      </div>
+    </div>
+    <div class="row" style="white-space: normal;padding:2px;">
+      <div class="col ng-binding">
+        <span ng-bind="value.ID_CODE"></span>
+      </div>
+    </div>
+  </div>
+  <ion-option-button class="button-assertive" ng-click="DeleteAccount(value.ID,value.ID_TYPE)">
+    解除
+  </ion-option-button>
+</ion-item>
