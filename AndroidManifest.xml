@@ -3,7 +3,7 @@
     package="com.ylk.android.app"
     android:hardwareAccelerated="true"
     android:versionCode="10031"
-    android:versionName="1.0.36">
+    android:versionName="1.0.37">
 
     <supports-screens
         android:anyDensity="true"
